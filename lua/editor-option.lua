@@ -13,6 +13,6 @@ local buffer_options = {
 
 -- adding options
 local OptionType = Option.OptionType
-Option.addOptions(OptionType.GLOBAL_OPTION, global_options)
-Option.addOptions(OptionType.WINDOW_OPTION, window_options)
-Option.addOptions(OptionType.BUFFER_OPTION, buffer_options)
+Option.add_options(OptionType.GLOBAL_OPTION, global_options)
+Option.add_options(OptionType.WINDOW_OPTION, window_options)
+Option.add_options(OptionType.BUFFER_OPTION, buffer_options)
