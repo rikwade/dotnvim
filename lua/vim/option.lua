@@ -7,8 +7,6 @@ Option = {
 
     -- Add vim options
     addOptions = function (option_type, options)
-        print(type(options))
-
         if type(options) ~= 'table' then
             error('options should be a type of "table"')
             return
