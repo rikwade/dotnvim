@@ -1,4 +1,6 @@
-require('vim.option')
+local Option = require('vim.option')
+local OptionType = Option.OptionType;
+local add_options = Option.add_options;
 
 local global_options = {
 }
@@ -12,7 +14,6 @@ local buffer_options = {
 }
 
 -- adding options
-local OptionType = Option.OptionType
-Option.add_options(OptionType.GLOBAL_OPTION, global_options)
-Option.add_options(OptionType.WINDOW_OPTION, window_options)
-Option.add_options(OptionType.BUFFER_OPTION, buffer_options)
+add_options(OptionType.GLOBAL_OPTION, global_options)
+add_options(OptionType.WINDOW_OPTION, window_options)
+add_options(OptionType.BUFFER_OPTION, buffer_options)

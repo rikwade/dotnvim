@@ -1,4 +1,4 @@
-Option = {
+local Option = {
     OptionType = {
         GLOBAL_OPTION = 'o',
         WINDOW_OPTION = 'wo',
@@ -19,3 +19,5 @@ Option = {
         end
     end,
 }
+
+return Option
