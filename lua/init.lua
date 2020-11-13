@@ -1,1 +1,3 @@
-require('editor-option')
+require('editor-options')
+require('variables')
+require('keybinds')
