@@ -1,4 +1,5 @@
-require('editor-options')
+require('options')
 require('variables')
 require('keybinds')
 require('packman_lua.packman')
+require('lua-tree')
