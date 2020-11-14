@@ -1,0 +1,3 @@
+[submodule "lua/packman_lua"]
+	path = lua/packman_lua
+	url = https://github.com/theJian/packman.lua.git
