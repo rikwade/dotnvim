@@ -33,17 +33,17 @@ local i_global = {
     -- [ j + k ] to go to normal mode from insert
     { 'i', 'jk', '<esc>' },
 
-    -- [ ctrl + ; ] put a cemicolon EOL and go to next line
-    { 'i', '<c-;>', '<esc>A;<cr>' },
+    -- [ ctrl + ; ] put a semicolon EOL and go to next line
+    { 'i', '<c-;>', '<esc>A;' },
+
+    -- [ ctrl + m ] add new line and go to next line
+    { 'i', '<c-m>', '<esc>o' },
 
     -- [ ctrl + e ] add new line in insert mode
     { 'i', '<c-e>', '<esc>o' },
 
     -- [ ctrl + s ] save the current buffer
-    { 'i', '<c-s>', '<esc>:w<cr>i' },
-
-    -- [ ctrl + q ] quite the current buffer
-    { 'i', '<c-q>', '<esc>:q<cr>' },
+    { 'i', '<c-s>', '<esc>:w<cr>a' },
 
     -- [ <F6> ] to go enable spell checker
     { '', '<F6>', ':setlocal spell! spelllang=en_us<CR>' },
@@ -56,5 +56,4 @@ local t_buffer = {
 
 add_keybinds(KeybindType.GLOBAL_MAPPING, n_global)
 add_keybinds(KeybindType.GLOBAL_MAPPING, i_global)
-
 add_keybinds(KeybindType.BUFFER_MAPPING, t_buffer)
