@@ -1,8 +1,3 @@
--- basic configurations
-require('options')
-require('variables')
-require('keybinds')
-
 -- load package manager
 require('packman_lua.packman')
 
@@ -13,3 +8,8 @@ require('completion-nvim')
 
 -- lsp
 require('lsp')
+
+-- basic configurations
+require('options')
+require('variables')
+require('keybinds')
