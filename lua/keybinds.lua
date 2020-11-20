@@ -27,20 +27,39 @@ local n_global = {
 
     -- [ ctrl + q ] quite the current buffer
     { 'n', '<c-q>', ':q<cr>' },
+
+    -- [ Y ] copy until the end of the line
+    { 'n', 'Y', 'y$' },
+
+	-- [ <leader> + n ] to go to the ne
 }
 
 local i_global = {
-    -- [ j + k ] to go to normal mode from insert
-    { 'i', 'jk', '<esc>' },
-
+	-- [ MOVING THE CURSOR ]
     -- [ ctrl + ; ] put a semicolon EOL and go to next line
     { 'i', '<c-;>', '<esc>A;' },
 
-    -- [ ctrl + m ] add new line and go to next line
-    { 'i', '<c-m>', '<esc>o' },
+	-- [ ctrl + o ] add new line in insert mode
+    { 'i', '<c-o>', '<esc>o' },
 
-    -- [ ctrl + e ] add new line in insert mode
-    { 'i', '<c-e>', '<esc>o' },
+    -- [ ctrl + e ] go to end of the line
+    { 'i', '<c-e>', '<esc>A' },
+
+    -- [ ctrl + u ] go to beginning of the line
+    { 'i', '<c-u', '<esc>I' },
+	
+    -- [ ctrl + j ] hit down arrow key
+    { 'i', '<c-j>', '<down>' },
+
+    -- [ ctrl + k ] hit up arrow key
+    { 'i', '<c-k>', '<up>' },
+
+    -- [ ctrl + b ] hit left arrow key
+    { 'i', '<c-b>', '<left>' },
+
+
+    -- [ j + k ] to go to normal mode from insert
+    { 'i', 'jk', '<esc>' },
 
     -- [ ctrl + s ] save the current buffer
     { 'i', '<c-s>', '<esc>:w<cr>a' },
@@ -49,11 +68,11 @@ local i_global = {
     { '', '<F6>', ':setlocal spell! spelllang=en_us<CR>' },
 }
 
-local t_buffer = {
+local t_global = {
     -- [ j + k ] to go to normal mode from terminal
-    { 0, 't', 'jk', [[ <C-\><C-n> ]] },
+    { 't', 'jk', [[ <C-\><C-n> ]] },
 }
 
 add_keybinds(KeybindType.GLOBAL_MAPPING, n_global)
 add_keybinds(KeybindType.GLOBAL_MAPPING, i_global)
-add_keybinds(KeybindType.BUFFER_MAPPING, t_buffer)
+add_keybinds(KeybindType.GLOBAL_MAPPING, t_global)
