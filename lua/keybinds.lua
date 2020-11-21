@@ -31,7 +31,8 @@ local n_global = {
     -- [ Y ] copy until the end of the line
     { 'n', 'Y', 'y$' },
 
-	-- [ <leader> + n ] to go to the ne
+    -- [ ctrl + y ] copy current line and paste next line
+    { 'n', '<c-y>', 'yyp' },
 }
 
 local i_global = {
@@ -47,7 +48,7 @@ local i_global = {
 
     -- [ ctrl + u ] go to beginning of the line
     { 'i', '<c-u', '<esc>I' },
-	
+
     -- [ ctrl + j ] hit down arrow key
     { 'i', '<c-j>', '<down>' },
 
@@ -56,6 +57,14 @@ local i_global = {
 
     -- [ ctrl + b ] hit left arrow key
     { 'i', '<c-b>', '<left>' },
+
+    -- [ ctrl + l ] hit right arrow key
+    { 'i', '<c-l>', '<right>' },
+
+
+    -- [ ctrl + y ] copy current line and paste next line
+    { 'i', '<c-y>', '<esc>yyp' },
+
 
 
     -- [ j + k ] to go to normal mode from insert
