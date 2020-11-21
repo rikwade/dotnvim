@@ -16,7 +16,6 @@ local global_options = {
 
 	smartcase = true,
 	ignorecase = true,
-	wrap = true,
 	background = 'dark',
 	termguicolors = true,
 	inccommand = 'split',
