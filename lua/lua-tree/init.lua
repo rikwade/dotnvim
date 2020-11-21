@@ -8,7 +8,7 @@ local KeybindType = Keybind.KeybindType
 local add_keybinds = Keybind.add_keybinds
 
 local global_variables  = {
-    lua_tree_side  = 'right',
+    lua_tree_side  = 'left',
     lua_tree_width  = 40, --30 by default
     lua_tree_ignore  = { '.git', 'node_modules', '.cache' }, --empty by default
     lua_tree_auto_open  = 1, --0 by default, opens the tree when typing `vim $DIR` or `vim`
