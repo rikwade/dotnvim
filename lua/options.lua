@@ -4,6 +4,11 @@ local OptionType = Option.OptionType;
 local add_options = Option.add_options;
 
 local global_options = {
+	--[[
+	#------------------------------------------------------------------------------#
+	#                                    EDITOR                                    #
+	#------------------------------------------------------------------------------#
+	--]]
     shiftwidth = 4,
     tabstop = 4,
 
@@ -14,11 +19,16 @@ local global_options = {
 	-- enable mouse in vim
 	mouse = 'n',
 
+	--[[
+	#------------------------------------------------------------------------------#
+	#                                    EDITING                                   #
+	#------------------------------------------------------------------------------#
+	--]]
 	smartcase = true,
 	ignorecase = true,
-	background = 'dark',
-	termguicolors = true,
-	inccommand = 'split',
+
+	-- shows the effects of a command incrementally
+	inccommand = 'nosplit',
 	splitright = true,
 	splitbelow = true,
 
@@ -27,9 +37,22 @@ local global_options = {
 	-- but with hidden option, buffer will be hidden when you close it
 	-- vim will prompt you to save when closing vim editor
 	hidden = true,
+
+	--[[
+	#------------------------------------------------------------------------------#
+	#                                      UI                                      #
+	#------------------------------------------------------------------------------#
+	--]]
+	background = 'dark',
+	termguicolors = true,
 }
 
 local window_options = {
+	--[[
+	#------------------------------------------------------------------------------#
+	#                                    EDITOR                                    #
+	#------------------------------------------------------------------------------#
+	--]]
     number = true,
     relativenumber = true,
 }

@@ -22,6 +22,9 @@ packman.get('junegunn/fzf.vim')
 -- interactive git for vim
 packman.get('tpope/vim-fugitive')
 
+-- box comments
+packman.get('cometsong/CommentFrame.vim')
+
 -- diagnostic-nvim is no longer needed
 -- diagnostic features come with nvim core vim.lsp.diagnostic
 -- packman.get('nvim-lua/diagnostic-nvim')
