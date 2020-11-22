@@ -24,6 +24,7 @@ require('lua-tree')
 require('fzf')
 require('completion-nvim')
 require('fugitive')
+require('comment-frame')
 
 --[[
 #------------------------------------------------------------------------------#
