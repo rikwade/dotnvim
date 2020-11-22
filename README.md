@@ -31,5 +31,12 @@ mv ~/.config/nvim ~/.config/nvim-bak
 ```
 git clone --recurse-submodules -j8 https://github.com/s1n7ax/dotnvim.git ~/.config/nvim
 ```
+* Run `nvim` and install plugins
+```
+cd ~/.config/nvim
+nvim
 
-* Now, fire up `nvim`. Everything should work now
+// run following neovim command to install plugins
+:luafile lua/plugins.lua
+```
+* Now, close and fire up `nvim` again. Everything should work now
