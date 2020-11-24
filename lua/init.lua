@@ -6,12 +6,13 @@
 -- leader key has to be mapped before its mapped
 vim.g.mapleader = " "
 
+require('vim.utils')
+
 --[[
 #------------------------------------------------------------------------------#
 #                                PACKAGE MANAGER                               #
 #------------------------------------------------------------------------------#
 --]]
--- load package manager
 require('packman_lua.packman')
 
 --[[
@@ -19,10 +20,8 @@ require('packman_lua.packman')
 #                                 PLUGIN CONFIG                                #
 #------------------------------------------------------------------------------#
 --]]
--- plugin configurations
 require('lua-tree')
 require('fzf')
-require('completion-nvim')
 require('fugitive')
 require('comment-frame')
 
@@ -31,15 +30,13 @@ require('comment-frame')
 #                                      LSP                                     #
 #------------------------------------------------------------------------------#
 --]]
--- lsp
-require('lsp')
+require('coc-nvim')
 
 --[[
 #------------------------------------------------------------------------------#
 #                                 BASIC CONFIG                                 #
 #------------------------------------------------------------------------------#
 --]]
--- basic configurations
 require('options')
 require('variables')
 require('keybinds')

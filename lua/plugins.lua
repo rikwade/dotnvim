@@ -10,10 +10,21 @@ packman.get('kyazdani42/nvim-web-devicons')
 packman.get('mhartington/oceanic-next')
 
 -- language server configurations
-packman.get('neovim/nvim-lspconfig')
+-- @TODO
+-- 2020.11.24
+-- there are some features missing with built-in lsp like go to definition
+-- features should be further analyzed and should be configured
+-- removing the plugin for now until I get time to configure for coc-nvim
+-- packman.get('neovim/nvim-lspconfig')
+
+-- lsp features
+packman.get('neoclide/coc.nvim')
 
 -- auto completion features for lsp
-packman.get('nvim-lua/completion-nvim')
+-- @TODO
+-- commenting out because completion is not useful unless built-in lsp is used
+-- since coc-nvim comes with completion features
+-- packman.get('nvim-lua/completion-nvim')
 
 -- fuzzy search features
 packman.get('junegunn/fzf')
@@ -21,6 +32,9 @@ packman.get('junegunn/fzf.vim')
 
 -- interactive git for vim
 packman.get('tpope/vim-fugitive')
+
+-- auto pair brackets
+packman.get('jiangmiao/auto-pairs')
 
 -- box comments
 packman.get('cometsong/CommentFrame.vim')
