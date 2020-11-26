@@ -1,13 +1,4 @@
-local Variable  = require('vim.variable')
-local Keybind  = require('vim.keybind')
-
-local VariableType  = Variable.VariableType
-local add_variables  = Variable.add_variables
-
-local KeybindType = Keybind.KeybindType
-local add_keybinds = Keybind.add_keybinds
-
-local global_variables  = {
+Variable.g({
     lua_tree_side  = 'left',
     lua_tree_width  = 40, --30 by default
     lua_tree_ignore  = { '.git', 'node_modules', '.cache' }, --empty by default
@@ -60,13 +51,10 @@ local global_variables  = {
             open=  ""
         }
     }
-}
+})
 
-local global_mapping = {
+Keybind.g({
     { 'n', '<c-n>', ':LuaTreeToggle<cr>', { noremap = true } },
     { 'n', ',r', ':LuaTreeRefresh<cr>', { noremap = true } },
     { 'n', ',n', ':LuaTreeFindFile<cr>', { noremap = true } },
-}
-
-add_variables(VariableType.GLOBAL_VARIABLE, global_variables)
-add_keybinds(KeybindType.GLOBAL_MAPPING, global_mapping)
+})

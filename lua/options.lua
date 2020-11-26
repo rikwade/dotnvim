@@ -1,9 +1,4 @@
-local Option = require('vim.option')
-
-local OptionType = Option.OptionType;
-local add_options = Option.add_options;
-
-local global_options = {
+Option.g({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                    EDITOR                                    #
@@ -11,9 +6,7 @@ local global_options = {
 	--]]
     shiftwidth = 4,
     tabstop = 4,
-
-	-- code folding
-    foldmethod = 'syntax',
+	hlsearch = false,
 	foldlevelstart = 1,
 
 	-- enable mouse in vim
@@ -45,9 +38,10 @@ local global_options = {
 	--]]
 	background = 'dark',
 	termguicolors = true,
-}
+})
 
-local window_options = {
+
+Option.w({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                    EDITOR                                    #
@@ -55,12 +49,8 @@ local window_options = {
 	--]]
     number = true,
     relativenumber = true,
-}
 
-local buffer_options = {
-}
+	-- code folding
+    foldmethod = 'syntax',
 
--- adding options
-add_options(OptionType.GLOBAL_OPTION, global_options)
-add_options(OptionType.WINDOW_OPTION, window_options)
-add_options(OptionType.BUFFER_OPTION, buffer_options)
+})

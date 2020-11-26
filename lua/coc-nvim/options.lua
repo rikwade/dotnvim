@@ -1,15 +1,12 @@
-local Option = require('vim.option')
-
-local OptionType = Option.OptionType
-local add_options = Option.add_options
-
-local options = {
+Option.g({
 	hidden = true,
 	backup = false,
 	writebackup = false,
 	updatetime = 300,
 	shortmess = vim.o.shortmess .. 'c',
-	signcolumn = 'number',
-}
+	completeopt = 'menuone,preview,'
+})
 
-add_options(OptionType.GLOBAL_OPTION, options);
+Option.w({
+	signcolumn = 'number',
+})

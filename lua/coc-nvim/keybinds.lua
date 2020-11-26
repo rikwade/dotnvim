@@ -1,12 +1,7 @@
-local Keybind = require('vim.keybind')
-
-local KeybindType = Keybind.KeybindType
-local add_keybinds = Keybind.add_keybinds
-
-
 local opt = { noremap = true, expr = true }
 local silent_opt = {}
-local keybinds = {
+
+Keybind.g({
 	{ 'i', '<c-j>', '<cmd>lua Coc.go_to_next_completion_item("<c-j>")', opt },
 	{ 'i', '<c-k>', '<cmd>lua Coc.go_to_previous_completion_item("<c-k>")', opt },
 	{ 'i', '<cr>', '<cmd>lua Coc.select_completion_item("<cr>")', opt },
@@ -24,6 +19,7 @@ local keybinds = {
 	{ 'n', '<leader>rn', '<Plug>(coc-rename)', silent_opt},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
 	{ 'n', '<leader>ac', '<Plug>(coc-codeaction)', silent_opt},
+	{ 'n', '<leader>f', '<cmd>lua Coc.format_code()<cr>', silent_opt},
 
 	{ 'x', 'if', '<Plug>(coc-funcobj-i)', silent_opt },
 	{ 'o', 'if', '<Plug>(coc-funcobj-i)', silent_opt },
@@ -34,6 +30,4 @@ local keybinds = {
 	{ 'o', 'ic', '<Plug>(coc-classobj-i)', silent_opt },
 	{ 'x', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
 	{ 'o', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
-}
-
-add_keybinds(KeybindType.GLOBAL_MAPPING, keybinds)
+})

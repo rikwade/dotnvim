@@ -1,12 +1,8 @@
-local Command = require('vim.command')
-
-local commands = {
+Command.cmd({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                      UI                                      #
 	#------------------------------------------------------------------------------#
 	--]]
 	'colorscheme OceanicNext'
-}
-
-Command:run_commands(commands)
+})

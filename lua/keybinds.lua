@@ -1,9 +1,4 @@
-local Keybind = require('vim.keybind')
-
-local KeybindType = Keybind.KeybindType
-local add_keybinds = Keybind.add_keybinds
-
-local n_global = {
+Keybind.g({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                    CONFIG                                    #
@@ -56,9 +51,9 @@ local n_global = {
 
     -- [ ctrl + y ] copy current line and paste next line
     { 'n', '<c-y>', 'yyp' },
-}
+})
 
-local i_global = {
+Keybind.g({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                  CURSOR MOVE                                 #
@@ -74,7 +69,7 @@ local i_global = {
     { 'i', '<c-e>', '<esc>A' },
 
     -- [ ctrl + i ] go to beginning of the line
-    { 'i', '<c-i', '<esc>I' },
+    { 'i', '<c-i>', '<esc>I' },
 
     -- [ ctrl + j ] hit down arrow key
     { 'i', '<c-j>', '<down>' },
@@ -110,9 +105,9 @@ local i_global = {
 
     -- [ <F6> ] to go enable spell checker
     { '', '<F6>', ':setlocal spell! spelllang=en_us<CR>' },
-}
+})
 
-local t_global = {
+Keybind.g({
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                     OTHER                                    #
@@ -120,8 +115,4 @@ local t_global = {
 	--]]
     -- [ j + k ] to go to normal mode from terminal
     { 't', 'jk', [[ <C-\><C-n> ]] },
-}
-
-add_keybinds(KeybindType.GLOBAL_MAPPING, n_global)
-add_keybinds(KeybindType.GLOBAL_MAPPING, i_global)
-add_keybinds(KeybindType.GLOBAL_MAPPING, t_global)
+})

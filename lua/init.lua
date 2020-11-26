@@ -6,6 +6,7 @@
 -- leader key has to be mapped before its mapped
 vim.g.mapleader = " "
 
+require('vim')
 require('vim.utils')
 
 --[[
