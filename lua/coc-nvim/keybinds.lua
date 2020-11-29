@@ -4,7 +4,6 @@ local silent_opt = {}
 Keybind.g({
 	{ 'i', '<c-j>', '<cmd>lua Coc.go_to_next_completion_item("<c-j>")', opt },
 	{ 'i', '<c-k>', '<cmd>lua Coc.go_to_previous_completion_item("<c-k>")', opt },
-	{ 'i', '<cr>', '<cmd>lua Coc.select_completion_item("<cr>")', opt },
 	{ 'i', '<c-space>', [[coc#refresh()]], opt },
 
 	{ 'n', '<leader>j', '<Plug>(coc-diagnostic-next)', silent_opt },
