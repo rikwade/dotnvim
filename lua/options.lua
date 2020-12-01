@@ -9,6 +9,9 @@ Option.g({
 	hlsearch = false,
 	foldlevelstart = 1,
 
+	-- auto wrap after 80 characters in the line
+	textwidth = 80,
+
 	-- enable mouse in vim
 	mouse = 'n',
 
