@@ -11,5 +11,6 @@ vim.g.coc_global_extensions = {
 	'coc-spell-checker',
 	'coc-tabnine',
 	'coc-xml',
-	'coc-yank'
+	'coc-yank',
+	'coc-python'
 }
