@@ -1,4 +1,3 @@
-local Types = require('common.types')
 local Command = {}
 
 Command.cmd = function(commands)

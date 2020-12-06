@@ -5,7 +5,7 @@ local on_attach_callback = function(_, bufnr)
     completion.on_attach()
 
     local opts = { noremap = true }
-    
+
     Keybind.b({
         { bufnr, 'n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts },
         { bufnr, 'n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts },

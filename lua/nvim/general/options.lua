@@ -15,10 +15,6 @@ Option.g({
 	-- enable mouse in vim
 	mouse = 'n',
 
-
-	-- when closing a buffer, it will be hidden
-	hidden = true,
-	
 	-- delete backup when after write to file
 	backup = false,
 

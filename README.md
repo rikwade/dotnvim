@@ -37,6 +37,6 @@ cd ~/.config/nvim
 nvim
 
 // run following neovim command to install plugins
-:luafile lua/plugins.lua
+:luafile lua/nvim/plugins/install-plugins.lua
 ```
 * Now, close and fire up `nvim` again. Everything should work now
