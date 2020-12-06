@@ -1,12 +1,12 @@
-local nvim_lsp = require('nvim_lsp')
+local lspconfig = require('lspconfig')
 local completion = require('completion')
-local Keybind = require('vim.keybind')
 
 local on_attach_callback = function(_, bufnr)
     completion.on_attach()
 
     local opts = { noremap = true }
-    local binds = {
+    
+    Keybind.b({
         { bufnr, 'n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts },
         { bufnr, 'n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts },
         { bufnr, 'n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts },
@@ -24,15 +24,14 @@ local on_attach_callback = function(_, bufnr)
         { bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts },
         { bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts },
         { bufnr, 'n', '<leader>o', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts },
-    }
+    })
 
-    Keybind.add_keybinds(Keybind.KeybindType.BUFFER_MAPPING, binds)
 end
 
-local servers = { 'jdtls', 'sumneko_lua' }
+local servers = { 'sumneko_lua', 'pyls' }
 
 for _, lsp in ipairs(servers) do
-    nvim_lsp [lsp].setup {
+    lspconfig[lsp].setup {
         on_attach = on_attach_callback,
     }
 end

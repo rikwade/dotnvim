@@ -12,5 +12,4 @@ vim.g.coc_global_extensions = {
 	'coc-tabnine',
 	'coc-xml',
 	'coc-yank',
-	'coc-python'
 }

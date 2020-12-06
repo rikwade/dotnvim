@@ -15,6 +15,28 @@ Option.g({
 	-- enable mouse in vim
 	mouse = 'n',
 
+
+	-- when closing a buffer, it will be hidden
+	hidden = true,
+	
+	-- delete backup when after write to file
+	backup = false,
+
+	-- create backup file but when backup is off, it will be deleted on write
+	writebackup = false,
+
+    -- write changes to swap file after 300ms
+	updatetime = 300,
+
+	-- don't show messges related to completion menu
+	shortmess = vim.o.shortmess .. 'c',
+
+    -- open completion menu even for single item
+	-- do not auto insert items from completion menu
+	-- @warning - preview is removed. when it's on, default lsp opens a vertical tab
+	completeopt = 'menuone,noinsert,noselect',
+
+
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                    EDITING                                   #
@@ -56,4 +78,6 @@ Option.w({
 	-- code folding
     foldmethod = 'syntax',
 
+	-- error signs and warnings will be displayed in the same number line
+	signcolumn = 'number',
 })
