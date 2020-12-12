@@ -1,4 +1,4 @@
-local packman = require('packman_lua.packman')
+local packman = require('nvim.plugins.packman_lua.packman')
 
 -- file explorer
 packman.get('kyazdani42/nvim-tree.lua')
