@@ -4,8 +4,8 @@ Option.g({
 	#                                    EDITOR                                    #
 	#------------------------------------------------------------------------------#
 	--]]
-    shiftwidth = 4,
     tabstop = 4,
+    shiftwidth = 4,
 	hlsearch = false,
 	foldlevelstart = 1,
 
@@ -24,7 +24,7 @@ Option.g({
     -- write changes to swap file after 300ms
 	updatetime = 300,
 
-	-- don't show messges related to completion menu
+	-- don't show messages related to completion menu
 	shortmess = vim.o.shortmess .. 'c',
 
     -- open completion menu even for single item
@@ -65,6 +65,9 @@ Option.g({
 	#                                     OTHER                                    #
 	#------------------------------------------------------------------------------#
 	--]]
+	-- assign unnamedplus register to clipboard
+	-- anything in the clipboard can be pasted directly
+	-- any yanked text will be copied to clipboard
 	clipboard='unnamedplus',
 })
 
@@ -75,12 +78,25 @@ Option.w({
 	#                                    EDITOR                                    #
 	#------------------------------------------------------------------------------#
 	--]]
+	-- shows the number bar in left hand side of the window
     number = true,
     relativenumber = true,
 
-	-- code folding
+	-- code folding method to syntax
+	-- common methods will be used such as curly braces 
     foldmethod = 'syntax',
 
-	-- error signs and warnings will be displayed in the same number line
+	-- error signs and warnings will be displayed in the number line
+	-- usually it adds new column when signs, moving buffer to right side.
+	-- adding a column create weird effect that's little bit hard for the eye
 	signcolumn = 'number',
+
+	-- vim try to keep 100 lines below and above when scrolling
+	-- if buffer cannot display more than 200 lines, cursor will stay in center
+	-- and scroll the buffer
+	scrolloff=100
+})
+
+Option.b({
+    shiftwidth = 4,
 })
