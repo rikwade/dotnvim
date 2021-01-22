@@ -1,13 +1,21 @@
 local packman = require('nvim.plugins.packman_lua.packman')
 
 -- file explorer
-packman.get('kyazdani42/nvim-tree.lua')
+-- packman.get('kyazdani42/nvim-tree.lua')
+packman.get('ms-jpq/chadtree')
 
 -- icons for nvim-tree file explorer
 packman.get('kyazdani42/nvim-web-devicons')
 
 -- color theme
 packman.get('mhartington/oceanic-next')
+packman.get('eemed/sitruuna.vim')
+packman.get('arzg/vim-colors-xcode')
+packman.get('wadackel/vim-dogrun')
+
+packman.get('tjdevries/colorbuddy.vim')
+packman.get('tjdevries/gruvbuddy.nvim')
+packman.get('npxbr/gruvbox.nvim')
 
 -- language server configurations
 -- @TODO
@@ -44,3 +52,8 @@ packman.get('cometsong/CommentFrame.vim')
 -- packman.get('nvim-lua/diagnostic-nvim')
 
 packman.get('tpope/vim-surround')
+packman.get('puremourning/vimspector')
+packman.get('nvim-treesitter/nvim-treesitter')
+packman.get('nvim-treesitter/playground')
+
+
