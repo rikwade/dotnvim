@@ -1,4 +1,4 @@
-for k in pairs(package.loaded) do if k:match("nvim") then package.loaded[k] = nil end end
+package.loaded['nvim'] = nil
 require('nvim')
 
 --[[
@@ -8,3 +8,12 @@ augroup CocGroup
 augroup end
 ]]
 
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+
+-- vim.api.nvim_command('colorscheme gruvbuddy')
+require('colorbuddy').colorscheme('gruvbuddy')
