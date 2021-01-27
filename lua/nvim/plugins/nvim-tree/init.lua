@@ -54,7 +54,7 @@ Variable.g({
 })
 
 Keybind.g({
-    { 'n', '<c-n>', ':LuaTreeToggle<cr>', { noremap = true } },
-    { 'n', ',r', ':LuaTreeRefresh<cr>', { noremap = true } },
-    { 'n', ',n', ':LuaTreeFindFile<cr>', { noremap = true } },
+    { 'n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true } },
+    { 'n', ',r', ':NvimTreeRefresh<cr>', { noremap = true } },
+    { 'n', ',n', ':NvimTreeFindFile<cr>', { noremap = true } },
 })
