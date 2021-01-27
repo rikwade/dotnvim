@@ -16,4 +16,5 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- vim.api.nvim_command('colorscheme gruvbuddy')
-require('colorbuddy').colorscheme('gruvbuddy')
+-- require('colorbuddy').colorscheme('onebuddy')
+vim.api.nvim_command('colorscheme embark')
