@@ -4,27 +4,35 @@ Option.g({
 	#                                    EDITOR                                    #
 	#------------------------------------------------------------------------------#
 	--]]
+	-- set the tab size to length of 4 spaces
+	-- shiftwidth set the indentation length
     tabstop = 4,
     shiftwidth = 4,
+
+	-- remove highlighting after search is done
 	hlsearch = false,
+
+	-- auto code folding when openeing new file at level 1
 	foldlevelstart = 1,
 
 	-- auto wrap after 80 characters in the line
 	textwidth = 80,
 
-	-- enable mouse in vim
-	mouse = 'n',
+	-- enable mouse in vim. 'a' for all modes (normal, visual, insert & command)
+	mouse = 'a',
 
-	-- delete backup when after write to file
+	-- 'backup' 'writebackup'	action	~
+	-- off	     off	no backup made
+	-- off	     on		backup current file, deleted afterwards (default)
+	-- on	     off	delete old backup, backup current file
+	-- on	     on		delete old backup, backup current file
 	backup = false,
+	writebackup = true,
 
-	-- create backup file but when backup is off, it will be deleted on write
-	writebackup = false,
+    -- write changes to swap file after "n" ms
+	updatetime = 4000,
 
-    -- write changes to swap file after 300ms
-	updatetime = 300,
-
-	-- don't show messages related to completion menu
+	-- controls how short messages are displayed in status bar section
 	shortmess = vim.o.shortmess .. 'c',
 
     -- open completion menu even for single item
@@ -43,6 +51,8 @@ Option.g({
 
 	-- shows the effects of a command incrementally
 	inccommand = 'nosplit',
+
+	-- where to place the new split windows
 	splitright = true,
 	splitbelow = true,
 
@@ -78,8 +88,11 @@ Option.w({
 	#                                    EDITOR                                    #
 	#------------------------------------------------------------------------------#
 	--]]
+
 	-- shows the number bar in left hand side of the window
     number = true,
+
+	-- shows numbers relative to the current cursor position
     relativenumber = true,
 
 	-- code folding method to syntax
@@ -94,9 +107,12 @@ Option.w({
 	-- vim try to keep 100 lines below and above when scrolling
 	-- if buffer cannot display more than 200 lines, cursor will stay in center
 	-- and scroll the buffer
-	scrolloff=100
+	scrolloff=15
 })
 
 Option.b({
+
+	-- set the tab size to length of 4 spaces
+	-- shiftwidth set the indentation length
     shiftwidth = 4,
 })
