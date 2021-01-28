@@ -68,3 +68,6 @@ packman.get('nvim-treesitter/playground')
 
 -- stat
 packman.get('romgrk/barbar.nvim')
+
+-- terminal
+packman.get('s1n7ax/nvim-terminal')

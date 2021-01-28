@@ -8,3 +8,4 @@ require('nvim.plugins.nvim-tree')
 
 require('nvim.plugins.coc-nvim')
 require('nvim.plugins.completion')
+require('nvim.plugins.nvim-terminal')
