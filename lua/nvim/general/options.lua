@@ -40,6 +40,17 @@ Option.g({
 	-- @warning - preview is removed. when it's on, default lsp opens a vertical tab
 	completeopt = 'menuone,noinsert,noselect',
 
+	-- stop showing the current mode
+	showmode = false,
+
+	-- stop showing the status in status bar
+	laststatus = 0,
+
+	-- @todo now sure how this is working. need to find out
+	showcmd = false,
+
+	-- stop showing the current line and cursor position in the status bar
+	ruler = false,
 
 	--[[
 	#------------------------------------------------------------------------------#
@@ -108,6 +119,8 @@ Option.w({
 	-- if buffer cannot display more than 200 lines, cursor will stay in center
 	-- and scroll the buffer
 	scrolloff=15
+
+	
 })
 
 Option.b({
