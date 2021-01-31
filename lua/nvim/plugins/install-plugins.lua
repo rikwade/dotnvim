@@ -42,8 +42,11 @@ packman.get('nvim-lua/completion-nvim')
 
 
 -- SEARCH
-packman.get('junegunn/fzf')
-packman.get('junegunn/fzf.vim')
+-- packman.get('junegunn/fzf')
+-- packman.get('junegunn/fzf.vim')
+packman.get('nvim-lua/popup.nvim')
+packman.get('nvim-lua/plenary.nvim')
+packman.get('nvim-telescope/telescope.nvim')
 
 
 
@@ -71,3 +74,12 @@ packman.get('romgrk/barbar.nvim')
 
 -- terminal
 packman.get('s1n7ax/nvim-terminal')
+
+-- inline serch guide
+packman.get('unblevable/quick-scope')
+
+-- smooth scrolling
+packman.get('psliwka/vim-smoothie')
+
+-- motion
+packman.get('easymotion/vim-easymotion')
