@@ -29,7 +29,11 @@ packman.get('embark-theme/vim')
 -- removing the plugin for now until I get time to configure for coc-nvim
 -- packman.get('neovim/nvim-lspconfig')
 packman.get('neoclide/coc.nvim')
+
+-- debugging
 packman.get('puremourning/vimspector')
+-- install following after
+-- :VimspectorInstall debugpyVimspectorInstall debugpy
 
 
 
