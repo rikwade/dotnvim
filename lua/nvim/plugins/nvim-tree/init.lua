@@ -1,23 +1,23 @@
 Variable.g({
-    lua_tree_side  = 'left',
-    lua_tree_width  = 40, --30 by default
-    lua_tree_ignore  = { '.git', 'node_modules', '.cache' }, --empty by default
-    lua_tree_auto_open  = 1, --0 by default, opens the tree when typing `vim $DIR` or `vim`
-    lua_tree_auto_close  = 0, --0 by default, closes the tree when it's the last window
-    lua_tree_quit_on_open  = 0, --0 by default, closes the tree when you open a file
-    lua_tree_follow  = 1, --0 by default, this option allows the cursor to be updated when entering a buffer
-    lua_tree_indent_markers  = 1, --0 by default, this option shows indent markers when folders are open
-    lua_tree_hide_dotfiles  = 1, --0 by default, this option hides files and folders starting with a dot `.`
-    lua_tree_git_hl  = 1, --0 by default, will enable file highlight for git attributes (can be used without the icons).
-    lua_tree_root_folder_modifier  = ' = ~', --This is the default. See  = help filename-modifiers for more options
-    lua_tree_tab_open  = 1, --0 by default, will open the tree when entering a new tab and the tree was previously open
-    lua_tree_allow_resize  = 1, --0 by default, will not resize the tree when opening a file
-    lua_tree_show_icons  = {
+    nvim_tree_side  = 'left',
+    nvim_tree_width  = 40, --30 by default
+    nvim_tree_ignore  = { '.git', 'node_modules', '.cache', 'build' }, --empty by default
+    nvim_tree_auto_open  = 0, --0 by default, opens the tree when typing `vim $DIR` or `vim`
+    nvim_tree_auto_close  = 0, --0 by default, closes the tree when it's the last window
+    nvim_tree_quit_on_open  = 0, --0 by default, closes the tree when you open a file
+    nvim_tree_follow  = 1, --0 by default, this option allows the cursor to be updated when entering a buffer
+    nvim_tree_indent_markers  = 1, --0 by default, this option shows indent markers when folders are open
+    nvim_tree_hide_dotfiles  = 0, --0 by default, this option hides files and folders starting with a dot `.`
+    nvim_tree_git_hl  = 1, --0 by default, will enable file highlight for git attributes (can be used without the icons).
+    nvim_tree_root_folder_modifier  = ' = ~', --This is the default. See  = help filename-modifiers for more options
+    nvim_tree_tab_open  = 1, --0 by default, will open the tree when entering a new tab and the tree was previously open
+    nvim_tree_allow_resize  = 1, --0 by default, will not resize the tree when opening a file
+    nvim_tree_show_icons  = {
         git  = 1,
         folders  = 1,
         files  = 1
     },
-    lua_tree_bindings  = {
+    nvim_tree_bindings  = {
         edit = {'<CR>', 'o'},
         edit_vsplit = '<C-v>',
         edit_split = '<C-x>',
@@ -36,7 +36,7 @@ Variable.g({
         prev_git_item = '[c',
         next_git_item = ']c',
     },
-    lua_tree_icons = {
+    nvim_tree_icons = {
         default=  '',
         symlink=  '',
         git=  {
@@ -53,8 +53,10 @@ Variable.g({
     }
 })
 
+local opt = { noremap = true, silent = true }
+
 Keybind.g({
-    { 'n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true } },
-    { 'n', ',r', ':NvimTreeRefresh<cr>', { noremap = true } },
-    { 'n', ',n', ':NvimTreeFindFile<cr>', { noremap = true } },
+    { 'n', '<c-n>', ':NvimTreeToggle<cr>', opt },
+    { 'n', ',r', ':NvimTreeRefresh<cr>', opt },
+    { 'n', ',n', ':NvimTreeFindFile<cr>', opt },
 })
