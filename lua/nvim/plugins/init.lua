@@ -4,7 +4,7 @@ require('nvim.plugins.comment-frame')
 require('nvim.plugins.fugitive')
 require('nvim.plugins.telescope')
 -- require('nvim.plugins.fzf')
--- require('nvim.plugins.lsp')
+require('nvim.plugins.lsp')
 require('nvim.plugins.nvim-tree')
 require('nvim.plugins.vimspector')
 

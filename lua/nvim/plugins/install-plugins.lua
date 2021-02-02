@@ -27,7 +27,7 @@ packman.get('embark-theme/vim')
 -- there are some features missing with built-in lsp like go to definition
 -- features should be further analyzed and should be configured
 -- removing the plugin for now until I get time to configure for coc-nvim
--- packman.get('neovim/nvim-lspconfig')
+packman.get('neovim/nvim-lspconfig')
 packman.get('neoclide/coc.nvim')
 
 -- debugging

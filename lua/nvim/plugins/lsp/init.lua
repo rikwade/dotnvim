@@ -28,7 +28,7 @@ local on_attach_callback = function(_, bufnr)
 
 end
 
-local servers = { 'sumneko_lua', 'pyls' }
+local servers = { 'sumneko_lua', 'pyright' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
