@@ -71,7 +71,7 @@ packman.get('tpope/vim-surround')
 
 -- syntax highlighting
 packman.get('nvim-treesitter/nvim-treesitter')
-packman.get('nvim-treesitter/playground')
+-- packman.get('nvim-treesitter/playground')
 
 -- stat
 packman.get('romgrk/barbar.nvim')
