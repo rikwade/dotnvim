@@ -17,3 +17,7 @@ Keybind.g({
 	-- in git diff window, jump to previous change block
 	{ 'n', '<leader>gk', ']c' },
 })
+
+vim.api.nvim_exec([[
+	autocmd FileType fugitive map <buffer> D dd<c-w><c-w>
+]], false)
