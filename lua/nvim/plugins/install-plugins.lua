@@ -18,6 +18,7 @@ packman.get('tjdevries/gruvbuddy.nvim')
 packman.get('npxbr/gruvbox.nvim')
 packman.get('Th3Whit3Wolf/onebuddy')
 packman.get('embark-theme/vim')
+packman.get('bluz71/vim-nightfly-guicolors')
 
 
 
