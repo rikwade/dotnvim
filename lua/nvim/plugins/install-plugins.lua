@@ -87,3 +87,6 @@ packman.get('psliwka/vim-smoothie')
 
 -- motion
 packman.get('easymotion/vim-easymotion')
+
+packman.get('iamcco/markdown-preview.nvim')
+

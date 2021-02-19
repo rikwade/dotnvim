@@ -14,3 +14,5 @@ require('nvim.plugins.nvim-terminal')
 require('nvim.plugins.vim-easymotion')
 require('nvim.plugins.treesitter')
 require('nvim.plugins.bufferline')
+require('nvim.plugins.markdown-preview')
+
