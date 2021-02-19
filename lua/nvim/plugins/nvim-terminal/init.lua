@@ -18,7 +18,7 @@ function window:change_height(by)
 end
 
 Keybind.g({
-	{ 'n', '<leader>t', ':lua terminal:toggle()<cr>', opt },
+	{ 'n', '<leader>;', ':lua terminal:toggle()<cr>', opt },
 	{ 'n', '<leader>1', ':lua terminal:open(1)<cr>', opt },
 	{ 'n', '<leader>2', ':lua terminal:open(2)<cr>', opt },
 	{ 'n', '<leader>3', ':lua terminal:open(3)<cr>', opt },
