@@ -1,7 +1,4 @@
 {
-  "suggest.noselect": false,
-  "python.jediEnabled": true,
-  "python.autoComplete.showAdvancedMembers": true,
   "cSpell.enabledLanguageIds": [
     "asciidoc",
     "c",
@@ -35,5 +32,18 @@
     "vim",
     "yaml",
     "yml"
+  ],
+  "suggest.languageSourcePriority": 100,
+  "suggest.highPrioritySourceLimit": 100,
+  "suggest.lowPrioritySourceLimit": 98,
+  "suggest.keepCompleteopt": true,
+
+  "snippets.priority": 99,
+  "tabnine.priority": 98,
+  "yank.priority": 97,
+  "cSpell.userWords": [
+    "Neovim",
+    "nvim",
+    "treesitter"
   ]
 }
