@@ -69,8 +69,8 @@ Keybind.g({
     -- [ ctrl + e ] go to end of the line
     { 'i', '<c-e>', '<esc>A' },
 
-    -- [ ctrl + i ] go to beginning of the line
-    { 'i', '<c-i>', '<esc>I' },
+    -- [ ctrl + a ] go to beginning of the line
+    { 'i', '<c-a>', '<esc>I' },
 
     -- [ ctrl + j ] hit down arrow key
     { 'i', '<c-j>', '<down>' },

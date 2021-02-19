@@ -30,7 +30,7 @@ Option.g({
 	writebackup = true,
 
     -- write changes to swap file after "n" ms
-	updatetime = 4000,
+	updatetime = 300,
 
 	-- controls how short messages are displayed in status bar section
 	shortmess = vim.o.shortmess .. 'c',
@@ -108,7 +108,7 @@ Option.w({
 
 	-- code folding method to syntax
 	-- common methods will be used such as curly braces 
-    foldmethod = 'syntax',
+    -- foldmethod = 'syntax',
 
 	-- error signs and warnings will be displayed in the number line
 	-- usually it adds new column when signs, moving buffer to right side.
