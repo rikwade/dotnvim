@@ -1,6 +1,8 @@
 Variable.g({
 	bufferline = {
-		animation = false
+		animation = false,
+		auto_hide = true,
+		
 	}
 })
 
