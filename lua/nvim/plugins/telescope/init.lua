@@ -4,3 +4,8 @@ Keybind.g({
 	{ 'n', '<leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>' },
 	{ 'n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>' }
 })
+require('telescope').setup{
+  defaults = {
+    winblend = 15,
+  }
+}
