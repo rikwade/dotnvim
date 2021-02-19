@@ -1,1 +1,3 @@
-vim.g.CommentFrame_SkipDefaultMappings = 1
+Variable.g({
+	CommentFrame_SkipDefaultMappings = 1
+})
