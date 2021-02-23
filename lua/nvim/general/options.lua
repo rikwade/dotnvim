@@ -30,6 +30,8 @@ Option.g({
 	writebackup = true,
 
     -- write changes to swap file after "n" ms
+	-- for some reason when the updatetime is high, autocompletion in coc nvim
+	-- takes a long time
 	updatetime = 300,
 
 	-- controls how short messages are displayed in status bar section
@@ -44,7 +46,7 @@ Option.g({
 	showmode = false,
 
 	-- stop showing the status in status bar
-	laststatus = 0,
+	laststatus = 1,
 
 	-- @todo now sure how this is working. need to find out
 	showcmd = false,
