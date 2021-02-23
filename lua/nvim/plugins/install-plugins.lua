@@ -15,6 +15,7 @@ packman.get('wadackel/vim-dogrun')
 
 packman.get('tjdevries/colorbuddy.vim')
 packman.get('tjdevries/gruvbuddy.nvim')
+
 packman.get('npxbr/gruvbox.nvim')
 packman.get('Th3Whit3Wolf/onebuddy')
 packman.get('embark-theme/vim')
@@ -89,5 +90,6 @@ packman.get('psliwka/vim-smoothie')
 -- motion
 packman.get('easymotion/vim-easymotion')
 
+-- markdown preview
 packman.get('iamcco/markdown-preview.nvim')
 
