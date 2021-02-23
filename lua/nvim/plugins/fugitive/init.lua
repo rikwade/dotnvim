@@ -15,7 +15,7 @@ Keybind.g({
 	{ 'n', '<leader>gj', ']c' },
 
 	-- in git diff window, jump to previous change block
-	{ 'n', '<leader>gk', ']c' },
+	{ 'n', '<leader>gk', '[c' },
 })
 
 vim.api.nvim_exec([[
