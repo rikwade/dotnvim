@@ -1,4 +1,4 @@
-require('nvim.plugins.packman_lua.packman')
+require('nvim.plugins.packer.install')
 
 require('nvim.plugins.comment-frame')
 require('nvim.plugins.fugitive')
