@@ -1,3 +1,4 @@
 Command.cmd({
-	'colorscheme embark'
+	-- setting the color scheme
+	'colorscheme OceanicNext'
 })
