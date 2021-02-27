@@ -98,6 +98,6 @@ return require('packer').startup(function()
 
 	-- OTHER LANGUAGE SUPPORT
 	-- markdown preview
-	use { 'iamcco/markdown-preview.nvim' }
+	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
 
 end)
