@@ -31,8 +31,10 @@ Keybind.g({
 	{ 'x', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
 	{ 'o', 'ac', '<Plug>(coc-classobj-a)', silent_opt },
 
+	-- @TODO there is an error when <c-j> keymap is registered
+	-- need to check this
 	-- pop item selection
-	{ 'i', '<c-j>', '<cmd>lua Coc.go_to_next_completion_item("<c-j>")', silent_opt },
-	{ 'i', '<c-k>', '<cmd>lua Coc.go_to_previous_completion_item("<c-k>")', silent_opt },
+	-- { 'i', '<c-k>', '<cmd>lua Coc.go_to_previous_completion_item("<c-k>")<cr>', silent_opt },
+	-- { 'i', [[<c-j>]], '<cmd>lua Coc.go_to_previous_completion_item("<c-j>")<cr>', silent_opt },
 	{ 'i', '<c-space>', [[coc#refresh()]], opt },
 })
