@@ -7,10 +7,8 @@ return require('packer').startup(function()
 	use { 'preservim/nerdtree' }
 	use { 'ryanoasis/vim-devicons' }
 
-	-- packman.get('kyazdani42/nvim-tree.lua' }
+	use { 'kyazdani42/nvim-tree.lua' }
 	use { 'kyazdani42/nvim-web-devicons' }
-
-
 
 	-- COLOR THEME
 	use { 'mhartington/oceanic-next' }
@@ -29,24 +27,38 @@ return require('packer').startup(function()
 
 
 	-- LANGUAGE SERVER CONFIGURATIONS
-	-- @TODO
-	-- 2020.11.24
-	-- there are some features missing with built-in lsp like go to definition
-	-- features should be further analyzed and should be configured
-	-- removing the plugin for now until I get time to configure for coc-nvim
-	use { 'neovim/nvim-lspconfig' }
-	use { 'neoclide/coc.nvim' }
+	use { 'neovim/nvim-lspconfig',
+		ft = 'python',
+		config = function()
+			require('nvim.plugins.lsp')
+		end
+	}
+
+	use { 
+		'neoclide/coc.nvim',
+		ft = {'java', 'json', 'html', 'markdown', 'typescript', 'javascript'},
+		config = function()
+			print('hello world')
+			require('nvim.plugins.coc-nvim')
+		end
+	}
 
 	-- debugging
-	use { 'puremourning/vimspector' }
-	-- @IMPORTANT
-	-- install following after
-	-- :VimspectorInstall debugpyVimspectorInstall debugpy
+	use { 'puremourning/vimspector',
+		ft = {'python'},
+		run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+	}
 
 
 
 	-- AUTO COMPLETION FEATURES FOR LSP
-	use { 'nvim-lua/completion-nvim' }
+	use { 'nvim-lua/completion-nvim', ft ={'python'} }
+
+
+
+	-- OTHER LANGUAGE SUPPORT
+	-- markdown preview
+	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', ft = {'markdown'} }
 
 
 
@@ -54,9 +66,12 @@ return require('packer').startup(function()
 	-- @NOTE: removeing fzf in favor of telescope
 	-- packman.get('junegunn/fzf' }
 	-- packman.get('junegunn/fzf.vim' }
-	use { 'nvim-lua/popup.nvim' }
-	use { 'nvim-lua/plenary.nvim' }
-	use { 'nvim-telescope/telescope.nvim' }
+	use { 'nvim-telescope/telescope.nvim',
+		requires = {
+			{'nvim-lua/popup.nvim'},
+			{'nvim-lua/plenary.nvim'}
+		}
+	}
 
 
 
@@ -76,8 +91,7 @@ return require('packer').startup(function()
 	use { 'tpope/vim-surround' }
 
 	-- syntax highlighting
-	-- @IMPORTANT: run :TSUpdate after the installation
-	use { 'nvim-treesitter/nvim-treesitter' }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 	-- top window bar
 	use { 'romgrk/barbar.nvim' }
@@ -95,9 +109,5 @@ return require('packer').startup(function()
 	use { 'easymotion/vim-easymotion' }
 
 
-
-	-- OTHER LANGUAGE SUPPORT
-	-- markdown preview
-	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
 
 end)
