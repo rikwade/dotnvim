@@ -13,7 +13,7 @@ Option.g({
 	hlsearch = false,
 
 	-- auto code folding when openeing new file at level 1
-	foldlevelstart = 1,
+	foldlevelstart = 4,
 
 	-- auto wrap after 80 characters in the line
 	textwidth = 80,
@@ -28,6 +28,7 @@ Option.g({
 	-- on	     on		delete old backup, backup current file
 	backup = false,
 	writebackup = true,
+	swapfile = false,
 
     -- write changes to swap file after "n" ms
 	-- for some reason when the updatetime is high, autocompletion in coc nvim
@@ -46,9 +47,9 @@ Option.g({
 	showmode = false,
 
 	-- stop showing the status in status bar
-	laststatus = 1,
+	laststatus = 0,
 
-	-- @todo now sure how this is working. need to find out
+	-- @TODO now sure how this is working. need to find out
 	showcmd = false,
 
 	-- stop showing the current line and cursor position in the status bar
