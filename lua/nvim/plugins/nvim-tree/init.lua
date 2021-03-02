@@ -1,6 +1,6 @@
 Variable.g({
     nvim_tree_side  = 'left',
-    nvim_tree_width  = 40, --30 by default
+    nvim_tree_width  = 50, --30 by default
     nvim_tree_ignore  = { '.git', 'node_modules', '.cache', 'build', '__pycache__' }, --empty by default
     nvim_tree_auto_open  = 0, --0 by default, opens the tree when typing `vim $DIR` or `vim`
     nvim_tree_auto_close  = 0, --0 by default, closes the tree when it's the last window
@@ -11,14 +11,13 @@ Variable.g({
     nvim_tree_git_hl  = 1, --0 by default, will enable file highlight for git attributes (can be used without the icons).
     nvim_tree_root_folder_modifier  = ' = ~', --This is the default. See  = help filename-modifiers for more options
     nvim_tree_tab_open  = 1, --0 by default, will open the tree when entering a new tab and the tree was previously open
-    nvim_tree_allow_resize  = 1, --0 by default, will not resize the tree when opening a file
+    nvim_tree_allow_resize  = 0, --0 by default, will not resize the tree when opening a file
     nvim_tree_show_icons  = {
         git  = 1,
         folders  = 1,
         files  = 1
     },
     nvim_tree_bindings  = {
-        edit = {'<CR>', 'o'},
         edit_vsplit = '<C-v>',
         edit_split = '<C-x>',
         edit_tab = '<C-t>',
