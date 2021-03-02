@@ -3,7 +3,7 @@ Keybind.g({
 	{ 'n', '<leader>gs', '<cmd>Gstatus<cr>' },
 
 	-- commit the staged changed
-	{ 'n', '<leader>gc', '<cmd>Gcommit<cr>' },
+	{ 'n', '<leader>gc', '<cmd>Git commit<cr>' },
 
 	-- in the git diff window, stage the changes of current file's change block
 	{ 'n', '<leader>gp', '<cmd>diffput<cr>' },
