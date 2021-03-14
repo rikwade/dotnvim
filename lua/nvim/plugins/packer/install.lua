@@ -36,7 +36,7 @@ return require('packer').startup(function()
 
 	use { 
 		'neoclide/coc.nvim',
-		ft = {'java', 'json', 'html', 'markdown', 'typescript', 'javascript'},
+		ft = { 'java', 'json', 'html', 'markdown', 'typescript', 'javascript', 'php', 'css' },
 		config = function()
 			print('hello world')
 			require('nvim.plugins.coc-nvim')
