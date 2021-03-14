@@ -55,6 +55,12 @@ Option.g({
 	-- stop showing the current line and cursor position in the status bar
 	ruler = false,
 
+	-- set the font for GUI clients like neovide
+	guifont='Cascadia Code, FiraCode, Nerd Font',
+
+	-- highlight the current cursor line.
+	cursorline = true,
+
 	--[[
 	#------------------------------------------------------------------------------#
 	#                                    EDITING                                   #
