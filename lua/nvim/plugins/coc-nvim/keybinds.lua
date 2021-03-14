@@ -1,5 +1,6 @@
 local opt = { noremap = true, expr = true, silent = true, nowait = true }
 local silent_opt = { silent = true }
+local none = {}
 
 Keybind.g({
 	-- code jumps
@@ -17,7 +18,8 @@ Keybind.g({
 	{ 'n', '<leader>r', '<Plug>(coc-rename)', silent_opt},
 	{ 'n', '<leader>a', '<Plug>(coc-codeaction)', silent_opt},
 	{ 'n', '<leader>s', '<Plug>(coc-codeaction-selected)', silent_opt},
-	{ 'n', '<leader>f', '<cmd>lua Coc.format_code()<cr>', silent_opt},
+	{ 'n', '<leader>f', '<Plug>(coc-format-selected)', none},
+	{ 'v', '<leader>f', '<Plug>(coc-format-selected)', none},
 	{ 'n', '<leader>qf', '<Plug>(coc-fix-current)', silent_opt},
 
 	-- text objects
