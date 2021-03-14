@@ -6,6 +6,7 @@ Variable.g({
 		'coc-eslint',
 		'coc-html',
 		'coc-java',
+		'coc-java-debug',
 		'coc-json',
 		'coc-markdownlint',
 		'coc-snippets',
@@ -13,6 +14,8 @@ Variable.g({
 		'coc-tabnine',
 		'coc-xml',
 		'coc-yank',
-		'coc-tsserver'
+		'coc-tsserver',
+		'coc-prettier',
+		'coc-psalm'
 	}
 })
