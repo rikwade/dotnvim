@@ -8,9 +8,7 @@ return require('packer').startup(function()
 	use { 'ryanoasis/vim-devicons' }
 
 	use { 'kyazdani42/nvim-tree.lua' }
-	use { 'yamatsum/nvim-web-nonicons',
-		requires = { 'kyazdani42/nvim-web-devicons' }
-	}
+	use { 'kyazdani42/nvim-web-devicons' }
 
 	-- COLOR THEME
 	use { 'mhartington/oceanic-next' }
