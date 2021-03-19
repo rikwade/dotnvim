@@ -36,9 +36,18 @@ return require('packer').startup(function()
 
 	use { 
 		'neoclide/coc.nvim',
-		ft = { 'java', 'json', 'html', 'markdown', 'typescript', 'javascript', 'php', 'css' },
+		branch = 'release',
+		ft = { 
+			'java',
+			'json',
+			'html',
+			'markdown',
+			'typescript',
+			'javascript',
+			'php',
+			'css'
+		},
 		config = function()
-			print('hello world')
 			require('nvim.plugins.coc-nvim')
 		end
 	}
@@ -107,7 +116,4 @@ return require('packer').startup(function()
 
 	-- motion
 	use { 'easymotion/vim-easymotion' }
-
-
-
 end)
