@@ -41,7 +41,7 @@
 	"suggest.autoTrigger": "always",
 	"suggest.localityBonus": true,
 	"suggest.fixInsertedWord": false,
-	"suggest.enablePreselect": true,
+	"suggest.enablePreselect": false,
 	"suggest.minTriggerInputLength": 1,
 	"suggest.triggerCompletionWait": 30,
 	"suggest.removeDuplicateItems": true,
