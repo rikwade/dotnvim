@@ -116,4 +116,10 @@ return require('packer').startup(function()
 
 	-- motion
 	use { 'easymotion/vim-easymotion' }
+
+	-- status line
+	use {
+	  'hoob3rt/lualine.nvim',
+	  requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
 end)
