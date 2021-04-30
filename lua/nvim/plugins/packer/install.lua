@@ -23,6 +23,7 @@ return require('packer').startup(function()
 	use { 'Th3Whit3Wolf/onebuddy' }
 	use { 'embark-theme/vim' }
 	use { 'bluz71/vim-nightfly-guicolors' }
+	use { 'ghifarit53/tokyonight-vim' }
 
 
 
@@ -103,7 +104,9 @@ return require('packer').startup(function()
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 	-- top window bar
-	use { 'romgrk/barbar.nvim' }
+	-- Not sure if this is useful or just taking space
+	-- Hard to find the correct tab sometimes
+	-- use { 'romgrk/barbar.nvim' }
 
 	-- popup terminal
 	use { 's1n7ax/nvim-terminal' }
