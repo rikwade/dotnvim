@@ -56,6 +56,7 @@ git clone --recurse-submodules -j8 https://github.com/s1n7ax/dotnvim.git ~/.conf
 
 ```vim
 :PackerInstall
+:PackerCompile
 ```
 
 * Now, close and fire up `nvim` again. Everything should work now
