@@ -38,8 +38,8 @@ Keybind.g({
 	-- need to check this
 	-- pop item selection
 	-- https://github.com/neovim/neovim/issues/14146
-	-- { 'i', 				'<c-k>', 			'<cmd>lua Coc.go_to_previous_completion_item("<c-k>")<cr>', 	silent_opt },
-	-- { 'i', 				'<c-j>', 			'<cmd>lua Coc.go_to_previous_completion_item(\"<c-j>\")<cr>', 	silent_opt },
-	{ 'i', 				'<c-space>', 		'coc#refresh()', 													opt },
+	{ 'i', 				'<c-k>', 			'<cmd>lua Coc.go_to_previous_completion_item("<c-k>")<cr>', 	silent_opt 	},
+	{ 'i', 				'<c-j>', 			'<cmd>lua Coc.go_to_previous_completion_item(\"<c-j>\")<cr>', 	silent_opt 	},
+	{ 'i', 				'<c-space>', 		'coc#refresh()', 												opt 		},
 })
 
