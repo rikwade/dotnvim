@@ -1,6 +1,6 @@
 Keybind.g({
 	-- show the git status window
-	{ 'n', '<leader>gs', '<cmd>Gstatus<cr>' },
+	{ 'n', '<leader>gs', '<cmd>:Git<cr>' },
 
 	-- commit the staged changed
 	{ 'n', '<leader>gc', '<cmd>Git commit<cr>' },
