@@ -21,11 +21,9 @@ Pum.goto_item = function(options)
 	local callback = options['callback']
 
 	if(Pum.is_visible()) then
-		print('visible')
 		input(Pum.directions[direction])
 		return
 	else
-		print('arrow')
 		if validation.string(keybind) then
 			input(keybind)
 		elseif validation.func(callback) then
