@@ -10,13 +10,13 @@ local on_attach_callback = function(_, bufnr)
 
     Keybind.b({
         -- code jumps
-        { bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts },
-        { bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts },
-        { bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts },
-        { bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts },
-        { bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts },
-        { bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts },
-        { bufnr, 'n', '<K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts },
+        { bufnr, 'n', 'gd', 	'<Cmd>lua vim.lsp.buf.definition()<CR>', opts },
+        { bufnr, 'n', 'gi', 	'<cmd>lua vim.lsp.buf.implementation()<CR>', opts },
+        { bufnr, 'n', 'gr', 	'<cmd>lua vim.lsp.buf.references()<CR>', opts },
+        { bufnr, 'n', 'gt', 	'<cmd>lua vim.lsp.buf.type_definition()<CR>', opts },
+        { bufnr, 'n', 'K', 		'<Cmd>lua vim.lsp.buf.hover()<CR>', opts },
+        { bufnr, 'n', 'gD',		'<Cmd>lua vim.lsp.buf.declaration()<CR>', opts },
+        { bufnr, 'n', '<K>',	'<cmd>lua vim.lsp.buf.signature_help()<CR>', opts },
 
         -- error jumps
         { bufnr, 'n', '<leader>j', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts },
