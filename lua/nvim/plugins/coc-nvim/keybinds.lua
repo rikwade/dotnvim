@@ -34,12 +34,19 @@ Keybind.g({
 	{ 'x', 				'ac', 				'<Plug>(coc-classobj-a)', 									silent_opt },
 	{ 'o', 				'ac', 				'<Plug>(coc-classobj-a)', 									silent_opt },
 
-	-- @TODO there is an error when <c-j> keymap is registered
-	-- need to check this
-	-- pop item selection
-	-- https://github.com/neovim/neovim/issues/14146
-	{ 'i', 				'<c-k>', 			'<cmd>lua Coc.go_to_previous_completion_item("<c-k>")<cr>', 	silent_opt 	},
-	{ 'i', 				'<c-j>', 			'<cmd>lua Coc.go_to_previous_completion_item(\"<c-j>\")<cr>', 	silent_opt 	},
-	{ 'i', 				'<c-space>', 		'coc#refresh()', 												opt 		},
+	-- completion
+	{ 'i', 				'<c-space>', 		'coc#refresh()', 												opt },
 })
 
+vim.api.nvim_exec([[
+
+	" Add `:Format` command to format current buffer.
+	command! -nargs=0 Format :call CocAction('format')
+
+	" Add `:Fold` command to fold current buffer.
+	command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+	" Add `:OR` command for organize imports of the current buffer.
+	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+]], false)

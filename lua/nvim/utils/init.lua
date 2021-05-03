@@ -3,6 +3,7 @@ Variable = require('nvim.utils.variable')
 Keybind = require('nvim.utils.keybind')
 Command = require('nvim.utils.command')
 Editor = require('nvim.utils.editor')
+Pum = require('nvim.utils.pum')
 
 Vim = {
     Option = Option,
@@ -10,4 +11,5 @@ Vim = {
     Keybind = Keybind,
 	Command = Command,
 	Editor = Editor,
+	Pum = Pum
 }

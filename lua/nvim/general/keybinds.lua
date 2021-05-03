@@ -73,10 +73,10 @@ Keybind.g({
     { 'i', '<c-a>', '<esc>I' },
 
     -- [ ctrl + j ] hit down arrow key
-    { 'i', '<c-j>', '<down>' },
+    { 'i', '<c-j>', '<cmd>lua Pum.goto_next({ keybind = "<lt>down>" })<cr>' },
 
     -- [ ctrl + k ] hit up arrow key
-    { 'i', '<c-k>', '<up>' },
+    { 'i', '<c-k>', '<cmd>lua Pum.goto_next({ keybind = "<lt>up>" })<cr>' },
 
     -- [ ctrl + b ] hit left arrow key
     { 'i', '<c-b>', '<left>' },

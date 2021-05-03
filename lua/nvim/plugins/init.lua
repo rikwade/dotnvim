@@ -5,7 +5,6 @@ require('nvim.plugins.fugitive')
 require('nvim.plugins.telescope')
 require('nvim.plugins.nvim-tree')
 require('nvim.plugins.vimspector')
-require('nvim.plugins.coc-nvim')
 require('nvim.plugins.completion')
 require('nvim.plugins.nvim-terminal')
 require('nvim.plugins.vim-easymotion')
@@ -25,3 +24,7 @@ require('nvim.plugins.lualine')
 -- Packer lazy loads the plugin configuration
 -- check install.lua for more information
 -- require('nvim.plugins.lsp')
+
+-- Packer lazy loads the plugin configuration
+-- check install.lua for more information
+-- require('nvim.plugins.coc-nvim')
