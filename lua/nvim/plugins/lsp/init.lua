@@ -31,7 +31,7 @@ local on_attach_callback = function(_, bufnr)
 
 end
 
-local servers = { 'pyright' }
+local servers = { 'pyright', 'rust_analyzer' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup ({

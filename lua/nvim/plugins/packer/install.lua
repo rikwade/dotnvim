@@ -29,7 +29,10 @@ return require('packer').startup(function()
 
 	-- LANGUAGE SERVER CONFIGURATIONS
 	use { 'neovim/nvim-lspconfig',
-		ft = 'python',
+		ft = {
+			'python',
+			'rust'
+		},
 		config = function()
 			require('nvim.plugins.lsp')
 		end
@@ -62,7 +65,7 @@ return require('packer').startup(function()
 
 
 	-- AUTO COMPLETION FEATURES FOR LSP
-	use { 'nvim-lua/completion-nvim', ft ={'python'} }
+	use { 'nvim-lua/completion-nvim', ft ={'python', 'rust'} }
 
 
 
