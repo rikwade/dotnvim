@@ -3,7 +3,8 @@ Command.cmd({
 	'colorscheme tokyonight'
 })
 
-vim.api.nvim_exec([[
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
-]], false)
+Variable.g({
+	tokyonight_style = 'storm',
+	tokyonight_enable_italic = 1,
+	tokyonight_transparent_background = 0,
+})
