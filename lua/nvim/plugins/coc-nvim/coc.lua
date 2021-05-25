@@ -35,8 +35,4 @@ Coc.show_documentation = function()
 	end
 end
 
-Coc.format_code = function()
-	e('CocAction("format")')
-end
-
 return Coc

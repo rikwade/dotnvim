@@ -48,6 +48,7 @@ return require('packer').startup(function()
 			'markdown',
 			'typescript',
 			'javascript',
+			'javascriptreact',
 			'php',
 			'css'
 		},

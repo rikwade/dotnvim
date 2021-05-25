@@ -19,9 +19,8 @@ Keybind.g({
 	{ 'n', 				'<leader>r', 		'<Plug>(coc-rename)', 										silent_opt },
 	{ 'n', 				'<leader>a', 		'<Plug>(coc-codeaction)', 									silent_opt },
 	{ 'n', 				'<leader>s', 		'<Plug>(coc-codeaction-selected)', 							silent_opt },
-	{ 'n', 				'<leader>f', 		'<Plug>(coc-format-selected)', 								none },
-	{ 'v', 				'<leader>f', 		'<Plug>(coc-format-selected)', 								none },
 	{ 'n', 				'<leader>qf', 		'<Plug>(coc-fix-current)', 									silent_opt },
+	{ 'n', 				'<leader>f', 		'<cmd>lua vim.fn.CocAction("format")<cr>', 					none },
 
 	-- text objects
 	{ 'x', 				'if', 				'<Plug>(coc-funcobj-i)', 									silent_opt },
@@ -48,5 +47,13 @@ vim.api.nvim_exec([[
 
 	" Add `:OR` command for organize imports of the current buffer.
 	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+	inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+	if has('nvim')
+	  inoremap <silent><expr> <c-space> coc#refresh()
+	else
+	  inoremap <silent><expr> <c-@> coc#refresh()
+	endif
 
 ]], false)
