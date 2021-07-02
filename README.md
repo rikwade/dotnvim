@@ -27,7 +27,23 @@ Neovim configuration that uses `lua` as much as possible
   * Most of the plugins are still in `vimscript` so this is not 100% `lua` but I'm doing my best to find `lua` alternatives
   * `lua` integration is still in development so things might break
 
-## How to use?
+## How to Install?
+
+### Prerequisites
+
+- Install build essentials
+
+```
+# on Ubuntu
+sudo apt install build-essential
+```
+
+- Install cmake
+
+```
+# on Ubuntu
+sudo apt install cmake
+```
 
 ### On Linux
 
