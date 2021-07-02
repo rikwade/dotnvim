@@ -103,7 +103,7 @@ Keybind.g({
 	#------------------------------------------------------------------------------#
 	--]]
     -- [ j + k ] to go to normal mode from insert
-    { 'i', 'jk', '<esc>' },
+    { 'i', 'jj', '<esc>' },
 
 	-- [ ctrl + d ] deletes a character in front of the cursor
     { 'i', '<c-d>', '<delete>' },
@@ -117,7 +117,7 @@ Keybind.g({
 	#------------------------------------------------------------------------------#
 	--]]
     -- [ ctrl + k ] move cursor to top window from terminal
-	{ 't', 'jk', [[<c-\><c-n>]], {} },
+	{ 't', 'jj', [[<c-\><c-n>]], {} },
 
 	-- [ ctrl + k ] to change the window from terminal
 	{ 't', '<c-k>', [[<c-\><c-n><c-w>k]], {} },
