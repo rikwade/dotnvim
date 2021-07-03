@@ -31,30 +31,10 @@ Neovim configuration that uses `lua` as much as possible
 
 ### Prerequisites
 
-- Install build essentials
-
-```
-# on Ubuntu
-sudo apt install build-essential
-```
-
-- Install cmake
-
-```
-# on Ubuntu
-sudo apt install cmake
-```
+* Install C compiler (GCC on Linux)
+* Install Neovim (Please refer [Neovim installation guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for more information)
 
 ### On Linux
-
-* Clone and install `neovim` nightly build
-
-```bash
-git clone https://github.com/neovim/neovim.git ~/neovim
-cd ~/neovim
-make
-sudo make install
-```
 
 * Backup existing `nvim` configuration if you have one
 
