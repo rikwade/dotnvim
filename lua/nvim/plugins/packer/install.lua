@@ -60,7 +60,7 @@ return require('packer').startup(function()
 	-- debugging
 	use { 'puremourning/vimspector',
 		ft = {'python'},
-		run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+		-- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
 	}
 
 
