@@ -1,11 +1,7 @@
--- local packman = require('nvim.plugins.packman_lua.packman' }
-
-
 return require('packer').startup(function()
-	
 	-- FILE EXPLORER
-	use { 'preservim/nerdtree' }
-	use { 'ryanoasis/vim-devicons' }
+	-- use { 'preservim/nerdtree' }
+	-- use { 'ryanoasis/vim-devicons' }
 
 	use { 'kyazdani42/nvim-tree.lua' }
 	use { 'kyazdani42/nvim-web-devicons' }
@@ -28,34 +24,33 @@ return require('packer').startup(function()
 
 
 	-- LANGUAGE SERVER CONFIGURATIONS
-	use { 'neovim/nvim-lspconfig',
-		ft = {
-			'python',
-			'rust'
-		},
-		config = function()
-			require('nvim.plugins.lsp')
+	use {
+		'kabouzeid/nvim-lspinstall',
+		run = function()
+			require('nvim.useins.lspinstall').install_servers()
 		end
 	}
+	use { 'neovim/nvim-lspconfig' }
 
+	-- Removed in favor of buit-in lsp
+	--[[
 	use { 
 		'neoclide/coc.nvim',
 		branch = 'release',
-		ft = { 
+		ft = {
 			'java',
 			'json',
 			'html',
 			'markdown',
-			'typescript',
 			'javascript',
 			'javascriptreact',
 			'php',
 			'css'
 		},
 		config = function()
-			require('nvim.plugins.coc-nvim')
 		end
 	}
+	--]]
 
 	-- debugging
 	use { 'puremourning/vimspector',
@@ -66,7 +61,7 @@ return require('packer').startup(function()
 
 
 	-- AUTO COMPLETION FEATURES FOR LSP
-	use { 'nvim-lua/completion-nvim', ft ={'python', 'rust'} }
+	use { 'nvim-lua/completion-nvim' }
 
 
 

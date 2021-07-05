@@ -1,10 +1,15 @@
 local lspconfig = require('lspconfig')
-local completion = require('completion')
-local _completion = require('nvim.plugins.completion')
+local completion = require('nvim.plugins.completion')
+local lspinstall = require('lspinstall')
+
+-- Automatically reload after `:LspInstall <server>`
+lspinstall.post_install_hook = function ()
+  setup_servers()
+  vim.cmd("bufdo e")
+end
 
 local on_attach_callback = function(_, bufnr)
-    completion.on_attach()
-	_completion.on_attach(bufnr)
+	completion.on_attach(bufnr)
 
     local opts = { noremap = true }
 
@@ -31,10 +36,17 @@ local on_attach_callback = function(_, bufnr)
 
 end
 
-local servers = { 'pyright', 'rust_analyzer' }
+local setup_servers = function()
+	lspinstall.setup()
 
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup ({
-        on_attach = on_attach_callback,
-    })
+	local servers = lspinstall.installed_servers()
+
+	for _, lsp in ipairs(servers) do
+		lspconfig[lsp].setup ({
+			on_attach = on_attach_callback,
+		})
+	end
 end
+
+
+setup_servers()
