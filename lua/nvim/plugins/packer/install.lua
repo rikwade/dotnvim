@@ -105,7 +105,7 @@ return require('packer').startup(function()
 	use { 'tpope/vim-surround' }
 
 	-- syntax highlighting
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSInstall all' }
 
 	-- top window bar
 	-- Not sure if this is useful or just taking space
