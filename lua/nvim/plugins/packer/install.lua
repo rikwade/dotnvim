@@ -46,6 +46,7 @@ return require('packer').startup(function()
 			'css'
 		},
 		config = function()
+			require('nvim.plugins.coc-nvim')
 		end
 	}
 
