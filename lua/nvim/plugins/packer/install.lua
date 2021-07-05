@@ -27,7 +27,7 @@ return require('packer').startup(function()
 	use {
 		'kabouzeid/nvim-lspinstall',
 		run = function()
-			require('nvim.useins.lspinstall').install_servers()
+			require('nvim.plugins.lspinstall').install_servers()
 		end
 	}
 	use { 'neovim/nvim-lspconfig' }
