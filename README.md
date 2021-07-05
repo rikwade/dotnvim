@@ -49,6 +49,7 @@ sudo apt install git curl gcc python3-pip
 pip install --user neovim
 ```
 
+* Download and install nerd font patched font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads)
 * Install Neovim (Please refer [Neovim installation guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for more information)
 * Backup existing `nvim` configuration if you have one
 
