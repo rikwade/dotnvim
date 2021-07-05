@@ -13,6 +13,7 @@ require('nvim.plugins.markdown-preview')
 require('nvim.plugins.lualine')
 require('nvim.plugins.completion')
 require('nvim.plugins.lsp')
+require('nvim.plugins.lspinstall')
 
 
 -- Removed in favor of telescope
