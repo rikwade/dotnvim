@@ -38,14 +38,10 @@ sudo apt update
 * Install following packages
 
 ```bash
-sudo apt install git curl nodejs npm gcc python3-pip
+sudo apt install git curl gcc python3-pip
 ```
 
-* Add soft like to yarnpkg to yarn
-
-```bash
-sudo ln -s $(which yarnpkg) $(dirname $(which yarnpkg))/yarn
-```
+* Download and install latest version of `node` and `npm` from [node js download](https://nodejs.org/en/) (Make sure `node` and `npm` is accessible from the command line)
 
 * Install following languages packages
 
