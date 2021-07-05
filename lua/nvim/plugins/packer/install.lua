@@ -32,8 +32,6 @@ return require('packer').startup(function()
 	}
 	use { 'neovim/nvim-lspconfig' }
 
-	-- Removed in favor of buit-in lsp
-	--[[
 	use { 
 		'neoclide/coc.nvim',
 		branch = 'release',
@@ -50,7 +48,6 @@ return require('packer').startup(function()
 		config = function()
 		end
 	}
-	--]]
 
 	-- debugging
 	use { 'puremourning/vimspector',
