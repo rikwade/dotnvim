@@ -5,9 +5,9 @@ Variable.g({
 	completion_matching_ignore_case = true,
 	completion_matching_smart_case = true,
 	completion_trigger_character = { '.' },
-	completion_trigger_keyword_length = 1,
+	completion_trigger_keyword_length = 2,
 	completion_trigger_on_delete = true,
-	completion_timer_cycle = 30
+	completion_timer_cycle = 200
 })
 
 local function on_attach(bufnr)
