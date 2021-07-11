@@ -20,5 +20,6 @@ require('telescope').setup{
 		shorten_path = true,
 		color_devicons = true,
 		set_env = { ['COLORTERM'] = 'truecolor' },
+		file_ignore_patterns = {'packer.nvim', 'node_modules'},
     },
 }
