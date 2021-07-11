@@ -99,6 +99,8 @@ return require('packer').startup(function()
 
 	-- syntax highlighting
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+
 
 	-- top window bar
 	-- Not sure if this is useful or just taking space
