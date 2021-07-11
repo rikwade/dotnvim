@@ -1,7 +1,9 @@
+--[[
 Command.cmd({
 	-- setting the color scheme
 	'colorscheme tokyonight'
 })
+]]
 
 Variable.g({
 	tokyonight_style = 'storm',

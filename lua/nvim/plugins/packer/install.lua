@@ -20,6 +20,7 @@ return require('packer').startup(function()
 	use { 'embark-theme/vim' }
 	use { 'bluz71/vim-nightfly-guicolors' }
 	use { 'ghifarit53/tokyonight-vim' }
+	use { 'projekt0n/github-nvim-theme' }
 
 
 
