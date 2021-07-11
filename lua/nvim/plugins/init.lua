@@ -13,14 +13,4 @@ require('nvim.plugins.markdown-preview')
 require('nvim.plugins.lualine')
 require('nvim.plugins.completion')
 require('nvim.plugins.lsp')
-
-
--- Removed in favor of telescope
--- require('nvim.plugins.fzf')
-
--- Removed in facor of nvim-tree
--- require('nvim.plugins.nerdtree')
-
--- Packer lazy loads the plugin configuration
--- check install.lua for more information
--- require('nvim.plugins.coc-nvim')
+require('nvim.plugins.lspinstall')
