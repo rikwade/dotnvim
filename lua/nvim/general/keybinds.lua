@@ -79,17 +79,17 @@ Keybind.g({
     -- [ ctrl + a ] go to beginning of the line
     { 'i', '<c-a>', '<esc>I' },
 
-    -- [ ctrl + j ] hit down arrow key
-    { 'i', '<c-j>', '<cmd>lua Pum.goto_next({ keybind = "<lt>down>" })<cr>' },
-
-    -- [ ctrl + k ] hit up arrow key
-    { 'i', '<c-k>', '<cmd>lua Pum.goto_prev({ keybind = "<lt>up>" })<cr>' },
-
     -- [ ctrl + b ] hit left arrow key
     { 'i', '<c-b>', '<left>' },
 
     -- [ ctrl + l ] hit right arrow key
     { 'i', '<c-l>', '<right>' },
+
+    -- [ ctrl + j ] hit down arrow key
+    { 'i', '<c-j>', '<cmd>lua Pum.goto_next({ keybind = "<lt>down>" })<cr>' },
+
+    -- [ ctrl + k ] hit up arrow key
+    { 'i', '<c-k>', '<cmd>lua Pum.goto_prev({ keybind = "<lt>up>" })<cr>' },
 
 
 	--[[

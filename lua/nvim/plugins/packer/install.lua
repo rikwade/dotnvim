@@ -1,8 +1,5 @@
 return require('packer').startup(function()
-	-- FILE EXPLORER
-	-- use { 'preservim/nerdtree' }
-	-- use { 'ryanoasis/vim-devicons' }
-
+	-- FILE BROWSER
 	use { 'kyazdani42/nvim-tree.lua' }
 	use { 'kyazdani42/nvim-web-devicons' }
 
@@ -11,10 +8,8 @@ return require('packer').startup(function()
 	use { 'eemed/sitruuna.vim' }
 	use { 'arzg/vim-colors-xcode' }
 	use { 'wadackel/vim-dogrun' }
-
 	use { 'tjdevries/colorbuddy.vim' }
 	use { 'tjdevries/gruvbuddy.nvim' }
-
 	use { 'npxbr/gruvbox.nvim' }
 	use { 'Th3Whit3Wolf/onebuddy' }
 	use { 'embark-theme/vim' }
