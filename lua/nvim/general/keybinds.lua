@@ -48,6 +48,16 @@ Keybind.g({
 
     -- [ ctrl + y ] copy current line and paste next line
     { 'n', '<c-y>', 'yyp' },
+
+	-- [ d + <bracket> ] remove inside <bracket>
+	{ 'n', [[d']], [[di']] },
+	{ 'n', [[d"]], [[di"]] },
+	{ 'n', [[d{]], [[di{]] },
+	{ 'n', [[d[]], [[di[]] },
+	{ 'n', [[d(]], [[di(]] },
+	{ 'n', [[d<]], [[di<]] },
+	{ 'n', [[d`]], [[di`]] },
+
 })
 
 Keybind.g({
