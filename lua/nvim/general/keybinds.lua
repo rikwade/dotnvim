@@ -5,10 +5,7 @@ Keybind.g({
 	#------------------------------------------------------------------------------#
 	--]]
     -- reload nvim configuration file
-    { 'n', ',r', ':luafile $MYVIMRC<cr>' },
-
-    -- edit nvim configuration file
-    { 'n', ',e', ':vsp $MYVIMRC<cr>' },
+    { 'n', ',r', [[:lua require('nvim.utils.common.module').reload_package('nvim')<CR>]] },
 
 
 	--[[
