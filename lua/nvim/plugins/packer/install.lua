@@ -1,4 +1,6 @@
 return require('packer').startup(function()
+	local use = use
+
 	-- FILE BROWSER
 	use { 'kyazdani42/nvim-tree.lua' }
 	use { 'kyazdani42/nvim-web-devicons' }
@@ -28,7 +30,7 @@ return require('packer').startup(function()
 	}
 	use { 'neovim/nvim-lspconfig' }
 
-	use { 
+	use {
 		'neoclide/coc.nvim',
 		branch = 'release',
 		ft = {
@@ -119,5 +121,12 @@ return require('packer').startup(function()
 	use {
 	  'hoob3rt/lualine.nvim',
 	  requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
+
+	use {
+		'folke/zen-mode.nvim',
+		config = function()
+			require('nvim.plugins.zen-mode').setup()
+		end
 	}
 end)
