@@ -126,7 +126,13 @@ return require('packer').startup(function()
 	use { 'psliwka/vim-smoothie' }
 
 	-- motion
-	use { 'easymotion/vim-easymotion' }
+	use {
+		'phaazon/hop.nvim',
+		as = 'hop',
+		config = function()
+			require('nvim.plugins.hop')
+		end
+	}
 
 	-- status line
 	use {
