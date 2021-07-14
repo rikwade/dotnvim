@@ -1,4 +1,5 @@
 return require('packer').startup(function()
+	-- This is just to get rid of LSP errors on each line
 	local use = use
 
 	-- FILE BROWSER
