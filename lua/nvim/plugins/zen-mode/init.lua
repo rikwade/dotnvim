@@ -29,3 +29,7 @@ local opt = { silent = true }
 Keybind.g({
 	{ 'n', '<tab>', ':ZenMode<CR>', opt }
 })
+
+Keybind.ug({
+	{ 'n', '<C-i>' }
+})

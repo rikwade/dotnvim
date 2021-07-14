@@ -1,10 +1,8 @@
 local Keybind = {}
 
 Keybind.add_global_keybinds = function(keybinds)
-	for index, keybind in pairs(keybinds) do
-		if(keybind[4] == nil) then
-			keybind[4] = {}
-		end
+	for _, keybind in pairs(keybinds) do
+		keybind[4] = keybind[4] or {}
 
 		vim.api.nvim_set_keymap(
 			keybind[1],
@@ -16,10 +14,9 @@ Keybind.add_global_keybinds = function(keybinds)
 end
 
 Keybind.add_buffer_keybinds = function(keybinds)
-	for index, keybind in pairs(keybinds) do
-		if(keybind[5] == nil) then
-			keybind[5] = {}
-		end
+	for _, keybind in pairs(keybinds) do
+		keybind[5] = keybind[5] or {}
+
 		vim.api.nvim_buf_set_keymap(
 			keybind[1],
 			keybind[2],
@@ -30,7 +27,19 @@ Keybind.add_buffer_keybinds = function(keybinds)
 	end
 end
 
+Keybind.remove_global_keybinds = function(keybinds)
+	for _, keybind in pairs(keybinds) do
+		vim.api.nvim_del_keymap(
+			keybind[1],
+			keybind[2]
+		)
+	end
+end
+
 Keybind.g = Keybind.add_global_keybinds
 Keybind.b = Keybind.add_buffer_keybinds
+Keybind.ug = Keybind.remove_global_keybinds
+
+
 
 return Keybind
