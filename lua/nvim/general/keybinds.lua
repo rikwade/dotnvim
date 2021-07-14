@@ -25,6 +25,8 @@ Keybind.g({
     -- [ ctrl + k ] move cursor to top window
     { 'n', '<c-k>', '<c-w>k' },
 
+	-- [ '' ] move to last cursor position in the jump list
+	{ 'n', [['']], '``' },
 
 	--[[
 	#------------------------------------------------------------------------------#
