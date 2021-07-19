@@ -1,6 +1,5 @@
 require('nvim.plugins.packer.install')
 
-require('nvim.plugins.comment-frame')
 require('nvim.plugins.fugitive')
 require('nvim.plugins.telescope')
 require('nvim.plugins.nvim-tree')

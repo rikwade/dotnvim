@@ -64,7 +64,11 @@ return require('packer').startup(function()
 
 	-- OTHER LANGUAGE SUPPORT
 	-- markdown preview
-	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', ft = {'markdown'} }
+	use { 
+		'iamcco/markdown-preview.nvim',
+		run = 'cd app && yarn install',
+		ft = {'markdown'}
+	}
 
 
 
@@ -99,9 +103,6 @@ return require('packer').startup(function()
 	-- EDITOR
 	-- auto pair brackets
 	use { 'jiangmiao/auto-pairs' }
-
-	-- box comments
-	use { 'cometsong/CommentFrame.vim' }
 
 	-- handle pair of text objects
 	use { 'tpope/vim-surround' }
