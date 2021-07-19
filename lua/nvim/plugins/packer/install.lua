@@ -7,20 +7,7 @@ return require('packer').startup(function()
 	use { 'kyazdani42/nvim-web-devicons' }
 
 	-- COLOR THEME
-	use { 'mhartington/oceanic-next' }
-	use { 'eemed/sitruuna.vim' }
-	use { 'arzg/vim-colors-xcode' }
-	use { 'wadackel/vim-dogrun' }
-	use { 'tjdevries/colorbuddy.vim' }
-	use { 'tjdevries/gruvbuddy.nvim' }
-	use { 'npxbr/gruvbox.nvim' }
-	use { 'Th3Whit3Wolf/onebuddy' }
-	use { 'embark-theme/vim' }
-	use { 'bluz71/vim-nightfly-guicolors' }
 	use { 'ghifarit53/tokyonight-vim' }
-	use { 'projekt0n/github-nvim-theme' }
-
-
 
 	-- LANGUAGE SERVER CONFIGURATIONS
 	use {
