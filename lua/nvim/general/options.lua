@@ -122,7 +122,7 @@ Option.w({
 	-- error signs and warnings will be displayed in the number line
 	-- usually it adds new column when signs, moving buffer to right side.
 	-- adding a column create weird effect that's little bit hard for the eye
-	signcolumn = 'number',
+	signcolumn = 'auto',
 
 	-- vim try to keep 100 lines below and above when scrolling
 	-- if buffer cannot display more than 200 lines, cursor will stay in center
