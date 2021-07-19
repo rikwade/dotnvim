@@ -27,9 +27,5 @@ require("zen-mode").setup({
 local opt = { silent = true }
 
 Keybind.g({
-	{ 'n', '<tab>', ':ZenMode<CR>', opt }
-})
-
-Keybind.ug({
-	{ 'n', '<C-i>' }
+	{ 'n', '<space><space>', ':ZenMode<CR>', opt }
 })
