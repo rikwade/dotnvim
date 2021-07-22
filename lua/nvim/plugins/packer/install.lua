@@ -134,4 +134,13 @@ return require('packer').startup(function()
 			require('nvim.plugins.zen-mode')
 		end
 	}
+
+	use { "tversteeg/registers.nvim" }
+
+	use { 
+		's1n7ax/nvim-comment-frame',
+		config = function()
+			require('nvim-comment-frame').setup()
+		end
+	}
 end)
