@@ -137,8 +137,11 @@ return require('packer').startup(function()
 
 	use { "tversteeg/registers.nvim" }
 
-	use { 
+	use {
 		's1n7ax/nvim-comment-frame',
+		requires = {
+			{ 'nvim-treesitter' }
+		},
 		config = function()
 			require('nvim-comment-frame').setup()
 		end
