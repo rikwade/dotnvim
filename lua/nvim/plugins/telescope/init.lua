@@ -8,18 +8,5 @@ Keybind.g({
 	{ 'n', '<leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>' },
 	{ 'n', '<leader>th', '<cmd>lua require("telescope.builtin").help_tags()<cr>' }
 })
-require('telescope').setup{
-    defaults = {
-        winblend = 15,
-		mappings = {
-            i = {
-                ["jk"] = actions.close,
-            },
-        },
-		initial_mode = 'insert',
-		shorten_path = true,
-		color_devicons = true,
-		set_env = { ['COLORTERM'] = 'truecolor' },
-		file_ignore_patterns = {'packer.nvim', 'node_modules'},
-    },
-}
+
+require('telescope').setup()
