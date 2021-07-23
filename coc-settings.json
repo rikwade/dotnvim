@@ -116,7 +116,7 @@
     "html",
     "css"
   ],
-  "prettier.tabWidth": 2,
+  "prettier.tabWidth": 4,
   "java.signatureHelp.enabled": true,
   "java.completion.overwrite": true,
   "java.completion.guessMethodArguments": true,
