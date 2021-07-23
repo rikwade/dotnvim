@@ -28,6 +28,9 @@ Keybind.g({
 	-- [ '' ] move to last cursor position in the jump list
 	{ 'n', [['']], '``' },
 
+	-- [ 0 ] to go to the start of the line
+	{ 'n', '0', '^' },
+
 	--[[
 	#------------------------------------------------------------------------------#
 	#                               BUFFER READ WRITE                              #
