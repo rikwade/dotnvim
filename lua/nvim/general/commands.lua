@@ -1,6 +1,6 @@
 Command.cmd({
 	-- setting the color scheme
-	'colorscheme tokyonight'
+	'colorscheme darkplus'
 })
 
 Variable.g({

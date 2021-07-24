@@ -8,6 +8,7 @@ return require('packer').startup(function()
 
 	-- COLOR THEME
 	use { 'ghifarit53/tokyonight-vim' }
+	use { 'yong1le/darkplus.nvim' }
 
 	-- LANGUAGE SERVER CONFIGURATIONS
 	use {
