@@ -135,8 +135,6 @@ return require('packer').startup(function()
 		end
 	}
 
-	use { "tversteeg/registers.nvim" }
-
 	use {
 		's1n7ax/nvim-comment-frame',
 		requires = {
