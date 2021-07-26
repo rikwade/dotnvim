@@ -27,15 +27,30 @@ Neovim configuration that uses `lua` as much as possible
   * Most of the plugins are still in `vimscript` so this is not 100% `lua` but I'm doing my best to find `lua` alternatives
   * `lua` integration is still in development so things might break
 
-## How to Install?
+## How to Install? (Ubuntu 20.04)
 
-### Prerequisites
+* Update cache
 
-* Install C compiler (GCC on Linux)
+```bash
+sudo apt update
+```
+
+* Install following packages
+
+```bash
+sudo apt install git curl gcc python3-pip
+```
+
+* Download and install latest version of `node` and `npm` from [node js download](https://nodejs.org/en/) (Make sure `node` and `npm` is accessible from the command line)
+
+* Install following languages packages
+
+```bash
+pip install --user neovim
+```
+
+* Download and install nerd font patched font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads)
 * Install Neovim (Please refer [Neovim installation guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for more information)
-
-### On Linux
-
 * Backup existing `nvim` configuration if you have one
 
 ```bash
