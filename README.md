@@ -24,9 +24,7 @@ Neovim configuration that uses `lua` as much as possible
 ## You should know this before using
 
 * I'm using built-in LSP for Python and coc.nvim for all the other languages
-* Not everything is in `lua`
-* Most of the plugins are still in `conscript` so this is not 100% `lua` but 
-I'm doing my best to find `lua` alternatives
+* Not everything is in `lua` but I'm doing my best to find `lua` alternatives
 
 ## How to Install? (Ubuntu 20.04)
 
