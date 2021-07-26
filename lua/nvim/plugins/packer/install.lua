@@ -100,7 +100,11 @@ return require('packer').startup(function()
 	use { 'tpope/vim-surround' }
 
 	-- syntax highlighting
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		branch = '0.5-compat',
+		run = ':TSUpdate'
+	}
 	use { 'nvim-treesitter/nvim-treesitter-textobjects' }
 
 
@@ -157,6 +161,7 @@ return require('packer').startup(function()
 	----------------------------------------------------------------------
 	--                           COLOR THEMES                           --
 	----------------------------------------------------------------------
+	--[[
 	use { 'ghifarit53/tokyonight-vim' }
 	use { 'yong1le/darkplus.nvim' }
 	use {
@@ -174,6 +179,15 @@ return require('packer').startup(function()
 			})
 
 			require('material').set()
+		end
+	}
+	--]]
+	use {
+		'rafamadriz/neon',
+		config = function()
+			Command.cmd({
+				'colorscheme neon'
+			})
 		end
 	}
 
