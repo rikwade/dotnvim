@@ -1,167 +1,140 @@
 return require('packer').startup(function()
-	-- This is just to get rid of LSP errors on each line
-	local use = use
+    -- This is just to get rid of LSP errors on each line
+    local use = use
 
-	----------------------------------------------------------------------
-	--                               LSP                                --
-	----------------------------------------------------------------------
-	use {
-		'kabouzeid/nvim-lspinstall',
-		run = function()
-			require('nvim.plugins.lspinstall').install_servers()
-		end
-	}
-	use { 'neovim/nvim-lspconfig' }
+    ----------------------------------------------------------------------
+    --                               LSP                                --
+    ----------------------------------------------------------------------
+    use {
+        'kabouzeid/nvim-lspinstall',
+        run = function()
+            require('nvim.plugins.lspinstall').install_servers()
+        end
+    }
+    use {'neovim/nvim-lspconfig'}
 
-	use {
-		'neoclide/coc.nvim',
-		branch = 'release',
-		ft = {
-			'java',
-			'json',
-			'html',
-			'markdown',
-			'javascript',
-			'javascriptreact',
-			'php',
-			'css'
-		},
-		config = function()
-			require('nvim.plugins.coc-nvim')
-		end
-	}
+    use {
+        'neoclide/coc.nvim',
+        branch = 'release',
+        ft = {
+            'java', 'json', 'html', 'markdown', 'javascript', 'javascriptreact',
+            'php', 'css'
+        },
+        config = function() require('nvim.plugins.coc-nvim') end
+    }
 
-	-- AUTO COMPLETION FEATURES FOR LSP
-	use { 'nvim-lua/completion-nvim' }
+    -- AUTO COMPLETION FEATURES FOR LSP
+    use {'nvim-lua/completion-nvim'}
 
-	-- OTHER LANGUAGE SUPPORT
-	-- markdown preview
-	use { 
-		'iamcco/markdown-preview.nvim',
-		run = 'cd app && yarn install',
-		ft = {'markdown'}
-	}
+    -- OTHER LANGUAGE SUPPORT
+    -- markdown preview
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && yarn install',
+        ft = {'markdown'}
+    }
 
+    -- code formatters
+    use {
+        'mhartington/formatter.nvim',
+        config = function() require('nvim.plugins.formatter') end,
+        rocks = {'luaformatter', server = 'https://luarocks.org/dev'}
+    }
 
+    ----------------------------------------------------------------------
+    --                            DEBUGGING                             --
+    ----------------------------------------------------------------------
+    use {
+        'puremourning/vimspector',
+        ft = {'python'}
+        -- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+    }
 
-	----------------------------------------------------------------------
-	--                            DEBUGGING                             --
-	----------------------------------------------------------------------
-	use { 'puremourning/vimspector',
-		ft = {'python'},
-		-- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
-	}
+    ----------------------------------------------------------------------
+    --                               FILE                               --
+    ----------------------------------------------------------------------
+    use {'kyazdani42/nvim-tree.lua'}
+    use {'kyazdani42/nvim-web-devicons'}
 
+    -- SEARCH
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
 
+    ----------------------------------------------------------------------
+    --                               GIT                                --
+    ----------------------------------------------------------------------
+    use {'tpope/vim-fugitive'}
 
-	----------------------------------------------------------------------
-	--                               FILE                               --
-	----------------------------------------------------------------------
-	use { 'kyazdani42/nvim-tree.lua' }
-	use { 'kyazdani42/nvim-web-devicons' }
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function() require('nvim.plugins.gitsigns') end
+    }
 
-	-- SEARCH
-	-- @NOTE: removeing fzf in favor of telescope
-	-- packman.get('junegunn/fzf' }
-	-- packman.get('junegunn/fzf.vim' }
-	use { 'nvim-telescope/telescope.nvim',
-		requires = {
-			{'nvim-lua/popup.nvim'},
-			{'nvim-lua/plenary.nvim'}
-		}
-	}
+    ----------------------------------------------------------------------
+    --                             EDITING                              --
+    ----------------------------------------------------------------------
+    -- auto pair brackets
+    use {'jiangmiao/auto-pairs'}
 
+    -- handle pair of text objects
+    use {'tpope/vim-surround'}
 
+    -- syntax highlighting
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        branch = '0.5-compat',
+        run = ':TSUpdate'
+    }
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
-	----------------------------------------------------------------------
-	--                               GIT                                --
-	----------------------------------------------------------------------
-	use { 'tpope/vim-fugitive' }
+    -- top window bar
+    -- Not sure if this is useful or just taking space
+    -- Hard to find the correct tab sometimes
+    -- use { 'romgrk/barbar.nvim' }
 
-	use {
-		'lewis6991/gitsigns.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim'
-		},
-		config = function()
-			require('nvim.plugins.gitsigns')
-		end
-	}
+    -- popup terminal
+    use {'s1n7ax/nvim-terminal'}
 
+    ----------------------------------------------------------------------
+    --                              EDITOR                              --
+    ----------------------------------------------------------------------
+    -- inline serch guide
+    use {'unblevable/quick-scope'}
 
+    -- smooth scrolling
+    use {'psliwka/vim-smoothie'}
 
-	----------------------------------------------------------------------
-	--                             EDITING                              --
-	----------------------------------------------------------------------
-	-- auto pair brackets
-	use { 'jiangmiao/auto-pairs' }
+    -- motion
+    use {
+        'phaazon/hop.nvim',
+        as = 'hop',
+        config = function() require('nvim.plugins.hop') end
+    }
 
-	-- handle pair of text objects
-	use { 'tpope/vim-surround' }
+    -- status line
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
 
-	-- syntax highlighting
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		branch = '0.5-compat',
-		run = ':TSUpdate'
-	}
-	use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    use {
+        'folke/zen-mode.nvim',
+        config = function() require('nvim.plugins.zen-mode') end
+    }
 
+    use {
+        's1n7ax/nvim-comment-frame',
+        requires = {{'nvim-treesitter'}},
+        config = function() require('nvim-comment-frame').setup() end
+    }
 
-	-- top window bar
-	-- Not sure if this is useful or just taking space
-	-- Hard to find the correct tab sometimes
-	-- use { 'romgrk/barbar.nvim' }
-
-	-- popup terminal
-	use { 's1n7ax/nvim-terminal' }
-
-	----------------------------------------------------------------------
-	--                              EDITOR                              --
-	----------------------------------------------------------------------
-	-- inline serch guide
-	use { 'unblevable/quick-scope' }
-
-	-- smooth scrolling
-	use { 'psliwka/vim-smoothie' }
-
-	-- motion
-	use {
-		'phaazon/hop.nvim',
-		as = 'hop',
-		config = function()
-			require('nvim.plugins.hop')
-		end
-	}
-
-	-- status line
-	use {
-	  'hoob3rt/lualine.nvim',
-	  requires = {'kyazdani42/nvim-web-devicons', opt = true}
-	}
-
-	use {
-		'folke/zen-mode.nvim',
-		config = function()
-			require('nvim.plugins.zen-mode')
-		end
-	}
-
-	use {
-		's1n7ax/nvim-comment-frame',
-		requires = {
-			{ 'nvim-treesitter' }
-		},
-		config = function()
-			require('nvim-comment-frame').setup()
-		end
-	}
-
-
-	----------------------------------------------------------------------
-	--                           COLOR THEMES                           --
-	----------------------------------------------------------------------
-	--[[
+    ----------------------------------------------------------------------
+    --                           COLOR THEMES                           --
+    ----------------------------------------------------------------------
+    --[[
 	use { 'ghifarit53/tokyonight-vim' }
 	use { 'yong1le/darkplus.nvim' }
 	use {
@@ -182,13 +155,9 @@ return require('packer').startup(function()
 		end
 	}
 	--]]
-	use {
-		'rafamadriz/neon',
-		config = function()
-			Command.cmd({
-				'colorscheme neon'
-			})
-		end
-	}
+    use {
+        'rafamadriz/neon',
+        config = function() Command.cmd({'colorscheme neon'}) end
+    }
 
 end)
