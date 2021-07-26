@@ -2,15 +2,9 @@ return require('packer').startup(function()
 	-- This is just to get rid of LSP errors on each line
 	local use = use
 
-	-- FILE BROWSER
-	use { 'kyazdani42/nvim-tree.lua' }
-	use { 'kyazdani42/nvim-web-devicons' }
-
-	-- COLOR THEME
-	use { 'ghifarit53/tokyonight-vim' }
-	use { 'yong1le/darkplus.nvim' }
-
-	-- LANGUAGE SERVER CONFIGURATIONS
+	----------------------------------------------------------------------
+	--                               LSP                                --
+	----------------------------------------------------------------------
 	use {
 		'kabouzeid/nvim-lspinstall',
 		run = function()
@@ -37,18 +31,8 @@ return require('packer').startup(function()
 		end
 	}
 
-	-- debugging
-	use { 'puremourning/vimspector',
-		ft = {'python'},
-		-- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
-	}
-
-
-
 	-- AUTO COMPLETION FEATURES FOR LSP
 	use { 'nvim-lua/completion-nvim' }
-
-
 
 	-- OTHER LANGUAGE SUPPORT
 	-- markdown preview
@@ -59,6 +43,22 @@ return require('packer').startup(function()
 	}
 
 
+
+	----------------------------------------------------------------------
+	--                            DEBUGGING                             --
+	----------------------------------------------------------------------
+	use { 'puremourning/vimspector',
+		ft = {'python'},
+		-- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+	}
+
+
+
+	----------------------------------------------------------------------
+	--                               FILE                               --
+	----------------------------------------------------------------------
+	use { 'kyazdani42/nvim-tree.lua' }
+	use { 'kyazdani42/nvim-web-devicons' }
 
 	-- SEARCH
 	-- @NOTE: removeing fzf in favor of telescope
@@ -73,7 +73,9 @@ return require('packer').startup(function()
 
 
 
-	-- GIT
+	----------------------------------------------------------------------
+	--                               GIT                                --
+	----------------------------------------------------------------------
 	use { 'tpope/vim-fugitive' }
 
 	use {
@@ -88,7 +90,9 @@ return require('packer').startup(function()
 
 
 
-	-- EDITOR
+	----------------------------------------------------------------------
+	--                             EDITING                              --
+	----------------------------------------------------------------------
 	-- auto pair brackets
 	use { 'jiangmiao/auto-pairs' }
 
@@ -108,6 +112,9 @@ return require('packer').startup(function()
 	-- popup terminal
 	use { 's1n7ax/nvim-terminal' }
 
+	----------------------------------------------------------------------
+	--                              EDITOR                              --
+	----------------------------------------------------------------------
 	-- inline serch guide
 	use { 'unblevable/quick-scope' }
 
@@ -145,4 +152,29 @@ return require('packer').startup(function()
 			require('nvim-comment-frame').setup()
 		end
 	}
+
+
+	----------------------------------------------------------------------
+	--                           COLOR THEMES                           --
+	----------------------------------------------------------------------
+	use { 'ghifarit53/tokyonight-vim' }
+	use { 'yong1le/darkplus.nvim' }
+	use {
+		'marko-cerovac/material.nvim',
+		config = function ()
+			Variable.g({
+				material_style = 'darker',
+				material_italic_comments = true,
+				material_italic_keywords = true,
+				material_italic_functions = true,
+				material_italic_variables = false,
+				material_contrast = true,
+				material_borders = false,
+				material_disable_background = false,
+			})
+
+			require('material').set()
+		end
+	}
+
 end)
