@@ -1,4 +1,5 @@
 # dotnvim
+
 Neovim configuration that uses `lua` as much as possible
 
 ## Features
@@ -24,8 +25,8 @@ Neovim configuration that uses `lua` as much as possible
 
 * I'm using built-in LSP for Python and coc.nvim for all the other languages
 * Not everything is in `lua`
-  * Most of the plugins are still in `vimscript` so this is not 100% `lua` but I'm doing my best to find `lua` alternatives
-  * `lua` integration is still in development so things might break
+* Most of the plugins are still in `conscript` so this is not 100% `lua` but 
+I'm doing my best to find `lua` alternatives
 
 ## How to Install? (Ubuntu 20.04)
 
@@ -38,10 +39,12 @@ sudo apt update
 * Install following packages
 
 ```bash
-sudo apt install git curl gcc python3-pip
+sudo apt install git curl gcc python3-pip luarocks
 ```
 
-* Download and install latest version of `node` and `npm` from [node js download](https://nodejs.org/en/) (Make sure `node` and `npm` is accessible from the command line)
+* Download and install latest version of `node` and `npm` from 
+[node js download](https://nodejs.org/en/) (Make sure `node` and `npm` is
+accessible from the command line)
 
 * Install following languages packages
 
