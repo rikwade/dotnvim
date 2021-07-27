@@ -160,4 +160,6 @@ return require('packer').startup(function()
         config = function() Command.cmd({'colorscheme neon'}) end
     }
 
+    use {'dstein64/vim-startuptime'}
+
 end)
