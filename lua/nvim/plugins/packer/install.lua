@@ -11,7 +11,11 @@ return require('packer').startup(function()
             require('nvim.plugins.lspinstall').install_servers()
         end
     }
-    use {'neovim/nvim-lspconfig'}
+
+    use {
+        'neovim/nvim-lspconfig',
+        config = function() require('nvim.plugins.lsp') end
+    }
 
     use {
         'neoclide/coc.nvim',
@@ -24,7 +28,7 @@ return require('packer').startup(function()
     }
 
     -- AUTO COMPLETION FEATURES FOR LSP
-    use {'nvim-lua/completion-nvim'}
+    use {'hrsh7th/nvim-compe'}
 
     -- OTHER LANGUAGE SUPPORT
     -- markdown preview
@@ -154,7 +158,7 @@ return require('packer').startup(function()
 			require('material').set()
 		end
 	}
-	--]]
+    --]]
     use {
         'rafamadriz/neon',
         config = function() Command.cmd({'colorscheme neon'}) end
