@@ -37,8 +37,8 @@ return require('packer').startup(function()
     -- code formatters
     use {
         'mhartington/formatter.nvim',
-        config = function() require('nvim.plugins.formatter') end,
-        rocks = {'luaformatter', server = 'https://luarocks.org/dev'}
+        rocks = {'luaformatter', server = 'https://luarocks.org/dev'},
+        config = function() require('nvim.plugins.formatter') end
     }
 
     ----------------------------------------------------------------------

@@ -30,7 +30,7 @@ local on_attach_callback = function(_, bufnr)
         -- actions
         { bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts },
         { bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts },
-        { bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts },
+        -- { bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts },
         { bufnr, 'n', '<leader>o', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts },
     })
 
