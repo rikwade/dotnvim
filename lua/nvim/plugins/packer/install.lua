@@ -49,6 +49,12 @@ return require('packer').startup(function()
     --                            DEBUGGING                             --
     ----------------------------------------------------------------------
     use {
+        'mfussenegger/nvim-dap',
+        config = function ()
+            require('nvim.plugins.nvim-dap')
+        end
+    }
+    use {
         'puremourning/vimspector',
         ft = {'python'}
         -- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
