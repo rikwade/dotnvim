@@ -6,6 +6,9 @@ Option.g({
     -- replace tab with spaces
     expandtab = true,
 
+    -- tabstop
+    tabstop = 4,
+
     -- acts editing spaces like tabs
     softtabstop = 4,
 
@@ -44,7 +47,7 @@ Option.g({
     -- open completion menu even for single item
     -- do not auto insert items from completion menu
     -- @warning - preview is removed. when it's on, default lsp opens a vertical tab
-    completeopt = 'menuone,noinsert',
+    completeopt = 'menuone,noselect',
 
     -- stop showing the current mode
     showmode = false,
