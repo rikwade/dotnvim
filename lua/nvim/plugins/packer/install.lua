@@ -9,22 +9,28 @@ return require('packer').startup(function()
         'kabouzeid/nvim-lspinstall',
         run = function()
             require('nvim.plugins.lspinstall').install_servers()
-        end
+        end,
     }
 
     use {
         'neovim/nvim-lspconfig',
-        config = function() require('nvim.plugins.lsp') end
+        config = function() require('nvim.plugins.lsp') end,
     }
 
     use {
         'neoclide/coc.nvim',
         branch = 'release',
         ft = {
-            'java', 'json', 'html', 'markdown', 'javascript', 'javascriptreact',
-            'php', 'css'
+            'java',
+            'json',
+            'html',
+            'markdown',
+            'javascript',
+            'javascriptreact',
+            'php',
+            'css',
         },
-        config = function() require('nvim.plugins.coc-nvim') end
+        config = function() require('nvim.plugins.coc-nvim') end,
     }
 
     -- AUTO COMPLETION FEATURES FOR LSP
@@ -35,14 +41,14 @@ return require('packer').startup(function()
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        ft = {'markdown'}
+        ft = {'markdown'},
     }
 
     -- code formatters
     use {
         'mhartington/formatter.nvim',
         rocks = {'luaformatter', server = 'https://luarocks.org/dev'},
-        config = function() require('nvim.plugins.formatter') end
+        config = function() require('nvim.plugins.formatter') end,
     }
 
     ----------------------------------------------------------------------
@@ -50,60 +56,63 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     use {
         'mfussenegger/nvim-dap',
-        config = function ()
-            require('nvim.plugins.nvim-dap')
-        end
+        config = function() require('nvim.plugins.nvim-dap') end,
     }
     use {
         'puremourning/vimspector',
-        ft = {'python'}
+        ft = {'python'},
         -- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
     }
 
     ----------------------------------------------------------------------
     --                               FILE                               --
     ----------------------------------------------------------------------
+    -- File explorer and its icons
     use {'kyazdani42/nvim-tree.lua'}
     use {'kyazdani42/nvim-web-devicons'}
 
-    -- SEARCH
+    -- fuzzy search
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     }
 
     ----------------------------------------------------------------------
     --                               GIT                                --
     ----------------------------------------------------------------------
+    -- git client
     use {'tpope/vim-fugitive'}
 
+    -- git file changes
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('nvim.plugins.gitsigns') end
+        config = function() require('nvim.plugins.gitsigns') end,
     }
 
     ----------------------------------------------------------------------
     --                             EDITING                              --
     ----------------------------------------------------------------------
+    use {
+        's1n7ax/nvim-lazy-inner-block',
+        config = function() require('nvim-lazy-inner-block').setup() end,
+    }
+
     -- auto pair brackets
     use {'jiangmiao/auto-pairs'}
 
-    -- handle pair of text objects
+    -- handle pairs of text objects
     use {'tpope/vim-surround'}
 
     -- syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
         branch = '0.5-compat',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
     }
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
-    -- top window bar
-    -- Not sure if this is useful or just taking space
-    -- Hard to find the correct tab sometimes
-    -- use { 'romgrk/barbar.nvim' }
+    -- treesitter text objects
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
     -- popup terminal
     use {'s1n7ax/nvim-terminal'}
@@ -121,24 +130,32 @@ return require('packer').startup(function()
     use {
         'phaazon/hop.nvim',
         as = 'hop',
-        config = function() require('nvim.plugins.hop') end
+        config = function() require('nvim.plugins.hop') end,
     }
 
     -- status line
     use {
         'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
     }
 
+    -- full screen mode
     use {
         'folke/zen-mode.nvim',
-        config = function() require('nvim.plugins.zen-mode') end
+        config = function() require('nvim.plugins.zen-mode') end,
     }
 
+    -- comment frame
     use {
         's1n7ax/nvim-comment-frame',
         requires = {'nvim-treesitter'},
-        config = function() require('nvim-comment-frame').setup() end
+        config = function() require('nvim-comment-frame').setup() end,
+    }
+
+    -- shows start line at block end
+    use {
+        'haringsrob/nvim_context_vt',
+        config = function() require('nvim_context_vt').setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -167,9 +184,12 @@ return require('packer').startup(function()
     --]]
     use {
         'rafamadriz/neon',
-        config = function() Command.cmd({'colorscheme neon'}) end
+        config = function() Command.cmd({'colorscheme neon'}) end,
     }
 
+    ----------------------------------------------------------------------
+    --                              OTHER                               --
+    ----------------------------------------------------------------------
+    -- startup time tracker
     use {'dstein64/vim-startuptime'}
-
 end)
