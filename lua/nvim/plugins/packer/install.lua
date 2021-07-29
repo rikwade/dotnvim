@@ -158,6 +158,8 @@ return require('packer').startup(function()
         config = function() require('nvim_context_vt').setup() end,
     }
 
+    use {'xiyaowong/nvim-cursorword'}
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
