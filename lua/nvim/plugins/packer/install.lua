@@ -135,8 +135,8 @@ return require('packer').startup(function()
 
     -- status line
     use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        'Avimitin/nerd-galaxyline',
+        requires = {'kyazdani42/nvim-web-devicons', 'glepnir/galaxyline.nvim', opt = true},
     }
 
     -- full screen mode
