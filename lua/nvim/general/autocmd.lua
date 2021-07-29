@@ -1,4 +1,5 @@
 -- highlight the current cursor line
-vim.api.nvim_exec([[
-	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+API.nvim_exec([[
+    " highlighting on yank
+    au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=300, on_visual=true}
 ]], false)
