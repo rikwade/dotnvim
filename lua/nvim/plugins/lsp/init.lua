@@ -2,12 +2,6 @@ local compe = require('nvim.plugins.nvim-compe')
 local lspconfig = require('lspconfig')
 local lspinstall = require('lspinstall')
 
--- Automatically reload after `:LspInstall <server>`
-lspinstall.post_install_hook = function()
-    setup_servers()
-    vim.cmd("bufdo e")
-end
-
 local on_attach_callback = function(_, bufnr)
     local opts = {noremap = true}
 
@@ -15,35 +9,65 @@ local on_attach_callback = function(_, bufnr)
 
     Keybind.b({
         -- code jumps
-        {bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts},
-        {bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts},
-        {bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts},
-        {bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts},
-        {bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts},
-        {bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts},
-        {bufnr, 'n', '<K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts},
+        {bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts},
+        {bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts},
+        {bufnr, 'n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts},
+        {bufnr, 'n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts},
+        {bufnr, 'n', 'K', ':lua vim.lsp.buf.hover()<CR>', opts},
+        {bufnr, 'n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts},
+        {bufnr, 'n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>', opts},
+        -- jump to next error
+        {bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts},
+        -- jump to previous error
+        {bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts},
+        -- rename file name
+        {bufnr, 'n', '<leader>r', ':lua vim.lsp.buf.rename()<CR>', opts},
+        -- quick fix actions
+        {bufnr, 'n', '<leader>a', ':lua vim.lsp.buf.code_action()<CR>', opts},
+        -- show diagnostics for current line
+        {
+            bufnr,
+            'n',
+            '<leader>e',
+            ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+            opts,
+        },
+        -- show all diagnostics
+        {
+            bufnr,
+            'n',
+            '<leader>o',
+            ':lua vim.lsp.diagnostic.set_loclist()<CR>',
+            opts,
+        },
 
-        -- error jumps
+        -- create folder
+        -- @TODO fali with error
         {
-            bufnr, 'n', '<leader>j',
-            '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts
+            bufnr,
+            'n',
+            '<space>wa',
+            ':lua vim.lsp.buf.add_workspace_folder()<CR>',
+            opts,
         },
+        -- remove folder
+        -- @TODO fali without error
         {
-            bufnr, 'n', '<leader>k',
-            '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts
-        }, -- actions
-        {bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts},
-        {
-            bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-            opts
+            bufnr,
+            'n',
+            '<space>wr',
+            ':lua vim.lsp.buf.remove_workspace_folder()<CR>',
+            opts,
         },
-        -- { bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts },
+        -- show workspace folders
         {
-            bufnr, 'n', '<leader>o',
-            '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts
-        }
+            bufnr,
+            'n',
+            '<space>wl',
+            ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+            opts,
+        },
     })
-
 end
 
 local setup_servers = function()
@@ -52,7 +76,11 @@ local setup_servers = function()
     local servers = lspinstall.installed_servers()
 
     for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup({on_attach = on_attach_callback})
+        lspconfig[lsp].setup({
+            on_attach = on_attach_callback,
+            -- @TODO find out what debounce_text_changes does
+            flags = {debounce_text_changes = 150},
+        })
     end
 end
 
