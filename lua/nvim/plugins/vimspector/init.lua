@@ -24,7 +24,7 @@ Keybind.g({
 	{ 'n', '<leader>dh', ':call vimspector#StepOut()<cr>', opts },
 
 	-- step over
-	{ 'n', '<leader>j', ':call vimspector#StepOver()<cr>', opts },
+	{ 'n', '<leader>dj', ':call vimspector#StepOver()<cr>', opts },
 
 	-- continue
 	-- this will continue the execution unless there is a breakpoint
