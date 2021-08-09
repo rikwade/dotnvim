@@ -115,7 +115,10 @@ return require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
     -- popup terminal
-    use {'s1n7ax/nvim-terminal'}
+    use {
+        's1n7ax/nvim-terminal',
+        config = function() require('nvim.plugins.nvim-terminal') end,
+    }
 
     ----------------------------------------------------------------------
     --                              EDITOR                              --
@@ -157,8 +160,6 @@ return require('packer').startup(function()
         'haringsrob/nvim_context_vt',
         config = function() require('nvim_context_vt').setup() end,
     }
-
-    use {'xiyaowong/nvim-cursorword'}
 
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
