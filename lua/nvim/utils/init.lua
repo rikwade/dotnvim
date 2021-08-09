@@ -1,3 +1,5 @@
+G = {}
+V = vim
 API = vim.api
 FN = vim.fn
 

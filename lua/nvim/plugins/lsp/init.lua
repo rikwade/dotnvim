@@ -2,6 +2,17 @@ local compe = require('nvim.plugins.nvim-compe')
 local lspconfig = require('lspconfig')
 local lspinstall = require('lspinstall')
 
+
+function G.buf_update_diagnostics()
+    local clients = vim.lsp.buf_get_clients()
+    local buf = vim.api.nvim_get_current_buf()
+
+    for _, client in ipairs(clients) do
+        local diagnostics = vim.lsp.diagnostic.get(buf, client.id)
+        vim.lsp.diagnostic.display(diagnostics, buf, client.id)
+    end
+end
+
 local on_attach_callback = function(_, bufnr)
     local opts = {noremap = true}
 
@@ -68,7 +79,14 @@ local on_attach_callback = function(_, bufnr)
             opts,
         },
     })
+
+
+    vim.o.updatetime = 700
+    vim.api.nvim_exec([[
+        au CursorHold <buffer> lua G.buf_update_diagnostics()
+    ]], false)
 end
+
 
 local setup_servers = function()
     lspinstall.setup()
@@ -79,7 +97,10 @@ local setup_servers = function()
         lspconfig[lsp].setup({
             on_attach = on_attach_callback,
             -- @TODO find out what debounce_text_changes does
-            flags = {debounce_text_changes = 150},
+            flags = {
+                debounce_text_changes = 20
+            },
+            update_in_insert = false
         })
     end
 end
