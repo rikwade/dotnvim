@@ -98,7 +98,7 @@ Option.g({
     -- assign unnamedplus register to clipboard
     -- anything in the clipboard can be pasted directly
     -- any yanked text will be copied to clipboard
-    clipboard = 'unnamedplus'
+    clipboard = 'unnamedplus',
 })
 
 Option.w({
@@ -123,12 +123,12 @@ Option.w({
     -- vim try to keep 100 lines below and above when scrolling
     -- if buffer cannot display more than 200 lines, cursor will stay in center
     -- and scroll the buffer
-    scrolloff = 15
+    scrolloff = 15,
 })
 
 Option.b({
 
     -- set the tab size to length of 4 spaces
     -- shiftwidth set the indentation length
-    shiftwidth = 4
+    shiftwidth = 4,
 })
