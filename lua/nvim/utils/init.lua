@@ -2,6 +2,8 @@ G = {}
 V = vim
 API = vim.api
 FN = vim.fn
+LSP = vim.lsp
+CMD = vim.cmd
 
 Option = require('nvim.utils.option')
 Variable = require('nvim.utils.variable')
