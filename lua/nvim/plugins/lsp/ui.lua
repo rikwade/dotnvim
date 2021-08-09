@@ -1,14 +1,32 @@
 local border = {
-    {'🭽', 'FloatBorder'},
-    {'▔', 'FloatBorder'},
-    {'🭾', 'FloatBorder'},
-    {'▕', 'FloatBorder'},
-    {'🭿', 'FloatBorder'},
-    {'▁', 'FloatBorder'},
-    {'🭼', 'FloatBorder'},
-    {'▏', 'FloatBorder'},
+    {'╭', 'FloatBorder'},
+
+    {'─', 'FloatBorder'},
+
+    {'╮', 'FloatBorder'},
+
+    {'│', 'FloatBorder'},
+
+    {'╯', 'FloatBorder'},
+
+    {'─', 'FloatBorder'},
+
+    {'╰', 'FloatBorder'},
+
+    {'│', 'FloatBorder'},
 }
 
+local signs = {
+    Error = ' ',
+    Warning = ' ',
+    Hint = ' ',
+    Information = ' ',
+}
+
+for type, icon in pairs(signs) do
+    local hl = 'LspDiagnosticsSign' .. type
+    FN.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
 
 CMD([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
 CMD([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
