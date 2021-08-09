@@ -155,12 +155,6 @@ return require('packer').startup(function()
         config = function() require('nvim-comment-frame').setup() end,
     }
 
-    -- shows start line at block end
-    use {
-        'haringsrob/nvim_context_vt',
-        config = function() require('nvim_context_vt').setup() end,
-    }
-
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
