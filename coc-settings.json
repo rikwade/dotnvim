@@ -35,12 +35,12 @@
   ],
 
   "suggest.highPrioritySourceLimit": 10,
-  "suggest.languageSourcePriority": 100,
+  "suggest.languageSourcePriority": 95,
   "suggest.lowPrioritySourceLimit": 90,
   "tabnine.priority": 50,
   "coc.source.file.priority": 70,
   "coc.source.buffer.priority": 60,
-  "snippets.priority": 30,
+  "snippets.priority": 100,
   "yank.priority": 10,
   "suggest.minTriggerInputLength": 0,
   "suggest.triggerCompletionWait": 30,
@@ -55,7 +55,7 @@
   "suggest.numberSelect": false,
   "suggest.triggerAfterInsertEnter": false,
   "suggest.detailField": "menu",
-  "suggest.keepCompleteopt": true,
+  "suggest.keepCompleteopt": false,
   "suggest.noselect": false,
   "cSpell.userWords": [
     "CVAT",
