@@ -178,11 +178,24 @@ return require('packer').startup(function()
 			require('material').set()
 		end
 	}
-    --]]
     use {
         'rafamadriz/neon',
         config = function() Command.cmd({'colorscheme neon'}) end,
     }
+    --]]
+
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            Variable.g({
+                rose_pine_enable_italics = true,
+                rose_pine_disable_background = false,
+            })
+
+            require('rose-pine').set()
+        end,
+    })
 
     ----------------------------------------------------------------------
     --                              OTHER                               --
