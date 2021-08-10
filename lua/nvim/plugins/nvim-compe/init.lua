@@ -16,7 +16,7 @@ require('compe').setup({
         winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
         max_width = 120,
         min_width = 60,
-        max_height = math.floor(vim.o.lines * 0.3),
+        max_height = math.floor(V.o.lines * 0.3),
         min_height = 1
     },
 
@@ -33,7 +33,7 @@ require('compe').setup({
 })
 
 local function on_attach(bufnr)
-    local opt = {silent = true, expr = true}
+    local opt = {silent = true, expr = true, noremap = false}
     Keybind.b({
         {bufnr, 'i', '<c-space>', 'compe#complete()', opt},
         {bufnr, 'i', '<CR>', "compe#confirm('<CR>')", opt}
