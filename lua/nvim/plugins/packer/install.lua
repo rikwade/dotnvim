@@ -30,13 +30,13 @@ return require('packer').startup(function()
         branch = 'release',
         ft = {
             'java',
-            'json',
-            'html',
-            'markdown',
-            'javascript',
-            'javascriptreact',
-            'php',
-            'css',
+            -- 'json',
+            -- 'html',
+            -- 'markdown',
+            -- 'javascript',
+            -- 'javascriptreact',
+            -- 'php',
+            -- 'css',
         },
         config = function() require('nvim.plugins.coc-nvim') end,
     }
@@ -122,7 +122,7 @@ return require('packer').startup(function()
     -- popup terminal
     use {
         's1n7ax/nvim-terminal',
-        config = function() require('nvim.plugins.nvim-terminal') end,
+        config = function() require('nvim-terminal').setup() end,
     }
 
     ----------------------------------------------------------------------
