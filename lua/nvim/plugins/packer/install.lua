@@ -22,7 +22,7 @@ return require('packer').startup(function()
     -- AUTO COMPLETION FEATURES FOR LSP
     use {
         'hrsh7th/nvim-cmp',
-        config = function() require('nvim.plugins.cmp') end,
+        config = function() require('nvim.plugins.nvim-cmp') end,
         requires = {
             'dcampos/cmp-snippy',
             'dcampos/nvim-snippy',
