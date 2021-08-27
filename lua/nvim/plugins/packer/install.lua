@@ -6,8 +6,6 @@ return require('packer').startup(function()
     --                               LSP                                --
     ----------------------------------------------------------------------
 
-    -- AUTO COMPLETION FEATURES FOR LSP
-    -- use {'hrsh7th/nvim-compe'}
     use {
         'kabouzeid/nvim-lspinstall',
         run = function()
@@ -19,24 +17,16 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         config = function() require('nvim.plugins.lsp') end,
-        requires = {
-            {'ms-jpq/coq_nvim', branch = 'coq'},
-            {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-        },
     }
+
+    -- AUTO COMPLETION FEATURES FOR LSP
+    use {'hrsh7th/nvim-compe'}
 
     use {
         'neoclide/coc.nvim',
         branch = 'release',
         ft = {
             'java',
-            -- 'json',
-            -- 'html',
-            -- 'markdown',
-            -- 'javascript',
-            -- 'javascriptreact',
-            -- 'php',
-            -- 'css',
         },
         config = function() require('nvim.plugins.coc-nvim') end,
     }
