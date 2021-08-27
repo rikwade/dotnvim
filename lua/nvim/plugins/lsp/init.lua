@@ -1,11 +1,9 @@
-local compe = require('nvim.plugins.nvim-compe')
 local lspconfig = require('lspconfig')
 local lspinstall = require('lspinstall')
 local keymaps = require('nvim.plugins.lsp.keymaps')
 local ui = require('nvim.plugins.lsp.ui')
 
 local on_attach_callback = function(_, bufnr)
-    compe.on_attach(bufnr)
     keymaps.on_attach(bufnr)
     ui.on_attach()
 end

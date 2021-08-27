@@ -11,7 +11,7 @@ return require('packer').startup(function()
         run = function()
             require('nvim.plugins.lspinstall').install_servers()
         end,
-        requires = {{'neovim/nvim-lspconfig'}},
+        requires = {'neovim/nvim-lspconfig'},
     }
 
     use {
@@ -20,14 +20,30 @@ return require('packer').startup(function()
     }
 
     -- AUTO COMPLETION FEATURES FOR LSP
-    use {'hrsh7th/nvim-compe'}
+    use {
+        'hrsh7th/nvim-cmp',
+        config = function() require('nvim.plugins.cmp') end,
+        requires = {
+            'dcampos/cmp-snippy',
+            'dcampos/nvim-snippy',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-emoji',
+            'hrsh7th/cmp-calc',
+            'f3fora/cmp-spell',
+        },
+    }
+
+    use {'dcampos/nvim-snippy', config = function()
+        require('nvim.plugins.nvim-snippy')
+    end}
 
     use {
         'neoclide/coc.nvim',
         branch = 'release',
-        ft = {
-            'java',
-        },
+        ft = {'java'},
         config = function() require('nvim.plugins.coc-nvim') end,
     }
 
