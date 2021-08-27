@@ -36,9 +36,11 @@ return require('packer').startup(function()
         },
     }
 
-    use {'dcampos/nvim-snippy', config = function()
-        require('nvim.plugins.nvim-snippy')
-    end}
+    use {
+        'dcampos/nvim-snippy',
+        config = function() require('nvim.plugins.nvim-snippy') end,
+        requires = {'honza/vim-snippets'},
+    }
 
     use {
         'neoclide/coc.nvim',
