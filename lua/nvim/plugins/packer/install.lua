@@ -42,13 +42,6 @@ return require('packer').startup(function()
         requires = {'honza/vim-snippets'},
     }
 
-    use {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        ft = {'java'},
-        config = function() require('nvim.plugins.coc-nvim') end,
-    }
-
     -- OTHER LANGUAGE SUPPORT
     -- markdown preview
     use {

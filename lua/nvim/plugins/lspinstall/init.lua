@@ -1,6 +1,7 @@
 local lspinstall = require('lspinstall')
 
 local languages = {
+    'java',
     'bash',
     'dockerfile',
     'lua',
