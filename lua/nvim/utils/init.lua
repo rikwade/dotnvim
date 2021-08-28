@@ -11,6 +11,7 @@ Keybind = require('nvim.utils.keybind')
 Command = require('nvim.utils.command')
 Editor = require('nvim.utils.editor')
 Pum = require('nvim.utils.pum')
+Log = require('nvim.utils.common.log')
 
 Vim = {
     Option = Option,
@@ -18,5 +19,6 @@ Vim = {
     Keybind = Keybind,
     Command = Command,
     Editor = Editor,
-    Pum = Pum
+    Pum = Pum,
+    Log = Log,
 }
