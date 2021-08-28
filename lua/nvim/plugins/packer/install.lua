@@ -6,20 +6,21 @@ return require('packer').startup(function()
     --                               LSP                                --
     ----------------------------------------------------------------------
 
+    -- lsp
     use {
         'kabouzeid/nvim-lspinstall',
         run = function()
             require('nvim.plugins.lspinstall').install_servers()
         end,
-        requires = {'neovim/nvim-lspconfig'},
+        requires = {
+            {
+                'neovim/nvim-lspconfig',
+                config = function() require('nvim.plugins.lsp') end,
+            },
+        },
     }
 
-    use {
-        'neovim/nvim-lspconfig',
-        config = function() require('nvim.plugins.lsp') end,
-    }
-
-    -- AUTO COMPLETION FEATURES FOR LSP
+    -- completion menu
     use {
         'hrsh7th/nvim-cmp',
         config = function() require('nvim.plugins.nvim-cmp') end,
@@ -33,16 +34,15 @@ return require('packer').startup(function()
             'hrsh7th/cmp-emoji',
             'hrsh7th/cmp-calc',
             'f3fora/cmp-spell',
+            {
+                's1n7ax/vim-snippets',
+                config = function()
+                    require('nvim.plugins.nvim-snippy')
+                end,
+            },
         },
     }
 
-    use {
-        's1n7ax/vim-snippets',
-        config = function() require('nvim.plugins.nvim-snippy') end,
-        requires = {'honza/vim-snippets'},
-    }
-
-    -- OTHER LANGUAGE SUPPORT
     -- markdown preview
     use {
         'iamcco/markdown-preview.nvim',
