@@ -22,7 +22,7 @@ local prettier_formatter = function()
         table.insert(args, '--config ' .. prettier_conf)
     end
 
-    return {exe = 'prettier', args = args, stdin = true}
+    return {exe = 'yarn run prettier', args = args, stdin = true}
 end
 
 require('formatter').setup({
