@@ -1,26 +1,40 @@
 local rockbin = require('packer.luarocks').get_bin_path()
 local util = require('packer.util')
+local file_util = require('nvim.utils.file')
+local os_util = require('nvim.utils.os')
+
 local luaformat = util.join_paths(rockbin, 'lua-format')
 
-require("formatter").setup({
+local prettier_formatter = function()
+    local args = {'--stdin-filepath', API.nvim_buf_get_name(0)}
+
+    local prettier_conf = nil
+
+    os_util.run_on_os({
+        linux = function()
+            local home = os.getenv('HOME')
+            prettier_conf = home .. '/.config/prettier/prettierrc.json'
+        end,
+        -- @TODO add pretteir conf for windows and mac
+    })
+
+    if file_util.exists(prettier_conf) then
+        table.insert(args, '--config ' .. prettier_conf)
+    end
+
+    return {exe = 'prettier', args = args, stdin = true}
+end
+
+require('formatter').setup({
     logging = false,
     filetype = {
-        javascript = {
-            function()
-                return {
-                    exe = "prettier",
-                    args = {
-                        "--stdin-filepath", API.nvim_buf_get_name(0),
-                        "--single-quote"
-                    },
-                    stdin = true
-                }
-            end
-        },
+        javascript = {prettier_formatter},
+        java = {prettier_formatter},
+        json = {prettier_formatter},
         rust = {
             function()
-                return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
-            end
+                return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true}
+            end,
         },
         lua = {function()
             return {exe = luaformat, args = {}, stdin = true}
@@ -28,12 +42,12 @@ require("formatter").setup({
         cpp = {
             function()
                 return {
-                    exe = "clang-format",
+                    exe = 'clang-format',
                     args = {},
                     stdin = true,
-                    cwd = FN.expand("%:p:h")
+                    cwd = FN.expand('%:p:h'),
                 }
-            end
-        }
-    }
+            end,
+        },
+    },
 })
