@@ -78,7 +78,6 @@ return require('packer').startup(function()
     -- File explorer and its icons
     use {
         'kyazdani42/nvim-tree.lua',
-        keys = '<C-n>',
         requires = {'kyazdani42/nvim-web-devicons'},
     }
 
@@ -145,10 +144,7 @@ return require('packer').startup(function()
     }
 
     -- status line
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-    }
+    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
     -- full screen mode
     use {
