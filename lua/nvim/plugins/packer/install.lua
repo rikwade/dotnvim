@@ -76,21 +76,21 @@ return require('packer').startup(function()
     --                               FILE                               --
     ----------------------------------------------------------------------
     -- File explorer and its icons
-    use {'kyazdani42/nvim-tree.lua'}
-    use {'kyazdani42/nvim-web-devicons'}
+    use {
+        'kyazdani42/nvim-tree.lua',
+        keys = '<C-n>',
+        requires = {'kyazdani42/nvim-web-devicons'},
+    }
 
     -- fuzzy search
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
     }
 
     ----------------------------------------------------------------------
     --                               GIT                                --
     ----------------------------------------------------------------------
-    -- git client
-    use {'tpope/vim-fugitive'}
-
     -- git file changes
     use {
         'lewis6991/gitsigns.nvim',
@@ -147,18 +147,20 @@ return require('packer').startup(function()
     -- status line
     use {
         'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        requires = {'kyazdani42/nvim-web-devicons'},
     }
 
     -- full screen mode
     use {
         'folke/zen-mode.nvim',
+        keys = '<leader><leader>',
         config = function() require('nvim.plugins.zen-mode') end,
     }
 
     -- comment frame
     use {
         's1n7ax/nvim-comment-frame',
+        keys = '<leader>cf',
         requires = {'nvim-treesitter'},
         config = function() require('nvim-comment-frame').setup() end,
     }
