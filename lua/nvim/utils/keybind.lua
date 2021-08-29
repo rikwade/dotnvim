@@ -23,6 +23,10 @@ Keybind.remove_global_keybinds = function(keybinds)
     end
 end
 
+Keybind.get_lua_cmd_string = function(cmd)
+    return '<cmd>lua ' .. cmd .. '<CR>'
+end
+
 Keybind.g = Keybind.add_global_keybinds
 Keybind.b = Keybind.add_buffer_keybinds
 Keybind.ug = Keybind.remove_global_keybinds

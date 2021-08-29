@@ -1,9 +1,7 @@
 require('nvim.plugins.packer.install')
 
-require('nvim.plugins.fugitive')
 require('nvim.plugins.telescope')
 require('nvim.plugins.nvim-tree')
-require('nvim.plugins.vimspector')
 require('nvim.plugins.vim-easymotion')
 require('nvim.plugins.treesitter')
 require('nvim.plugins.bufferline')

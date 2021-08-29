@@ -8,7 +8,8 @@ return require('packer').startup(function()
 
     -- lsp
     use {
-        'kabouzeid/nvim-lspinstall',
+        's1n7ax/nvim-lspinstall',
+        branch = 'feature/java-debugger-enabled-lsp',
         run = function()
             require('nvim.plugins.lspinstall').install_servers()
         end,
@@ -65,11 +66,12 @@ return require('packer').startup(function()
     use {
         'mfussenegger/nvim-dap',
         config = function() require('nvim.plugins.nvim-dap') end,
+        requires = {'theHamsta/nvim-dap-virtual-text'},
     }
+
     use {
-        'puremourning/vimspector',
-        ft = {'python'},
-        -- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+        'theHamsta/nvim-dap-virtual-text',
+        config = function() Variable.g({dap_virtual_text = true}) end,
     }
 
     ----------------------------------------------------------------------
