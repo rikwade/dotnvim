@@ -1,4 +1,4 @@
-local Pattern = require('nvim.utils.common.pattern')
+local Pattern = R'nvim.utils.common.pattern'
 
 local unload_package = function(package_name)
 	local esc_package_name = Pattern.escape_pattern(package_name)
@@ -12,7 +12,7 @@ end
 
 local reload_package = function(package_name)
 	unload_package(package_name)
-	require(package_name)
+	Rpackage_name
 end
 
 return {

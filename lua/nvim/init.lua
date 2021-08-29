@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
-require('nvim.utils')
-require('nvim.plugins')
-require('nvim.general')
+R'nvim.global'
+R'nvim.utils'
+R'nvim.plugins'
+R'nvim.general'

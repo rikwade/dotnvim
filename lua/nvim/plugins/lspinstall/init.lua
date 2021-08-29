@@ -1,4 +1,4 @@
-local lspinstall = require('lspinstall')
+local lspinstall = R'lspinstall'
 
 local languages = {
     'java',

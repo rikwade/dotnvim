@@ -1,10 +1,10 @@
-require('nvim.plugins.packer.install')
+R'nvim.plugins.packer.install'
 
-require('nvim.plugins.telescope')
-require('nvim.plugins.nvim-tree')
-require('nvim.plugins.vim-easymotion')
-require('nvim.plugins.treesitter')
-require('nvim.plugins.bufferline')
-require('nvim.plugins.markdown-preview')
-require('nvim.plugins.lualine')
-require('nvim.plugins.colorscheme')
+R'nvim.plugins.telescope'
+R'nvim.plugins.nvim-tree'
+R'nvim.plugins.vim-easymotion'
+R'nvim.plugins.treesitter'
+R'nvim.plugins.bufferline'
+R'nvim.plugins.markdown-preview'
+R'nvim.plugins.lualine'
+R'nvim.plugins.colorscheme'

@@ -1,5 +1,5 @@
-Coc = require('nvim.plugins.coc-nvim.coc')
+Coc = R'nvim.plugins.coc-nvim.coc'
 
-require('nvim.plugins.coc-nvim.extensions')
-require('nvim.plugins.coc-nvim.options')
-require('nvim.plugins.coc-nvim.keybinds')
+R'nvim.plugins.coc-nvim.extensions'
+R'nvim.plugins.coc-nvim.options'
+R'nvim.plugins.coc-nvim.keybinds'

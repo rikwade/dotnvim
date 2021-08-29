@@ -1,4 +1,4 @@
-local validation = require('nvim.utils.rusty.validation')
+local validation = R'nvim.utils.rusty.validation'
 
 local e = vim.api.nvim_eval
 local input = vim.api.nvim_input

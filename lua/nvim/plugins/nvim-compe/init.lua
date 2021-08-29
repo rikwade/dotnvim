@@ -1,4 +1,4 @@
-require('compe').setup({
+R'compe'.setup({
     enabled = true,
     autocomplete = true,
     debug = false,

@@ -1,4 +1,4 @@
-local cmp = require('cmp')
+local cmp = R'cmp'
 
 cmp.setup({
     mapping = {
@@ -27,7 +27,7 @@ cmp.setup({
 
     snippet = {
         expand = function(args)
-            require('snippy').expand_snippet(args.body)
+            R'snippy'.expand_snippet(args.body)
         end,
     },
 })

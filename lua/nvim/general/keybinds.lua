@@ -9,7 +9,7 @@ Keybind.g({
     {
         'n',
         ',r',
-        [[:lua require('nvim.utils.common.module').reload_package('nvim')<CR>]],
+        [[:lua R'nvim.utils.common.module'.reload_package('nvim')<CR>]],
     },
 
     ----------------------------------------------------------------------

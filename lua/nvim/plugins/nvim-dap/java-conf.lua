@@ -1,5 +1,5 @@
-local lsp_util = require('nvim.utils.lsp.util')
-local dap = require('dap')
+local lsp_util = R'nvim.utils.lsp.util'
+local dap = R'dap'
 
 dap.adapters.java = function(callback)
     print('starting the debugger')

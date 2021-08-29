@@ -1,4 +1,4 @@
-require("zen-mode").setup({
+R"zen-mode".setup({
 	window = {
 		backdrop = 0.95,
 		width = 120,

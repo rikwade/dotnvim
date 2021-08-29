@@ -1,4 +1,4 @@
-require('gitsigns').setup({
+R'gitsigns'.setup({
 	numhl = false,
 	linehl = false,
 	keymaps = {

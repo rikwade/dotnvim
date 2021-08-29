@@ -1,4 +1,4 @@
-require('hop').setup({
+R'hop'.setup({
 	keys = 'arstneiodhpfwqluy;cxzm'
 })
 
