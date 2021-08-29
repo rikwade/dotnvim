@@ -12,4 +12,3 @@ Command = R 'nvim.utils.command'
 Editor = R 'nvim.utils.editor'
 Pum = R 'nvim.utils.pum'
 Log = R 'nvim.utils.common.log'
-

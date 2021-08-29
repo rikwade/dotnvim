@@ -1,4 +1,4 @@
-R 'compe'.setup({
+R'compe'.setup({
     enabled = true,
     autocomplete = true,
     debug = false,
@@ -13,11 +13,11 @@ R 'compe'.setup({
     max_menu_width = 100,
     documentation = {
         border = {'', '', '', ' ', '', '', '', ' '},
-        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+        winhighlight = 'NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder',
         max_width = 120,
         min_width = 60,
         max_height = math.floor(V.o.lines * 0.3),
-        min_height = 1
+        min_height = 1,
     },
 
     source = {
@@ -28,15 +28,15 @@ R 'compe'.setup({
         nvim_lua = true,
         vsnip = false,
         ultisnips = false,
-        luasnip = false
-    }
+        luasnip = false,
+    },
 })
 
 local function on_attach(bufnr)
     local opt = {silent = true, expr = true, noremap = false}
     Keybind.b({
         {bufnr, 'i', '<c-space>', 'compe#complete()', opt},
-        {bufnr, 'i', '<CR>', "compe#confirm('<CR>')", opt}
+        {bufnr, 'i', '<CR>', 'compe#confirm(\'<CR>\')', opt},
     })
 end
 

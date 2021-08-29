@@ -1,3 +1,1 @@
-R 'lualine'.setup {
-	options = {theme = 'palenight'}
-}
+R'lualine'.setup {options = {theme = 'palenight'}}

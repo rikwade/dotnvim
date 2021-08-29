@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 R 'nvim.global'
 R 'nvim.utils'

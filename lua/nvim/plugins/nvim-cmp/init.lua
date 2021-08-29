@@ -25,9 +25,5 @@ cmp.setup({
         {name = 'calc'},
     },
 
-    snippet = {
-        expand = function(args)
-            R 'snippy'.expand_snippet(args.body)
-        end,
-    },
+    snippet = {expand = function(args) R'snippy'.expand_snippet(args.body) end},
 })

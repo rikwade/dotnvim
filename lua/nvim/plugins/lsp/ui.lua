@@ -1,4 +1,3 @@
-
 local border = {
     {'╭', 'FloatBorder'},
 

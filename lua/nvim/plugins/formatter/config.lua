@@ -1,4 +1,4 @@
-local rockbin = R 'packer.luarocks'.get_bin_path()
+local rockbin = R'packer.luarocks'.get_bin_path()
 local util = R 'packer.util'
 local file_util = R 'nvim.utils.file'
 local os_util = R 'nvim.utils.os'
@@ -39,7 +39,7 @@ local prettier_formatter = function(...)
     end
 end
 
-R 'formatter'.setup({
+R'formatter'.setup({
     logging = false,
     filetype = {
         javascript = {prettier_formatter('--parser typescript')},

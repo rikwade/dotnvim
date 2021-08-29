@@ -1,4 +1,4 @@
-return R 'packer'.startup(function()
+return R'packer'.startup(function()
     -- This is just to get rid of LSP errors on each line
     local use = use
 
@@ -10,9 +10,7 @@ return R 'packer'.startup(function()
     use {
         's1n7ax/nvim-lspinstall',
         branch = 'feature/java-debugger-enabled-lsp',
-        run = function()
-            R 'nvim.plugins.lspinstall'.install_servers()
-        end,
+        run = function() R'nvim.plugins.lspinstall'.install_servers() end,
         requires = {
             {
                 'neovim/nvim-lspconfig',
@@ -37,9 +35,7 @@ return R 'packer'.startup(function()
             'f3fora/cmp-spell',
             {
                 's1n7ax/vim-snippets',
-                config = function()
-                    R 'nvim.plugins.nvim-snippy'
-                end,
+                config = function() R 'nvim.plugins.nvim-snippy' end,
             },
         },
     }
@@ -104,7 +100,7 @@ return R 'packer'.startup(function()
     ----------------------------------------------------------------------
     use {
         's1n7ax/nvim-lazy-inner-block',
-        config = function() R 'nvim-lazy-inner-block'.setup() end,
+        config = function() R'nvim-lazy-inner-block'.setup() end,
     }
 
     -- auto pair brackets
@@ -126,7 +122,7 @@ return R 'packer'.startup(function()
     -- popup terminal
     use {
         's1n7ax/nvim-terminal',
-        config = function() R 'nvim-terminal'.setup() end,
+        config = function() R'nvim-terminal'.setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -160,7 +156,7 @@ return R 'packer'.startup(function()
         's1n7ax/nvim-comment-frame',
         keys = '<leader>cf',
         requires = {'nvim-treesitter'},
-        config = function() R 'nvim-comment-frame'.setup() end,
+        config = function() R'nvim-comment-frame'.setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -201,7 +197,7 @@ return R 'packer'.startup(function()
                 rose_pine_disable_background = false,
             })
 
-            R 'rose-pine'.set()
+            R'rose-pine'.set()
         end,
     })
 

@@ -1,3 +1,5 @@
+local l = Keybind.get_lua_cmd_string
+
 ----------------------------------------------------------------------
 --                           NORMAL MODE                            --
 ----------------------------------------------------------------------
@@ -87,10 +89,10 @@ Keybind.g({
     {'i', '<c-l>', '<right>'},
 
     -- [ ctrl + j ] hit down arrow key
-    {'i', '<c-j>', '<cmd>lua Pum.goto_next({ keybind = "<lt>down>" })<cr>'},
+    {'i', '<c-j>', l'Pum.goto_next({ keybind = "<lt>down>" })'},
 
     -- [ ctrl + k ] hit up arrow key
-    {'i', '<c-k>', '<cmd>lua Pum.goto_prev({ keybind = "<lt>up>" })<cr>'},
+    {'i', '<c-k>', l'Pum.goto_prev({ keybind = "<lt>up>" })'},
 
     ----------------------------------------------------------------------
     --                          CUT COPY PASTE                          --
