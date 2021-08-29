@@ -1,4 +1,4 @@
-return R'packer'.startup(function()
+return R 'packer'.startup(function()
     -- This is just to get rid of LSP errors on each line
     local use = use
 
@@ -11,12 +11,12 @@ return R'packer'.startup(function()
         's1n7ax/nvim-lspinstall',
         branch = 'feature/java-debugger-enabled-lsp',
         run = function()
-            R'nvim.plugins.lspinstall'.install_servers()
+            R 'nvim.plugins.lspinstall'.install_servers()
         end,
         requires = {
             {
                 'neovim/nvim-lspconfig',
-                config = function() R'nvim.plugins.lsp' end,
+                config = function() R 'nvim.plugins.lsp' end,
             },
         },
     }
@@ -24,7 +24,7 @@ return R'packer'.startup(function()
     -- completion menu
     use {
         'hrsh7th/nvim-cmp',
-        config = function() R'nvim.plugins.nvim-cmp' end,
+        config = function() R 'nvim.plugins.nvim-cmp' end,
         requires = {
             'dcampos/cmp-snippy',
             'dcampos/nvim-snippy',
@@ -38,7 +38,7 @@ return R'packer'.startup(function()
             {
                 's1n7ax/vim-snippets',
                 config = function()
-                    R'nvim.plugins.nvim-snippy'
+                    R 'nvim.plugins.nvim-snippy'
                 end,
             },
         },
@@ -57,7 +57,7 @@ return R'packer'.startup(function()
         rocks = {'luaformatter', server = 'https://luarocks.org/dev'},
         run = {'yarn global add prettier prettier-plugin-java'},
         keys = '<leader>f',
-        config = function() R'nvim.plugins.formatter' end,
+        config = function() R 'nvim.plugins.formatter' end,
     }
 
     ----------------------------------------------------------------------
@@ -65,7 +65,7 @@ return R'packer'.startup(function()
     ----------------------------------------------------------------------
     use {
         'mfussenegger/nvim-dap',
-        config = function() R'nvim.plugins.nvim-dap' end,
+        config = function() R 'nvim.plugins.nvim-dap' end,
         requires = {'theHamsta/nvim-dap-virtual-text'},
     }
 
@@ -96,7 +96,7 @@ return R'packer'.startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() R'nvim.plugins.gitsigns' end,
+        config = function() R 'nvim.plugins.gitsigns' end,
     }
 
     ----------------------------------------------------------------------
@@ -104,7 +104,7 @@ return R'packer'.startup(function()
     ----------------------------------------------------------------------
     use {
         's1n7ax/nvim-lazy-inner-block',
-        config = function() R'nvim-lazy-inner-block'.setup() end,
+        config = function() R 'nvim-lazy-inner-block'.setup() end,
     }
 
     -- auto pair brackets
@@ -126,7 +126,7 @@ return R'packer'.startup(function()
     -- popup terminal
     use {
         's1n7ax/nvim-terminal',
-        config = function() R'nvim-terminal'.setup() end,
+        config = function() R 'nvim-terminal'.setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -142,7 +142,7 @@ return R'packer'.startup(function()
     use {
         'phaazon/hop.nvim',
         as = 'hop',
-        config = function() R'nvim.plugins.hop' end,
+        config = function() R 'nvim.plugins.hop' end,
     }
 
     -- status line
@@ -152,7 +152,7 @@ return R'packer'.startup(function()
     use {
         'folke/zen-mode.nvim',
         keys = '<leader><leader>',
-        config = function() R'nvim.plugins.zen-mode' end,
+        config = function() R 'nvim.plugins.zen-mode' end,
     }
 
     -- comment frame
@@ -160,7 +160,7 @@ return R'packer'.startup(function()
         's1n7ax/nvim-comment-frame',
         keys = '<leader>cf',
         requires = {'nvim-treesitter'},
-        config = function() R'nvim-comment-frame'.setup() end,
+        config = function() R 'nvim-comment-frame'.setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -183,7 +183,7 @@ return R'packer'.startup(function()
 				material_disable_background = false,
 			})
 
-			R'material'.set()
+			R 'material'.set()
 		end
 	}
     use {
@@ -201,7 +201,7 @@ return R'packer'.startup(function()
                 rose_pine_disable_background = false,
             })
 
-            R'rose-pine'.set()
+            R 'rose-pine'.set()
         end,
     })
 

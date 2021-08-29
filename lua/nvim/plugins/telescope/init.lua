@@ -1,4 +1,4 @@
-local actions = R'telescope.actions'
+local actions = R 'telescope.actions'
 
 Keybind.g({
     ----------------------------------------------------------------------
@@ -44,4 +44,4 @@ Keybind.g({
     },
 })
 
-R'telescope'.setup()
+R 'telescope'.setup()

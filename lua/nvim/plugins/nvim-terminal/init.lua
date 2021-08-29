@@ -1,5 +1,5 @@
-local Terminal = R'nvim-terminal'.Terminal
-local Window = R'nvim-terminal'.Window
+local Terminal = R 'nvim-terminal'.Terminal
+local Window = R 'nvim-terminal'.Window
 
 window = Window:new({
 	pos = 'botright',
