@@ -8,8 +8,7 @@ return R'packer'.startup(function()
 
     -- lsp
     use {
-        's1n7ax/nvim-lspinstall',
-        branch = 'feature/java-debugger-enabled-lsp',
+        'kabouzeid/nvim-lspinstall',
         run = function() R'nvim.plugins.lspinstall'.install_servers() end,
         requires = {
             {

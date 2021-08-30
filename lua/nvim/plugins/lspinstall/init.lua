@@ -2,15 +2,15 @@ local lspinstall = R 'lspinstall'
 
 local languages = {
     'java',
-    -- 'bash',
-    -- 'dockerfile',
-    -- 'lua',
-    -- 'python',
-    -- 'rust',
-    -- 'json',
-    -- 'typescript',
-    -- 'css',
-    -- 'html',
+    'bash',
+    'dockerfile',
+    'lua',
+    'python',
+    'rust',
+    'json',
+    'typescript',
+    'css',
+    'html',
 }
 
 local install_servers = function()

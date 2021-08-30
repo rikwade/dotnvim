@@ -12,7 +12,7 @@ end
 
 local reload_package = function(package_name)
 	unload_package(package_name)
-	Rpackage_name
+	R(package_name)
 end
 
 return {
