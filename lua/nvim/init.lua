@@ -1,3 +1,5 @@
+--tirsetni
+--trstst
 vim.g.mapleader = " "
 
 require('nvim.utils')
