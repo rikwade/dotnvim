@@ -61,7 +61,14 @@ return R'packer'.startup(function()
     use {
         'mfussenegger/nvim-dap',
         config = function() R 'nvim.plugins.nvim-dap' end,
-        requires = {'theHamsta/nvim-dap-virtual-text'},
+        requires = {'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text'},
+    }
+
+    use {
+        'rcarriga/nvim-dap-ui',
+        config = function ()
+            R 'nvim.plugins.nvim-dap-ui'
+        end
     }
 
     use {

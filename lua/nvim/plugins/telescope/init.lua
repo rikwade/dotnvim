@@ -1,5 +1,4 @@
 local l = Keybind.get_lua_cmd_string
-local actions = R 'telescope.actions'
 
 Keybind.g({
     ----------------------------------------------------------------------
