@@ -66,9 +66,7 @@ return R'packer'.startup(function()
 
     use {
         'rcarriga/nvim-dap-ui',
-        config = function ()
-            R 'nvim.plugins.nvim-dap-ui'
-        end
+        config = function() R 'nvim.plugins.nvim-dap-ui' end,
     }
 
     use {
