@@ -127,6 +127,11 @@ return R'packer'.startup(function()
         config = function() R 'nvim.plugins.playground' end,
     }
 
+    use {
+        'David-Kunz/treesitter-unit',
+        config = function() R 'nvim.plugins.treesitter-unit' end,
+    }
+
     -- treesitter text objects
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
