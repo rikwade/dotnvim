@@ -120,6 +120,13 @@ return R'packer'.startup(function()
         run = ':TSUpdate',
     }
 
+    use {
+        'nvim-treesitter/playground',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+        cmd = 'TSPlaygroundToggle',
+        config = function() R 'nvim.plugins.playground' end,
+    }
+
     -- treesitter text objects
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
