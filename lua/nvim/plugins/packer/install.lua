@@ -140,6 +140,10 @@ return R'packer'.startup(function()
         's1n7ax/nvim-terminal',
         config = function() R'nvim-terminal'.setup() end,
     }
+    use {
+        's1n7ax/nvim-search-and-replace',
+        config = function() require'nvim-search-and-replace'.setup() end,
+    }
 
     ----------------------------------------------------------------------
     --                              EDITOR                              --
