@@ -10,7 +10,7 @@ local on_attach = function(bufnr)
         {bufnr, 'n', 'gt', l'vim.lsp.buf.type_definition()', opts},
         {bufnr, 'n', 'K', l'vim.lsp.buf.hover()', opts},
         {bufnr, 'n', 'gD', l'vim.lsp.buf.declaration()', opts},
-        {bufnr, 'n', '<c-k>', l'vim.lsp.buf.signature_help()', opts},
+        -- {bufnr, 'n', '<c-n>', l'vim.lsp.buf.signature_help()', opts},
         -- jump to next error
         {bufnr, 'n', ']d', l'vim.lsp.diagnostic.goto_next()', opts},
         -- jump to previous error
