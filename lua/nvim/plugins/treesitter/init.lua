@@ -27,7 +27,7 @@ R'nvim-treesitter.configs'.setup({
                 ['af'] = '@function.outer',
                 ['f'] = '@function.inner',
                 ['ac'] = '@class.outer',
-                ['c'] = '@class.inner',
+                ['ic'] = '@class.inner',
 
                 -- Or you can define your own textobjects like this
                 ['iF'] = {
