@@ -138,11 +138,12 @@ return R'packer'.startup(function()
     -- popup terminal
     use {
         's1n7ax/nvim-terminal',
-        config = function() R'nvim-terminal'.setup() end,
+        config = function() R 'nvim.plugins.nvim-terminal' end,
     }
     use {
         's1n7ax/nvim-search-and-replace',
-        config = function() require'nvim-search-and-replace'.setup() end,
+        config = function() R'nvim-search-and-replace'.setup() end,
+    }
 
     use {
         'winston0410/commented.nvim',
