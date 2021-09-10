@@ -143,6 +143,11 @@ return R'packer'.startup(function()
     use {
         's1n7ax/nvim-search-and-replace',
         config = function() require'nvim-search-and-replace'.setup() end,
+
+    use {
+        'winston0410/commented.nvim',
+        requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function() R 'nvim.plugins.nvim-commented' end,
     }
 
     ----------------------------------------------------------------------
