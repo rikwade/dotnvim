@@ -1,3 +1,5 @@
+CMD('command Dap :lua require"dapui".toggle()')
+
 R'dapui'.setup {
     icons = { expanded = '▾', collapsed = '▸' },
     mappings = {
