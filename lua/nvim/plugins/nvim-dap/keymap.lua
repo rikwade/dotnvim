@@ -14,7 +14,7 @@ Keybind.g({
     {'n', '<leader>dj', l'R"dap".down()', opts},
     {'n', '<leader>dr', l'R"dap".restart()', opts},
 
-    {'n', '<leader>dh', l'R"dap.ui.widgets".hover()', opts},
+    {'n', '<leader>dh', l'R"dap.ui.variables".hover()', opts},
     {'v', '<leader>dh', l'R"dap.ui.variables".visual_hover()', opts},
     {
         'n',
