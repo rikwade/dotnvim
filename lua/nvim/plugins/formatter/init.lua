@@ -1,2 +1,2 @@
-require('nvim.plugins.formatter.config')
-require('nvim.plugins.formatter.keybinds')
+R 'nvim.plugins.formatter.config'
+R 'nvim.plugins.formatter.keybinds'

@@ -42,7 +42,7 @@ Option.g({
     updatetime = 300,
 
     -- controls how short messages are displayed in status bar section
-    shortmess = vim.o.shortmess .. 'c',
+    shortmess = V.o.shortmess .. 'c',
 
     -- open completion menu even for single item
     -- do not auto insert items from completion menu
@@ -66,6 +66,12 @@ Option.g({
 
     -- highlight the current cursor line.
     cursorline = true,
+
+    -- wrap line
+    -- breakindent = false,
+
+    -- wrap line custom character to show
+    -- showbreak = '↳',
 
     ----------------------------------------------------------------------
     --                             EDITING                              --

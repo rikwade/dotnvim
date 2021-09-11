@@ -1,11 +1,13 @@
-local lspconfig = require('lspconfig')
-local lspinstall = require('lspinstall')
-local keymaps = require('nvim.plugins.lsp.keymaps')
-local ui = require('nvim.plugins.lsp.ui')
+local lspconfig = R 'lspconfig'
+local lspinstall = R 'lspinstall'
+local keymaps = R 'nvim.plugins.lsp.keymaps'
+local ui = R 'nvim.plugins.lsp.ui'
+local dap = R 'nvim.plugins.nvim-dap'
 
-local on_attach_callback = function(_, bufnr)
+local on_attach_callback = function(conf, bufnr)
     keymaps.on_attach(bufnr)
     ui.on_attach()
+    dap.on_attach(conf, bufnr)
 end
 
 local setup_servers = function()
@@ -13,12 +15,23 @@ local setup_servers = function()
 
     local servers = lspinstall.installed_servers()
 
-    for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup({
-            on_attach = on_attach_callback,
-            -- @TODO find out what debounce_text_changes does
-            flags = {debounce_text_changes = 20},
-        })
+    for _, ls in ipairs(servers) do
+        local config = { on_attach = on_attach_callback }
+
+        if ls == 'java' then
+            config['init_options'] = {
+                bundles = {
+                    FN.glob(
+                        V.loop.os_homedir() ..
+                            '/.m2/repository/com/microsoft/java' ..
+                            '/com.microsoft.java.debug.plugin/0.32.0/' ..
+                            'com.microsoft.java.debug.plugin-0.32.0.jar'
+                    ),
+                },
+            }
+        end
+
+        lspconfig[ls].setup(config)
     end
 
 end

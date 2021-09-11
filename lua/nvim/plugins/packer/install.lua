@@ -1,4 +1,4 @@
-return require('packer').startup(function()
+return R'packer'.startup(function()
     -- This is just to get rid of LSP errors on each line
     local use = use
 
@@ -9,13 +9,11 @@ return require('packer').startup(function()
     -- lsp
     use {
         'kabouzeid/nvim-lspinstall',
-        run = function()
-            require('nvim.plugins.lspinstall').install_servers()
-        end,
+        run = function() R'nvim.plugins.lspinstall'.install_servers() end,
         requires = {
             {
                 'neovim/nvim-lspconfig',
-                config = function() require('nvim.plugins.lsp') end,
+                config = function() R 'nvim.plugins.lsp' end,
             },
         },
     }
@@ -23,7 +21,7 @@ return require('packer').startup(function()
     -- completion menu
     use {
         'hrsh7th/nvim-cmp',
-        config = function() require('nvim.plugins.nvim-cmp') end,
+        config = function() R 'nvim.plugins.nvim-cmp' end,
         requires = {
             'dcampos/cmp-snippy',
             'dcampos/nvim-snippy',
@@ -36,9 +34,7 @@ return require('packer').startup(function()
             'f3fora/cmp-spell',
             {
                 's1n7ax/vim-snippets',
-                config = function()
-                    require('nvim.plugins.nvim-snippy')
-                end,
+                config = function() R 'nvim.plugins.nvim-snippy' end,
             },
         },
     }
@@ -56,7 +52,7 @@ return require('packer').startup(function()
         rocks = {'luaformatter', server = 'https://luarocks.org/dev'},
         run = {'yarn global add prettier prettier-plugin-java'},
         keys = '<leader>f',
-        config = function() require('nvim.plugins.formatter') end,
+        config = function() R 'nvim.plugins.formatter' end,
     }
 
     ----------------------------------------------------------------------
@@ -64,12 +60,18 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     use {
         'mfussenegger/nvim-dap',
-        config = function() require('nvim.plugins.nvim-dap') end,
+        config = function() R 'nvim.plugins.nvim-dap' end,
+        requires = {'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text'},
     }
+
     use {
-        'puremourning/vimspector',
-        ft = {'python'},
-        -- run = ':VimspectorInstall debugpyVimspectorInstall debugpy'
+        'rcarriga/nvim-dap-ui',
+        config = function() R 'nvim.plugins.nvim-dap-ui' end,
+    }
+
+    use {
+        'theHamsta/nvim-dap-virtual-text',
+        config = function() Variable.g({dap_virtual_text = true}) end,
     }
 
     ----------------------------------------------------------------------
@@ -94,7 +96,7 @@ return require('packer').startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('nvim.plugins.gitsigns') end,
+        config = function() R 'nvim.plugins.gitsigns' end,
     }
 
     ----------------------------------------------------------------------
@@ -102,7 +104,7 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     use {
         's1n7ax/nvim-lazy-inner-block',
-        config = function() require('nvim-lazy-inner-block').setup() end,
+        config = function() R'nvim-lazy-inner-block'.setup() end,
     }
 
     -- auto pair brackets
@@ -118,13 +120,35 @@ return require('packer').startup(function()
         run = ':TSUpdate',
     }
 
+    use {
+        'nvim-treesitter/playground',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+        cmd = 'TSPlaygroundToggle',
+        config = function() R 'nvim.plugins.playground' end,
+    }
+
+    use {
+        'David-Kunz/treesitter-unit',
+        config = function() R 'nvim.plugins.treesitter-unit' end,
+    }
+
     -- treesitter text objects
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
     -- popup terminal
     use {
         's1n7ax/nvim-terminal',
-        config = function() require('nvim-terminal').setup() end,
+        config = function() R 'nvim.plugins.nvim-terminal' end,
+    }
+    use {
+        's1n7ax/nvim-search-and-replace',
+        config = function() R'nvim-search-and-replace'.setup() end,
+    }
+
+    use {
+        'winston0410/commented.nvim',
+        requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function() R 'nvim.plugins.nvim-commented' end,
     }
 
     ----------------------------------------------------------------------
@@ -140,7 +164,7 @@ return require('packer').startup(function()
     use {
         'phaazon/hop.nvim',
         as = 'hop',
-        config = function() require('nvim.plugins.hop') end,
+        config = function() R 'nvim.plugins.hop' end,
     }
 
     -- status line
@@ -150,7 +174,7 @@ return require('packer').startup(function()
     use {
         'folke/zen-mode.nvim',
         keys = '<leader><leader>',
-        config = function() require('nvim.plugins.zen-mode') end,
+        config = function() R 'nvim.plugins.zen-mode' end,
     }
 
     -- comment frame
@@ -158,7 +182,7 @@ return require('packer').startup(function()
         's1n7ax/nvim-comment-frame',
         keys = '<leader>cf',
         requires = {'nvim-treesitter'},
-        config = function() require('nvim-comment-frame').setup() end,
+        config = function() R'nvim-comment-frame'.setup() end,
     }
 
     ----------------------------------------------------------------------
@@ -181,7 +205,7 @@ return require('packer').startup(function()
 				material_disable_background = false,
 			})
 
-			require('material').set()
+			R 'material'.set()
 		end
 	}
     use {
@@ -199,7 +223,7 @@ return require('packer').startup(function()
                 rose_pine_disable_background = false,
             })
 
-            require('rose-pine').set()
+            R'rose-pine'.set()
         end,
     })
 

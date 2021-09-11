@@ -1,12 +1,13 @@
-local opts = {silent = true}
+R 'nvim.plugins.nvim-dap.ui'
+R 'nvim.plugins.nvim-dap.java'
+R 'nvim.plugins.nvim-dap.keymap'
 
-Keybind.g({
-    {'n', '<F5>', ':lua require("dap").continue()<CR>', opts},
-    {'n', '<F9>', ':lua require("dap").step_out()<CR>', opts},
-    {'n', '<F10>', ':lua require("dap").step_over()<CR>', opts},
-    {'n', '<F11>', ':lua require("dap").step_into()<CR>', opts},
-    {'n', '<F12>', ':lua require("dap").toggle_breakpoint()<CR>', opts},
+local M = {}
 
-    {'n', '<leader>do', ':lua require("dap").repl.open()<CR>', opts},
-    {'n', '<leader>dl', ':lua require("dap").run_last()<CR>', opts},
-})
+function M.on_attach(conf, bufnr)
+    local module = R(string.format('nvim.plugins.nvim-dap.%s', conf.name))
+
+    if module and module.on_attach then module.on_attach(conf, bufnr) end
+end
+
+return M

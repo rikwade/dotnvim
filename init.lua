@@ -1,1 +1,2 @@
-require('nvim')
+R = require
+R'nvim'

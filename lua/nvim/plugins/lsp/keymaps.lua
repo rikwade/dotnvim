@@ -1,56 +1,45 @@
+local l = Keybind.get_lua_cmd_string
 local opts = {noremap = true}
 
 local on_attach = function(bufnr)
     Keybind.b({
         -- code jumps
-        {bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts},
-        {bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts},
-        {bufnr, 'n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts},
-        {bufnr, 'n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts},
-        {bufnr, 'n', 'K', ':lua vim.lsp.buf.hover()<CR>', opts},
-        {bufnr, 'n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts},
-        {bufnr, 'n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>', opts},
+        {bufnr, 'n', 'gd', l'vim.lsp.buf.definition()', opts},
+        {bufnr, 'n', 'gi', l'vim.lsp.buf.implementation()', opts},
+        {bufnr, 'n', 'gr', l'vim.lsp.buf.references()', opts},
+        {bufnr, 'n', 'gt', l'vim.lsp.buf.type_definition()', opts},
+        {bufnr, 'n', 'K', l'vim.lsp.buf.hover()', opts},
+        {bufnr, 'n', 'gD', l'vim.lsp.buf.declaration()', opts},
+        -- {bufnr, 'n', '<c-n>', l'vim.lsp.buf.signature_help()', opts},
         -- jump to next error
-        {bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts},
+        {bufnr, 'n', ']d', l'vim.lsp.diagnostic.goto_next()', opts},
         -- jump to previous error
-        {bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts},
+        {bufnr, 'n', '[d', l'vim.lsp.diagnostic.goto_prev()', opts},
         -- rename file name
-        {bufnr, 'n', '<leader>r', ':lua vim.lsp.buf.rename()<CR>', opts},
+        {bufnr, 'n', '<leader>r', l'vim.lsp.buf.rename()', opts},
         -- quick fix actions
-        {bufnr, 'n', '<leader>a', ':lua vim.lsp.buf.code_action()<CR>', opts},
+        {bufnr, 'n', '<leader>a', l'vim.lsp.buf.code_action()', opts},
         -- show diagnostics for current line
         {
             bufnr,
             'n',
             '<leader>e',
-            ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+            l'vim.lsp.diagnostic.show_line_diagnostics()',
             opts,
         },
         -- show all diagnostics
-        {
-            bufnr,
-            'n',
-            '<leader>o',
-            ':lua vim.lsp.diagnostic.set_loclist()<CR>',
-            opts,
-        },
+        {bufnr, 'n', '<leader>o', l'vim.lsp.diagnostic.set_loclist()', opts},
 
         -- create folder
         -- @TODO fali with error
-        {
-            bufnr,
-            'n',
-            '<space>wa',
-            ':lua vim.lsp.buf.add_workspace_folder()<CR>',
-            opts,
-        },
+        {bufnr, 'n', '<space>wa', l'vim.lsp.buf.add_workspace_folder()', opts},
         -- remove folder
         -- @TODO fali without error
         {
             bufnr,
             'n',
             '<space>wr',
-            ':lua vim.lsp.buf.remove_workspace_folder()<CR>',
+            l'vim.lsp.buf.remove_workspace_folder()',
             opts,
         },
         -- show workspace folders
@@ -58,7 +47,7 @@ local on_attach = function(bufnr)
             bufnr,
             'n',
             '<space>wl',
-            ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+            l'print(vim.inspect(vim.lsp.buf.list_workspace_folders()))',
             opts,
         },
     })

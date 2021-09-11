@@ -1,8 +1,8 @@
-local rockbin = require('packer.luarocks').get_bin_path()
-local util = require('packer.util')
-local file_util = require('nvim.utils.file')
-local os_util = require('nvim.utils.os')
-local list_util = require('nvim.utils.lua.list')
+local rockbin = R'packer.luarocks'.get_bin_path()
+local util = R 'packer.util'
+local file_util = R 'nvim.utils.file'
+local os_util = R 'nvim.utils.os'
+local list_util = R 'nvim.utils.lua.list'
 
 local luaformat = util.join_paths(rockbin, 'lua-format')
 
@@ -39,7 +39,7 @@ local prettier_formatter = function(...)
     end
 end
 
-require('formatter').setup({
+R'formatter'.setup({
     logging = false,
     filetype = {
         javascript = {prettier_formatter('--parser typescript')},
