@@ -13,7 +13,6 @@ local M = {}
 
 function M.on_attach()
     java_util.get_dap_config(function(conf)
-        Log.ins(conf)
         dap.configurations.java = conf
     end)
 end
