@@ -2,6 +2,9 @@
 
 Neovim configuration that uses `lua` as much as possible
 
+| WARNING: I make continues changes to the config so create a fork first If you are using this |
+| --- |
+
 ## Features
 
 * Using packer instead of as package manager
@@ -21,12 +24,10 @@ Neovim configuration that uses `lua` as much as possible
 
 * Read more about why [neovim chose lua](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)
 
-## You should know this before using
-
-* I'm using built-in LSP for Python and coc.nvim for all the other languages
-* Not everything is in `lua` but I'm doing my best to find `lua` alternatives
-
 ## How to Install? (Ubuntu 20.04)
+
+| WARNING: Guide is not be perfect so may run in to unexpected errors |
+| --- |
 
 * Update cache
 
@@ -69,6 +70,7 @@ git clone --recurse-submodules -j8 https://github.com/s1n7ax/dotnvim.git ~/.conf
 ```vim
 :PackerInstall
 :PackerCompile
+:lua require"nvim.plugins.lspinstall".install_servers()
 ```
 
-* Now, close and fire up `nvim` again. Everything should work now
+* Now, close and fire up `nvim` again.
