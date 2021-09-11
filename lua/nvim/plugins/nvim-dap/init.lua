@@ -5,9 +5,17 @@ R 'nvim.plugins.nvim-dap.keymap'
 local M = {}
 
 function M.on_attach(conf, bufnr)
-    local module = R(string.format('nvim.plugins.nvim-dap.%s', conf.name))
 
-    if module and module.on_attach then module.on_attach(conf, bufnr) end
+    local module = nil
+
+    local status = pcall(
+                       function()
+            module = R(string.format('nvim.plugins.nvim-dap.%s', conf.name))
+        end)
+
+    if status and module and module.on_attach then
+        module.on_attach(conf, bufnr)
+    end
 end
 
 return M
