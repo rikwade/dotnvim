@@ -68,10 +68,10 @@ Option.g({
     cursorline = true,
 
     -- wrap line
-    breakindent = true,
+    -- breakindent = false,
 
     -- wrap line custom character to show
-    showbreak = '↳',
+    -- showbreak = '↳',
 
     ----------------------------------------------------------------------
     --                             EDITING                              --
