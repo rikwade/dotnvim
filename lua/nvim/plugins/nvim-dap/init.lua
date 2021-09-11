@@ -1,6 +1,6 @@
-R 'nvim.plugins.nvim-dap.ui'
 R 'nvim.plugins.nvim-dap.java'
 R 'nvim.plugins.nvim-dap.keymap'
+R 'nvim.plugins.nvim-dap.ui'
 
 local M = {}
 
