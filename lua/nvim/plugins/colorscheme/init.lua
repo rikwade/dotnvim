@@ -1,1 +1,2 @@
--- R"github-theme".setup()
+CMD('colorscheme onedark')
+
