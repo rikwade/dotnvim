@@ -30,6 +30,9 @@ Keybind.g({
     ----------------------------------------------------------------------
     -- find references of word under the cursor
     {'n', '<leader>tsr', l'R"telescope.builtin".lsp_references()'},
+
+    -- find diagnostics in the project
+    {'n', '<leader>tsd', l'R"telescope.builtin".lsp_workspace_diagnostics()'},
 })
 
 R'telescope'.setup()
