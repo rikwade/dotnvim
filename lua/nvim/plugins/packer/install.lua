@@ -16,7 +16,9 @@ return R'packer'.startup(
             requires = {
                 {
                     'neovim/nvim-lspconfig',
-                    config = function() R 'nvim.plugins.lsp' end,
+                    config = function()
+                        R 'nvim.plugins.lsp'
+                    end,
                 },
             },
         }
@@ -24,7 +26,9 @@ return R'packer'.startup(
         -- completion menu
         use {
             'hrsh7th/nvim-cmp',
-            config = function() R 'nvim.plugins.nvim-cmp' end,
+            config = function()
+                R 'nvim.plugins.nvim-cmp'
+            end,
             requires = {
                 'dcampos/cmp-snippy',
                 'dcampos/nvim-snippy',
@@ -57,7 +61,9 @@ return R'packer'.startup(
             rocks = { 'luaformatter', server = 'https://luarocks.org/dev' },
             run = { 'yarn global add prettier prettier-plugin-java' },
             keys = '<leader>f',
-            config = function() R 'nvim.plugins.formatter' end,
+            config = function()
+                R 'nvim.plugins.formatter'
+            end,
         }
 
         ----------------------------------------------------------------------
@@ -65,7 +71,9 @@ return R'packer'.startup(
         ----------------------------------------------------------------------
         use {
             'mfussenegger/nvim-dap',
-            config = function() R 'nvim.plugins.nvim-dap' end,
+            config = function()
+                R 'nvim.plugins.nvim-dap'
+            end,
             requires = {
                 'rcarriga/nvim-dap-ui',
                 'theHamsta/nvim-dap-virtual-text',
@@ -74,7 +82,9 @@ return R'packer'.startup(
 
         use {
             'rcarriga/nvim-dap-ui',
-            config = function() R 'nvim.plugins.nvim-dap-ui' end,
+            config = function()
+                R 'nvim.plugins.nvim-dap-ui'
+            end,
         }
 
         use {
@@ -106,7 +116,9 @@ return R'packer'.startup(
         use {
             'lewis6991/gitsigns.nvim',
             requires = { 'nvim-lua/plenary.nvim' },
-            config = function() R 'nvim.plugins.gitsigns' end,
+            config = function()
+                R 'nvim.plugins.gitsigns'
+            end,
         }
 
         ----------------------------------------------------------------------
@@ -114,7 +126,9 @@ return R'packer'.startup(
         ----------------------------------------------------------------------
         use {
             's1n7ax/nvim-lazy-inner-block',
-            config = function() R'nvim-lazy-inner-block'.setup() end,
+            config = function()
+                R'nvim-lazy-inner-block'.setup()
+            end,
         }
 
         -- auto pair brackets
@@ -134,12 +148,16 @@ return R'packer'.startup(
             'nvim-treesitter/playground',
             requires = { 'nvim-treesitter/nvim-treesitter' },
             cmd = 'TSPlaygroundToggle',
-            config = function() R 'nvim.plugins.playground' end,
+            config = function()
+                R 'nvim.plugins.playground'
+            end,
         }
 
         use {
             'David-Kunz/treesitter-unit',
-            config = function() R 'nvim.plugins.treesitter-unit' end,
+            config = function()
+                R 'nvim.plugins.treesitter-unit'
+            end,
         }
 
         -- treesitter text objects
@@ -148,17 +166,23 @@ return R'packer'.startup(
         -- popup terminal
         use {
             's1n7ax/nvim-terminal',
-            config = function() R 'nvim.plugins.nvim-terminal' end,
+            config = function()
+                R 'nvim.plugins.nvim-terminal'
+            end,
         }
         use {
             's1n7ax/nvim-search-and-replace',
-            config = function() R'nvim-search-and-replace'.setup() end,
+            config = function()
+                R'nvim-search-and-replace'.setup()
+            end,
         }
 
         use {
             'winston0410/commented.nvim',
             requires = 'JoosepAlviste/nvim-ts-context-commentstring',
-            config = function() R 'nvim.plugins.nvim-commented' end,
+            config = function()
+                R 'nvim.plugins.nvim-commented'
+            end,
         }
 
         ----------------------------------------------------------------------
@@ -174,7 +198,9 @@ return R'packer'.startup(
         use {
             'phaazon/hop.nvim',
             as = 'hop',
-            config = function() R 'nvim.plugins.hop' end,
+            config = function()
+                R 'nvim.plugins.hop'
+            end,
         }
 
         -- status line
@@ -187,7 +213,9 @@ return R'packer'.startup(
         use {
             'folke/zen-mode.nvim',
             keys = '<leader><leader>',
-            config = function() R 'nvim.plugins.zen-mode' end,
+            config = function()
+                R 'nvim.plugins.zen-mode'
+            end,
         }
 
         -- comment frame
@@ -195,9 +223,23 @@ return R'packer'.startup(
             's1n7ax/nvim-comment-frame',
             keys = '<leader>cf',
             requires = { 'nvim-treesitter' },
-            config = function() R'nvim-comment-frame'.setup() end,
+            config = function()
+                R'nvim-comment-frame'.setup()
+            end,
         }
 
+        use {
+            'beauwilliams/focus.nvim',
+            config = function()
+                require('focus').setup()
+            end,
+        }
+        use {
+            'sindrets/winshift.nvim',
+            config = function()
+                R 'nvim.plugins.winshift'
+            end,
+        }
         ----------------------------------------------------------------------
         --                           COLOR THEMES                           --
         ----------------------------------------------------------------------
