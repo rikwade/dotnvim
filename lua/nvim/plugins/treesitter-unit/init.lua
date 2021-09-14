@@ -1,5 +1,5 @@
 Keybind.g({
-    {'x', 'u', ':lua require"treesitter-unit".select()<CR>', {noremap = true}},
+    {'x', 'iu', ':lua require"treesitter-unit".select()<CR>', {noremap = true}},
     {
         'x',
         'au',
