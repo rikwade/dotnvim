@@ -7,7 +7,9 @@ local c = vim.cmd
 
 local Coc = {}
 
-Coc.is_rpc_ready = function() return e('coc#rpc#ready()') > 0 end
+Coc.is_rpc_ready = function()
+    return e('coc#rpc#ready()') > 0
+end
 
 Coc.select_completion_item = function(org_input)
     if Pum.is_visible() then

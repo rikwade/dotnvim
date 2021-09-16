@@ -9,7 +9,7 @@ function M.count(list)
 end
 
 function M.concat(...)
-    local args = {...}
+    local args = { ... }
 
     if V.tbl_count(args) == 0 then error('No values passed') end
 

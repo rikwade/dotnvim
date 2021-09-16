@@ -8,8 +8,7 @@ function M.execute_command(command, callback)
             elseif err then
                 print('Execute command failed: ' .. err.message)
             end
-        end
-    )
+        end)
 end
 
 return M

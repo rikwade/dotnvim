@@ -5,16 +5,16 @@ dap.adapters.java = function(callback)
     java_util.start_debug_session(
         function(port)
             callback({ type = 'server', host = '127.0.0.1', port = port })
-        end
-    )
+        end)
 end
 
 local M = {}
 
 function M.on_attach()
-    java_util.get_dap_config(function(conf)
-        dap.configurations.java = conf
-    end)
+    java_util.get_dap_config(
+        function(conf)
+            dap.configurations.java = conf
+        end)
 end
 
 return M

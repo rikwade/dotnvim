@@ -12,13 +12,19 @@ local match = ngx.re.match
 local validators = validation.validators
 local factory = getmetatable(validators)
 function factory.escapeuri()
-    return function(value) return true, escapeuri(value) end
+    return function(value)
+        return true, escapeuri(value)
+    end
 end
 function factory.unescapeuri()
-    return function(value) return true, unescapeuri(value) end
+    return function(value)
+        return true, unescapeuri(value)
+    end
 end
 function factory.base64enc()
-    return function(value) return true, base64enc(value) end
+    return function(value)
+        return true, base64enc(value)
+    end
 end
 function factory.base64dec()
     return function(value)
@@ -28,10 +34,14 @@ function factory.base64dec()
     end
 end
 function factory.crc32short()
-    return function(value) return true, crc32short(value) end
+    return function(value)
+        return true, crc32short(value)
+    end
 end
 function factory.crc32long()
-    return function(value) return true, crc32long(value) end
+    return function(value)
+        return true, crc32long(value)
+    end
 end
 function factory.crc32()
     return function(value)
@@ -47,7 +57,9 @@ function factory.md5(bin)
 end
 
 function factory.regex(regex, options)
-    return function(value) return (match(value, regex, options)) ~= nil end
+    return function(value)
+        return (match(value, regex, options)) ~= nil
+    end
 end
 validators.escapeuri = factory.escapeuri()
 validators.unescapeuri = factory.unescapeuri()

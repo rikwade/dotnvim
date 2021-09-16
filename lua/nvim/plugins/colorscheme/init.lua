@@ -1,2 +1,1 @@
---CMD('colorscheme github_dark_default')
-
+-- CMD('colorscheme github_dark_default')

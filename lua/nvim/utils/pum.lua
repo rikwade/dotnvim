@@ -8,9 +8,11 @@ local Pum = {}
 --[[
 -- Returns true if popup menu is visible
 --]]
-Pum.is_visible = function() return (e('pumvisible()') > 0) end
+Pum.is_visible = function()
+    return (e('pumvisible()') > 0)
+end
 
-Pum.directions = {next = '<c-n>', prev = '<c-p>'}
+Pum.directions = { next = '<c-n>', prev = '<c-p>' }
 
 Pum.goto_item = function(options)
     local direction = options['direction']

@@ -25,8 +25,7 @@ local setup_servers = function()
                         V.loop.os_homedir() ..
                             '/.m2/repository/com/microsoft/java' ..
                             '/com.microsoft.java.debug.plugin/0.32.0/' ..
-                            'com.microsoft.java.debug.plugin-0.32.0.jar'
-                    ),
+                            'com.microsoft.java.debug.plugin-0.32.0.jar'),
                 },
             }
         end

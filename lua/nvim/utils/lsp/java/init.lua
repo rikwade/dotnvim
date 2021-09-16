@@ -9,8 +9,7 @@ local function execute_command(command, callback)
         command, function(err, res)
             assert(not err, err and (err.message or Log.ins(err)))
             callback(res)
-        end
-    )
+        end)
 end
 
 --[[
@@ -52,8 +51,7 @@ function M.resolve_class_path(main_class, project_name, callback)
         {
             command = 'vscode.java.resolveClasspath',
             arguments = { main_class, project_name },
-        }, callback
-    )
+        }, callback)
 end
 
 --[[
@@ -73,12 +71,10 @@ function M.resolve_class_paths(callback)
             class_info.mainClass, class_info.projectName, function(class_path)
                 table.insert(
                     classpaths,
-                    { class_info = class_info, class_path = class_path }
-                )
+                    { class_info = class_info, class_path = class_path })
 
                 resolve_all_class_paths(class_iter)
-            end
-        )
+            end)
     end
 
     M.resolve_main_classes(
@@ -94,8 +90,7 @@ function M.resolve_class_paths(callback)
             }
 
             resolve_all_class_paths(main_class_iter)
-        end
-    )
+        end)
 end
 
 --[[
@@ -117,21 +112,18 @@ function M.get_dap_config(callback)
                     conf, {
                         name = string.format(
                             '(%d) Launch -> %s -> %s', index, project_name,
-                            main_class
-                        ),
+                            main_class),
                         projectName = project_name,
                         mainClass = main_class,
                         classPaths = V.tbl_flatten(class_paths),
                         modulePaths = {},
                         request = 'launch',
                         type = 'java',
-                    }
-                )
+                    })
             end
 
             callback(conf)
-        end
-    )
+        end)
 end
 
 return M
