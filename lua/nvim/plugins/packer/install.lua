@@ -250,8 +250,16 @@ return R'packer'.startup(
         use { 'rafamadriz/neon' }
         use { 'rose-pine/neovim', as = 'rose-pine' }
         use { 'glepnir/zephyr-nvim' }
-        --]]
         use { 'navarasu/onedark.nvim' }
+        --]]
+
+        use {
+            'projekt0n/github-nvim-theme',
+            config = function()
+                require('github-theme').setup({ theme_style = 'dark_default' })
+            end,
+        }
+
 
         ----------------------------------------------------------------------
         --                              OTHER                               --

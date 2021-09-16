@@ -1,2 +1,2 @@
-CMD('colorscheme onedark')
+--CMD('colorscheme github_dark_default')
 
