@@ -1,3 +1,7 @@
+R'packer'.init({
+    max_jobs = 2
+})
+
 return R'packer'.startup(
            function()
         -- This is just to get rid of LSP errors on each line
