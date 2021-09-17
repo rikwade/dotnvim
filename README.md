@@ -38,7 +38,7 @@ sudo apt update
 * Install following packages
 
 ```bash
-sudo apt install git curl gcc python3-pip luarocks
+sudo apt install git curl gcc python3-pip cmake
 ```
 
 * Download and install latest version of `node` and `npm` from 
