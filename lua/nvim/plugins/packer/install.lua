@@ -1,10 +1,9 @@
-R'packer'.init({
-    max_jobs = 2
-})
+R'packer'.init({ max_jobs = 2 })
 
 return R'packer'.startup(
            function()
         -- This is just to get rid of LSP errors on each line
+        ---@diagnostic disable-next-line: undefined-global
         local use = use
 
         ----------------------------------------------------------------------
@@ -250,7 +249,6 @@ return R'packer'.startup(
         --[[
         use { 'ghifarit53/tokyonight-vim' }
         use { 'yong1le/darkplus.nvim' }
-        use { 'marko-cerovac/material.nvim' }
         use { 'rafamadriz/neon' }
         use { 'rose-pine/neovim', as = 'rose-pine' }
         use { 'glepnir/zephyr-nvim' }
@@ -258,9 +256,10 @@ return R'packer'.startup(
         --]]
 
         use {
-            'projekt0n/github-nvim-theme',
+            'marko-cerovac/material.nvim',
             config = function()
-                require('github-theme').setup({ theme_style = 'dark_default' })
+                Variable.g({ material_style = 'palenight' })
+                CMD('colorscheme material')
             end,
         }
 
