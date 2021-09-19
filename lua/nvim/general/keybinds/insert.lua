@@ -1,49 +1,32 @@
-local l = Keybind.get_lua_cmd_string
+local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local l = R'nvim.utils.keybind'.get_lua_cmd_string
+local n = R'nvim.utils.keybind'.get_normal_cmd_string
 
-Keybind.g(
+Shortcut:mode('i'):options():noremap():next():keymaps():map(
     {
         ----------------------------------------------------------------------
         --                           CURSOR MOVE                            --
         ----------------------------------------------------------------------
-        -- [ ctrl + ; ] put a semicolon EOL and go to next line
-        { 'i', '<c-;>', '<esc>A;' },
+        -- put a semicolon EOL and go to next line
+        { '<c-;>', n'A;' },
 
-        -- [ ctrl + o ] add new line in insert mode
-        { 'i', '<c-o>', '<esc>o' },
+        -- add new line in insert mode
+        { '<c-o>', n'o' },
 
-        -- [ ctrl + e ] go to end of the line
-        { 'i', '<c-e>', '<esc>A' },
+        -- go to end of the line
+        { '<c-e>', n'A' },
 
-        -- [ ctrl + a ] go to beginning of the line
-        { 'i', '<c-a>', '<esc>I' },
-
-        -- [ ctrl + b ] hit left arrow key
-        { 'i', '<c-b>', '<left>' },
-
-        -- [ ctrl + l ] hit right arrow key
-        { 'i', '<c-l>', '<right>' },
-
-        -- [ ctrl + j ] hit down arrow key
-        { 'i', '<c-j>', l 'Pum.goto_next({ keybind = "<lt>down>" })' },
-
-        -- [ ctrl + k ] hit up arrow key
-        { 'i', '<c-k>', l 'Pum.goto_prev({ keybind = "<lt>up>" })' },
+        -- go to beginning of the line
+        { '<c-a>', n'I' },
 
         ----------------------------------------------------------------------
         --                          CUT COPY PASTE                          --
         ----------------------------------------------------------------------
-        -- [ ctrl + y ] copy current line and paste next line
-        { 'i', '<c-y>', '<esc>yyp' },
-
-        -- [ ctrl + s ] save the current buffer
-        { 'i', '<c-s>', '<esc>:w<cr>a' },
+        -- copy current line and paste next line
+        { '<c-y>', n'yyp' },
 
         ----------------------------------------------------------------------
-        --                              OTHER                               --
+        --                              EDITOR                              --
         ----------------------------------------------------------------------
-        -- [ j + j ] to go to normal mode from insert
-        { 'i', 'jj', '<esc>' },
-
-        -- [ ctrl + d ] deletes a character in front of the cursor
-        { 'i', '<c-d>', '<delete>' },
+        { 'nn', '<esc>' },
     })

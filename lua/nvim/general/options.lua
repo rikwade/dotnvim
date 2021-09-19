@@ -74,6 +74,9 @@ Option.g(
         -- wrap line custom character to show
         -- showbreak = '↳',
 
+        -- operator pending timeout
+        timeoutlen = 500,
+
         ----------------------------------------------------------------------
         --                             EDITING                              --
         ----------------------------------------------------------------------

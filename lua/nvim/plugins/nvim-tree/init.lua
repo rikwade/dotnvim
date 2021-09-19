@@ -38,6 +38,6 @@ local opt = { noremap = true, silent = true }
 
 Keybind.g(
     {
-        { 'n', '<c-n>', ':NvimTreeToggle<cr>', opt },
+        { 'n', ',n', ':NvimTreeToggle<cr>', opt },
         { 'n', ',,', ':NvimTreeFindFile<cr>', opt },
     })

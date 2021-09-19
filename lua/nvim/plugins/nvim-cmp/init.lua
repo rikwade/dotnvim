@@ -1,3 +1,4 @@
+local Shortcut = R'nvim.newutil.keymap'.Shortcut
 local cmp = R 'cmp'
 
 cmp.setup(
@@ -30,3 +31,5 @@ cmp.setup(
             end,
         },
     })
+
+Shortcut:keymaps():map({ { '<c-e>', cmp.mapping.close } })

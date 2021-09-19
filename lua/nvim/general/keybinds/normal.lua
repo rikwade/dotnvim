@@ -1,72 +1,84 @@
-Keybind.g(
+local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local l = R'nvim.utils.keybind'.get_lua_cmd_string
+local c = R'nvim.utils.keybind'.get_cmd_string
+
+Shortcut:mode('n'):options():noremap():next():keymaps():map(
     {
         ----------------------------------------------------------------------
         --                              CONFIG                              --
         ----------------------------------------------------------------------
         -- reload nvim configuration file
-        {
-            'n',
-            ',r',
-            [[:lua R 'nvim.utils.common.module'.reload_package('nvim')<CR>]],
-        },
+        { ',r', l 'R"nvim.utils.common.module".reload_package("nvim")' },
 
         ----------------------------------------------------------------------
         --                           CURSOR MOVE                            --
         ----------------------------------------------------------------------
-        -- [ ctrl + h ] move cursor to left window
-        { 'n', '<c-h>', '<c-w>h' },
+        -- move cursor to left window
+        { '<leader>h', '<c-w>h' },
 
-        -- [ ctrl + l ] move cursor to right window
-        { 'n', '<c-l>', '<c-w>l' },
+        -- move cursor to right window
+        { '<leader>i', '<c-w>l' },
 
-        -- [ ctrl + j ] move cursor to bottom window
-        { 'n', '<c-j>', '<c-w>j' },
+        -- move cursor to bottom window
+        { '<leader>n', '<c-w>j' },
 
-        -- [ ctrl + k ] move cursor to top window
-        { 'n', '<c-k>', '<c-w>k' },
+        -- move cursor to top window
+        { '<leader>e', '<c-w>k' },
 
-        -- [ '' ] move to last cursor position in the jump list
-        { 'n', [['']], '``' },
+        -- move cursor to last window
+        { '<leader>w', '<c-w>w' },
 
-        -- [ 0 ] to go to the start of the line
-        { 'n', '0', '^' },
+        -- move to last cursor position in the jump list
+        { [['']], '``' },
 
-        -- centering the cursor
-        { 'n', '{', '{zz' },
-        { 'n', '}', '}zz' },
-        { 'n', 'n', 'nzz' },
-        { 'n', 'N', 'Nzz' },
+        -- to go to the start of the line
+        { '0', '^' },
+
+        -- centering the cursor after action
+        { '{', '{zz' },
+        { '}', '}zz' },
+        { 'k', 'nzz' },
+        { 'K', 'Nzz' },
+
+        -- jump to next matching char in the same line
+        { '<leader>;', ';' },
 
         ----------------------------------------------------------------------
         --                        BUFFER READ WRITE                         --
         ----------------------------------------------------------------------
-        -- [ ctrl + s ] save the current buffer
-        { 'n', '<leader>s', ':w<cr>' },
+        -- save the current buffer
+        { '<leader>s', c 'w' },
 
-        -- [ ctrl + q ] quite the current buffer
-        { 'n', '<c-q>', ':q<cr>' },
+        -- close the window
+        { '<leader>q', c 'q' },
+
+        -- close the buffer with out saving
+        { '<leader>x', c 'q!' },
 
         ----------------------------------------------------------------------
         --                          CUT COPY PASTE                          --
         ----------------------------------------------------------------------
-        -- [ Y ] copy until the end of the line
-        { 'n', 'Y', 'y$' },
+        -- copy until the end of the line
+        { 'Y', 'y$' },
 
-        -- [ ctrl + y ] copy current line and paste next line
-        { 'n', '<c-y>', 'yyp' },
+        -- copy current line and paste next line
+        { '<leader>y', 'yyp' },
 
         ----------------------------------------------------------------------
         --                             EDITING                              --
         ----------------------------------------------------------------------
-        -- [ < ] indent left
-        { 'n', '<', '<<' },
+        -- indent left
+        { '<', '<<' },
 
-        -- [ > ] indent right
-        { 'n', '>', '>>' },
+        -- indent right
+        { '>', '>>' },
+
+        -- go to insert mode
+        { ';', 'i' },
 
         ----------------------------------------------------------------------
         --                              OTHER                               --
         ----------------------------------------------------------------------
-        -- [ <F6> ] to go enable spell checker
-        { '', '<F6>', ':setlocal spell! spelllang=en_us<cr>' },
+        -- to go enable spell checker
+        { '<F6>', c 'setlocal spell! spelllang=en_us' },
     })

@@ -27,6 +27,14 @@ Keybind.get_lua_cmd_string = function(cmd)
     return '<cmd>lua ' .. cmd .. '<CR>'
 end
 
+Keybind.get_cmd_string = function(cmd)
+    return '<cmd>' .. cmd .. '<cr>'
+end
+
+Keybind.get_normal_cmd_string = function(cmd)
+    return '<esc>' .. cmd
+end
+
 Keybind.g = Keybind.add_global_keybinds
 Keybind.b = Keybind.add_buffer_keybinds
 Keybind.ug = Keybind.remove_global_keybinds
