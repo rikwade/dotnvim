@@ -6,14 +6,14 @@ Keybind.g(
         --                          FILES & BUFFER                          --
         ----------------------------------------------------------------------
         -- find a file in current working directory
-        { 'n', '<c-p>', l 'R"telescope.builtin".find_files()' },
+        { 'n', '<leader>p', l 'R"telescope.builtin".find_files()' },
+
+        -- resumes the previous search
+        { 'n', '<c-p>', l 'R"telescope.builtin".resume()' },
 
         -- find line in current buffer
-        {
-            'n',
-            '<leader>tf',
-            l 'R"telescope.builtin".current_buffer_fuzzy_find()',
-        },
+        { 'n', '<leader>y',
+          l 'R"telescope.builtin".current_buffer_fuzzy_find()' },
 
         -- find line in current working directory
         { 'n', '<leader>tg', l 'R"telescope.builtin".live_grep()' },
