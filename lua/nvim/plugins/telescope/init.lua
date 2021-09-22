@@ -1,5 +1,8 @@
 local l = Keybind.get_lua_cmd_string
 
+R'telescope'.setup()
+R'telescope'.load_extension('fzf')
+
 Keybind.g(
     {
         ----------------------------------------------------------------------

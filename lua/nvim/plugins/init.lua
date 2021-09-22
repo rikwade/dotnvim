@@ -1,6 +1,5 @@
 R 'nvim.plugins.packer.install'
 
-R 'nvim.plugins.telescope'
 R 'nvim.plugins.nvim-tree'
 R 'nvim.plugins.vim-easymotion'
 R 'nvim.plugins.treesitter'
