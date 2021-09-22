@@ -26,7 +26,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps():map(
         { '<leader>e', '<c-w>k' },
 
         -- move cursor to last window
-        { '<leader>w', '<c-w>w' },
+        { '<leader>w', '<c-w>p' },
 
         -- move to last cursor position in the jump list
         { [['']], '``' },
