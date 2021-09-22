@@ -67,10 +67,8 @@ R'nvim-treesitter.configs'.setup(
         },
     })
 
-API.nvim_exec(
-    [[
-
-	set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
-
-]], false)
+--  API.nvim_exec(
+--  [[
+--  set foldmethod=expr
+--  set foldexpr=nvim_treesitter#foldexpr()
+--  ]], false)
