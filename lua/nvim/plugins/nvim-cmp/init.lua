@@ -11,18 +11,47 @@ cmp.setup(
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm(
-                { behavior = cmp.ConfirmBehavior.Insert, select = true }),
+                {
+                    behavior = cmp.ConfirmBehavior.Insert,
+                    select = true,
+                }),
         },
 
         sources = {
-            { name = 'snippy' },
-            { name = 'nvim_lsp' },
-            { name = 'nvim_lua' },
-            { name = 'buffer' },
-            { name = 'path' },
-            { name = 'emoji' },
-            { name = 'spell' },
-            { name = 'calc' },
+            {
+                name = 'snippy',
+                priority = 90,
+                max_item_count = 3,
+                keyword_length = 2,
+            },
+            {
+                name = 'nvim_lsp',
+                priority = 100,
+            },
+            {
+                name = 'nvim_lua',
+                priority = 100,
+            },
+            {
+                name = 'buffer',
+                priority = 80,
+            },
+            {
+                name = 'path',
+                priority = 80,
+            },
+            {
+                name = 'spell',
+                priority = 50,
+            },
+            {
+                name = 'calc',
+                priority = 50,
+            },
+            {
+                name = 'emoji',
+                priority = 10,
+            },
         },
 
         snippet = {
@@ -30,6 +59,10 @@ cmp.setup(
                 R'snippy'.expand_snippet(args.body)
             end,
         },
+        completion = {
+            keyword_length = 5,
+        },
+        preselect = true,
     })
 
 Shortcut:keymaps():map({ { '<c-e>', cmp.mapping.close } })
