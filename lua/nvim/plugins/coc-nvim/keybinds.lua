@@ -1,5 +1,16 @@
-local opt = { noremap = true, expr = true, silent = true, nowait = true }
-local silent_opt = { silent = true }
+local l = Keybind.get_lua_cmd_string
+
+local opt = {
+    noremap = true,
+    expr = true,
+    silent = true,
+    nowait = true,
+}
+
+local silent_opt = {
+    silent = true,
+}
+
 local none = {}
 
 Keybind.g(
@@ -38,7 +49,7 @@ Keybind.g(
         { 'i', '<c-space>', 'coc#refresh()', opt },
     })
 
-vim.api.nvim_exec(
+API.nvim_exec(
     [[
 
 	" Add `:Format` command to format current buffer.

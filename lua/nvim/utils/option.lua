@@ -18,9 +18,9 @@ local add_options = function(option_type, id, options)
         -- vim['o']['mouse'] = 4
         -- vim['wo'][10]['number'] = true
         if id == 0 then
-            vim[option_type][key] = value
+            V[option_type][key] = value
         else
-            vim[option_type][id][key] = value
+            V[option_type][id][key] = value
         end
     end
 end

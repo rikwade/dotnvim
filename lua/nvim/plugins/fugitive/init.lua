@@ -19,7 +19,7 @@ Keybind.g(
         { 'n', '<leader>gk', '[c' },
     })
 
-vim.api.nvim_exec(
+API.nvim_exec(
     [[
 	autocmd FileType fugitive map <buffer> D dd<c-w><c-w>
 ]], false)

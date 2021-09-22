@@ -1,7 +1,7 @@
 local validation = R 'nvim.utils.rusty.validation'
 
-local e = vim.api.nvim_eval
-local input = vim.api.nvim_input
+local e = API.nvim_eval
+local input = API.nvim_input
 
 local Pum = {}
 

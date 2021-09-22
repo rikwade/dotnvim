@@ -2,7 +2,9 @@ R'nvim-treesitter.configs'.setup(
     {
         ensure_installed = 'all',
 
-        highlight = { enable = true },
+        highlight = {
+            enable = true,
+        },
 
         incremental_selection = {
             enable = true,
@@ -14,13 +16,15 @@ R'nvim-treesitter.configs'.setup(
             },
         },
 
-        indent = { enable = false },
+        indent = {
+            enable = false,
+        },
 
         textobjects = {
             select = {
                 enable = true,
 
-                -- Automatically jump forward to textobj, similar to targets.vim 
+                -- Automatically jump forward to textobj, similar to targets.vim
                 lookahead = true,
 
                 keymaps = {
@@ -63,7 +67,7 @@ R'nvim-treesitter.configs'.setup(
         },
     })
 
-vim.api.nvim_exec(
+API.nvim_exec(
     [[
 
 	set foldmethod=expr

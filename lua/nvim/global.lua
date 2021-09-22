@@ -1,9 +1,10 @@
 G = {}
+---@diagnostic disable-next-line: undefined-global
 V = vim
-API = vim.api
-FN = vim.fn
-LSP = vim.lsp
-CMD = vim.cmd
+API = V.api
+FN = V.fn
+LSP = V.lsp
+CMD = V.cmd
 
 Option = R 'nvim.utils.option'
 Variable = R 'nvim.utils.variable'

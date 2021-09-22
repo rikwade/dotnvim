@@ -1,9 +1,9 @@
 local Pum = R 'nvim.utils.'
 
-local v = vim
-local a = vim.api
-local e = vim.api.nvim_eval
-local c = vim.cmd
+local V
+local API
+local e = API.nvim_eval
+local c = V.cmd
 
 local Coc = {}
 
@@ -15,12 +15,12 @@ Coc.select_completion_item = function(org_input)
     if Pum.is_visible() then
         e('coc#_select_confirm()')
     else
-        a.nvim_input(org_input)
+        API.nvim_input(org_input)
     end
 end
 
 Coc.show_documentation = function()
-    local filetype = v.bo.filetype
+    local filetype = V.bo.filetype
 
     if filetype == 'vim' or filetype == 'help' then
         local cword = e('expand("<cword>")')
@@ -29,7 +29,7 @@ Coc.show_documentation = function()
         e('CocActionAsync(\'doHover\')')
     else
         -- following will run "man" in vim
-        local keywordprg = v.o.keywordprg
+        local keywordprg = V.o.keywordprg
         local cword = e('expand("<cword>")')
         c(string.format('%s %s', keywordprg, cword))
     end

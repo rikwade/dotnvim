@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-global
 vim.g.mapleader = ' '
 
 R 'nvim.global'
