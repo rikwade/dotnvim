@@ -21,6 +21,8 @@ Option.g(
 
         -- auto code folding when openeing new file at level 1
         foldlevelstart = 4,
+        -- don't wrap the text when lines can't fit the window
+        wrap = false,
 
         -- auto wrap after 80 characters in the line
         textwidth = 80,
