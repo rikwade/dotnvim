@@ -13,34 +13,34 @@ Shortcut:mode('n'):options():noremap():next():keymaps():map(
         --                          FILES & BUFFER                          --
         ----------------------------------------------------------------------
         -- find a file in current working directory
-        { '<leader>p', builtin 'find_files()' },
-
-        -- resumes the previous search
-        { '<c-p>', builtin 'resume()' },
-
-        -- find line in current buffer
-        { '<leader>/', builtin 'current_buffer_fuzzy_find()' },
+        { '<leader>t', builtin 'find_files()' },
 
         -- find line in current working directory
-        { '<leader>t', builtin 'live_grep()' },
+        { '<leader>s', builtin 'live_grep()' },
+
+        -- resumes the previous search
+        { '<leader>r', builtin 'resume()' },
+
+        -- find buffer
+        { '<leader>p', builtin 'buffers()' },
+
+        -- find line in current buffer
+        { '<leader>f', builtin 'current_buffer_fuzzy_find()' },
 
         -- find word under the cursor in current buffer
         { '*', builtin 'grep_string()' },
 
-        -- find buffer
-        { '<leader>b', builtin 'buffers()' },
-
         -- find help index
-        { '<leader>th', builtin 'help_tags()' },
+        { '.th', builtin 'help_tags()' },
 
         ----------------------------------------------------------------------
         --                               LSP                                --
         ----------------------------------------------------------------------
         -- find references of word under the cursor
-        { '<leader>r', builtin 'lsp_references()' },
+        { '<leader>o', builtin 'lsp_references()' },
 
         -- find diagnostics in the project
-        { '<leader>d', builtin 'lsp_workspace_diagnostics()' },
+        { '.td', builtin 'lsp_workspace_diagnostics()' },
     })
 
 Shortcut:mode('i'):options():noremap():next():keymaps():map(
