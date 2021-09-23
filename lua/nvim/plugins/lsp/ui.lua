@@ -17,7 +17,7 @@ local border = {
 }
 
 local signs = {
-    Error = ' ',
+    Error = ' ﱥ',
     Warning = ' ',
     Hint = ' ',
     Information = ' ﴀ',
