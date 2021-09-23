@@ -47,7 +47,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps():map(
         --                        BUFFER READ WRITE                         --
         ----------------------------------------------------------------------
         -- save the current buffer
-        { '<leader>s', c 'w' },
+        { '<leader>l', c 'w' },
 
         -- close the window
         { '<leader>q', c 'q' },
