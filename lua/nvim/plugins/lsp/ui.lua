@@ -17,10 +17,10 @@ local border = {
 }
 
 local signs = {
-    Error = ' ﱥ',
+    Error = ' ',
     Warning = ' ',
-    Hint = ' ',
-    Information = ' ﴀ',
+    Hint = ' ',
+    Information = ' ',
 }
 
 for type, icon in pairs(signs) do
