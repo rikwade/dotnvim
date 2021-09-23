@@ -122,7 +122,7 @@ return R'packer'.startup(
                 require('nvim.plugins.telescope')
             end,
             requires = {
-                'nrim-lua/plenary.nvim',
+                'nvim-lua/plenary.nvim',
                 {
                     'nvim-telescope/telescope-fzf-native.nvim',
                     run = 'make',
