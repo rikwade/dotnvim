@@ -45,6 +45,7 @@ R'formatter'.setup(
         logging = false,
         filetype = {
             javascript = { prettier_formatter('--parser typescript') },
+            typescript = { prettier_formatter('--parser typescript') },
             -- @TODO once the prettier-plugin-java is added all the formatters are
             -- slow
             -- Need to replace java formatter with something else
