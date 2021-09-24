@@ -56,6 +56,9 @@ return R'packer'.startup(
             'iamcco/markdown-preview.nvim',
             run = 'cd app && yarn install',
             ft = { 'markdown' },
+            config = function()
+                R 'nvim.plugins.markdown-preview'
+            end,
         }
 
         -- code formatters
@@ -74,13 +77,13 @@ return R'packer'.startup(
         ----------------------------------------------------------------------
         use {
             'mfussenegger/nvim-dap',
-            config = function()
-                R 'nvim.plugins.nvim-dap'
-            end,
             requires = {
                 'rcarriga/nvim-dap-ui',
                 'theHamsta/nvim-dap-virtual-text',
             },
+            config = function()
+                R 'nvim.plugins.nvim-dap'
+            end,
         }
 
         use {
@@ -104,6 +107,9 @@ return R'packer'.startup(
         use {
             'kyazdani42/nvim-tree.lua',
             requires = { 'kyazdani42/nvim-web-devicons' },
+            config = function()
+                R 'nvim.plugins.nvim-tree'
+            end,
         }
 
         -- fuzzy search
@@ -151,6 +157,9 @@ return R'packer'.startup(
             'nvim-treesitter/nvim-treesitter',
             branch = '0.5-compat',
             run = ':TSUpdate',
+            config = function()
+                R 'nvim.plugins.treesitter'
+            end,
         }
 
         use {
