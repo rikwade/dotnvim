@@ -1,28 +1,43 @@
-local opts = { silent = true }
+local Shortcut = R 'nvim.newutil.keymap'
 local l = Keybind.get_lua_cmd_string
 
-Keybind.g(
+Shortcut:mode('n'):options():noremap():next():keymaps(
     {
-        { 'n', '<leader>dS', l 'R"dap".close()', opts },
-        { 'n', '<leader>dc', l 'R"dap".continue()', opts },
-        { 'n', '<leader>dl', l 'R"dap".run_last()', opts },
-        { 'n', '<leader>du', l 'R"dap".step_out()', opts },
-        { 'n', '<leader>dd', l 'R"dap".step_over()', opts },
-        { 'n', '<leader>di', l 'R"dap".step_into()', opts },
-        { 'n', '<leader>dt', l 'R"dap".toggle_breakpoint()', opts },
+        -- close the debug sessio
+        { ',tS', l 'R"dap".close()' },
 
-        { 'n', '<leader>dk', l 'R"dap".up()', opts },
-        { 'n', '<leader>dj', l 'R"dap".down()', opts },
-        { 'n', '<leader>dr', l 'R"dap".restart()', opts },
+        -- start the debug session and continue to next breakpoint
+        { ',tc', l 'R"dap".continue()' },
 
-        { 'n', '<leader>dh', l 'R"dap.ui.variables".hover()', opts },
-        { 'v', '<leader>dh', l 'R"dap.ui.variables".visual_hover()', opts },
-        {
-            'n',
-            '<leader>ds',
-            l 'R"dap.ui.widgets".centered_float(R"dap.ui.widgets".scopes)',
-            opts,
-        },
+        -- run last again
+        { ',tl', l 'R"dap".run_last()' },
 
-        { 'n', '<leader>do', l 'R"dap".repl.open()', opts },
+        { ',tu', l 'R"dap".step_out()' },
+        { ',td', l 'R"dap".step_over()' },
+        { ',ti', l 'R"dap".step_into()' },
+
+        -- create and remove a breakpoint
+        { ',tt', l 'R"dap".toggle_breakpoint()' },
+
+        -- go up in the call stack
+        { ',tk', l 'R"dap".up()' },
+
+        -- go down in the call stack
+        { ',tj', l 'R"dap".down()' },
+
+        -- restart the execution
+        { ',tr', l 'R"dap".restart()' },
+
+        -- inspect node on cursor
+        { ',th', l 'R"dap.ui.variables".hover()' },
+
+        -- inspect all scope properties
+        { ',ts', l 'R"dap.ui.widgets".centered_float(R"dap.ui.widgets".scopes)' },
+
+        -- open repl window
+        { ',to', l 'R"dap".repl.open()' },
+    }):mode('v'):keymaps(
+    {
+        -- evaluate selected portion
+        { ',th', l 'R"dap.ui.variables".visual_hover()' },
     })
