@@ -188,6 +188,7 @@ return R'packer'.startup(
 
         use {
             'winston0410/commented.nvim',
+            keys = ',c',
             requires = 'JoosepAlviste/nvim-ts-context-commentstring',
             config = function()
                 R 'nvim.plugins.nvim-commented'
