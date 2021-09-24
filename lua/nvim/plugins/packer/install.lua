@@ -194,7 +194,7 @@ return R'packer'.startup(
         use {
             's1n7ax/nvim-search-and-replace',
             config = function()
-                R'nvim-search-and-replace'.setup()
+                R 'nvim.plugins.nvim-search-and-replace'
             end,
         }
 
