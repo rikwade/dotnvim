@@ -264,6 +264,15 @@ return R'packer'.startup(
         }
 
         use { 'Darazaki/indent-o-matic' }
+
+        use {
+            'romgrk/nvim-treesitter-context',
+            requires = { 'nvim-treesitter/nvim-treesitter' },
+            config = function()
+                R 'nvim.plugins.treesitter-context'
+            end,
+        }
+
         ----------------------------------------------------------------------
         --                           COLOR THEMES                           --
         ----------------------------------------------------------------------
