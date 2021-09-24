@@ -1,6 +1,6 @@
-local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local Shortcut = R'nvim.newutil.keymap'
 
-Shortcut:mode('x'):options():noremap():next():keymaps():map(
+Shortcut:mode('x'):options():noremap():next():keymaps(
     {
 
         -- down arrow key

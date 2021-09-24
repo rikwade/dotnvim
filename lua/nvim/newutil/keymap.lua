@@ -1,64 +1,4 @@
----@diagnostic disable-next-line: undefined-global
-local v = vim
-local api = v.api
-
 R 'nvim.newutil.global'
-
-----------------------------------------------------------------------
---                              Keymap                              --
-----------------------------------------------------------------------
-local Keymap = {}
-
-function Keymap:new(shortcut)
-    self.shortcut = shortcut
-    return self
-end
-
-function Keymap:__get_action(action)
-    if type(action) == 'string' then return action end
-
-    if type(action) == 'function' then
-        local key = Global:save(action)
-        return string.format('<cmd>lua Global:get(%d)()<cr>', key)
-    end
-
-    error('Unexpected type: ' .. type(action) .. ' passed')
-end
-
-function Keymap:map(keys, action, options)
-    action = self:__get_action(action)
-    self.shortcut:__set_keymap(keys, action, options)
-    return self
-end
-
-function Keymap:next()
-    return self.shortcut
-end
-
-----------------------------------------------------------------------
---                            KeymapList                            --
-----------------------------------------------------------------------
-local KeymapList = {}
-
-function KeymapList:new(shortcut)
-    self.__shortcut = shortcut
-    self.__keymap = Keymap:new(shortcut)
-    return self
-end
-
-function KeymapList:map(keymaps)
-    assert(v.tbl_islist(keymaps), 'KeymapList should be a list')
-
-    for _, record in ipairs(keymaps) do
-        self.__keymap:map(record[1], record[2], record[3])
-    end
-
-    return self
-end
-
-function KeymapList:next()
-    return self.__shortcut
-end
 
 ----------------------------------------------------------------------
 --                             Options                              --
@@ -124,12 +64,31 @@ function Shortcut:options()
     return Options:new(self)
 end
 
-function Shortcut:keymap()
-    return Keymap:new(self)
+function Shortcut:keymap(keys, action, options)
+    action = self:__get_action(action)
+    self:__set_keymap(keys, action, options)
+    return self
 end
 
-function Shortcut:keymaps()
-    return KeymapList:new(self)
+function Shortcut:keymaps(keymaps)
+    assert(V.tbl_islist(keymaps), 'Keymap list should be a list')
+
+    for _, record in ipairs(keymaps) do
+        self:keymap(record[1], record[2], record[3])
+    end
+
+    return self
+end
+
+function Shortcut:__get_action(action)
+    if type(action) == 'string' then return action end
+
+    if type(action) == 'function' then
+        local key = Global:save(action)
+        return string.format('<cmd>lua Global:get(%d)()<cr>', key)
+    end
+
+    error('Unexpected type: ' .. type(action) .. ' passed')
 end
 
 function Shortcut:__set_option(key, value)
@@ -140,11 +99,11 @@ function Shortcut:__set_keymap(keys, action, options)
     options = options or self.__options
 
     if self.__buffer then
-        api.nvim_buf_set_keymap(
+        API.nvim_buf_set_keymap(
             self.__buffer, self.__mode, keys, action, options)
     else
-        api.nvim_set_keymap(self.__mode, keys, action, options)
+        API.nvim_set_keymap(self.__mode, keys, action, options)
     end
 end
 
-return { Shortcut = Shortcut }
+return Shortcut

@@ -1,4 +1,4 @@
-local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local Shortcut = R'nvim.newutil.keymap'
 local l = Keybind.get_lua_cmd_string
 
 local builtin = function(function_name)
@@ -6,7 +6,7 @@ local builtin = function(function_name)
     return l(cmd)
 end
 
-Shortcut:mode('n'):options():noremap():next():keymaps():map(
+Shortcut:mode('n'):options():noremap():next():keymaps(
 
     {
         ----------------------------------------------------------------------
@@ -43,7 +43,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps():map(
         { '.td', builtin 'lsp_workspace_diagnostics()' },
     })
 
-Shortcut:mode('i'):options():noremap():next():keymaps():map(
+Shortcut:mode('i'):options():noremap():next():keymaps(
     {
         -- find register by containing value
         { '<c-r>', builtin 'registers()' },

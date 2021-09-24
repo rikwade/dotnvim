@@ -1,6 +1,6 @@
-local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local Shortcut = R'nvim.newutil.keymap'
 
-Shortcut:mode(''):options():noremap():next():keymaps():map(
+Shortcut:mode(''):options():noremap():next():keymaps(
     {
         ----------------------------------------------------------------------
         --                           CURSOR MOVE                            --

@@ -1,8 +1,8 @@
-local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local Shortcut = R'nvim.newutil.keymap'
 local l = R'nvim.utils.keybind'.get_lua_cmd_string
 local n = R'nvim.utils.keybind'.get_normal_cmd_string
 
-Shortcut:mode('i'):options():noremap():next():keymaps():map(
+Shortcut:mode('i'):options():noremap():next():keymaps(
     {
         ----------------------------------------------------------------------
         --                           CURSOR MOVE                            --

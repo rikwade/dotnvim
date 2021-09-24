@@ -1,8 +1,8 @@
-local Shortcut = R'nvim.newutil.keymap'.Shortcut
+local Shortcut = R'nvim.newutil.keymap'
 local l = R'nvim.utils.keybind'.get_lua_cmd_string
 local c = R'nvim.utils.keybind'.get_cmd_string
 
-Shortcut:mode('n'):options():noremap():next():keymaps():map(
+Shortcut:mode('n'):options():noremap():next():keymaps(
     {
         ----------------------------------------------------------------------
         --                              CONFIG                              --
