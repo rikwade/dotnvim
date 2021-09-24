@@ -244,10 +244,10 @@ return R'packer'.startup(
         -- comment frame
         use {
             's1n7ax/nvim-comment-frame',
-            keys = '<leader>cf',
+            keys = ',C',
             requires = { 'nvim-treesitter' },
             config = function()
-                R'nvim-comment-frame'.setup()
+                R 'nvim.plugins.nvim-comment-frame'
             end,
         }
 
