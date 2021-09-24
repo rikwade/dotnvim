@@ -231,11 +231,6 @@ return R'packer'.startup(
             end,
         }
 
-        -- status line
-        use {
-            'hoob3rt/lualine.nvim',
-            requires = { 'kyazdani42/nvim-web-devicons' },
-        }
 
         -- full screen mode
         use {
@@ -277,6 +272,15 @@ return R'packer'.startup(
             requires = { 'nvim-treesitter/nvim-treesitter' },
             config = function()
                 R 'nvim.plugins.treesitter-context'
+            end,
+        }
+
+        -- status line
+        use {
+            'hoob3rt/lualine.nvim',
+            requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+            config = function()
+                R 'nvim.plugins.lualine'
             end,
         }
 
