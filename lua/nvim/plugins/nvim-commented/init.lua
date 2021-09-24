@@ -3,7 +3,7 @@ R'commented'.setup {
         before_comment = require('ts_context_commentstring.internal').update_commentstring,
     },
     comment_padding = ' ',
-    keybindings = {v = ",c", nl = ",c"},
+    keybindings = { v = ',c', nl = ',c' },
     prefer_block_comment = false,
     set_keybindings = true,
     ex_mode_cmd = 'Comment',

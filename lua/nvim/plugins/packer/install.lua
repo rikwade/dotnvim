@@ -66,7 +66,7 @@ return R'packer'.startup(
             'mhartington/formatter.nvim',
             rocks = { 'luaformatter', server = 'https://luarocks.org/dev' },
             run = { 'yarn global add prettier prettier-plugin-java' },
-            keys = '<leader>f',
+            keys = ',f',
             config = function()
                 R 'nvim.plugins.formatter'
             end,

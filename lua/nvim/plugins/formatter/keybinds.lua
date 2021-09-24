@@ -1,1 +1,1 @@
-Keybind.g({ { 'n', '<leader>f', ':Format<CR>', { silent = true } } })
+Keybind.g({ { 'n', ',f', ':Format<CR>', { silent = true } } })
