@@ -21,19 +21,54 @@ local prettier_formatter = function(...)
             args = list_util.concat(args, additional_args)
         end
 
-        local prettier_conf = nil
+        local config_files = {
+            'prettierrc',
+            'prettierrc',
+            'prettierrc.yml',
+            'prettierrc.yaml',
+            'prettierrc.json5',
+            'prettierrc.js',
+            'prettierrc.cjs',
+            'prettier.config.js',
+            'prettier.config.cjs',
+            'prettierrc.toml',
+            '.prettierrc',
+            '.prettierrc',
+            '.prettierrc.yml',
+            '.prettierrc.yaml',
+            '.prettierrc.json5',
+            '.prettierrc.js',
+            '.prettierrc.cjs',
+            '.prettier.config.js',
+            '.prettier.config.cjs',
+            '.prettierrc.toml',
+        }
 
-        os_util.run_on_os(
-            {
-                linux = function()
-                    local home = os.getenv('HOME')
-                    prettier_conf = home .. '/.config/prettier/prettierrc.json'
-                end,
-                -- @TODO add pretteir conf for windows and mac
-            })
+        local cwd = FN.getcwd()
 
-        if file_util.exists(prettier_conf) then
-            table.insert(args, '--config ' .. prettier_conf)
+        -- check if a prettier config available in cwd
+        local has_local_config = list_util.any(
+                                     config_files, function(file)
+                return FN.findfile(file, cwd, 1) ~= ''
+            end)
+
+        -- if not found then use the global prettier config
+        if not has_local_config then
+            local prettier_conf = nil
+
+            os_util.run_on_os(
+                {
+                    linux = function()
+                        local home = os.getenv('HOME')
+                        prettier_conf = home ..
+                                            '/.config/prettier/prettierrc.json'
+                    end,
+                    -- @TODO add pretteir conf for windows and mac
+                })
+
+            if file_util.exists(prettier_conf) then
+                table.insert(args, '--config ' .. prettier_conf)
+            end
         end
 
         return { exe = 'prettier', args = args, stdin = true }

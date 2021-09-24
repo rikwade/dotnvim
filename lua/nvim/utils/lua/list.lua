@@ -25,4 +25,16 @@ function M.concat(...)
     return first
 end
 
+--[[
+-- Returns true if there are any matching values
+--
+-- @param list { Array } list to find the value
+-- @param filter_function { Function } match function
+--]]
+function M.any(list, match_function)
+    for _, i in ipairs(list) do if match_function(i) then return true end end
+
+    return false
+end
+
 return M
