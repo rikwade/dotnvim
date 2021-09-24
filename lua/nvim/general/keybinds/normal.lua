@@ -52,9 +52,6 @@ Shortcut:mode('n'):options():noremap():next():keymaps(
         -- close the window
         { '<leader>q', c 'q' },
 
-        -- close the buffer with out saving
-        { '<leader>x', c 'q!' },
-
         ----------------------------------------------------------------------
         --                          CUT COPY PASTE                          --
         ----------------------------------------------------------------------
