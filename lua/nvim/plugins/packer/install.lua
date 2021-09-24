@@ -207,7 +207,7 @@ return R'packer'.startup(
         }
 
         use {
-            'nvim-ts-autotag',
+            'windwp/nvim-ts-autotag',
             config = function()
                 R'nvim-ts-autotag'.setup()
             end,
