@@ -31,7 +31,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps(
         { '<leader>*', builtin 'grep_string()' },
 
         -- find help index
-        { '<leader>h', builtin 'help_tags()' },
+        { '<leader>x', builtin 'help_tags()' },
 
         ----------------------------------------------------------------------
         --                               LSP                                --
@@ -45,8 +45,10 @@ Shortcut:mode('n'):options():noremap():next():keymaps(
         -- show code actions
         { '<leader>a', builtin 'lsp_range_code_actions()' },
 
+        -- browse code definition
         { '<leader>c', builtin 'lsp_definitions()' },
 
+        -- browse code implementation
         { '<leader>m', builtin 'lsp_implementations()' },
     })
 
