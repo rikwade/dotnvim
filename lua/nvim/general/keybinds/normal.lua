@@ -76,6 +76,9 @@ Shortcut:mode('n'):options():noremap():next():keymaps(
         -- go to insert mode
         { ';', 'i' },
 
+        -- find next occurrenc of the line search
+        { 'j', ';' },
+
         ----------------------------------------------------------------------
         --                              OTHER                               --
         ----------------------------------------------------------------------
