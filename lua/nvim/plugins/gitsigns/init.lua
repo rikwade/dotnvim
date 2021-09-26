@@ -37,7 +37,7 @@ R'gitsigns'.setup(
             ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
             ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
         },
-        watch_index = { interval = 1000, follow_files = true },
+        watch_gitdir = { interval = 1000, follow_files = true },
         sign_priority = 6,
         update_debounce = 100,
         status_formatter = nil, -- Use default
