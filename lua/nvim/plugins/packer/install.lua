@@ -281,6 +281,13 @@ return R'packer'.startup(
             end,
         }
 
+        use {
+            's1n7ax/nvim-window-picker',
+            config = function()
+                require'window-picker'.setup({ include_current_win = true })
+            end,
+        }
+
         ----------------------------------------------------------------------
         --                           COLOR THEMES                           --
         ----------------------------------------------------------------------
