@@ -284,7 +284,7 @@ return R'packer'.startup(
         use {
             's1n7ax/nvim-window-picker',
             config = function()
-                require'window-picker'.setup({ include_current_win = true })
+                require'window-picker'.setup()
             end,
         }
 
