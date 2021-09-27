@@ -18,9 +18,9 @@ local border = {
 
 local signs = {
     Error = ' ﱥ',
-    Warning = ' ',
+    Warning = ' ',
     Hint = ' ',
-    Information = ' ﴀ',
+    Information = ' ',
 }
 
 for type, icon in pairs(signs) do
