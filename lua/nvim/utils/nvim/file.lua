@@ -1,5 +1,4 @@
 ---@diagnostic disable: undefined-global
-local str_util = R 'nvim.utils.lua.string'
 local wpicker = R 'window-picker'
 
 local M = {}
@@ -37,11 +36,11 @@ end
 -- IF the file not found, function will stop
 --]]
 function M.open_file_under_cursor()
-    local text_object = get_file_and_line_under_the_cursor()
+    local text_object = M.get_file_and_line_under_the_cursor()
 
     if not text_object then return end
 
-    local file = text_object[1]
+    local file = vim.fn.fnamemodify(text_object[1], ':p')
     local line = text_object[2]
 
     -- stop if the file does not exist
@@ -66,7 +65,7 @@ function M.open_file_under_cursor()
     end
 
     if line then
-        vim.cmd(line)
+        vim.cmd(tostring(line))
         vim.api.nvim_input('zz')
     end
 end
