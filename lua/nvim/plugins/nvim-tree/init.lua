@@ -2,7 +2,7 @@ Variable.g(
     {
         nvim_tree_ignore = { '.git', 'node_modules', '.cache' },
         nvim_tree_gitignore = 1,
-        nvim_tree_quit_on_open = 1,
+        nvim_tree_quit_on_open = 0,
         nvim_tree_indent_markers = 1,
         nvim_tree_hide_dotfiles = 1,
         nvim_tree_git_hl = 1,
@@ -10,7 +10,7 @@ Variable.g(
         nvim_tree_root_folder_modifier = ':~',
         nvim_tree_add_trailing = 1,
         nvim_tree_group_empty = 1,
-        nvim_tree_disable_window_picker = 1,
+        nvim_tree_disable_window_picker = 0,
         nvim_tree_icon_padding = ' ',
         nvim_tree_symlink_arrow = ' >> ',
         nvim_tree_respect_buf_cwd = 1,
