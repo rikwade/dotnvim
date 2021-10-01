@@ -16,19 +16,11 @@ local setup_servers = function()
     local servers = lspinstall.installed_servers()
 
     for _, ls in ipairs(servers) do
-        local config = { on_attach = on_attach_callback }
+        local config = {
+            on_attach = on_attach_callback,
+        }
 
-        if ls == 'java' then
-            config['init_options'] = {
-                bundles = {
-                    FN.glob(
-                        V.loop.os_homedir() ..
-                            '/.m2/repository/com/microsoft/java' ..
-                            '/com.microsoft.java.debug.plugin/0.32.0/' ..
-                            'com.microsoft.java.debug.plugin-0.32.0.jar'),
-                },
-            }
-        end
+        config = lsp_util.on_setup(ls, config)
 
         lspconfig[ls].setup(config)
     end

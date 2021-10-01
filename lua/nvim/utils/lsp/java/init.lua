@@ -3,7 +3,11 @@ local lsp_util = R 'nvim.utils.lsp'
 local M = {}
 
 local function execute_command(command, callback)
-    if type(command) == 'string' then command = { command = command } end
+    if type(command) == 'string' then
+        command = {
+            command = command,
+        }
+    end
 
     lsp_util.execute_command(
         command, function(err, res)
@@ -70,8 +74,10 @@ function M.resolve_class_paths(callback)
         M.resolve_class_path(
             class_info.mainClass, class_info.projectName, function(class_path)
                 table.insert(
-                    classpaths,
-                    { class_info = class_info, class_path = class_path })
+                    classpaths, {
+                        class_info = class_info,
+                        class_path = class_path,
+                    })
 
                 resolve_all_class_paths(class_iter)
             end)
