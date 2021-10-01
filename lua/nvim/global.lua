@@ -5,6 +5,7 @@ API = V.api
 FN = V.fn
 LSP = V.lsp
 CMD = V.cmd
+TS = V.treesitter
 
 Option = R 'nvim.utils.option'
 Variable = R 'nvim.utils.variable'
