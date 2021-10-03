@@ -1,4 +1,7 @@
-R'packer'.init({ max_jobs = 2 })
+R'packer'.init(
+    {
+        max_jobs = 2,
+    })
 
 return R'packer'.startup(
            function()
@@ -64,7 +67,10 @@ return R'packer'.startup(
         -- code formatters
         use {
             'mhartington/formatter.nvim',
-            rocks = { 'luaformatter', server = 'https://luarocks.org/dev' },
+            rocks = {
+                'luaformatter',
+                server = 'https://luarocks.org/dev',
+            },
             run = { 'yarn global add prettier prettier-plugin-java' },
             keys = ',f',
             config = function()
@@ -96,7 +102,10 @@ return R'packer'.startup(
         use {
             'theHamsta/nvim-dap-virtual-text',
             config = function()
-                Variable.g({ dap_virtual_text = true })
+                Variable.g(
+                    {
+                        dap_virtual_text = true,
+                    })
             end,
         }
 
@@ -120,7 +129,10 @@ return R'packer'.startup(
             end,
             requires = {
                 'nvim-lua/plenary.nvim',
-                { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+                {
+                    'nvim-telescope/telescope-fzf-native.nvim',
+                    run = 'make',
+                },
             },
         }
 
@@ -275,7 +287,10 @@ return R'packer'.startup(
         -- status line
         use {
             'hoob3rt/lualine.nvim',
-            requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+            requires = {
+                'kyazdani42/nvim-web-devicons',
+                opt = true,
+            },
             config = function()
                 R 'nvim.plugins.lualine'
             end,
@@ -303,7 +318,10 @@ return R'packer'.startup(
         use {
             'marko-cerovac/material.nvim',
             config = function()
-                Variable.g({ material_style = 'palenight' })
+                Variable.g(
+                    {
+                        material_style = 'palenight',
+                    })
                 CMD('colorscheme material')
             end,
         }
