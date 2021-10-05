@@ -25,6 +25,8 @@ local function on_setup(config)
     config['init_options'] = {
         bundles = bundles,
     }
+end
+
 local M = {}
 
 function M.on_attach()

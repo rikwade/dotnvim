@@ -3,6 +3,7 @@ local lspinstall = R 'lspinstall'
 local keymaps = R 'nvim.plugins.lsp.keymaps'
 local ui = R 'nvim.plugins.lsp.ui'
 local dap = R 'nvim.plugins.nvim-dap'
+local lsp_util = R 'nvim.utils.lsp'
 
 local on_attach_callback = function(conf, bufnr)
     keymaps.on_attach(bufnr)
