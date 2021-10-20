@@ -1,14 +1,17 @@
 local Shortcut = R 'nvim.newutil.keymap'
+local Lsp = require 'nvim.plugins.lsp'
 local l = Keybind.get_lua_cmd_string
 
-local on_attach = function(bufnr)
+local M = {}
+
+function M.on_attach(bufnr)
     Shortcut:mode('n'):buffer(bufnr):options():noremap():next():keymaps(
         {
 
             -- go to definition of the current node
             { '<BS>t', l 'vim.lsp.buf.definition()' },
 
-            -- go to the implementation of the current inderface node
+            -- go to the implementation of the current interface node
             { '<BS>s', l 'vim.lsp.buf.implementation()' },
 
             -- rename file name
@@ -33,11 +36,11 @@ local on_attach = function(bufnr)
             { '<BS>c', l 'vim.lsp.diagnostic.set_loclist()' },
 
             -- create folder
-            -- @TODO fali with error
+            -- @TODO fail with error
             { '<BS>wa', l 'vim.lsp.buf.add_workspace_folder()' },
 
             -- remove folder
-            -- @TODO fali without error
+            -- @TODO fail without error
             { '<BS>nr', l 'vim.lsp.buf.remove_workspace_folder()' },
 
             -- show workspace folders
@@ -61,4 +64,12 @@ local on_attach = function(bufnr)
         })
 end
 
-return { on_attach = on_attach }
+function M.setup()
+    Lsp.add_setup_event_listener(
+        function(_, conf)
+            conf:add_on_attach_callback(M.on_attach)
+            return conf
+        end)
+end
+
+return M

@@ -48,16 +48,13 @@ Variable.g(
                 symlink = '',
                 symlink_open = '',
             },
-            lsp = {
-                hint = ' ',
-                info = ' ',
-                warning = ' ',
-                error = ' ﱥ',
-            },
         },
     })
 
-local opt = { noremap = true, silent = true }
+local opt = {
+    noremap = true,
+    silent = true,
+}
 
 Keybind.g(
     {
@@ -74,14 +71,32 @@ R'nvim-tree'.setup {
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = false,
-    lsp_diagnostics = true,
-    update_focused_file = { enable = true, update_cwd = false, ignore_list = {} },
-    system_open = { cmd = nil, args = {} },
+    diagnostics = {
+        enable = false,
+        icons = {
+            hint = ' ',
+            info = ' ',
+            warning = ' ',
+            error = ' ﱥ',
+        },
+    },
+    update_focused_file = {
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
+    },
+    system_open = {
+        cmd = nil,
+        args = {},
+    },
 
     view = {
         width = 30,
         side = 'left',
         auto_resize = false,
-        mappings = { custom_only = false, list = {} },
+        mappings = {
+            custom_only = false,
+            list = {},
+        },
     },
 }

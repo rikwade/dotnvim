@@ -19,4 +19,16 @@ function M.split(str, separator)
     return t
 end
 
+function M.is_empty(str)
+    assert(
+        M.is_string(str),
+        'expected str to be a string but passed ' .. tostring(str))
+
+    return str:match('^%s$')
+end
+
+function M.is_string(value)
+    return type(value) == 'string'
+end
+
 return M

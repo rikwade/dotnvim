@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 R'packer'.init(
     {
         max_jobs = 2,
@@ -5,9 +6,8 @@ R'packer'.init(
 
 return R'packer'.startup(
            function()
-        -- This is just to get rid of LSP errors on each line
-        ---@diagnostic disable-next-line: undefined-global
-        local use = use
+
+        use_rocks { 'lualogging', 'penlight', 'promise-lua' }
 
         ----------------------------------------------------------------------
         --                               LSP                                --
@@ -15,18 +15,21 @@ return R'packer'.startup(
 
         -- lsp
         use {
-            'kabouzeid/nvim-lspinstall',
+            'williamboman/nvim-lsp-installer',
             run = function()
-                R'nvim.plugins.lspinstall'.install_servers()
+                R 'nvim.plugins.nvim-lsp-installer'
             end,
-            requires = {
-                {
-                    'neovim/nvim-lspconfig',
-                    config = function()
-                        R 'nvim.plugins.lsp'
-                    end,
-                },
-            },
+            rocks = { 'promise-lua' },
+            requires = { 'neovim/nvim-lspconfig' },
+            config = function()
+                -- setup stuff before LSes are initialized
+                R'nvim.plugins.lsp.ui'.setup()
+                R'nvim.plugins.lsp.keymaps'.setup()
+                R'nvim.plugins.nvim-dap.java'.setup()
+
+                -- setup LSes
+                R'nvim.plugins.lsp'.setup()
+            end,
         }
 
         -- completion menu
@@ -302,6 +305,8 @@ return R'packer'.startup(
                 require'window-picker'.setup()
             end,
         }
+
+        use { 'rcarriga/nvim-notify' }
 
         ----------------------------------------------------------------------
         --                           COLOR THEMES                           --

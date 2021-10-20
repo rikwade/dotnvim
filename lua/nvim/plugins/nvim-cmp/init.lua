@@ -1,7 +1,7 @@
 local cmp = R 'cmp'
-local types = R 'cmp.types'
 
-local WIDE_HEIGHT = 50
+local v = vim
+local WIDE_HEIGHT = 20
 
 cmp.setup(
     {
@@ -67,13 +67,12 @@ cmp.setup(
             completeopt = 'menu,menuone,preview,noinsert',
         },
 
-        preselect = true,
+        preselect = false,
 
         documentation = {
             border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
             winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
-            maxwidth = math.floor(
-                (WIDE_HEIGHT * 2) * (V.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-            maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / V.o.lines)),
+            maxwidth = math.floor(WIDE_HEIGHT * (v.o.columns / 100)),
+            maxheight = math.floor(WIDE_HEIGHT * (v.o.lines / 100)),
         },
     })

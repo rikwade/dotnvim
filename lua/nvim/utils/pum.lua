@@ -1,5 +1,3 @@
-local validation = R 'nvim.utils.rusty.validation'
-
 local e = API.nvim_eval
 local input = API.nvim_input
 
@@ -23,9 +21,9 @@ Pum.goto_item = function(options)
         input(Pum.directions[direction])
         return
     else
-        if validation.string(keybind) then
+        if type(keybind) == 'string' then
             input(keybind)
-        elseif validation.func(callback) then
+        elseif type(callback) == 'function' then
             callback()
         end
     end

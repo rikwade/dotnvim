@@ -71,7 +71,11 @@ local prettier_formatter = function(...)
             end
         end
 
-        return { exe = 'prettier', args = args, stdin = true }
+        return {
+            exe = 'prettier',
+            args = args,
+            stdin = true,
+        }
     end
 end
 
@@ -97,7 +101,11 @@ R'formatter'.setup(
             },
             lua = {
                 function()
-                    return { exe = luaformat, args = {}, stdin = true }
+                    return {
+                        exe = luaformat,
+                        args = {},
+                        stdin = true,
+                    }
                 end,
             },
             cpp = {

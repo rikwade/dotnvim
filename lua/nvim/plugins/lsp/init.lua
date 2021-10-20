@@ -1,31 +1,56 @@
-local lspconfig = R 'lspconfig'
-local lspinstall = R 'lspinstall'
-local keymaps = R 'nvim.plugins.lsp.keymaps'
-local ui = R 'nvim.plugins.lsp.ui'
-local dap = R 'nvim.plugins.nvim-dap'
-local lsp_util = R 'nvim.utils.lsp'
+local lsp_installer = require('nvim-lsp-installer')
+local List = require 'pl.List'
+local Assert = require 'nvim.utils.validator.assert'
+local Config = require 'nvim.utils.lsp.config'
 
-local on_attach_callback = function(conf, bufnr)
-    keymaps.on_attach(bufnr)
-    ui.on_attach()
-    dap.on_attach(conf, bufnr)
+local M = {
+    on_setup_callbacks = List(),
+}
+
+--- Add callback to be attached on setup event
+--
+-- @param { (ls, conf) => conf } callback - callback function to be registered
+function M.add_setup_event_listener(callback)
+    M.on_setup_callbacks:append(callback)
 end
 
-local setup_servers = function()
-    lspinstall.setup()
+--- Callback that handles server setup
+function M.on_setup(ls, conf)
+    M.on_setup_callbacks:foreach(
+        function(callback)
+            local updated_config = callback(ls, conf)
+            if updated_config then
+                Assert:is_instance_of(Config, updated_config, nil, 'Config')
+                conf = updated_config
+            end
+        end)
 
-    local servers = lspinstall.installed_servers()
-
-    for _, ls in ipairs(servers) do
-        local config = {
-            on_attach = on_attach_callback,
-        }
-
-        config = lsp_util.on_setup(ls, config)
-
-        lspconfig[ls].setup(config)
-    end
-
+    return conf
 end
 
-setup_servers()
+--- Setup language servers
+function M.setup()
+    lsp_installer.on_server_ready(
+        function(server)
+            local conf = Config()
+            local updated_conf = M.on_setup(server.name, conf)
+            server:setup(updated_conf)
+        end)
+end
+
+--  function M.setup()
+--  -- add lsp intall configs to lsp config
+--  lsp_install.setup()
+
+--  local installed_servers = lsp_install.installed_servers()
+
+--  for _, ls in pairs(installed_servers) do
+--  local conf = Config()
+
+--  M.on_setup(ls, conf)
+
+--  lsp_config[ls].setup(conf)
+--  end
+--  end
+
+return M

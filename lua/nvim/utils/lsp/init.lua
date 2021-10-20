@@ -1,22 +1,23 @@
-local M = {
-    on_setup_callback_map = {},
-}
+local M = { on_setup_callback_map = {} }
 
-function M.execute_command(command, callback)
-    LSP.buf_request(
-        0, 'workspace/executeCommand', command, function(err, _, res)
-            if callback then
-                callback(err, res)
-            elseif err then
-                print('Execute command failed: ' .. err.message)
-            end
-        end)
+--[[
+-- Register callback to be call on language server setup
+--
+-- @param { String } lang - callback on setup of this language
+-- @param { (Conf) => Conf } - callback  function that takes config and returns
+-- the updated config to use when setting up the server
+--]]
+function M.add_on_setup_callback(lang, callback)
+    M.on_setup_callback_map[lang] = callback
 end
 
-function M.add_on_setup_callback(lang, func)
-    M.on_setup_callback_map[lang] = func
-end
-
+--[[
+-- Calls relevant language specific registered callbacks on setup callback
+--
+-- @param { String } ls - name of the language server
+-- @param { Conf } Conf - language server configuration
+-- @returns { Conf } updated config to use when setting up LS
+--]]
 function M.on_setup(ls, config)
     local updated_config = nil
 
