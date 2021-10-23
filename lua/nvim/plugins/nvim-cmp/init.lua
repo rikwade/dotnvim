@@ -1,4 +1,6 @@
 local cmp = R 'cmp'
+local lspkind = R 'lspkind'
+cmp.setup {}
 
 local v = vim
 local WIDE_HEIGHT = 20
@@ -23,20 +25,24 @@ cmp.setup(
             {
                 name = 'nvim_lsp',
                 priority = 100,
+                max_item_count = 10,
             },
             {
                 name = 'nvim_lua',
                 priority = 100,
+                max_item_count = 10,
             },
             {
                 name = 'snippy',
                 priority = 90,
-                max_item_count = 3,
+                max_item_count = 5,
                 keyword_length = 2,
             },
             {
                 name = 'buffer',
                 priority = 80,
+                max_item_count = 5,
+                keyword_length = 4,
             },
             {
                 name = 'path',
@@ -44,6 +50,7 @@ cmp.setup(
             },
             {
                 name = 'spell',
+                max_item_count = 5,
                 priority = 50,
             },
             {
@@ -52,6 +59,7 @@ cmp.setup(
             },
             {
                 name = 'emoji',
+                max_item_count = 5,
                 priority = 10,
             },
         },
@@ -74,5 +82,15 @@ cmp.setup(
             winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
             maxwidth = math.floor(WIDE_HEIGHT * (v.o.columns / 100)),
             maxheight = math.floor(WIDE_HEIGHT * (v.o.lines / 100)),
+        },
+
+        -- Adds source of completion
+        -- this is a part of onsails/lspkind-nvim plugin
+        formatting = {
+            format = lspkind.cmp_format(
+                {
+                    with_text = true,
+                    maxwidth = 50,
+                }),
         },
     })

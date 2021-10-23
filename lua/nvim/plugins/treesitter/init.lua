@@ -2,7 +2,9 @@ R'nvim-treesitter.configs'.setup(
     {
         ensure_installed = 'all',
 
-        highlight = { enable = true },
+        highlight = {
+            enable = true,
+        },
 
         incremental_selection = {
             enable = true,
@@ -14,7 +16,9 @@ R'nvim-treesitter.configs'.setup(
             },
         },
 
-        indent = { enable = false },
+        indent = {
+            enable = false,
+        },
 
         textobjects = {
             select = {
@@ -25,18 +29,16 @@ R'nvim-treesitter.configs'.setup(
 
                 keymaps = {
                     -- You can use the capture groups defined in textobjects.scm
-                    ['af'] = '@function.outer',
-                    ['f'] = '@function.inner',
-                    ['ac'] = '@class.outer',
-                    ['ic'] = '@class.inner',
+                    ['t'] = '@function.inner',
+                    ['is'] = '@parameter.inner',
+                    ['ia'] = '@class.inner',
+                    -- @todo @block.inner does not work
+                    ['ir'] = '@block.outer',
 
-                    -- Or you can define your own textobjects like this
-                    ['iF'] = {
-                        python = '(function_definition) @function',
-                        cpp = '(function_definition) @function',
-                        c = '(function_definition) @function',
-                        java = '(method_declaration) @function',
-                    },
+                    ['at'] = '@function.outer',
+                    ['as'] = '@parameter.inner',
+                    ['aa'] = '@class.outer',
+                    ['ar'] = '@block.outer',
                 },
             },
 
@@ -44,27 +46,35 @@ R'nvim-treesitter.configs'.setup(
                 enable = true,
                 set_jumps = true, -- whether to set jumps in the jumplist
                 goto_next_start = {
-                    [']f'] = '@function.outer',
-                    [']]'] = '@class.outer',
-                },
-                goto_next_end = {
-                    [']F'] = '@function.outer',
-                    [']['] = '@class.outer',
+                    [']t'] = '@function.outer',
+                    [']s'] = '@parameter.inner',
+                    [']r'] = '@block.outer',
+                    [']a'] = '@class.outer',
                 },
                 goto_previous_start = {
-                    ['[f'] = '@function.outer',
-                    ['[['] = '@class.outer',
+                    ['[t'] = '@function.outer',
+                    ['[s'] = '@parameter.inner',
+                    ['[r'] = '@block.outer',
+                    ['[a'] = '@class.outer',
+                },
+                goto_next_end = {
+                    [']T'] = '@function.outer',
+                    [']S'] = '@parameter.inner',
+                    [']R'] = '@block.outer',
+                    [']A'] = '@class.outer',
                 },
                 goto_previous_end = {
-                    ['[F'] = '@function.outer',
-                    ['[]'] = '@class.outer',
+                    ['[T'] = '@function.outer',
+                    ['[S'] = '@parameter.inner',
+                    ['[R'] = '@block.outer',
+                    ['[A'] = '@class.outer',
                 },
             },
         },
     })
 
---  API.nvim_exec(
---  [[
---  set foldmethod=expr
---  set foldexpr=nvim_treesitter#foldexpr()
---  ]], false)
+API.nvim_exec(
+    [[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+  ]], false)
