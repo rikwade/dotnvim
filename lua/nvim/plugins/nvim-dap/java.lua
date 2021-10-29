@@ -1,6 +1,7 @@
 local dap = R 'dap'
 local Lsp = require 'nvim.plugins.lsp'
-local Event = require 'nvim.plugins.lsp.event'
+local LspEventType = require 'nvim.plugins.lsp.event'
+local ConfEventType = require 'nvim.utils.lsp.event-type'
 local JavaDap = require 'nvim.utils.dap.java'
 local Notify = require 'nvim.utils.notify'
 
@@ -54,11 +55,11 @@ end
 
 function M.setup()
     Lsp.add_listener(
-        Event.SERVER_SETUP, function(ls, conf)
+        LspEventType.SERVER_SETUP, function(ls, conf)
             if ls == 'jdtls' then
                 M.setup_dap_adapters()
                 M.setup_server_conf(conf)
-                conf:add_one_time_on_attach_callback(M.setup_dap_conf)
+                conf:add_listener(ConfEventType.SERVER_READY, M.setup_dap_conf)
             end
         end)
 end

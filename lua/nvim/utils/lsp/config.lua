@@ -2,35 +2,26 @@ local class = require 'pl.class'
 local List = require 'pl.List'
 local Map = require 'pl.Map'
 local Assert = require 'nvim.utils.validator.assert'
+local Event = require 'nvim.utils.event'
+local EventType = require 'nvim.utils.lsp.event-type'
 
 local Config = class(Map)
 
 function Config:_init()
-    self.on_attach_callbacks = List()
-    self.on_attach = self:on_attach()
-end
-
---- Remove on attach callback
--- @param { function } callback - callback to be attached
-function Config.remove_on_attach_callback(self, callback)
-    self.on_attach_callbacks:remove_value(callback)
+    self.event = Event()
+    self.on_attach = self:get_on_attach()
 end
 
 --- Append on attach callback to config
 -- @param { function } callback - callback to be attached
-function Config.add_on_attach_callback(self, callback)
-    self.on_attach_callbacks:append(callback)
+function Config.add_listener(self, event, listener)
+    self.event:add_listener(event, listener)
 end
 
---- Append on attach callback but removed after it is executed the first time
+--- Remove on attach callback
 -- @param { function } callback - callback to be attached
-function Config.add_one_time_on_attach_callback(self, callback)
-    local function callback_wrapper(...)
-        callback(...)
-        self:remove_on_attach_callback(callback_wrapper)
-    end
-
-    self.on_attach_callbacks:append(callback_wrapper)
+function Config.remove_listener(self, event, callback)
+    self.event:remove_listener(event, callback)
 end
 
 --- Set config option
@@ -68,14 +59,30 @@ function Config.append_option(self, option, value)
     self:get(option):append(value)
 end
 
-function Config.on_attach(self)
+--- Returns a function that dispatches SERVER_READY for the first time and
+-- ATTACH event on consequent events
+function Config.get_on_attach(self)
     local this = self
 
-    return function(conf, buffer)
-        for _, callback in ipairs(this.on_attach_callbacks) do
-            callback(conf, buffer)
-        end
+    local callback = nil
+
+    local function attach_callback(...)
+        this.event:dispatch(EventType.ATTACH, ...)
     end
+
+    local function server_ready_callback(...)
+        this.event:dispatch(EventType.SERVER_READY, ...)
+        this.event:dispatch(EventType.ATTACH, ...)
+        callback = attach_callback
+    end
+
+    callback = server_ready_callback
+
+    local function on_attach()
+        callback()
+    end
+
+    return on_attach
 end
 
 return Config

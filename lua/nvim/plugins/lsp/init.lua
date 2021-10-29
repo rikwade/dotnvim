@@ -1,6 +1,7 @@
 local lsp_installer = require('nvim-lsp-installer')
 local Config = require 'nvim.utils.lsp.config'
 local LspEvent = require 'nvim.plugins.lsp.event'
+local ConfEvent = require 'nvim.utils.lsp.event-type'
 local Event = require 'nvim.utils.event'
 local Notify = require 'nvim.utils.notify'
 
@@ -22,7 +23,7 @@ end
 
 function M.lsp_setup_message(lang)
     return function()
-        notify:success('Language server: '.. lang ..' setup is successful!')
+        notify:success('Language server: ' .. lang .. ' setup is successful!')
     end
 end
 
@@ -34,8 +35,8 @@ function M.setup()
         function(server)
             local conf = Config()
 
-            conf:add_one_time_on_attach_callback(
-                M.lsp_setup_message(server.name))
+            conf:add_listener(
+                ConfEvent.SERVER_READY, M.lsp_setup_message(server.name))
 
             M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server.name, conf)
 
