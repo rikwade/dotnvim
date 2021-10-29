@@ -42,7 +42,7 @@ Option.g(
         -- write changes to swap file after "n" ms
         -- for some reason when the updatetime is high, autocompletion in coc nvim
         -- takes a long time
-        updatetime = 300,
+        updatetime = 30,
 
         -- controls how short messages are displayed in status bar section
         shortmess = V.o.shortmess .. 'c',
@@ -74,7 +74,7 @@ Option.g(
         -- breakindent = false,
 
         -- wrap line custom character to show
-        -- showbreak = '↳',
+        showbreak = '↳',
 
         -- operator pending timeout
         timeoutlen = 500,

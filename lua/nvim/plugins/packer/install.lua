@@ -22,9 +22,13 @@ return R'packer'.startup(
             rocks = { 'promise-lua' },
             requires = { 'neovim/nvim-lspconfig', 'onsails/lspkind-nvim' },
             config = function()
-                -- setup stuff before LSes are initialized
+                -- lsp config
                 R'nvim.plugins.lsp.ui'.setup()
                 R'nvim.plugins.lsp.keymaps'.setup()
+
+                -- dap config
+                R'nvim.plugins.nvim-dap.ui'.setup()
+                R'nvim.plugins.nvim-dap.keymap'.setup()
                 R'nvim.plugins.nvim-dap.java'.setup()
 
                 -- setup LSes
@@ -89,10 +93,7 @@ return R'packer'.startup(
             requires = {
                 'rcarriga/nvim-dap-ui',
                 'theHamsta/nvim-dap-virtual-text',
-            },
-            config = function()
-                R 'nvim.plugins.nvim-dap'
-            end,
+            }
         }
 
         use {
@@ -277,8 +278,6 @@ return R'packer'.startup(
             end,
         }
 
-        use { 'Darazaki/indent-o-matic' }
-
         use {
             'romgrk/nvim-treesitter-context',
             requires = { 'nvim-treesitter/nvim-treesitter' },
@@ -299,6 +298,7 @@ return R'packer'.startup(
             end,
         }
 
+        -- lib to pick window from currently opened windows
         use {
             's1n7ax/nvim-window-picker',
             config = function()
@@ -306,7 +306,11 @@ return R'packer'.startup(
             end,
         }
 
+        -- notification popup library
         use { 'rcarriga/nvim-notify' }
+
+        -- sets the indentation automatically
+        use { 'zsugabubus/crazy8.nvim' }
 
         ----------------------------------------------------------------------
         --                           COLOR THEMES                           --

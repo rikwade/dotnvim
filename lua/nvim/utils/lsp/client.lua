@@ -1,3 +1,4 @@
+local Assert = require 'nvim.utils.validator.assert'
 local Promise = R 'promise'
 local class = require 'pl.class'
 local WorkspaceCommandParam = require('nvim.utils.lsp.workspace-command-param')
@@ -13,10 +14,7 @@ end
 -- @param { WorkspaceCommandParam } command parameters
 -- @returns { Promise<...any> } promise
 function Client.execute_workspace_command(self, param)
-    assert(
-        WorkspaceCommandParam:class_of(param),
-        'expected param to be a type of class WorkspaceCommandParam but passed ' ..
-            tostring(param))
+    Assert:is_instance_of(WorkspaceCommandParam, param, nil, 'WorkspaceCommandParam')
 
     -- use the client if available
     if self.client then

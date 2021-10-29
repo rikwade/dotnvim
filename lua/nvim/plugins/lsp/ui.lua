@@ -1,4 +1,5 @@
 local Lsp = require 'nvim.plugins.lsp'
+local Event = require 'nvim.plugins.lsp.event'
 
 local M = {}
 
@@ -27,7 +28,7 @@ M.signs = {
     Information = ' ',
 }
 
-function M.on_attach ()
+function M.add_ui()
     -- some LS seems to clear the highlight groups
     -- that's why the highlighting related code is defined on attach
     for type, icon in pairs(M.signs) do
@@ -67,10 +68,9 @@ function M.on_attach ()
 end
 
 function M.setup()
-    Lsp.add_setup_event_listener(
-        function(_, conf)
-            conf:add_on_attach_callback(M.on_attach)
-            return conf
+    Lsp.add_listener(
+        Event.END, function()
+            M.add_ui()
         end)
 end
 

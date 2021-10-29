@@ -1,4 +1,4 @@
-R'hop'.setup({ keys = 'arstneiodhpfwqluy;cxzm' })
+R'hop'.setup({ keys = 'tnseriaocmfuplwyq' })
 
 local opt = { silent = true }
 

@@ -1,11 +1,12 @@
 local Shortcut = R 'nvim.newutil.keymap'
 local Lsp = require 'nvim.plugins.lsp'
+local Event = require 'nvim.plugins.lsp.event'
 local l = Keybind.get_lua_cmd_string
 
 local M = {}
 
-function M.on_attach(bufnr)
-    Shortcut:mode('n'):buffer(bufnr):options():noremap():next():keymaps(
+function M.on_attach(buffer)
+    Shortcut:mode('n'):buffer(buffer):options():noremap():next():keymaps(
         {
 
             -- go to definition of the current node
@@ -65,8 +66,8 @@ function M.on_attach(bufnr)
 end
 
 function M.setup()
-    Lsp.add_setup_event_listener(
-        function(_, conf)
+    Lsp.add_listener(
+        Event.SERVER_SETUP, function(_, conf)
             conf:add_on_attach_callback(M.on_attach)
             return conf
         end)

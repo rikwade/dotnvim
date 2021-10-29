@@ -1,43 +1,63 @@
 local Shortcut = R 'nvim.newutil.keymap'
+local Lsp = R 'nvim.plugins.lsp'
+local Event = R 'nvim.plugins.lsp.event'
 local l = Keybind.get_lua_cmd_string
 
-Shortcut:mode('n'):options():noremap():next():keymaps(
-    {
-        -- close the debug sessio
-        { ',tS', l 'R"dap".close()' },
+local M = {}
 
-        -- start the debug session and continue to next breakpoint
-        { ',tc', l 'R"dap".continue()' },
+function M.on_attach(buffer)
+    Shortcut:mode('n'):buffer(buffer):options():noremap():next():keymaps(
+        {
+            -- close the debug sessio
+            { ',tS', l 'R"dap".close()' },
 
-        -- run last again
-        { ',tl', l 'R"dap".run_last()' },
+            -- start the debug session and continue to next breakpoint
+            { ',tc', l 'R"dap".continue()' },
 
-        { ',tu', l 'R"dap".step_out()' },
-        { ',td', l 'R"dap".step_over()' },
-        { ',ti', l 'R"dap".step_into()' },
+            -- run last again
+            { ',tl', l 'R"dap".run_last()' },
 
-        -- create and remove a breakpoint
-        { ',tt', l 'R"dap".toggle_breakpoint()' },
+            { ',tu', l 'R"dap".step_out()' },
+            { ',td', l 'R"dap".step_over()' },
+            { ',ti', l 'R"dap".step_into()' },
 
-        -- go up in the call stack
-        { ',tk', l 'R"dap".up()' },
+            -- create and remove a breakpoint
+            { ',tt', l 'R"dap".toggle_breakpoint()' },
 
-        -- go down in the call stack
-        { ',tj', l 'R"dap".down()' },
+            -- go up in the call stack
+            { ',tk', l 'R"dap".up()' },
 
-        -- restart the execution
-        { ',tr', l 'R"dap".restart()' },
+            -- go down in the call stack
+            { ',tj', l 'R"dap".down()' },
 
-        -- inspect node on cursor
-        { ',th', l 'R"dap.ui.variables".hover()' },
+            -- restart the execution
+            { ',tr', l 'R"dap".restart()' },
 
-        -- inspect all scope properties
-        { ',ts', l 'R"dap.ui.widgets".centered_float(R"dap.ui.widgets".scopes)' },
+            -- inspect node on cursor
+            { ',th', l 'R"dap.ui.variables".hover()' },
 
-        -- open repl window
-        { ',to', l 'R"dap".repl.open()' },
-    }):mode('v'):keymaps(
-    {
-        -- evaluate selected portion
-        { ',th', l 'R"dap.ui.variables".visual_hover()' },
-    })
+            -- inspect all scope properties
+            {
+                ',ts',
+                l 'R"dap.ui.widgets".centered_float(R"dap.ui.widgets".scopes)',
+            },
+
+            -- open repl window
+            { ',to', l 'R"dap".repl.open()' },
+        })
+
+    Shortcut:mode('v'):buffer(buffer):keymaps(
+        {
+            -- evaluate selected portion
+            { ',th', l 'R"dap.ui.variables".visual_hover()' },
+        })
+end
+
+function M.setup()
+    Lsp.add_listener(
+        Event.SERVER_SETUP, function(_, conf)
+            conf:add_on_attach_callback(M.on_attach)
+        end)
+end
+
+return M

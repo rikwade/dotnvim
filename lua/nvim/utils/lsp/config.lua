@@ -10,10 +10,27 @@ function Config:_init()
     self.on_attach = self:on_attach()
 end
 
+--- Remove on attach callback
+-- @param { function } callback - callback to be attached
+function Config.remove_on_attach_callback(self, callback)
+    self.on_attach_callbacks:remove_value(callback)
+end
+
 --- Append on attach callback to config
 -- @param { function } callback - callback to be attached
 function Config.add_on_attach_callback(self, callback)
     self.on_attach_callbacks:append(callback)
+end
+
+--- Append on attach callback but removed after it is executed the first time
+-- @param { function } callback - callback to be attached
+function Config.add_one_time_on_attach_callback(self, callback)
+    local function callback_wrapper(...)
+        callback(...)
+        self:remove_on_attach_callback(callback_wrapper)
+    end
+
+    self.on_attach_callbacks:append(callback_wrapper)
 end
 
 --- Set config option

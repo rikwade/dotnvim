@@ -116,10 +116,10 @@ function Assert.is_instance_of_any(_, classes, value, message, class_name)
             return cls:class_of(value)
         end)
 
-    local has_any = matching_classes:length() > 0
+    local has_any = matching_classes:len() > 0
 
     message = class_name and Assert.get_message(
-                  ('expected value to be an instance of ' + class_name) or
+                  ('expected value to be an instance of ' .. class_name) or
                       'expected value to be an instance of the passed class')
 
     assert(has_any, message)

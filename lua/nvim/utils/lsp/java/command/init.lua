@@ -1,13 +1,10 @@
 local class = R 'pl.class'
 local Client = R 'nvim.utils.lsp.client'
 local WorkspaceCommandParam = R 'nvim.utils.lsp.workspace-command-param'
-local CommandArguments = require 'nvim.utils.lsp.command-arguments'
 local ResolveClasspathArguments =
     require 'nvim.utils.lsp.java.command.arguments.resolve-classpath-arguments'
 local GetClasspathArguments =
     require 'nvim.utils.lsp.java.command.arguments.resolve-classpath-arguments'
-local FindTestTypesAndMethodsArguments =
-    require 'nvim.utils.lsp.java.command.arguments.find-test-types-and-methods-arguments'
 
 local Command = class()
 
@@ -19,14 +16,14 @@ end
 -- @returns { Promise<port> } port number
 function Command.start_debug_session(self)
     local cmd_param = WorkspaceCommandParam('vscode.java.startDebugSession')
-    return self.client.execute_workspace_command(cmd_param)
+    return self.client:execute_workspace_command(cmd_param)
 end
 
 --- Returns all the main classes
 -- @returns
 function Command.resolve_main_class(self)
     local cmd_param = WorkspaceCommandParam('vscode.java.resolveMainClass')
-    return self.client.execute_workspace_command(cmd_param)
+    return self.client:execute_workspace_command(cmd_param)
 end
 
 --- Returns the classpaths
@@ -44,7 +41,8 @@ function Command.resolve_classpath(self, arguments)
             command = 'vscode.java.resolveClasspath',
             arguments = arguments,
         })
-    return self.client.execute_workspace_command(cmd_param)
+
+    return self.client:execute_workspace_command(cmd_param)
 end
 
 --- Returns the classpaths for given buffer

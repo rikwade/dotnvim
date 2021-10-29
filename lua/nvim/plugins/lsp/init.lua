@@ -1,56 +1,48 @@
 local lsp_installer = require('nvim-lsp-installer')
-local List = require 'pl.List'
-local Assert = require 'nvim.utils.validator.assert'
 local Config = require 'nvim.utils.lsp.config'
+local LspEvent = require 'nvim.plugins.lsp.event'
+local Event = require 'nvim.utils.event'
+local Notify = require 'nvim.utils.notify'
 
-local M = {
-    on_setup_callbacks = List(),
+local notify = Notify {
+    title = 'Language Server',
 }
 
---- Add callback to be attached on setup event
+local M = {
+    lsp_event = Event(),
+}
+
+--- Add event listener
 --
--- @param { (ls, conf) => conf } callback - callback function to be registered
-function M.add_setup_event_listener(callback)
-    M.on_setup_callbacks:append(callback)
+-- @param { Event } event - event type
+-- @param { Function } listener - callback function to call on event
+function M.add_listener(event, listener)
+    M.lsp_event:add_listener(event, listener)
 end
 
---- Callback that handles server setup
-function M.on_setup(ls, conf)
-    M.on_setup_callbacks:foreach(
-        function(callback)
-            local updated_config = callback(ls, conf)
-            if updated_config then
-                Assert:is_instance_of(Config, updated_config, nil, 'Config')
-                conf = updated_config
-            end
-        end)
-
-    return conf
+function M.lsp_setup_message(lang)
+    return function()
+        notify:success('Language server: '.. lang ..' setup is successful!')
+    end
 end
 
 --- Setup language servers
 function M.setup()
+    M.lsp_event:dispatch(LspEvent.START)
+
     lsp_installer.on_server_ready(
         function(server)
             local conf = Config()
-            local updated_conf = M.on_setup(server.name, conf)
-            server:setup(updated_conf)
+
+            conf:add_one_time_on_attach_callback(
+                M.lsp_setup_message(server.name))
+
+            M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server.name, conf)
+
+            server:setup(conf)
         end)
+
+    M.lsp_event:dispatch(LspEvent.END)
 end
-
---  function M.setup()
---  -- add lsp intall configs to lsp config
---  lsp_install.setup()
-
---  local installed_servers = lsp_install.installed_servers()
-
---  for _, ls in pairs(installed_servers) do
---  local conf = Config()
-
---  M.on_setup(ls, conf)
-
---  lsp_config[ls].setup(conf)
---  end
---  end
 
 return M

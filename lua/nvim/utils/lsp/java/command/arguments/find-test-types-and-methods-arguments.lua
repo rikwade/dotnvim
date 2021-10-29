@@ -1,5 +1,4 @@
 local class = require 'pl.class'
-local class = require 'pl.class'
 local CommandArguments = require 'nvim.utils.lsp.command-arguments'
 local NumberUtil = require 'nvim.utils.lua.number'
 
@@ -15,3 +14,5 @@ function FindTestTypesAndMethodsArguments:_init(buffer)
 
     self:super({ v.uri_from_bufnr(buffer) })
 end
+
+return FindTestTypesAndMethodsArguments

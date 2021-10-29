@@ -25,3 +25,5 @@ function ResolveClasspathArguments:_init(project_name, class_name)
 
     self:super({ class_name, project_name })
 end
+
+return ResolveClasspathArguments

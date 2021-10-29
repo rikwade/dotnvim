@@ -13,6 +13,18 @@ local v = vim
 local loop = v.loop
 local api = v.api
 
+local function flatten_classpaths(classpaths)
+    local flatten_classpath_list = {}
+
+    for _, classpath in ipairs(classpaths) do
+        for _, path in ipairs(classpath) do
+            table.insert(flatten_classpath_list, path)
+        end
+    end
+
+    return flatten_classpath_list
+end
+
 local JavaDap = class()
 
 function JavaDap:_init()
@@ -27,29 +39,53 @@ end
 
 --- Returns project name and classpaths for each and every main class
 -- @returns { Promise } classpath information
-function JavaDap.get_main_classes(self)
+function JavaDap.get_resolved_main_classes(self)
     return self.command:resolve_main_class():thenCall(
                function(main_classes)
-            local main_class_list = List(main_classes)
+            -- result sample
+            --
+            -- { {
+            --  filePath = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
+            --  mainClass = "com.example.demo.DemoApplication",
+            --  projectName = "demo"
+            --  } }
 
-            local resolve_classpath_promise_list = main_class_list:map(
-                                                       function(main_class)
+            local resolve_classpath_promise_list = {}
 
-                    local project_name = main_class.projectName
-                    local class_name = main_class.mainClass
-                    local resolve_classpath_arguments = ResolveClasspathArguments(
-                                                            project_name,
-                                                            class_name)
-                    return self.command:resolve_classpath(
-                               resolve_classpath_arguments)
+            for _, main_class in ipairs(main_classes) do
+                local project_name = main_class.projectName
+                local class_name = main_class.mainClass
+
+                local resolve_classpath_arguments = ResolveClasspathArguments(
+                                                        project_name, class_name)
+                local promise = self.command:resolve_classpath(
+                                    resolve_classpath_arguments)
+
+                table.insert(resolve_classpath_promise_list, promise)
+            end
+
+            return Promise.all(resolve_classpath_promise_list):thenCall(
+                       function(classpaths)
+                    local main_class_list_with_classpaths = {}
+
+                    for index, main_class in ipairs(main_classes) do
+                        table.insert(
+                            main_class_list_with_classpaths, {
+                                project_name = main_class.projectName,
+                                class_name = main_class.mainClass,
+                                file_path = main_class.filePath,
+                                classpath = flatten_classpaths(
+                                    classpaths[index]),
+                            })
+                    end
+
+                    return main_class_list_with_classpaths
                 end)
-
-            return Promise.all(resolve_classpath_promise_list)
         end)
 end
 
 --- Creates a dap run configuration using the given information
-function JavaDap.create_debug_config(self, project_name, class_name, classpath)
+function JavaDap.create_debug_config(_, project_name, class_name, classpath)
     return {
         name = string.format('Launch -> %s -> %s', project_name, class_name),
         projectName = project_name,
@@ -64,19 +100,24 @@ end
 --- Returns the dap java configuration
 -- @returns { Promise } dap configuration
 function JavaDap.get_dap_config(self)
-    self:get_main_classes():thenCall(
-        function(classpaths)
-            local classpath_list = List(classpaths)
+    return self:get_resolved_main_classes():thenCall(
+               function(main_classes)
+            -- class paths result structure is
+            --
+            --  { {
+            --  class_name = "com.example.demo.DemoApplication",
+            --  classpaths = {"path"},
+            --  file_path = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
+            --  project_name = "demo"
+            --  } }
 
-            classpath_list:map(
-                function(classpath_data)
+            local classpath_list = List(main_classes)
 
-                    local project_name = classpath_data.class_info.projectName
-                    local class_name = classpath_data.class_info.mainClass
-                    local classpath = classpath_data.class_path
-
+            return classpath_list:map(
+                       function(main_class)
                     return self:create_debug_config(
-                               project_name, class_name, classpath)
+                               main_class.project_name, main_class.class_name,
+                               main_class.classpath)
                 end)
         end)
 end
@@ -122,7 +163,11 @@ function JavaDap.run(self, buffer)
         -- M.maybe_repeat(lens, config, context, opts, items)
     end
 
-    dap.run(self.config, { before = before, after = after })
+    dap.run(
+        self.config, {
+            before = before,
+            after = after,
+        })
 end
 
 return JavaDap
