@@ -15,7 +15,7 @@ return R'packer'.startup(
 
         -- lsp
         use {
-            'williamboman/nvim-lsp-installer',
+            's1n7ax/nvim-lsp-installer',
             run = function()
                 R 'nvim.plugins.nvim-lsp-installer'
             end,
