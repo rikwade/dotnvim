@@ -17,7 +17,7 @@ function M.setup_dap_conf()
     java_dap:get_dap_config():thenCall(
         function(conf)
             dap.configurations.java = conf
-            notify:success('Java debugger setup is successful!')
+            notify:success('Java debugger is ready!')
         end):catch(
         function(reason)
             local message = reason.message ~= nil and reason.message or

@@ -23,7 +23,7 @@ end
 
 function M.lsp_setup_message(lang)
     return function()
-        notify:success('Language server: ' .. lang .. ' setup is successful!')
+        notify:success('Language server:' .. lang .. ' is ready!')
     end
 end
 
