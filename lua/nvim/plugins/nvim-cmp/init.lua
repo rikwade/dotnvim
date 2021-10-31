@@ -25,12 +25,10 @@ cmp.setup(
             {
                 name = 'nvim_lsp',
                 priority = 100,
-                max_item_count = 10,
             },
             {
                 name = 'nvim_lua',
                 priority = 100,
-                max_item_count = 10,
             },
             {
                 name = 'snippy',
