@@ -34,8 +34,8 @@ R'gitsigns'.setup(
             --  ['n <leader>hb'] = l 'require"gitsigns".blame_line(true)',
 
             -- Text objects
-            ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-            ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+            --  ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+            --  ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
         },
         watch_gitdir = { interval = 1000, follow_files = true },
         sign_priority = 6,
