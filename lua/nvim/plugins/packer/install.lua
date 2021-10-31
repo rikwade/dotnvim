@@ -93,7 +93,7 @@ return R'packer'.startup(
             requires = {
                 'rcarriga/nvim-dap-ui',
                 'theHamsta/nvim-dap-virtual-text',
-            }
+            },
         }
 
         use {
@@ -322,8 +322,6 @@ return R'packer'.startup(
         use { 'rose-pine/neovim', as = 'rose-pine' }
         use { 'glepnir/zephyr-nvim' }
         use { 'navarasu/onedark.nvim' }
-        --]]
-
         use {
             'marko-cerovac/material.nvim',
             config = function()
@@ -332,6 +330,14 @@ return R'packer'.startup(
                         material_style = 'palenight',
                     })
                 CMD('colorscheme material')
+            end,
+        }
+        --]]
+
+        use {
+            'rmehri01/onenord.nvim',
+            config = function()
+                CMD('colorscheme onenord')
             end,
         }
 
