@@ -1,10 +1,8 @@
 Variable.g(
     {
-        nvim_tree_ignore = { '.git', 'node_modules', '.cache' },
         nvim_tree_gitignore = 1,
         nvim_tree_quit_on_open = 0,
         nvim_tree_indent_markers = 1,
-        nvim_tree_hide_dotfiles = 1,
         nvim_tree_git_hl = 1,
         nvim_tree_highlight_opened_files = 1,
         nvim_tree_root_folder_modifier = ':~',
@@ -63,6 +61,7 @@ Keybind.g(
     })
 
 R'nvim-tree'.setup {
+
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
@@ -83,7 +82,7 @@ R'nvim-tree'.setup {
     update_focused_file = {
         enable = true,
         update_cwd = false,
-        ignore_list = {},
+        ignore_list = { '.git', 'node_modules', '.cache' },
     },
     system_open = {
         cmd = nil,
@@ -98,5 +97,8 @@ R'nvim-tree'.setup {
             custom_only = false,
             list = {},
         },
+    },
+    filter = {
+        dotfiles = true,
     },
 }
