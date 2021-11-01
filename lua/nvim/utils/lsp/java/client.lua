@@ -1,15 +1,21 @@
-local class = R 'pl.class'
-local Client = R 'nvim.utils.lsp.client'
+local class = require 'pl.class'
+local Client = require 'nvim.utils.lsp.client'
+local Assert = require 'nvim.utils.validator.assert'
 local WorkspaceCommandParam = R 'nvim.utils.lsp.workspace-command-param'
 local ResolveClasspathArguments =
-    require 'nvim.utils.lsp.java.command.arguments.resolve-classpath-arguments'
+    require 'nvim.utils.lsp.java.arguments.resolve-classpath-arguments'
 local GetClasspathArguments =
-    require 'nvim.utils.lsp.java.command.arguments.resolve-classpath-arguments'
+    require 'nvim.utils.lsp.java.arguments.get-classpath-arguments'
+local FindTestTypesAndMethodsArguments =
+    require 'nvim.utils.lsp.java.arguments.find-test-types-and-methods-arguments'
 
 local Command = class()
 
 function Command:_init()
-    self.client = Client({ buffer = 0 })
+    self.client = Client(
+                      {
+            buffer = 0,
+        })
 end
 
 --- Starts the debug session and returns the port number
@@ -31,10 +37,8 @@ end
 -- @param { ResolveClasspathCommandArguments } command arguments
 -- @returns {} class paths
 function Command.resolve_classpath(self, arguments)
-    assert(
-        ResolveClasspathArguments:class_of(arguments),
-        'expected arguments to be type ResolveClasspathArguments but passed ' ..
-            tostring(arguments))
+    Assert:is_instance_of(
+        ResolveClasspathArguments, arguments, nil, 'ResolveClasspathArguments')
 
     local cmd_param = WorkspaceCommandParam(
                           {
@@ -48,11 +52,14 @@ end
 --- Returns the classpaths for given buffer
 -- @param { number } buffer buffer number
 -- @param { GetClasspathArguments } arguments to pass to the command
-function Command.get_classpaths(buffer, arguments)
-    assert(
-        GetClasspathArguments:class_of(arguments),
-        'expected arguments to be type GetClasspathArguments but passed ' ..
-            tostring(arguments))
+function Command.get_classpaths(_, buffer, arguments)
+    Assert:is_instance_of(
+        GetClasspathArguments, arguments, nil, 'GetClasspathArguments')
+
+    local client = Client(
+                       {
+            buffer = buffer,
+        })
 
     local cmd_param = WorkspaceCommandParam(
                           {
@@ -60,16 +67,21 @@ function Command.get_classpaths(buffer, arguments)
             arguments = arguments,
         })
 
-    local client = Client({ buffer = buffer })
-
     return client:execute_workspace_command(cmd_param)
 end
 
 --- Returns the test information for a given buffer
 -- @param { number } buffer buffer number
 -- @param { FindTestTypesAndMethodsArguments } arguments arguments to pass to the command
-function Command.find_test_types_and_methods(self, buffer, arguments)
-    local client = Client({ buffer = buffer })
+function Command.find_test_types_and_methods(_, buffer, arguments)
+    Assert:is_instance_of(
+        FindTestTypesAndMethodsArguments, arguments, nil,
+        'FindTestTypesAndMethodsArguments')
+
+    local client = Client(
+                       {
+            buffer = buffer,
+        })
 
     local cmd_param = WorkspaceCommandParam(
                           {

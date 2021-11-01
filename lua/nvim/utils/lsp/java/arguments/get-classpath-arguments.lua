@@ -2,7 +2,7 @@ local class = require('pl.class')
 local NumberUtils = require('nvim.utils.lua.number')
 local CommandArguments = require('nvim.utils.lsp.command-arguments')
 local GetClasspathArgumentOptions =
-    require 'nvim.utils.lsp.java.command.options.get-classpath-argument-options'
+    require 'nvim.utils.lsp.java.options.get-classpath-argument-options'
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim

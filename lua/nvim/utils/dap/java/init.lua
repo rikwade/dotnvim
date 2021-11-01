@@ -2,11 +2,11 @@ local dap = require 'dap'
 local class = require 'pl.class'
 local List = require 'pl.List'
 local Promise = require 'promise'
-local Command = require 'nvim.utils.lsp.java.command'
+local Client = require 'nvim.utils.lsp.java.client'
 local ResolveClasspathArguments =
-    require 'nvim.utils.lsp.java.command.arguments.resolve-classpath-arguments'
+    require 'nvim.utils.lsp.java.arguments.resolve-classpath-arguments'
 local FindTestTypesAndMethodsArguments =
-    require 'nvim.utils.lsp.java.command.arguments.find-test-types-and-methods-arguments'
+    require 'nvim.utils.lsp.java.arguments.find-test-types-and-methods-arguments'
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
@@ -28,7 +28,7 @@ end
 local JavaDap = class()
 
 function JavaDap:_init()
-    self.command = Command()
+    self.command = Client()
 end
 
 --- Start the debug session

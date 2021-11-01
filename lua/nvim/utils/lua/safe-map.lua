@@ -36,3 +36,5 @@ function SafeMap.set(self, key, value)
 
     Map.set(self, key, value)
 end
+
+return SafeMap

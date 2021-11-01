@@ -1,6 +1,6 @@
 local class = require 'pl.class'
+local Assert = require 'nvim.utils.validator.assert'
 local CommandArguments = require 'nvim.utils.lsp.command-arguments'
-local NumberUtil = require 'nvim.utils.lua.number'
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
@@ -8,9 +8,7 @@ local v = vim
 local FindTestTypesAndMethodsArguments = class(CommandArguments)
 
 function FindTestTypesAndMethodsArguments:_init(buffer)
-    assert(
-        NumberUtil.is_number(buffer),
-        'expected buffer to be a number but passed ' .. tostring(buffer))
+    Assert:is_number(buffer)
 
     self:super({ v.uri_from_bufnr(buffer) })
 end
