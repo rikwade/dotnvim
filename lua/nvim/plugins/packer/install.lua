@@ -106,10 +106,7 @@ return R'packer'.startup(
         use {
             'theHamsta/nvim-dap-virtual-text',
             config = function()
-                Variable.g(
-                    {
-                        dap_virtual_text = true,
-                    })
+                R'nvim-dap-virtual-text'.setup()
             end,
         }
 
