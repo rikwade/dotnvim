@@ -5,7 +5,7 @@ Neovim configuration that uses `lua` as much as possible
 | WARNING: I'm a Colemak user. So lot of the keymaps are not sutable for QWERTY |
 | --- |
 
-| WARNING: I make continues changes to the config so create a fork first If you are using this |
+| WARNING: I make frequent changes to the config so create a fork first if you are using this |
 | --- |
 
 ## Features
@@ -21,59 +21,25 @@ Neovim configuration that uses `lua` as much as possible
   * CSS
   * JSON
   * Markdown
-* Tabnine completion with coc.nvim (intelligent auto completion)
 
-## Why lua not Vimscript?
+## Why Lua not Vimscript?
 
 * Read more about why [neovim chose lua](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)
 
 ## How to Install? (Ubuntu 20.04)
 
-| WARNING: Guide is not be perfect so may run in to unexpected errors |
-| --- |
+* Download the install script for Ubuntu:
 
-* Update cache
+[https://raw.githubusercontent.com/s1n7ax/dotnvim/main/scripts/install.sh](https://raw.githubusercontent.com/s1n7ax/dotnvim/main/scripts/install.sh)
 
-```bash
-sudo apt update
-```
-
-* Install following packages
+* Add execute permission
 
 ```bash
-sudo apt install git curl gcc python3-pip cmake
+chmod a+x install.sh
 ```
 
-* Download and install latest version of `node` and `npm` from 
-[node js download](https://nodejs.org/en/) (Make sure `node` and `npm` is
-accessible from the command line)
-
-* Install following languages packages
+* Run the script
 
 ```bash
-pip install --user neovim
+./install.sh
 ```
-
-* Download and install nerd font patched font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads)
-* Install Neovim (Please refer [Neovim installation guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for more information)
-* Backup existing `nvim` configuration if you have one
-
-```bash
-mv ~/.config/nvim ~/.config/nvim-bak
-```
-
-* Clone my configuration
-
-```bash
-git clone --recurse-submodules -j8 https://github.com/s1n7ax/dotnvim.git ~/.config/nvim
-```
-
-* Run `nvim` and install plugins
-
-```vim
-:PackerInstall
-:PackerCompile
-:lua require"nvim.plugins.lspinstall".install_servers()
-```
-
-* Now, close and fire up `nvim` again.
