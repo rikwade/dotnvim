@@ -8,6 +8,8 @@ Neovim configuration that uses `lua` as much as possible
 | WARNING: I make frequent changes to the config so create a fork first if you are using this |
 | --- |
 
+https://user-images.githubusercontent.com/18459807/140087936-36783efc-bfd9-4456-9693-559c668a6523.mp4
+
 ## Features
 
 * Using packer instead of as package manager
