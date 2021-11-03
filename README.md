@@ -45,3 +45,16 @@ chmod a+x install.sh
 ```bash
 ./install.sh
 ```
+
+* Open `nvim` and run
+```vim
+:PackerInstall
+:PackerCompile
+```
+
+## Java debug configurations
+
+For java debug features you need few additional plugin.
+
+* Download [com.microsoft.java.debug.plugin-0.33.0.jar](https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/0.33.0/com.microsoft.java.debug.plugin-0.33.0.jar) 
+* Place it inside `~/.local/share/nvim/lsp_servers/jdtls/additional-plugins/` directory
