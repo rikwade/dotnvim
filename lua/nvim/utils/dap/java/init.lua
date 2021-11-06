@@ -3,10 +3,11 @@ local class = require 'pl.class'
 local List = require 'pl.List'
 local Promise = require 'promise'
 local Client = require 'nvim.utils.lsp.java.client'
-local ResolveClasspathArguments =
-    require 'nvim.utils.lsp.java.arguments.resolve-classpath-arguments'
-local FindTestTypesAndMethodsArguments =
-    require 'nvim.utils.lsp.java.arguments.find-test-types-and-methods-arguments'
+local TestKind = require 'nvim.utils.lsp.java.test-kind'
+local TestLevel = require 'nvim.utils.lsp.java.test-level'
+
+local JUnit = require 'nvim.utils.dap.java.test.junit'
+local Notify = require 'nvim.utils.notify'
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
@@ -28,19 +29,21 @@ end
 local JavaDap = class()
 
 function JavaDap:_init()
-    self.command = Client()
+    self.client = Client
+    self.test_handlers = {}
+    self.test_handlers[TestKind.JUnit] = JUnit()
 end
 
 --- Start the debug session
 -- @returns { Promise } promise with the port number
 function JavaDap.start_debug_session(self)
-    return self.command:start_debug_session()
+    return self.client.start_debug_session()
 end
 
 --- Returns project name and classpaths for each and every main class
 -- @returns { Promise } classpath information
 function JavaDap.get_resolved_main_classes(self)
-    return self.command:resolve_main_class():thenCall(
+    return self.client.resolve_main_class():thenCall(
                function(main_classes)
             -- result sample
             --
@@ -56,10 +59,8 @@ function JavaDap.get_resolved_main_classes(self)
                 local project_name = main_class.projectName
                 local class_name = main_class.mainClass
 
-                local resolve_classpath_arguments = ResolveClasspathArguments(
-                                                        project_name, class_name)
-                local promise = self.command:resolve_classpath(
-                                    resolve_classpath_arguments)
+                local promise = self.client.resolve_classpath(
+                                    class_name, project_name)
 
                 table.insert(resolve_classpath_promise_list, promise)
             end
@@ -123,11 +124,32 @@ function JavaDap.get_dap_config(self)
 end
 
 function JavaDap.run_test_class(self, buffer)
-    local find_test_arg = FindTestTypesAndMethodsArguments(buffer)
-
-    self.command:find_test_types_and_methods(buffer, find_test_arg):thenCall(
+    self.client.find_test_types_and_methods(buffer):thenCall(
         function(tests)
-            local test_list = List(tests)
+            local test_class = nil
+
+            for _, test in ipairs(tests) do
+                if test.testLevel == TestLevel.Class then
+                    test_class = test
+                end
+            end
+
+            local test_kind = test_class.testKind
+
+            local test_handler = self.test_handlers[test_kind]
+
+            if not test_handler then
+                Notify:error(
+                    'Cannot find test handler for test kind ' + test_kind)
+
+                return
+            end
+
+            test_handler.run(test_class)
+
+        end):catch(
+        function(error)
+            Notify:error(error.message)
         end)
 end
 
