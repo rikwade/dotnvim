@@ -94,6 +94,9 @@ return R'packer'.startup(
                 'rcarriga/nvim-dap-ui',
                 'theHamsta/nvim-dap-virtual-text',
             },
+            config = function()
+                require('dap').set_log_level('TRACE')
+            end,
         }
 
         use {
@@ -103,9 +106,7 @@ return R'packer'.startup(
             end,
         }
 
-        use {
-            'theHamsta/nvim-dap-virtual-text',
-        }
+        use { 'theHamsta/nvim-dap-virtual-text' }
 
         ----------------------------------------------------------------------
         --                               FILE                               --
@@ -301,7 +302,14 @@ return R'packer'.startup(
         }
 
         -- notification popup library
-        use { 'rcarriga/nvim-notify' }
+        use {
+            'rcarriga/nvim-notify',
+            config = function()
+                require'notify'.setup {
+                    timeout = 1000,
+                }
+            end,
+        }
 
         -- sets the indentation automatically
         use { 'zsugabubus/crazy8.nvim' }
@@ -328,10 +336,20 @@ return R'packer'.startup(
         }
         --]]
 
+        --[[
         use {
             'rmehri01/onenord.nvim',
             config = function()
                 CMD('colorscheme onenord')
+            end,
+        }
+        --]]
+        use {
+            'rose-pine/neovim',
+            as = 'rose-pine',
+            config = function()
+                vim.g.rose_pine_variant = 'base'
+                vim.cmd('colorscheme rose-pine')
             end,
         }
 

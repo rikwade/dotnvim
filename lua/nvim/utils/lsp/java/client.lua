@@ -1,10 +1,8 @@
-local class = require 'pl.class'
 local LspClient = require 'nvim.utils.lsp.client'
-local Assert = require 'nvim.utils.validator.assert'
 local WorkspaceCommandParam = R 'nvim.utils.lsp.workspace-command-param'
-local TestKind = require 'nvim.utils.lsp.java.test-kind'
-local TestLevel = require 'nvim.utils.lsp.java.test-level'
-local Notify = require 'nvim.utils.notify'
+
+local v = vim
+local fn = v.fn
 
 local self = {
     client = LspClient(
@@ -12,48 +10,6 @@ local self = {
             buffer = 0,
         }),
 }
-
-local function make_junit_request_args(lens, uri)
-    local methodname = ''
-    local name_parts = vim.split(lens.fullName, '#')
-    local classname = name_parts[1]
-    if #name_parts > 1 then
-        methodname = name_parts[2]
-        if lens.paramTypes and #lens.paramTypes > 0 then
-            methodname = string.format(
-                             '%s(%s)', methodname,
-                             table.concat(lens.paramTypes, ','))
-        end
-    end
-    -- Format changes with https://github.com/microsoft/vscode-java-test/pull/1257
-    local new_api = lens.testKind ~= nil
-    local req_arguments
-    if new_api then
-        req_arguments = {
-            testKind = lens.testKind,
-            projectName = lens.projectName,
-            testLevel = lens.testLevel,
-        }
-        if lens.testKind == TestKind.TestNG or lens.testLevel == TestLevel.Class then
-            req_arguments.testNames = { lens.fullName }
-        elseif lens.testLevel then
-            req_arguments.testNames = { lens.jdtHandler }
-        end
-    else
-        req_arguments = {
-            uri = uri,
-            -- Got renamed to fullName in https://github.com/microsoft/vscode-java-test/commit/57191b5367ae0a357b80e94f0def9e46f5e77796
-            -- Include both for BWC
-            classFullName = classname,
-            fullName = classname,
-            testName = methodname,
-            project = lens.project,
-            scope = lens.level,
-            testKind = lens.kind,
-        }
-    end
-    return req_arguments
-end
 
 local function get_uri(buffer)
     return v.uri_from_bufnr(buffer)
@@ -112,11 +68,27 @@ local Client = {
         end,
 
         junit = {
-            arguments = function(value)
+            --- Returns the test arguments
+            -- @param projectName: string
+            -- @param testKind: TestKind
+            -- @param testLevel: TestLevel
+            -- @param testNames: string[]
+            arguments = function(projectName,
+                                 testKind,
+                                 testLevel,
+                                 testNames)
                 local cmd_param = WorkspaceCommandParam(
                                       {
                         command = 'vscode.java.test.junit.argument',
-                        arguments = { get_json(value) },
+                        arguments = {
+                            get_json(
+                                {
+                                    projectName = projectName,
+                                    testKind = testKind,
+                                    testLevel = testLevel,
+                                    testNames = testNames,
+                                }),
+                        },
                     })
 
                 return self.client:execute_workspace_command(cmd_param)
@@ -129,9 +101,6 @@ local Client = {
         -- @param { number } buffer buffer number
         -- @param { GetClasspathArguments } arguments to pass to the command
         get_classpaths = function(buffer, scope)
-            Assert:is_instance_of(
-                GetClasspathArguments, arguments, nil, 'GetClasspathArguments')
-
             local client = LspClient(
                                {
                     buffer = buffer,
@@ -141,6 +110,7 @@ local Client = {
                                   {
                     command = 'java.project.getClasspaths',
                     arguments = {
+                        v.uri_from_bufnr(buffer),
                         get_json(
                             {
                                 scope = scope,
