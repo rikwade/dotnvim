@@ -9,10 +9,10 @@ R'nvim-treesitter.configs'.setup(
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = ',t',
-                node_incremental = ',t',
-                scope_incremental = ',s',
-                node_decremental = ',r',
+                init_selection = ',s',
+                node_incremental = ',s',
+                scope_incremental = ',n',
+                node_decremental = ',n',
             },
         },
 
@@ -32,13 +32,10 @@ R'nvim-treesitter.configs'.setup(
                     ['t'] = '@function.inner',
                     ['is'] = '@parameter.inner',
                     ['ia'] = '@class.inner',
-                    -- @todo @block.inner does not work
-                    ['ir'] = '@block.outer',
 
                     ['at'] = '@function.outer',
                     ['as'] = '@parameter.inner',
                     ['aa'] = '@class.outer',
-                    ['ar'] = '@block.outer',
                 },
             },
 
@@ -48,25 +45,21 @@ R'nvim-treesitter.configs'.setup(
                 goto_next_start = {
                     [']t'] = '@function.outer',
                     [']s'] = '@parameter.inner',
-                    [']r'] = '@block.outer',
                     [']a'] = '@class.outer',
                 },
                 goto_previous_start = {
                     ['[t'] = '@function.outer',
                     ['[s'] = '@parameter.inner',
-                    ['[r'] = '@block.outer',
                     ['[a'] = '@class.outer',
                 },
                 goto_next_end = {
                     [']T'] = '@function.outer',
                     [']S'] = '@parameter.inner',
-                    [']R'] = '@block.outer',
                     [']A'] = '@class.outer',
                 },
                 goto_previous_end = {
                     ['[T'] = '@function.outer',
                     ['[S'] = '@parameter.inner',
-                    ['[R'] = '@block.outer',
                     ['[A'] = '@class.outer',
                 },
             },

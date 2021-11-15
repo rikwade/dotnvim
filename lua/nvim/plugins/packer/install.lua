@@ -20,7 +20,11 @@ return R'packer'.startup(
                 R 'nvim.plugins.nvim-lsp-installer'
             end,
             rocks = { 'promise-lua' },
-            requires = { 'neovim/nvim-lspconfig', 'onsails/lspkind-nvim' },
+            requires = {
+                'neovim/nvim-lspconfig',
+                'onsails/lspkind-nvim',
+                'MunifTanjim/nui.nvim',
+            },
             config = function()
                 -- lsp config
                 R'nvim.plugins.lsp.ui'.setup()

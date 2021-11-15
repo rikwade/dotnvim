@@ -8,7 +8,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps(
         --                              CONFIG                              --
         ----------------------------------------------------------------------
         -- reload nvim configuration file
-        { ',r', l 'R"nvim.utils.common.module".reload_package("nvim")' },
+        { '<tab>r', l 'R"nvim.utils.common.module".reload_package("nvim")' },
 
         ----------------------------------------------------------------------
         --                           CURSOR MOVE                            --

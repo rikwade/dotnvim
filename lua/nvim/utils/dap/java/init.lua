@@ -1,4 +1,3 @@
-local dap = require 'dap'
 local class = require 'pl.class'
 local List = require 'pl.List'
 local Promise = require 'promise'
@@ -11,7 +10,6 @@ local Notify = require 'nvim.utils.notify'
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
-local loop = v.loop
 local api = v.api
 
 local function flatten_classpaths(classpaths)
@@ -124,7 +122,7 @@ function JavaDap.get_dap_config(self)
 end
 
 function JavaDap.run_test_class(self, buffer)
-    self.client.find_test_types_and_methods(buffer):thenCall(
+    self.client.test.find_test_types_and_methods(buffer):thenCall(
         function(tests)
             local test_class = nil
 
@@ -135,7 +133,6 @@ function JavaDap.run_test_class(self, buffer)
             end
 
             local test_kind = test_class.testKind
-
             local test_handler = self.test_handlers[test_kind]
 
             if not test_handler then
@@ -145,8 +142,9 @@ function JavaDap.run_test_class(self, buffer)
                 return
             end
 
-            test_handler.run(test_class)
-
+            return test_handler:run(
+                       test_class.projectName, test_class.testKind,
+                       test_class.testLevel, { test_class.fullName })
         end):catch(
         function(error)
             Notify:error(error.message)
@@ -156,40 +154,6 @@ end
 function JavaDap.run_current_test_class(self)
     local buffer = api.nvim_get_current_buf()
     self:run_test_class(buffer)
-end
-
-function JavaDap.run(self, buffer)
-    local junit = require('jdtls.junit')
-
-    local server = loop.new_tcp()
-    local test_results = junit.mk_test_results(buffer)
-
-    local before = function(conf)
-        server:bind('127.0.0.1', 0)
-        server:listen(
-            128, function(err2)
-                assert(not err2, err2)
-                local sock = V.loop.new_tcp()
-                server:accept(sock)
-                sock:read_start(test_results.mk_reader(sock))
-            end)
-        conf.args = conf.args:gsub(
-                        '-port ([0-9]+)', '-port ' .. server:getsockname().port);
-        return conf
-    end
-
-    local after = function()
-        server:shutdown()
-        server:close()
-        local items = test_results.show()
-        -- M.maybe_repeat(lens, config, context, opts, items)
-    end
-
-    dap.run(
-        self.config, {
-            before = before,
-            after = after,
-        })
 end
 
 return JavaDap
