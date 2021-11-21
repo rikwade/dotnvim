@@ -122,8 +122,8 @@ function JavaDap.get_dap_config(self)
 end
 
 function JavaDap.run_test_class(self, buffer)
-    self.client.test.find_test_types_and_methods(buffer):thenCall(
-        function(tests)
+    return self.client.test.find_test_types_and_methods(buffer):thenCall(
+               function(tests)
             local test_class = nil
 
             for _, test in ipairs(tests) do
@@ -136,24 +136,22 @@ function JavaDap.run_test_class(self, buffer)
             local test_handler = self.test_handlers[test_kind]
 
             if not test_handler then
-                Notify:error(
-                    'Cannot find test handler for test kind ' + test_kind)
-
-                return
+                error('Cannot find test handler for test kind ' + test_kind)
             end
 
             return test_handler:run(
                        test_class.projectName, test_class.testKind,
                        test_class.testLevel, { test_class.fullName })
+
         end):catch(
-        function(error)
+               function(error)
             Notify:error(error.message)
         end)
 end
 
 function JavaDap.run_current_test_class(self)
     local buffer = api.nvim_get_current_buf()
-    self:run_test_class(buffer)
+    return self:run_test_class(buffer)
 end
 
 return JavaDap

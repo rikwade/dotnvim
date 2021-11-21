@@ -1,7 +1,7 @@
-local TestResultType = require 'nvim.utils.dap.java.test.test-result-type'
-local TestStatus = require 'nvim.utils.dap.java.test.test-status'
 local Event = require 'nvim.utils.event'
+local TestStatus = require 'nvim.utils.dap.java.test.test-status'
 local TestEventType = require 'nvim.utils.dap.java.test.test-event-type'
+local TestResultType = require 'nvim.utils.dap.java.test.test-result-type'
 
 vim.api.nvim_set_keymap('n', ',w', ':luafile test.lua<cr>', {})
 
@@ -10,10 +10,8 @@ local extend = vim.tbl_deep_extend
 function TestResultParser()
     local M = {
         _event = Event(),
-        _test_results = {},
-        _curr_result = {
-            _content = {},
-        },
+        _curr_result = {},
+        _current_test_content = {},
         _is_test_result_inprogress = false,
     }
 
@@ -33,11 +31,11 @@ function TestResultParser()
     end
 
     function M.add_listener(event, listener)
-        event:add_listener(event, listener)
+        M._event:add_listener(event, listener)
     end
 
     function M.remove_listener(event, listener)
-        event:remove_listener(event, listener)
+        M._event:remove_listener(event, listener)
     end
 
     -- Handle the buffer received from server and fire test events
@@ -64,21 +62,18 @@ function TestResultParser()
                 M._is_test_result_inprogress = false
                 M._curr_result.pending = false
 
-                local test_result = M._parse_result(M._curr_result._content)
+                local test_result = M._parse_result(M._current_test_content)
                 test_result = extend('force', M._curr_result, test_result)
 
-                M._event:dispatch(TestEventType.COMPLETE, M._curr_result)
-
-                M._curr_result = {
-                    _content = {},
-                }
+                M._event:dispatch(TestEventType.COMPLETE, test_result)
+                M._current_test_content = {}
 
                 goto continue
             end
 
             -- TEST CONTENT
             if M._is_test_result_inprogress then
-                table.insert(M._curr_result._content, line)
+                table.insert(M._current_test_content, line)
             end
 
             ::continue::
@@ -89,22 +84,20 @@ function TestResultParser()
 
     -- Returns the test case data from the test start tag
     -- @param line { string } test result start tag line
-    -- @returns {
+    -- @returns {{
     --     id: number
     --     name: string
     --     class: string
-    -- }
+    -- }}
     function M._parse_test_case_info(line)
-
         local test_matches = vim.fn.matchlist(
-                                 line, [[%TESTS *\(\d\),\([a-z_A-Z]*\)(\(.*\))]])
+                                 line, [[%TESTS *\(\d\),\(.*\)(\(.*\))]])
 
-        local test_data = {}
-        test_data.id = tonumber(test_matches[2])
-        test_data.name = test_matches[3]
-        test_data.class = test_matches[4]
-
-        return test_data
+        return {
+            id = tonumber(test_matches[2]),
+            name = test_matches[3],
+            class = test_matches[4],
+        }
     end
 
     -- Returns the tag information and it's content
@@ -170,7 +163,7 @@ function TestResultParser()
             result.status = TestStatus.FAIL
         end
 
-        if not result.status == TestStatus.FAIL then
+        if result.status == TestStatus.FAIL then
             -- expected
             local expected_tag = M._parse_tag_info(
                                      lines, TestResultType.ExpectStart,
