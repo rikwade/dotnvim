@@ -3,8 +3,6 @@ local TestStatus = require 'nvim.utils.dap.java.test.test-status'
 local TestEventType = require 'nvim.utils.dap.java.test.test-event-type'
 local TestResultType = require 'nvim.utils.dap.java.test.test-result-type'
 
-vim.api.nvim_set_keymap('n', ',w', ':luafile test.lua<cr>', {})
-
 local extend = vim.tbl_deep_extend
 
 function TestResultParser()

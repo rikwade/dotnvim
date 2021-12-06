@@ -11,10 +11,12 @@ function M.on_attach(_, buffer)
         {
 
             -- go to definition of the current node
-            { '<BS>t', l 'vim.lsp.buf.definition()' },
+            -- REPLACED WITH telescope keymap
+            -- { '<BS>t', l 'vim.lsp.buf.definition()' },
 
             -- go to the implementation of the current interface node
-            { '<BS>s', l 'vim.lsp.buf.implementation()' },
+            -- REPLACED WITH telescope keymap
+            -- { '<BS>s', l 'vim.lsp.buf.implementation()' },
 
             -- rename file name
             { '<BS>r', l 'vim.lsp.buf.rename()' },
@@ -61,6 +63,7 @@ function M.on_attach(_, buffer)
             { '<BS>u', l 'vim.lsp.buf.type_definition()' },
 
             -- telescope overrides this functionality
+            -- REPLACED WITH telescope keymap
             -- { '<BS>r', l 'vim.lsp.buf.references()',  },
 
         })

@@ -34,6 +34,7 @@ return R'packer'.startup(
                 R'nvim.plugins.nvim-dap.ui'.setup()
                 R'nvim.plugins.nvim-dap.keymap'.setup()
                 R'nvim.plugins.nvim-dap.java'.setup()
+                R'nvim.plugins.nvim-dap.java.keymap'.setup()
 
                 -- setup LSes
                 R'nvim.plugins.lsp'.setup()
@@ -64,6 +65,8 @@ return R'packer'.startup(
                 },
             },
         }
+
+        use { 'bfredl/nvim-luadev' }
 
         -- markdown preview
         use {
@@ -212,7 +215,6 @@ return R'packer'.startup(
 
         use {
             'winston0410/commented.nvim',
-            keys = ',c',
             requires = 'JoosepAlviste/nvim-ts-context-commentstring',
             config = function()
                 R 'nvim.plugins.nvim-commented'
@@ -356,6 +358,20 @@ return R'packer'.startup(
                 vim.cmd('colorscheme rose-pine')
             end,
         }
+        --[[
+        use {
+            'catppuccin/nvim',
+            as = 'catppuccin',
+            config = function()
+                vim.cmd('colorscheme catppuccin')
+                require('lualine').setup {
+                    options = {
+                        theme = 'catppuccin',
+                    },
+                }
+            end,
+        }
+        --]]
 
         ----------------------------------------------------------------------
         --                              OTHER                               --

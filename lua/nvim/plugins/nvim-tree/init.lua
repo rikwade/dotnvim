@@ -1,6 +1,5 @@
 Variable.g(
     {
-        nvim_tree_gitignore = 1,
         nvim_tree_quit_on_open = 0,
         nvim_tree_indent_markers = 1,
         nvim_tree_git_hl = 1,
@@ -61,7 +60,7 @@ Keybind.g(
     })
 
 R'nvim-tree'.setup {
-
+    gitignore = 1,
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,

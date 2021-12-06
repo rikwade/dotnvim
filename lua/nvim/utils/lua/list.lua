@@ -37,4 +37,8 @@ function M.any(list, match_function)
     return false
 end
 
+function M.find(tbl, finder)
+    for _, value in ipairs(tbl) do if finder(value) then return value end end
+end
+
 return M
