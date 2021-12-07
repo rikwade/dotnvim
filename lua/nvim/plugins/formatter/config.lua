@@ -3,6 +3,8 @@ local util = R 'packer.util'
 local file_util = R 'nvim.utils.file'
 local os_util = R 'nvim.utils.os'
 local list_util = R 'nvim.utils.lua.list'
+local v = vim
+local fn = v.fn
 
 local luaformat = util.join_paths(rockbin, 'lua-format')
 
@@ -104,9 +106,9 @@ R'formatter'.setup(
             lua = {
                 function()
                     return {
-                        exe = luaformat,
+                        exe = 'stylua',
                         args = {},
-                        stdin = true,
+                        stdin = false,
                     }
                 end,
             },
