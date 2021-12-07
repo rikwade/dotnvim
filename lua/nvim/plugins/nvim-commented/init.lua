@@ -1,4 +1,4 @@
-R'commented'.setup {
+R('commented').setup({
     comment_padding = ' ',
     keybindings = {
         n = ',c',
@@ -8,4 +8,4 @@ R'commented'.setup {
     prefer_block_comment = false,
     set_keybindings = true,
     ex_mode_cmd = 'Comment',
-}
+})

@@ -1,6 +1,6 @@
 ---@diagnostic disable: different-requires
-local notify = require 'notify'
-local class = require 'pl.class'
+local notify = require('notify')
+local class = require('pl.class')
 
 local Notify = class()
 

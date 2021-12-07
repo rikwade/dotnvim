@@ -13,7 +13,12 @@ Keybind.add_buffer_keybinds = function(keybinds)
         keybind[5] = keybind[5] or {}
 
         API.nvim_buf_set_keymap(
-            keybind[1], keybind[2], keybind[3], keybind[4], keybind[5])
+            keybind[1],
+            keybind[2],
+            keybind[3],
+            keybind[4],
+            keybind[5]
+        )
     end
 end
 

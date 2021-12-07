@@ -27,11 +27,10 @@ function M:render(line_info, startLine, endLine)
             local column = 1
 
             for _, segment in ipairs(line) do
-                table.insert(
-                    self.highlights, {
-                        range = { line_no, column, #segment.text },
-                        color_group = segment.color_group,
-                    })
+                table.insert(self.highlights, {
+                    range = { line_no, column, #segment.text },
+                    color_group = segment.color_group,
+                })
 
                 column = column + #segment.text
                 line_text = line_text .. segment.text
@@ -39,11 +38,10 @@ function M:render(line_info, startLine, endLine)
         else
             local column = 1
 
-            table.insert(
-                self.highlights, {
-                    range = { line_no },
-                    color_group = line.color_group,
-                })
+            table.insert(self.highlights, {
+                range = { line_no },
+                color_group = line.color_group,
+            })
 
             column = column + #line.text
             line_text = line.text

@@ -1,7 +1,7 @@
-local class = require 'pl.class'
-local Client = require 'nvim.utils.lsp.java.client'
-local dap = require 'dap'
-local TestResultParser = require 'nvim.utils.dap.java.test.test-result-parser'
+local class = require('pl.class')
+local Client = require('nvim.utils.lsp.java.client')
+local dap = require('dap')
+local TestResultParser = require('nvim.utils.dap.java.test.test-result-parser')
 
 local loop = vim.loop
 
@@ -13,47 +13,46 @@ end
 
 function JUnit.run(self, projectName, testKind, testLevel, testNames)
     return self.client.test.junit.arguments(
-               projectName, testKind, testLevel, testNames):thenCall(
-               function(launch_args)
+        projectName,
+        testKind,
+        testLevel,
+        testNames
+    ):thenCall(function(launch_args)
+        local config = JUnit.get_run_args(testNames[1], launch_args, true)
 
-            local config = JUnit.get_run_args(testNames[1], launch_args, true)
-
-            return self:_run(config)
-        end)
+        return self:_run(config)
+    end)
 end
 
 function JUnit._run(_, config)
     local server = nil
     local test_result_parser = TestResultParser()
 
-    dap.run(
-        config, {
-            before = function(conf)
+    dap.run(config, {
+        before = function(conf)
+            server = loop.new_tcp()
+            server:bind('127.0.0.1', 0)
+            server:listen(128, function(err2)
+                assert(not err2, err2)
 
-                server = loop.new_tcp()
-                server:bind('127.0.0.1', 0)
-                server:listen(
-                    128, function(err2)
-                        assert(not err2, err2)
+                local conn = vim.loop.new_tcp()
 
-                        local conn = vim.loop.new_tcp()
+                server:accept(conn)
+                conn:read_start(test_result_parser.get_stream_reader(conn))
+            end)
 
-                        server:accept(conn)
-                        conn:read_start(
-                            test_result_parser.get_stream_reader(conn))
-                    end)
+            conf.args = conf.args:gsub(
+                '-port ([0-9]+)',
+                '-port ' .. server:getsockname().port
+            )
+            return conf
+        end,
 
-                conf.args = conf.args:gsub(
-                                '-port ([0-9]+)',
-                                '-port ' .. server:getsockname().port);
-                return conf
-            end,
-
-            after = function()
-                server:shutdown()
-                server:close()
-            end,
-        })
+        after = function()
+            server:shutdown()
+            server:close()
+        end,
+    })
 
     return test_result_parser
 end
@@ -66,7 +65,7 @@ function JUnit.get_run_args(testName, launch_args, debug)
         args = table.concat(launch_args.programArguments, ' '),
         cwd = launch_args.workingDirectory,
 
-        noDebug = not (debug),
+        noDebug = not debug,
         request = 'launch',
         type = 'java',
         vmArgs = '-ea',

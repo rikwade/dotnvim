@@ -1,4 +1,4 @@
-local class = require 'pl.class'
+local class = require('pl.class')
 local WorkspaceCommandParam = class()
 
 function WorkspaceCommandParam:_init(arg)

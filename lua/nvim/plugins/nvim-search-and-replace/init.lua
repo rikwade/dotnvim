@@ -1,4 +1,4 @@
-R'nvim-search-and-replace'.setup {
+R('nvim-search-and-replace').setup({
     -- file patters to ignore
     ignore = {
         '**/node_modules/**',
@@ -22,4 +22,4 @@ R'nvim-search-and-replace'.setup {
 
     -- keymap for search and replace ( this does not care about ignored files )
     replace_all_and_save_keymap = ',gU',
-}
+})

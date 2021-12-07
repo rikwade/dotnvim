@@ -87,7 +87,9 @@ function Command:add(name, action)
         return options:format(' $', '')
     end
 
-    if self.is_buffer_cmd then Options.add('-buffer') end
+    if self.is_buffer_cmd then
+        Options.add('-buffer')
+    end
 
     if type(action) == 'function' then
         local key = Global:save(action)

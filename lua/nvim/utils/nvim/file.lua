@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
-local wpicker = R 'window-picker'
+local wpicker = R('window-picker')
 
 local M = {}
 
@@ -14,7 +14,9 @@ function M.get_file_and_line_under_the_cursor()
 
     -- get the file path including line number
     local text_object = vim.fn.expand('<cfile>')
-    if text_object == '' then return end
+    if text_object == '' then
+        return
+    end
 
     local file = text_object
     local line = nil
@@ -38,23 +40,26 @@ end
 function M.open_file_under_cursor()
     local text_object = M.get_file_and_line_under_the_cursor()
 
-    if not text_object then return end
+    if not text_object then
+        return
+    end
 
     local file = vim.fn.fnamemodify(text_object[1], ':p')
     local line = text_object[2]
 
     -- stop if the file does not exist
-    if vim.fn.filereadable(file) == 0 then return end
+    if vim.fn.filereadable(file) == 0 then
+        return
+    end
 
     local selectable = wpicker.filter_windows()
 
     if #selectable < 2 then
         vim.cmd('vsp ' .. file)
     else
-        local window = wpicker.pick_window(
-                           {
-                include_current_win = true,
-            })
+        local window = wpicker.pick_window({
+            include_current_win = true,
+        })
 
         if window then
             vim.api.nvim_set_current_win(window)

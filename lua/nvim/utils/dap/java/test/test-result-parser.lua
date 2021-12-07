@@ -1,7 +1,7 @@
-local Event = require 'nvim.utils.event'
-local TestStatus = require 'nvim.utils.dap.java.test.test-status'
-local TestEventType = require 'nvim.utils.dap.java.test.test-event-type'
-local TestResultType = require 'nvim.utils.dap.java.test.test-result-type'
+local Event = require('nvim.utils.event')
+local TestStatus = require('nvim.utils.dap.java.test.test-status')
+local TestEventType = require('nvim.utils.dap.java.test.test-event-type')
+local TestResultType = require('nvim.utils.dap.java.test.test-result-type')
 
 local extend = vim.tbl_deep_extend
 
@@ -16,16 +16,15 @@ function TestResultParser()
     -- Returns a callback function to read the tcp stream
     -- @param conn { TCPConnection } tcp connection
     function M.get_stream_reader(conn)
-        return vim.schedule_wrap(
-                   function(err, buffer)
-                assert(not err, err)
+        return vim.schedule_wrap(function(err, buffer)
+            assert(not err, err)
 
-                if buffer then
-                    M._handle_buffer(buffer)
-                else
-                    conn:close()
-                end
-            end)
+            if buffer then
+                M._handle_buffer(buffer)
+            else
+                conn:close()
+            end
+        end)
     end
 
     function M.add_listener(event, listener)
@@ -89,7 +88,9 @@ function TestResultParser()
     -- }}
     function M._parse_test_case_info(line)
         local test_matches = vim.fn.matchlist(
-                                 line, [[%TESTS *\(\d\),\(.*\)(\(.*\))]])
+            line,
+            [[%TESTS *\(\d\),\(.*\)(\(.*\))]]
+        )
 
         return {
             id = tonumber(test_matches[2]),
@@ -164,20 +165,26 @@ function TestResultParser()
         if result.status == TestStatus.FAIL then
             -- expected
             local expected_tag = M._parse_tag_info(
-                                     lines, TestResultType.ExpectStart,
-                                     TestResultType.ExpectEnd)
+                lines,
+                TestResultType.ExpectStart,
+                TestResultType.ExpectEnd
+            )
             result.expected = expected_tag[1].children
 
             -- actual
             local actual_tag = M._parse_tag_info(
-                                   lines, TestResultType.ActualStart,
-                                   TestResultType.ActualEnd)
+                lines,
+                TestResultType.ActualStart,
+                TestResultType.ActualEnd
+            )
             result.actual = actual_tag[1].children
 
             -- stack trace
             local trace_tag = M._parse_tag_info(
-                                  lines, TestResultType.TraceStart,
-                                  TestResultType.TraceEnd)
+                lines,
+                TestResultType.TraceStart,
+                TestResultType.TraceEnd
+            )
             result.trace = trace_tag[1].children
         end
 

@@ -14,7 +14,9 @@ end
 
 function M.run_on_os(callbacks)
     local os = M.name()
-    if callbacks[os] then callbacks[os]() end
+    if callbacks[os] then
+        callbacks[os]()
+    end
 end
 
 return M

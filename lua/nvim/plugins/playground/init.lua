@@ -1,4 +1,4 @@
-R'nvim-treesitter.configs'.setup {
+R('nvim-treesitter.configs').setup({
     playground = {
         enable = true,
         disable = {},
@@ -17,4 +17,4 @@ R'nvim-treesitter.configs'.setup {
             show_help = '?',
         },
     },
-}
+})

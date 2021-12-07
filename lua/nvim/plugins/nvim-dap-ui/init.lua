@@ -1,6 +1,6 @@
 CMD('command Dap :lua require"dapui".toggle()')
 
-R'dapui'.setup {
+R('dapui').setup({
     icons = { expanded = '▾', collapsed = '▸' },
     mappings = {
         -- Use a table to apply multiple mappings
@@ -39,4 +39,4 @@ R'dapui'.setup {
         mappings = { close = { 'q', '<Esc>' } },
     },
     windows = { indent = 1 },
-}
+})

@@ -17,7 +17,7 @@ Pum.goto_item = function(options)
     local keybind = options['keybind']
     local callback = options['callback']
 
-    if (Pum.is_visible()) then
+    if Pum.is_visible() then
         input(Pum.directions[direction])
         return
     else

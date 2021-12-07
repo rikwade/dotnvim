@@ -1,4 +1,4 @@
-R 'nvim.newutil.global'
+R('nvim.newutil.global')
 
 ----------------------------------------------------------------------
 --                             Options                              --
@@ -81,7 +81,9 @@ function Shortcut:keymaps(keymaps)
 end
 
 function Shortcut:__get_action(action)
-    if type(action) == 'string' then return action end
+    if type(action) == 'string' then
+        return action
+    end
 
     if type(action) == 'function' then
         local key = Global:save(action)
@@ -100,7 +102,12 @@ function Shortcut:__set_keymap(keys, action, options)
 
     if self.__buffer then
         API.nvim_buf_set_keymap(
-            self.__buffer, self.__mode, keys, action, options)
+            self.__buffer,
+            self.__mode,
+            keys,
+            action,
+            options
+        )
     else
         API.nvim_set_keymap(self.__mode, keys, action, options)
     end

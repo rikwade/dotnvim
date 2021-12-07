@@ -1,5 +1,5 @@
-local ts = R 'nvim.utils.treesitter'
-local q = R 'vim.treesitter.query'
+local ts = R('nvim.utils.treesitter')
+local q = R('vim.treesitter.query')
 
 local M = {}
 
@@ -31,11 +31,10 @@ function M.get_test_methods(buffer)
     local methods = {}
 
     for _, match, metadata in match_iter do
-        table.insert(
-            methods, {
-                name = q.get_node_text(match[3], buffer),
-                range = metadata.content[1],
-            })
+        table.insert(methods, {
+            name = q.get_node_text(match[3], buffer),
+            range = metadata.content[1],
+        })
     end
 
     return methods
@@ -61,11 +60,10 @@ function M.get_methods(buffer)
     local methods = {}
 
     for _, match, metadata in match_iter do
-        table.insert(
-            methods, {
-                name = q.get_node_text(match[1], buffer),
-                range = metadata.content[1],
-            })
+        table.insert(methods, {
+            name = q.get_node_text(match[1], buffer),
+            range = metadata.content[1],
+        })
     end
 
     return methods

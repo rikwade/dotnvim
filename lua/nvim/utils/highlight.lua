@@ -23,7 +23,9 @@ function M:save_all(highlights)
 end
 
 function M:register_all()
-    for _, highlight in ipairs(self.highlights) do self:register(highlight) end
+    for _, highlight in ipairs(self.highlights) do
+        self:register(highlight)
+    end
 
     return self
 end

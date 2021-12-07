@@ -1,12 +1,12 @@
-local class = require 'pl.class'
-local List = require 'pl.List'
-local Promise = require 'promise'
-local Client = require 'nvim.utils.lsp.java.client'
-local TestKind = require 'nvim.utils.lsp.java.test-kind'
-local TestLevel = require 'nvim.utils.lsp.java.test-level'
+local class = require('pl.class')
+local List = require('pl.List')
+local Promise = require('promise')
+local Client = require('nvim.utils.lsp.java.client')
+local TestKind = require('nvim.utils.lsp.java.test-kind')
+local TestLevel = require('nvim.utils.lsp.java.test-level')
 
-local JUnit = require 'nvim.utils.dap.java.test.junit'
-local Notify = require 'nvim.utils.notify'
+local JUnit = require('nvim.utils.dap.java.test.junit')
+local Notify = require('nvim.utils.notify')
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
@@ -41,46 +41,46 @@ end
 --- Returns project name and classpaths for each and every main class
 -- @returns { Promise } classpath information
 function JavaDap.get_resolved_main_classes(self)
-    return self.client.resolve_main_class():thenCall(
-               function(main_classes)
-            -- result sample
-            --
-            -- { {
-            --  filePath = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
-            --  mainClass = "com.example.demo.DemoApplication",
-            --  projectName = "demo"
-            --  } }
+    return self.client.resolve_main_class():thenCall(function(main_classes)
+        -- result sample
+        --
+        -- { {
+        --  filePath = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
+        --  mainClass = "com.example.demo.DemoApplication",
+        --  projectName = "demo"
+        --  } }
 
-            local resolve_classpath_promise_list = {}
+        local resolve_classpath_promise_list = {}
 
-            for _, main_class in ipairs(main_classes) do
-                local project_name = main_class.projectName
-                local class_name = main_class.mainClass
+        for _, main_class in ipairs(main_classes) do
+            local project_name = main_class.projectName
+            local class_name = main_class.mainClass
 
-                local promise = self.client.resolve_classpath(
-                                    class_name, project_name)
+            local promise = self.client.resolve_classpath(
+                class_name,
+                project_name
+            )
 
-                table.insert(resolve_classpath_promise_list, promise)
+            table.insert(resolve_classpath_promise_list, promise)
+        end
+
+        return Promise.all(resolve_classpath_promise_list):thenCall(
+            function(classpaths)
+                local main_class_list_with_classpaths = {}
+
+                for index, main_class in ipairs(main_classes) do
+                    table.insert(main_class_list_with_classpaths, {
+                        project_name = main_class.projectName,
+                        class_name = main_class.mainClass,
+                        file_path = main_class.filePath,
+                        classpath = flatten_classpaths(classpaths[index]),
+                    })
+                end
+
+                return main_class_list_with_classpaths
             end
-
-            return Promise.all(resolve_classpath_promise_list):thenCall(
-                       function(classpaths)
-                    local main_class_list_with_classpaths = {}
-
-                    for index, main_class in ipairs(main_classes) do
-                        table.insert(
-                            main_class_list_with_classpaths, {
-                                project_name = main_class.projectName,
-                                class_name = main_class.mainClass,
-                                file_path = main_class.filePath,
-                                classpath = flatten_classpaths(
-                                    classpaths[index]),
-                            })
-                    end
-
-                    return main_class_list_with_classpaths
-                end)
-        end)
+        )
+    end)
 end
 
 --- Creates a dap run configuration using the given information
@@ -99,31 +99,31 @@ end
 --- Returns the dap java configuration
 -- @returns { Promise } dap configuration
 function JavaDap.get_dap_config(self)
-    return self:get_resolved_main_classes():thenCall(
-               function(main_classes)
-            -- class paths result structure is
-            --
-            --  { {
-            --  class_name = "com.example.demo.DemoApplication",
-            --  classpaths = {"path"},
-            --  file_path = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
-            --  project_name = "demo"
-            --  } }
+    return self:get_resolved_main_classes():thenCall(function(main_classes)
+        -- class paths result structure is
+        --
+        --  { {
+        --  class_name = "com.example.demo.DemoApplication",
+        --  classpaths = {"path"},
+        --  file_path = "/home/s1n7ax/Workspace/demo/src/main/java/com/example/demo/DemoApplication.java",
+        --  project_name = "demo"
+        --  } }
 
-            local classpath_list = List(main_classes)
+        local classpath_list = List(main_classes)
 
-            return classpath_list:map(
-                       function(main_class)
-                    return self:create_debug_config(
-                               main_class.project_name, main_class.class_name,
-                               main_class.classpath)
-                end)
+        return classpath_list:map(function(main_class)
+            return self:create_debug_config(
+                main_class.project_name,
+                main_class.class_name,
+                main_class.classpath
+            )
         end)
+    end)
 end
 
 function JavaDap.run_test_class(self, buffer)
-    return self.client.test.find_test_types_and_methods(buffer):thenCall(
-               function(tests)
+    return self.client.test.find_test_types_and_methods(buffer)
+        :thenCall(function(tests)
             local test_class = nil
 
             for _, test in ipairs(tests) do
@@ -140,11 +140,13 @@ function JavaDap.run_test_class(self, buffer)
             end
 
             return test_handler:run(
-                       test_class.projectName, test_class.testKind,
-                       test_class.testLevel, { test_class.fullName })
-
-        end):catch(
-               function(error)
+                test_class.projectName,
+                test_class.testKind,
+                test_class.testLevel,
+                { test_class.fullName }
+            )
+        end)
+        :catch(function(error)
             Notify:error(error.message)
         end)
 end

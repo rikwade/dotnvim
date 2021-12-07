@@ -1,17 +1,16 @@
-local Shortcut = R'nvim.newutil.keymap'
+local Shortcut = R('nvim.newutil.keymap')
 
-Shortcut:mode('x'):options():noremap():next():keymaps(
-    {
+Shortcut:mode('x'):options():noremap():next():keymaps({
 
-        -- down arrow key
-        { 'n', 'j' },
+    -- down arrow key
+    { 'n', 'j' },
 
-        -- up arrow key
-        { 'e', 'k' },
+    -- up arrow key
+    { 'e', 'k' },
 
-        -- right arrow key
-        { 'i', 'l' },
+    -- right arrow key
+    { 'i', 'l' },
 
-        -- word end
-        { 'l', 'e' },
-    })
+    -- word end
+    { 'l', 'e' },
+})

@@ -1,5 +1,5 @@
-local Table = require 'nvim.utils.lua.list'
-local socket = require 'socket'
+local Table = require('nvim.utils.lua.list')
+local socket = require('socket')
 
 local M = {}
 
@@ -9,11 +9,10 @@ function M:new()
 end
 
 function M:add_checkpoint(name)
-    table.insert(
-        self.checkpoints, {
-            name = name,
-            timestamp = socket.gettime() * 1000,
-        })
+    table.insert(self.checkpoints, {
+        name = name,
+        timestamp = socket.gettime() * 1000,
+    })
 end
 
 function M:get_diff(...)
@@ -21,8 +20,12 @@ function M:get_diff(...)
 
     print(
         string.format(
-            'From "%s" to "%s":: %d ms', sne[1].name, sne[2].name,
-            sne[2].timestamp - sne[1].timestamp))
+            'From "%s" to "%s":: %d ms',
+            sne[1].name,
+            sne[2].name,
+            sne[2].timestamp - sne[1].timestamp
+        )
+    )
 end
 
 function M:_get_start_and_end(...)
@@ -52,10 +55,9 @@ function M:_get_start_and_end_checkpoints(...)
     local end_checkpoint
 
     if type(start) == 'string' then
-        start_checkpoint = Table.find(
-                               self.checkpoints, function(checkpoint)
-                return checkpoint.name == start
-            end)
+        start_checkpoint = Table.find(self.checkpoints, function(checkpoint)
+            return checkpoint.name == start
+        end)
     end
 
     if type(start) == 'number' then
@@ -63,13 +65,14 @@ function M:_get_start_and_end_checkpoints(...)
     end
 
     if type(end_) == 'string' then
-        end_checkpoint = Table.find(
-                             self.checkpoints, function(checkpoint)
-                return checkpoint.name == end_
-            end)
+        end_checkpoint = Table.find(self.checkpoints, function(checkpoint)
+            return checkpoint.name == end_
+        end)
     end
 
-    if type(end_) == 'number' then end_checkpoint = self.checkpoints[end_] end
+    if type(end_) == 'number' then
+        end_checkpoint = self.checkpoints[end_]
+    end
 
     return { start_checkpoint, end_checkpoint }
 end

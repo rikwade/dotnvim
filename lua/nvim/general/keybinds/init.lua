@@ -1,5 +1,5 @@
-R 'nvim.general.keybinds.all'
-R 'nvim.general.keybinds.normal'
-R 'nvim.general.keybinds.insert'
-R 'nvim.general.keybinds.terminal'
-R 'nvim.general.keybinds.visual'
+R('nvim.general.keybinds.all')
+R('nvim.general.keybinds.normal')
+R('nvim.general.keybinds.insert')
+R('nvim.general.keybinds.terminal')
+R('nvim.general.keybinds.visual')

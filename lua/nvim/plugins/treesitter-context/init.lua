@@ -1,1 +1,1 @@
-R'treesitter-context'.setup { enable = true, throttle = true }
+R('treesitter-context').setup({ enable = true, throttle = true })

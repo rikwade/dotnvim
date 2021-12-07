@@ -1,14 +1,13 @@
-local LspClient = require 'nvim.utils.lsp.client'
-local WorkspaceCommandParam = R 'nvim.utils.lsp.workspace-command-param'
+local LspClient = require('nvim.utils.lsp.client')
+local WorkspaceCommandParam = R('nvim.utils.lsp.workspace-command-param')
 
 local v = vim
 local fn = v.fn
 
 local self = {
-    client = LspClient(
-        {
-            buffer = 0,
-        }),
+    client = LspClient({
+        buffer = 0,
+    }),
 }
 
 local function get_uri(buffer)
@@ -39,11 +38,10 @@ local Client = {
     -- @param { ResolveClasspathCommandArguments } command arguments
     -- @returns {} class paths
     resolve_classpath = function(class_name, project_name)
-        local cmd_param = WorkspaceCommandParam(
-                              {
-                command = 'vscode.java.resolveClasspath',
-                arguments = { class_name, project_name },
-            })
+        local cmd_param = WorkspaceCommandParam({
+            command = 'vscode.java.resolveClasspath',
+            arguments = { class_name, project_name },
+        })
 
         return self.client:execute_workspace_command(cmd_param)
     end,
@@ -53,16 +51,14 @@ local Client = {
         -- @param { number } buffer buffer number
         -- @param { FindTestTypesAndMethodsArguments } arguments arguments to pass to the command
         find_test_types_and_methods = function(buffer)
-            local client = LspClient(
-                               {
-                    buffer = buffer,
-                })
+            local client = LspClient({
+                buffer = buffer,
+            })
 
-            local cmd_param = WorkspaceCommandParam(
-                                  {
-                    command = 'vscode.java.test.findTestTypesAndMethods',
-                    arguments = { get_uri(buffer) },
-                })
+            local cmd_param = WorkspaceCommandParam({
+                command = 'vscode.java.test.findTestTypesAndMethods',
+                arguments = { get_uri(buffer) },
+            })
 
             return client:execute_workspace_command(cmd_param)
         end,
@@ -73,23 +69,18 @@ local Client = {
             -- @param testKind: TestKind
             -- @param testLevel: TestLevel
             -- @param testNames: string[]
-            arguments = function(projectName,
-                                 testKind,
-                                 testLevel,
-                                 testNames)
-                local cmd_param = WorkspaceCommandParam(
-                                      {
-                        command = 'vscode.java.test.junit.argument',
-                        arguments = {
-                            get_json(
-                                {
-                                    projectName = projectName,
-                                    testKind = testKind,
-                                    testLevel = testLevel,
-                                    testNames = testNames,
-                                }),
-                        },
-                    })
+            arguments = function(projectName, testKind, testLevel, testNames)
+                local cmd_param = WorkspaceCommandParam({
+                    command = 'vscode.java.test.junit.argument',
+                    arguments = {
+                        get_json({
+                            projectName = projectName,
+                            testKind = testKind,
+                            testLevel = testLevel,
+                            testNames = testNames,
+                        }),
+                    },
+                })
 
                 return self.client:execute_workspace_command(cmd_param)
             end,
@@ -101,22 +92,19 @@ local Client = {
         -- @param { number } buffer buffer number
         -- @param { GetClasspathArguments } arguments to pass to the command
         get_classpaths = function(buffer, scope)
-            local client = LspClient(
-                               {
-                    buffer = buffer,
-                })
+            local client = LspClient({
+                buffer = buffer,
+            })
 
-            local cmd_param = WorkspaceCommandParam(
-                                  {
-                    command = 'java.project.getClasspaths',
-                    arguments = {
-                        v.uri_from_bufnr(buffer),
-                        get_json(
-                            {
-                                scope = scope,
-                            }),
-                    },
-                })
+            local cmd_param = WorkspaceCommandParam({
+                command = 'java.project.getClasspaths',
+                arguments = {
+                    v.uri_from_bufnr(buffer),
+                    get_json({
+                        scope = scope,
+                    }),
+                },
+            })
 
             return client:execute_workspace_command(cmd_param)
         end,
