@@ -26,7 +26,7 @@ local popup = Popup({
     },
     buf_options = {
         modifiable = true,
-        readonly = true,
+        readonly = false,
     },
     win_options = {
         foldmethod = 'indent',
