@@ -185,6 +185,14 @@ function TestResultParser()
                 TestResultType.TraceStart,
                 TestResultType.TraceEnd
             )
+
+            local trace = trace_tag[1].children
+
+            -- There is a new line left in the stack trace
+            if trace[#trace] == '' then
+                trace[#trace] = nil
+            end
+
             result.trace = trace_tag[1].children
         end
 
