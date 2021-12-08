@@ -1,5 +1,5 @@
 local LspClient = require('nvim.utils.lsp.client')
-local WorkspaceCommandParam = R('nvim.utils.lsp.workspace-command-param')
+local WorkspaceCommandParam = require('nvim.utils.lsp.workspace-command-param')
 
 local v = vim
 local fn = v.fn

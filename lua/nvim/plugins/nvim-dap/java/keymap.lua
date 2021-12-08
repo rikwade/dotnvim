@@ -1,5 +1,5 @@
 local Lsp = require('nvim.plugins.lsp')
-local Command = require('nvim.newutil.command')
+local Command = require('nvim.utils.nvim.command')
 local DapCommands = require('nvim.plugins.nvim-dap.java.commands')
 local LspEventType = require('nvim.plugins.lsp.event')
 local ConfEventType = require('nvim.utils.lsp.event-type')

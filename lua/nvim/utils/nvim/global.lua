@@ -1,4 +1,4 @@
-local Random = require('nvim.newutil.random')
+local Random = require('nvim.utils.common.random')
 
 Global = {}
 

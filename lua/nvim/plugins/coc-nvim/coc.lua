@@ -1,4 +1,4 @@
-local Pum = R('nvim.utils.')
+local Pum = require('nvim.utils.')
 
 local V
 local API

@@ -1,4 +1,5 @@
-R('nvim.newutil.global')
+local v = vim
+local api = v.api
 
 ----------------------------------------------------------------------
 --                             Options                              --
@@ -71,7 +72,7 @@ function Shortcut:keymap(keys, action, options)
 end
 
 function Shortcut:keymaps(keymaps)
-    assert(V.tbl_islist(keymaps), 'Keymap list should be a list')
+    assert(v.tbl_islist(keymaps), 'Keymap list should be a list')
 
     for _, record in ipairs(keymaps) do
         self:keymap(record[1], record[2], record[3])
@@ -101,7 +102,7 @@ function Shortcut:__set_keymap(keys, action, options)
     options = options or self.__options
 
     if self.__buffer then
-        API.nvim_buf_set_keymap(
+        api.nvim_buf_set_keymap(
             self.__buffer,
             self.__mode,
             keys,
@@ -109,7 +110,7 @@ function Shortcut:__set_keymap(keys, action, options)
             options
         )
     else
-        API.nvim_set_keymap(self.__mode, keys, action, options)
+        api.nvim_set_keymap(self.__mode, keys, action, options)
     end
 end
 

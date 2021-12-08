@@ -1,4 +1,4 @@
-R('commented').setup({
+require('commented').setup({
     comment_padding = ' ',
     keybindings = {
         n = ',c',

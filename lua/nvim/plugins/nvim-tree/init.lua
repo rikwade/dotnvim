@@ -1,3 +1,6 @@
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local Variable = require('nvim.utils.nvim.variable')
+
 Variable.g({
     nvim_tree_quit_on_open = 0,
     nvim_tree_indent_markers = 1,
@@ -47,17 +50,12 @@ Variable.g({
     },
 })
 
-local opt = {
-    noremap = true,
-    silent = true,
-}
-
-Keybind.g({
-    { 'n', ',n', ':NvimTreeToggle<cr>', opt },
-    { 'n', ',,', ':NvimTreeFindFile<cr>', opt },
+Shortcut:mode('n'):options():noremap():silent():next():keymaps({
+    { ',n', ':NvimTreeToggle<cr>' },
+    { ',,', ':NvimTreeFindFile<cr>' },
 })
 
-R('nvim-tree').setup({
+require('nvim-tree').setup({
     gitignore = 1,
     disable_netrw = true,
     hijack_netrw = true,

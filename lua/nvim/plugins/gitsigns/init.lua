@@ -1,8 +1,10 @@
-local l = Keybind.get_lua_cmd_string
+local CmdString = require('nvim.utils.nvim.command-string')
+
+local l = CmdString.get_lua_cmd_string
 
 string.format('&diff ? "]c" : %s', l('require"gitsigns.actions".next_hunk()'))
 
-R('gitsigns').setup({
+require('gitsigns').setup({
     numhl = false,
     linehl = false,
     keymaps = {

@@ -1,7 +1,9 @@
 local Assert = require('nvim.utils.validator.assert')
-local Promise = R('promise')
+local Promise = require('promise')
 local class = require('pl.class')
 local WorkspaceCommandParam = require('nvim.utils.lsp.workspace-command-param')
+
+local lsp = vim.lsp
 
 local Client = class()
 
@@ -41,7 +43,7 @@ function Client.execute_workspace_command(self, param)
 
     -- use client registered for the given buffer
     return Promise.new(function(response, reject)
-        LSP.buf_request(
+        lsp.buf_request(
             self.buffer,
             'workspace/executeCommand',
             param,

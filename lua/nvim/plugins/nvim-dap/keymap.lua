@@ -1,8 +1,10 @@
-local Shortcut = R('nvim.newutil.keymap')
-local Lsp = R('nvim.plugins.lsp')
-local Event = R('nvim.plugins.lsp.event')
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local Lsp = require('nvim.plugins.lsp')
+local Event = require('nvim.plugins.lsp.event')
 local ConfEvent = require('nvim.utils.lsp.event-type')
-local l = Keybind.get_lua_cmd_string
+local CmdString = require('nvim.utils.nvim.command-string')
+
+local l = CmdString.get_lua_cmd_string
 
 local M = {}
 

@@ -1,4 +1,4 @@
-local cast = R('nvim.utils.lua.cast')
+local cast = require('nvim.utils.lua.cast')
 
 local M = {}
 

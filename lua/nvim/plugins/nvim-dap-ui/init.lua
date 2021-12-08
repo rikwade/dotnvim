@@ -1,6 +1,8 @@
-CMD('command Dap :lua require"dapui".toggle()')
+local cmd = vim.cmd
 
-R('dapui').setup({
+cmd('command Dap :lua require"dapui".toggle()')
+
+require('dapui').setup({
     icons = { expanded = '▾', collapsed = '▸' },
     mappings = {
         -- Use a table to apply multiple mappings

@@ -1,3 +1,7 @@
+local Option = require('nvim.utils.nvim.option')
+
+local v = vim
+
 Option.g({
     ----------------------------------------------------------------------
     --                              EDITOR                              --
@@ -44,7 +48,7 @@ Option.g({
     updatetime = 30,
 
     -- controls how short messages are displayed in status bar section
-    shortmess = V.o.shortmess .. 'c',
+    shortmess = v.o.shortmess .. 'c',
 
     -- open completion menu even for single item
     -- do not auto insert items from completion menu

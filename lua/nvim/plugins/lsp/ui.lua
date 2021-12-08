@@ -1,6 +1,12 @@
 local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
 
+local v = vim
+local fn = v.fn
+local cmd = v.cmd
+local lsp = v.lsp
+
+
 local M = {}
 
 M.border = {
@@ -33,31 +39,31 @@ function M.add_ui()
     -- that's why the highlighting related code is defined on attach
     for type, icon in pairs(M.signs) do
         local hl = 'LspDiagnosticsSign' .. type
-        FN.sign_define(hl, {
+        fn.sign_define(hl, {
             text = icon,
             texthl = hl,
             numhl = hl,
         })
     end
 
-    CMD([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
-    CMD(
+    cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
+    cmd(
         [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
     )
 
-    LSP.handlers['textDocument/hover'] = LSP.with(LSP.handlers.hover, {
+    lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, {
         border = M.border,
     })
 
-    LSP.handlers['textDocument/signatureHelp'] = LSP.with(
-        LSP.handlers.signature_help,
+    lsp.handlers['textDocument/signatureHelp'] = lsp.with(
+        lsp.handlers.signature_help,
         {
             border = M.border,
         }
     )
 
-    LSP.handlers['textDocument/publishDiagnostics'] = LSP.with(
-        LSP.diagnostic.on_publish_diagnostics,
+    lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(
+        lsp.diagnostic.on_publish_diagnostics,
         {
             virtual_text = true,
             signs = true,

@@ -1,8 +1,8 @@
-R('hop').setup({ keys = 'tnseriaocmfuplwyq' })
+local Shortcut = require('nvim.utils.nvim.shortcut')
 
-local opt = { silent = true }
+require('hop').setup({ keys = 'tnseriaocmfuplwyq' })
 
-Keybind.g({
-    { 'n', '8f', ':HopChar1<CR>', opt },
-    { 'n', '8w', ':HopWord<CR>', opt },
+Shortcut:mode('n'):options():noremap():silent():next():keymaps({
+    { '8f', ':HopChar1<CR>' },
+    { '8w', ':HopWord<CR>' },
 })

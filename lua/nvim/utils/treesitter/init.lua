@@ -1,3 +1,6 @@
+local api = vim.api
+local ts = vim.treesitter
+
 local M = {}
 
 --[[
@@ -5,11 +8,11 @@ local M = {}
 -- @returns iterator of all the matches
 --]]
 function M.get_query_matches(buffer, lang, query_str)
-    buffer = buffer or API.nvim_get_current_buf()
+    buffer = buffer or api.nvim_get_current_buf()
 
-    local root = TS.get_parser(buffer, lang):parse()[1]:root()
+    local root = ts.get_parser(buffer, lang):parse()[1]:root()
 
-    local query = TS.parse_query(lang, query_str)
+    local query = ts.parse_query(lang, query_str)
 
     return query:iter_matches(root, buffer)
 end

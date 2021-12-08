@@ -1,6 +1,8 @@
-local Shortcut = R('nvim.newutil.keymap')
-local l = R('nvim.utils.keybind').get_lua_cmd_string
-local c = R('nvim.utils.keybind').get_cmd_string
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local CmdString = require('nvim.utils.nvim.command-string')
+
+local l = CmdString.get_lua_cmd_string
+local c = CmdString.get_cmd_string
 
 Shortcut:mode('n'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
@@ -58,7 +60,7 @@ Shortcut:mode('n'):options():noremap():next():keymaps({
     {
         'gf',
         function()
-            R('nvim.utils.nvim.file').open_file_under_cursor()
+            require('nvim.utils.nvim.file').open_file_under_cursor()
         end,
     },
 

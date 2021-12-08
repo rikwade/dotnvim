@@ -1,4 +1,4 @@
-R('nvim-treesitter.configs').setup({
+require('nvim-treesitter.configs').setup({
     playground = {
         enable = true,
         disable = {},

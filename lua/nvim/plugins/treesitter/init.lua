@@ -1,4 +1,6 @@
-R('nvim-treesitter.configs').setup({
+local api = vim.api
+
+require('nvim-treesitter.configs').setup({
     ensure_installed = 'all',
 
     highlight = {
@@ -65,7 +67,7 @@ R('nvim-treesitter.configs').setup({
     },
 })
 
-API.nvim_exec(
+api.nvim_exec(
     [[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()

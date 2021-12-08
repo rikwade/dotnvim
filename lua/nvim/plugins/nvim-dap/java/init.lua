@@ -1,10 +1,12 @@
-local dap = R('dap')
+local dap = require('dap')
 local Lsp = require('nvim.plugins.lsp')
 local LspEventType = require('nvim.plugins.lsp.event')
 local ConfEventType = require('nvim.utils.lsp.event-type')
 local JavaDap = require('nvim.utils.dap.java')
 local Notify = require('nvim.utils.notify')
 
+local v = vim
+local fn = v.fn
 local java_dap = JavaDap()
 local notify = Notify({
     title = 'Debugger',
@@ -40,8 +42,8 @@ end
 
 function M.setup_server_conf(conf)
     local plugins_path = '/lsp_servers/jdtls/additional-plugins/**/*.jar'
-    local plugins_str = FN.glob(FN.stdpath('data') .. plugins_path)
-    local plugins_path_list = V.split(plugins_str, '\n')
+    local plugins_str = fn.glob(fn.stdpath('data') .. plugins_path)
+    local plugins_path_list = v.split(plugins_str, '\n')
 
     conf:set_option('init_options', {
         bundles = plugins_path_list,

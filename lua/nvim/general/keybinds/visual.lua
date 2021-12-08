@@ -1,4 +1,4 @@
-local Shortcut = R('nvim.newutil.keymap')
+local Shortcut = require('nvim.utils.nvim.shortcut')
 
 Shortcut:mode('x'):options():noremap():next():keymaps({
 

@@ -1,3 +1,5 @@
+local v = vim
+
 local Type = { GLOBAL_OPTION = 'o', WINDOW_OPTION = 'wo', BUFFER_OPTION = 'bo' }
 
 local add_options = function(option_type, id, options)
@@ -18,9 +20,9 @@ local add_options = function(option_type, id, options)
         -- vim['o']['mouse'] = 4
         -- vim['wo'][10]['number'] = true
         if id == 0 then
-            V[option_type][key] = value
+            v[option_type][key] = value
         else
-            V[option_type][id][key] = value
+            v[option_type][id][key] = value
         end
     end
 end
@@ -31,12 +33,12 @@ Option.g = function(options)
     add_options(Type.GLOBAL_OPTION, options)
 end
 
-Option.w = function(id, options)
-    add_options(Type.WINDOW_OPTION, id, options)
+Option.w = function(window, options)
+    add_options(Type.WINDOW_OPTION, window, options)
 end
 
-Option.b = function(id, options)
-    add_options(Type.BUFFER_OPTION, id, options)
+Option.b = function(buffer, options)
+    add_options(Type.BUFFER_OPTION, buffer, options)
 end
 
 return Option

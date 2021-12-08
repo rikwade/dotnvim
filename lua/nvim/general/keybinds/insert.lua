@@ -1,6 +1,6 @@
-local Shortcut = R('nvim.newutil.keymap')
-local l = R('nvim.utils.keybind').get_lua_cmd_string
-local n = R('nvim.utils.keybind').get_normal_cmd_string
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local CmdString = require('nvim.utils.nvim.command-string')
+local n = CmdString.get_normal_cmd_string
 
 Shortcut:mode('i'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------

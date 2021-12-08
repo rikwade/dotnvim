@@ -1,4 +1,4 @@
-R('telescope').setup({
+require('telescope').setup({
     defaults = {
         path_display = { 'truncate' },
         file_ignore_patterns = {
@@ -9,4 +9,4 @@ R('telescope').setup({
         },
     },
 })
-R('telescope').load_extension('fzf')
+require('telescope').load_extension('fzf')

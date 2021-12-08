@@ -1,10 +1,10 @@
 local Popup = require('nui.popup')
 local event = require('nui.utils.autocmd').event
-local Shortcut = R('nvim.newutil.keymap')
+local Shortcut = require('nvim.utils.nvim.shortcut')
 local TestStatus = require('nvim.utils.dap.java.test.test-status')
 local TestEventType = require('nvim.utils.dap.java.test.test-event-type')
 local Buffer = require('nvim.utils.ui.buffer')
-local Highlight = require('nvim.utils.highlight')
+local Highlight = require('nvim.utils.nvim.highlight')
 local TestHighlightGroup = require('nvim.plugins.nvim-dap.highlight-group')
 
 local v = vim

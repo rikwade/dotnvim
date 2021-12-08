@@ -1,3 +1,5 @@
+local Variable = require('nvim.utils.nvim.variable')
+
 Variable.g({
     -- how long the cursor animation
     neovide_cursor_animation_length = 0.05,

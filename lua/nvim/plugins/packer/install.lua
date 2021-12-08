@@ -1,9 +1,9 @@
 ---@diagnostic disable: undefined-global
-R('packer').init({
+require('packer').init({
     max_jobs = 2,
 })
 
-return R('packer').startup(function()
+return require('packer').startup(function()
     use_rocks({ 'lualogging', 'penlight', 'promise-lua' })
 
     ----------------------------------------------------------------------
@@ -14,7 +14,7 @@ return R('packer').startup(function()
     use({
         's1n7ax/nvim-lsp-installer',
         run = function()
-            R('nvim.plugins.nvim-lsp-installer')
+            require('nvim.plugins.nvim-lsp-installer')
         end,
         rocks = { 'promise-lua' },
         requires = {
@@ -24,17 +24,17 @@ return R('packer').startup(function()
         },
         config = function()
             -- lsp config
-            R('nvim.plugins.lsp.ui').setup()
-            R('nvim.plugins.lsp.keymaps').setup()
+            require('nvim.plugins.lsp.ui').setup()
+            require('nvim.plugins.lsp.keymaps').setup()
 
             -- dap config
-            R('nvim.plugins.nvim-dap.ui').setup()
-            R('nvim.plugins.nvim-dap.keymap').setup()
-            R('nvim.plugins.nvim-dap.java').setup()
-            R('nvim.plugins.nvim-dap.java.keymap').setup()
+            require('nvim.plugins.nvim-dap.ui').setup()
+            require('nvim.plugins.nvim-dap.keymap').setup()
+            require('nvim.plugins.nvim-dap.java').setup()
+            require('nvim.plugins.nvim-dap.java.keymap').setup()
 
             -- setup LSes
-            R('nvim.plugins.lsp').setup()
+            require('nvim.plugins.lsp').setup()
         end,
     })
 
@@ -42,7 +42,7 @@ return R('packer').startup(function()
     use({
         'hrsh7th/nvim-cmp',
         config = function()
-            R('nvim.plugins.nvim-cmp')
+            require('nvim.plugins.nvim-cmp')
         end,
         requires = {
             'dcampos/cmp-snippy',
@@ -57,7 +57,7 @@ return R('packer').startup(function()
             {
                 's1n7ax/vim-snippets',
                 config = function()
-                    R('nvim.plugins.nvim-snippy')
+                    require('nvim.plugins.nvim-snippy')
                 end,
             },
         },
@@ -71,7 +71,7 @@ return R('packer').startup(function()
         run = 'cd app && yarn install',
         ft = { 'markdown' },
         config = function()
-            R('nvim.plugins.markdown-preview')
+            require('nvim.plugins.markdown-preview')
         end,
     })
 
@@ -85,7 +85,7 @@ return R('packer').startup(function()
         run = { 'yarn global add prettier prettier-plugin-java' },
         keys = ',f',
         config = function()
-            R('nvim.plugins.formatter')
+            require('nvim.plugins.formatter')
         end,
     })
 
@@ -106,7 +106,7 @@ return R('packer').startup(function()
     use({
         'rcarriga/nvim-dap-ui',
         config = function()
-            R('nvim.plugins.nvim-dap-ui')
+            require('nvim.plugins.nvim-dap-ui')
         end,
     })
 
@@ -120,7 +120,7 @@ return R('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = function()
-            R('nvim.plugins.nvim-tree')
+            require('nvim.plugins.nvim-tree')
         end,
     })
 
@@ -147,7 +147,7 @@ return R('packer').startup(function()
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
-            R('nvim.plugins.gitsigns')
+            require('nvim.plugins.gitsigns')
         end,
     })
 
@@ -157,7 +157,7 @@ return R('packer').startup(function()
     use({
         's1n7ax/nvim-lazy-inner-block',
         config = function()
-            R('nvim-lazy-inner-block').setup()
+            require('nvim-lazy-inner-block').setup()
         end,
     })
 
@@ -173,7 +173,7 @@ return R('packer').startup(function()
         branch = '0.5-compat',
         run = ':TSUpdate',
         config = function()
-            R('nvim.plugins.treesitter')
+            require('nvim.plugins.treesitter')
         end,
     })
 
@@ -182,14 +182,14 @@ return R('packer').startup(function()
         requires = { 'nvim-treesitter/nvim-treesitter' },
         cmd = 'TSPlaygroundToggle',
         config = function()
-            R('nvim.plugins.playground')
+            require('nvim.plugins.playground')
         end,
     })
 
     use({
         'David-Kunz/treesitter-unit',
         config = function()
-            R('nvim.plugins.treesitter-unit')
+            require('nvim.plugins.treesitter-unit')
         end,
     })
 
@@ -200,13 +200,13 @@ return R('packer').startup(function()
     use({
         's1n7ax/nvim-terminal',
         config = function()
-            R('nvim.plugins.nvim-terminal')
+            require('nvim.plugins.nvim-terminal')
         end,
     })
     use({
         's1n7ax/nvim-search-and-replace',
         config = function()
-            R('nvim.plugins.nvim-search-and-replace')
+            require('nvim.plugins.nvim-search-and-replace')
         end,
     })
 
@@ -214,14 +214,14 @@ return R('packer').startup(function()
         'winston0410/commented.nvim',
         requires = 'JoosepAlviste/nvim-ts-context-commentstring',
         config = function()
-            R('nvim.plugins.nvim-commented')
+            require('nvim.plugins.nvim-commented')
         end,
     })
 
     use({
         'windwp/nvim-ts-autotag',
         config = function()
-            R('nvim-ts-autotag').setup()
+            require('nvim-ts-autotag').setup()
         end,
     })
 
@@ -239,7 +239,7 @@ return R('packer').startup(function()
         'phaazon/hop.nvim',
         as = 'hop',
         config = function()
-            R('nvim.plugins.hop')
+            require('nvim.plugins.hop')
         end,
     })
 
@@ -248,7 +248,7 @@ return R('packer').startup(function()
         'folke/zen-mode.nvim',
         keys = '<leader><leader>',
         config = function()
-            R('nvim.plugins.zen-mode')
+            require('nvim.plugins.zen-mode')
         end,
     })
 
@@ -258,7 +258,7 @@ return R('packer').startup(function()
         keys = ',C',
         requires = { 'nvim-treesitter' },
         config = function()
-            R('nvim.plugins.nvim-comment-frame')
+            require('nvim.plugins.nvim-comment-frame')
         end,
     })
 
@@ -272,7 +272,7 @@ return R('packer').startup(function()
     use({
         'sindrets/winshift.nvim',
         config = function()
-            R('nvim.plugins.winshift')
+            require('nvim.plugins.winshift')
         end,
     })
 
@@ -280,7 +280,7 @@ return R('packer').startup(function()
         'romgrk/nvim-treesitter-context',
         requires = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
-            R('nvim.plugins.treesitter-context')
+            require('nvim.plugins.treesitter-context')
         end,
     })
 
@@ -292,7 +292,7 @@ return R('packer').startup(function()
             opt = true,
         },
         config = function()
-            R('nvim.plugins.lualine')
+            require('nvim.plugins.lualine')
         end,
     })
 

@@ -8,7 +8,6 @@ local TestLevel = require('nvim.utils.lsp.java.test-level')
 local JUnit = require('nvim.utils.dap.java.test.junit')
 local Notify = require('nvim.utils.notify')
 
----@diagnostic disable-next-line: undefined-global
 local v = vim
 local api = v.api
 
@@ -89,7 +88,7 @@ function JavaDap.create_debug_config(_, project_name, class_name, classpath)
         name = string.format('Launch -> %s -> %s', project_name, class_name),
         projectName = project_name,
         mainClass = class_name,
-        classPaths = V.tbl_flatten(classpath),
+        classPaths = v.tbl_flatten(classpath),
         modulePaths = {},
         request = 'launch',
         type = 'java',

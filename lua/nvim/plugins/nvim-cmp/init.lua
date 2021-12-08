@@ -1,5 +1,5 @@
-local cmp = R('cmp')
-local lspkind = R('lspkind')
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 cmp.setup({})
 
 local v = vim
@@ -62,7 +62,7 @@ cmp.setup({
 
     snippet = {
         expand = function(args)
-            R('snippy').expand_snippet(args.body)
+            require('snippy').expand_snippet(args.body)
         end,
     },
 

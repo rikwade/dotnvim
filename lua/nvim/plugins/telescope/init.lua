@@ -1,2 +1,2 @@
-R('nvim.plugins.telescope.keymaps')
-R('nvim.plugins.telescope.config')
+require('nvim.plugins.telescope.keymaps')
+require('nvim.plugins.telescope.config')

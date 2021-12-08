@@ -1,8 +1,10 @@
-local Shortcut = R('nvim.newutil.keymap')
-local l = Keybind.get_lua_cmd_string
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local CmdString = require('nvim.utils.nvim.command-string')
+
+local l = CmdString.get_lua_cmd_string
 
 local builtin = function(function_name)
-    local cmd = 'R"telescope.builtin".' .. function_name
+    local cmd = 'require"telescope.builtin".' .. function_name
     return l(cmd)
 end
 

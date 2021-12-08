@@ -1,6 +1,6 @@
-local Shortcut = R('nvim.newutil.keymap')
+local Shortcut = require('nvim.utils.nvim.shortcut')
 
-R('nvim-comment-frame').setup({ disable_default_keymap = true })
+require('nvim-comment-frame').setup({ disable_default_keymap = true })
 
 Shortcut
     :mode('n')

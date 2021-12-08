@@ -1,3 +1,5 @@
+local v = vim
+
 local Type = {
     GLOBAL_VARIABLE = 'g',
     WINDOW_VARIABLE = 'w',
@@ -12,7 +14,7 @@ local function add_variables(variable_type, variables)
         return
     end
 
-    local variable_group = V[variable_type]
+    local variable_group = v[variable_type]
 
     for key, value in pairs(variables) do
         variable_group[key] = value

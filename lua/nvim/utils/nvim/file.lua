@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
-local wpicker = R('window-picker')
+local wpicker = require('window-picker')
 
 local M = {}
 

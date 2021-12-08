@@ -1,4 +1,4 @@
-R('nvim-search-and-replace').setup({
+require('nvim-search-and-replace').setup({
     -- file patters to ignore
     ignore = {
         '**/node_modules/**',

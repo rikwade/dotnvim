@@ -1,2 +1,2 @@
-R('nvim.plugins.packer.install')
-R('nvim.plugins.colorscheme')
+require('nvim.plugins.packer.install')
+require('nvim.plugins.colorscheme')
