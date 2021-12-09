@@ -1,5 +1,5 @@
 local JavaDap = require('nvim.utils.dap.java')
-local TestResult = require('nvim.utils.ui.test-result')
+local TestResult = require('nvim.utils.ui.test.test-result')
 
 local dap = JavaDap()
 

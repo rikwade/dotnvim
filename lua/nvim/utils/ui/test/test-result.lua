@@ -4,13 +4,13 @@ local Shortcut = require('nvim.utils.nvim.shortcut')
 local TestStatus = require('nvim.utils.dap.java.test.test-status')
 local TestEventType = require('nvim.utils.dap.java.test.test-event-type')
 local Buffer = require('nvim.utils.ui.buffer')
-local Highlight = require('nvim.utils.nvim.highlight')
-local TestHighlightGroup = require('nvim.plugins.nvim-dap.highlight-group')
+local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
+local TestHighlightGroups = require('nvim.utils.ui.test.test-highlight-groups')
 
 local v = vim
 local api = v.api
 
-local highlights = Highlight:new():save_all(TestHighlightGroup)
+local highlighter = Highlighter:new():add(TestHighlightGroups)
 
 local popup = Popup({
     enter = true,
@@ -42,6 +42,7 @@ function M:new(test_result_sub)
     test_result_sub.add_listener(TestEventType.COMPLETE, function(...)
         M:_on_test_complete(...)
     end)
+
     return self
 end
 
@@ -63,7 +64,6 @@ function M:show()
 
     local buffer_ui = Buffer:new({
         buffer = popup.bufnr,
-        highlights = highlights,
     })
 
     local line_count = api.nvim_buf_line_count(popup.bufnr)
@@ -75,7 +75,7 @@ function M:show()
         end
     end
 
-    highlights:register_all()
+    highlighter:register_highlights()
     buffer_ui:render(lines, line_count - 1, line_count)
 end
 
@@ -85,20 +85,23 @@ function M:_on_test_complete(result)
 end
 
 function M._get_buffer_lines(test_case_result)
+    local status
     local lines = {}
-    local status = ''
+
     local class = test_case_result.class
     local name = test_case_result.name
 
     if test_case_result.status == TestStatus.PASS then
         status = {
-            text = '' .. ' ' .. class .. '  ' .. name,
-            color_group = 'TestPassed',
+            text = string.format(' %s  %s', class, name),
+            highlight_group = TestHighlightGroups.TestPassed.name,
+            foldlevel = 1,
         }
     elseif test_case_result.status == TestStatus.FAIL then
         status = {
-            text = '' .. ' ' .. class .. '  ' .. name,
-            color_group = 'TestError',
+            text = string.format(' %s  %s', class, name),
+            highlight_group = TestHighlightGroups.TestError.name,
+            foldlevel = 1,
         }
     end
 
@@ -108,7 +111,8 @@ function M._get_buffer_lines(test_case_result)
         for _, line in ipairs(test_case_result.trace) do
             table.insert(lines, {
                 text = '\t' .. line,
-                color_group = 'TestError',
+                highlight_group = TestHighlightGroups.TestError.name,
+                foldlevel = 1,
             })
         end
     end

@@ -1,12 +1,10 @@
-local rockbin = require('packer.luarocks').get_bin_path()
-local util = require('packer.util')
-local file_util = require('nvim.utils.file')
-local os_util = require('nvim.utils.os')
+local file_util = require('nvim.utils.common.file')
+local os_util = require('nvim.utils.common.os')
 local list_util = require('nvim.utils.lua.list')
+
 local v = vim
 local fn = v.fn
-
-local luaformat = util.join_paths(rockbin, 'lua-format')
+local api = v.api
 
 local prettier_formatter = function(...)
     local additional_args = { ... }
@@ -14,7 +12,7 @@ local prettier_formatter = function(...)
     return function()
         local args = {
             '--stdin-filepath',
-            API.nvim_buf_get_name(0),
+            api.nvim_buf_get_name(0),
             '--no-color',
             '--loglevel silent',
         }
@@ -46,11 +44,11 @@ local prettier_formatter = function(...)
             '.prettierrc.toml',
         }
 
-        local cwd = FN.getcwd()
+        local cwd = fn.getcwd()
 
         -- check if a prettier config available in cwd
         local has_local_config = list_util.any(config_files, function(file)
-            return FN.findfile(file, cwd, 1) ~= ''
+            return fn.findfile(file, cwd, 1) ~= ''
         end)
 
         -- if not found then use the global prettier config
@@ -114,7 +112,7 @@ require('formatter').setup({
                     exe = 'clang-format',
                     args = {},
                     stdin = true,
-                    cwd = FN.expand('%:p:h'),
+                    cwd = fn.expand('%:p:h'),
                 }
             end,
         },

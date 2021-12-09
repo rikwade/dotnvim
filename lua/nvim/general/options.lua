@@ -82,6 +82,11 @@ Option.g({
     -- operator pending timeout
     timeoutlen = 500,
 
+    -- vim try to keep 15 lines below and above when scrolling
+    -- if buffer cannot display more than 15 lines, cursor will stay in center
+    -- and scroll the buffer
+    scrolloff = 15,
+
     ----------------------------------------------------------------------
     --                             EDITING                              --
     ----------------------------------------------------------------------
@@ -134,11 +139,6 @@ Option.w({
     -- usually it adds new column when signs, moving buffer to right side.
     -- adding a column create weird effect that's little bit hard for the eye
     signcolumn = 'auto',
-
-    -- vim try to keep 100 lines below and above when scrolling
-    -- if buffer cannot display more than 200 lines, cursor will stay in center
-    -- and scroll the buffer
-    scrolloff = 15,
 })
 
 Option.b({
