@@ -1,7 +1,9 @@
+local v = vim
+
 local M = {}
 
 function M.ins(...)
-    print(V.inspect(...))
+    print(v.inspect(...))
 end
 
 return M
