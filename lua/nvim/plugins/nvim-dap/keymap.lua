@@ -11,46 +11,46 @@ local M = {}
 function M.on_attach(_, buffer)
     Shortcut:mode('n'):buffer(buffer):options():noremap():next():keymaps({
         -- close the debug sessio
-        { ',tS', l('R"dap".close()') },
+        { ',tS', l('require"dap".close()') },
 
         -- start the debug session and continue to next breakpoint
-        { ',tc', l('R"dap".continue()') },
+        { ',tc', l('require"dap".continue()') },
 
         -- run last again
-        { ',tl', l('R"dap".run_last()') },
+        { ',tl', l('require"dap".run_last()') },
 
-        { ',tu', l('R"dap".step_out()') },
-        { ',td', l('R"dap".step_over()') },
-        { ',ti', l('R"dap".step_into()') },
+        { ',tu', l('require"dap".step_out()') },
+        { ',td', l('require"dap".step_over()') },
+        { ',ti', l('require"dap".step_into()') },
 
         -- create and remove a breakpoint
-        { ',tt', l('R"dap".toggle_breakpoint()') },
+        { ',tt', l('require"dap".toggle_breakpoint()') },
 
         -- go up in the call stack
-        { ',tk', l('R"dap".up()') },
+        { ',tk', l('require"dap".up()') },
 
         -- go down in the call stack
-        { ',tj', l('R"dap".down()') },
+        { ',tj', l('require"dap".down()') },
 
         -- restart the execution
-        { ',tr', l('R"dap".restart()') },
+        { ',tr', l('require"dap".restart()') },
 
         -- inspect node on cursor
-        { ',th', l('R"dap.ui.variables".hover()') },
+        { ',th', l('require"dap.ui.variables".hover()') },
 
         -- inspect all scope properties
         {
             ',ts',
-            l('R"dap.ui.widgets".centered_float(R"dap.ui.widgets".scopes)'),
+            l('require"dap.ui.widgets".centered_float(require"dap.ui.widgets".scopes)'),
         },
 
         -- open repl window
-        { ',to', l('R"dap".repl.open()') },
+        { ',to', l('require"dap".repl.open()') },
     })
 
     Shortcut:mode('v'):buffer(buffer):keymaps({
         -- evaluate selected portion
-        { ',th', l('R"dap.ui.variables".visual_hover()') },
+        { ',th', l('require"dap.ui.variables".visual_hover()') },
     })
 end
 
