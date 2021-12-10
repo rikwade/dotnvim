@@ -25,20 +25,11 @@ function Config.remove_listener(self, event, callback)
 end
 
 --- Set config option
---
--- @param { string } option - name of the option
--- @param { any } value - the value to be appended
-function Config.override_option(self, option, value)
-    self:set(option, value)
-end
-
---- Set config option
 -- IF there is an existing value, this will throw an error
 --
 -- @param { string } option - name of the option
 -- @param { any } value - the value to be appended
 function Config.set_option(self, option, value)
-    Assert:is_falsy(self:get(option))
     self:set(option, value)
 end
 
