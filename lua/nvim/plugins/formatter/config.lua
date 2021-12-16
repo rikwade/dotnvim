@@ -116,5 +116,13 @@ require('formatter').setup({
                 }
             end,
         },
+        css = {
+            function()
+                return {
+                    exe = 'stylefmt',
+                    stdin = true,
+                }
+            end,
+        },
     },
 })

@@ -20,6 +20,7 @@ if ! command -v yarn &> /dev/null
 then
     printf "\n------------------------- Install Yarn --------------------------\n"
     sudo npm install --global yarn > /dev/null
+    yarn global add stylefmt
 fi
 
 if [ -d $HOME/.config/nvim ];
