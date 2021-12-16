@@ -1,3 +1,5 @@
+local v = vim
+
 local M = {}
 
 function M.count(list)
@@ -13,11 +15,11 @@ end
 function M.concat(...)
     local args = { ... }
 
-    if V.tbl_count(args) == 0 then
+    if v.tbl_count(args) == 0 then
         error('No values passed')
     end
 
-    if V.tbl_count(args) < 2 then
+    if v.tbl_count(args) < 2 then
         error('Passed only one parameter')
     end
 
