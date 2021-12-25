@@ -12,9 +12,10 @@ return require('packer').startup(function()
 
     -- lsp
     use({
-        's1n7ax/nvim-lsp-installer',
+        'williamboman/nvim-lsp-installer',
         run = function()
             require('nvim.plugins.nvim-lsp-installer')
+            cmd(':LspInstallInfo')
         end,
         rocks = { 'promise-lua' },
         requires = {
