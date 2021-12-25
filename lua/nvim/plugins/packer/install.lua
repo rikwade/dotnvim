@@ -79,10 +79,6 @@ return require('packer').startup(function()
     -- code formatters
     use({
         'mhartington/formatter.nvim',
-        rocks = {
-            'luaformatter',
-            server = 'https://luarocks.org/dev',
-        },
         run = { 'yarn global add prettier prettier-plugin-java' },
         keys = ',f',
         config = function()
