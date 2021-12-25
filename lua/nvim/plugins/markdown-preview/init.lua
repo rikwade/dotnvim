@@ -6,8 +6,9 @@ Variable.g({
     mkdp_refresh_slow = false,
     mkdp_command_for_global = false,
     mkdp_open_to_the_world = false,
-    mkdp_browser = 'chromium',
+    mkdp_browser = 'com.github.Eloston.UngoogledChromium',
     mkdp_echo_preview_url = true,
     mkdp_preview_options = { sync_scroll_type = 'middle' },
     mkdp_filetypes = { 'markdown' },
+    mkdp_port = '8197',
 })
