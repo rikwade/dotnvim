@@ -1,4 +1,6 @@
----@diagnostic disable: undefined-global
+---@diagnostic disable: undefined-global, undefined-global
+local cmd = vim.cmd
+
 require('packer').init({
     max_jobs = 2,
 })
@@ -70,7 +72,6 @@ return require('packer').startup(function()
     use({
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        ft = { 'markdown' },
         config = function()
             require('nvim.plugins.markdown-preview')
         end,
@@ -144,7 +145,7 @@ return require('packer').startup(function()
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
-            require('gitsigns').setup()
+            require('nvim.plugins.gitsigns')
         end,
     })
 
