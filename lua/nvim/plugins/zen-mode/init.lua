@@ -1,3 +1,5 @@
+local Shortcut = require('nvim.utils.nvim.shortcut')
+
 require('zen-mode').setup({
     window = {
         backdrop = 0.95,
@@ -20,6 +22,10 @@ require('zen-mode').setup({
     },
 })
 
-local opt = { silent = true }
-
-Keybind.g({ { 'n', '<space><space>', ':ZenMode<CR>', opt } })
+Shortcut
+    :mode('n')
+    :options()
+    :noremap()
+    :silent()
+    :next()
+    :keymap('<space><space>', ':ZenMode<CR>')

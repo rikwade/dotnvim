@@ -1,32 +1,32 @@
-local opts = { silent = true }
+local Shortcut = require('nvim.utils.nvim.shortcut')
 
-Keybind.g({
+Shortcut:mode('n'):options():noremap():silent():next():keymaps({
     -- start debugging
-    { 'n', '<leader>dd', ':call vimspector#Launch()<cr>', opts },
+    { '<leader>dd', ':call vimspector#Launch()<cr>' },
 
     -- reset the debug environment
     -- removes all the windows related to vimspector
-    { 'n', '<leader>dD', ':call vimspector#Reset()<cr>', opts },
+    { '<leader>dD', ':call vimspector#Reset()<cr>' },
 
     -- stop debugging
-    { 'n', '<leader>ds', ':call vimspector#Stop()<cr>', opts },
+    { '<leader>ds', ':call vimspector#Stop()<cr>' },
 
     -- restart the debugger
-    { 'n', '<leader>dr', ':call vimspector#Restart()<cr>', opts },
+    { '<leader>dr', ':call vimspector#Restart()<cr>' },
 
     -- toggle breakpoint
-    { 'n', '<leader>dt', ':call vimspector#ToggleBreakpoint()<cr>', opts },
+    { '<leader>dt', ':call vimspector#ToggleBreakpoint()<cr>' },
 
     -- step into
-    { 'n', '<leader>dl', ':call vimspector#StepInto()<cr>', opts },
+    { '<leader>dl', ':call vimspector#StepInto()<cr>' },
 
     -- step out
-    { 'n', '<leader>dh', ':call vimspector#StepOut()<cr>', opts },
+    { '<leader>dh', ':call vimspector#StepOut()<cr>' },
 
     -- step over
-    { 'n', '<leader>dj', ':call vimspector#StepOver()<cr>', opts },
+    { '<leader>dj', ':call vimspector#StepOver()<cr>' },
 
     -- continue
     -- this will continue the execution unless there is a breakpoint
-    { 'n', '<leader>dc', ':call vimspector#Continue()<cr>', opts },
+    { '<leader>dc', ':call vimspector#Continue()<cr>' },
 })
