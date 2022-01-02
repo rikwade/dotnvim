@@ -116,6 +116,14 @@ require('formatter').setup({
                 }
             end,
         },
+        sass = {
+            function()
+                return {
+                    exe = 'stylefmt',
+                    stdin = true,
+                }
+            end,
+        },
         css = {
             function()
                 return {
@@ -124,5 +132,14 @@ require('formatter').setup({
                 }
             end,
         },
+        html = {
+            function()
+                return {
+                    exe = 'prettyhtml',
+                    args = { '--stdin' },
+                    stdin = true,
+                }
+            end,
+        }
     },
 })
