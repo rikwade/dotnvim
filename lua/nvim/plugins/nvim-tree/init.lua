@@ -13,7 +13,7 @@ Variable.g({
     nvim_tree_icon_padding = ' ',
     nvim_tree_symlink_arrow = ' >> ',
     nvim_tree_respect_buf_cwd = 1,
-    nvim_tree_create_in_closed_folder = 0,
+    nvim_tree_create_in_closed_folder = 1,
     nvim_tree_refresh_wait = 500,
     nvim_tree_window_picker_exclude = {
         filetype = { 'notify', 'packer', 'qf' },
