@@ -169,7 +169,10 @@ function TestResultParser()
                 TestResultType.ExpectStart,
                 TestResultType.ExpectEnd
             )
-            result.expected = expected_tag[1].children
+
+            if #expected_tag > 0 then
+                result.expected = expected_tag[1].children
+            end
 
             -- actual
             local actual_tag = M._parse_tag_info(
@@ -177,7 +180,10 @@ function TestResultParser()
                 TestResultType.ActualStart,
                 TestResultType.ActualEnd
             )
-            result.actual = actual_tag[1].children
+
+            if #actual_tag > 0 then
+                result.actual = actual_tag[1].children
+            end
 
             -- stack trace
             local trace_tag = M._parse_tag_info(

@@ -120,18 +120,18 @@ function JavaDap.get_dap_config(self)
     end)
 end
 
-function JavaDap.run_test_class(self, buffer)
-    return self.client.test.find_test_types_and_methods(buffer)
-        :thenCall(function(tests)
-            local test_class = nil
+function JavaDap.run_test(self, buffer, test_filter)
+    assert(test_filter, 'Test filter should be passed')
 
-            for _, test in ipairs(tests) do
-                if test.testLevel == TestLevel.Class then
-                    test_class = test
-                end
+    return self.client.test.find_test_types_and_methods(buffer):thenCall(
+        function(tests)
+            local test = test_filter(tests)
+
+            if not test then
+                error('Test filter did not pass any test')
             end
 
-            local test_kind = test_class.testKind
+            local test_kind = test.testKind
             local test_handler = self.test_handlers[test_kind]
 
             if not test_handler then
@@ -139,20 +139,69 @@ function JavaDap.run_test_class(self, buffer)
             end
 
             return test_handler:run(
-                test_class.projectName,
-                test_class.testKind,
-                test_class.testLevel,
-                { test_class.fullName }
+                test.projectName,
+                test.testKind,
+                test.testLevel,
+                test.testNames
             )
-        end)
-        :catch(function(error)
-            Notify:error(error.message)
-        end)
+        end
+    )
 end
 
-function JavaDap.run_current_test_class(self)
+function JavaDap.run_current_test_class(self, buffer)
+    return self:run_test(buffer, function(tests)
+        for _, test in ipairs(tests) do
+            if test.testLevel == TestLevel.Class then
+                test.testNames = { test.fullName }
+                return test
+            end
+        end
+    end)
+end
+
+function JavaDap.run_current_test_on_cursor(self)
     local buffer = api.nvim_get_current_buf()
-    return self:run_test_class(buffer)
+    local cursor = vim.api.nvim_win_get_cursor(0)
+
+    local function filter(tests)
+        for _, test in ipairs(tests) do
+            if
+                test.testLevel ~= TestLevel.Method
+                and self.__is_test_in_range(test, cursor)
+            then
+                if test.children then
+                    return filter(test.children)
+                else
+                    test.testNames = { test.fullName }
+                    return test
+                end
+            end
+
+            -- method type test
+            if self.__is_test_in_range(test, cursor) then
+                test.testNames = { test.jdtHandler }
+
+                return test
+            end
+        end
+    end
+
+    return self:run_test(buffer, filter)
+end
+
+function JavaDap.__is_test_in_range(test, cursor)
+    local curr_line, curr_column = cursor[1], cursor[2]
+    local start, finish = test.range['start'], test.range['end']
+
+    if start.line < curr_line and finish.line > curr_line then
+        return true
+    elseif start.line == curr_line and start.character <= curr_column then
+        return true
+    elseif finish.line == curr_line and finish.character >= curr_column then
+        return true
+    end
+
+    return false
 end
 
 return JavaDap

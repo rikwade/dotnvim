@@ -11,14 +11,14 @@ function JUnit:_init()
     self.client = Client
 end
 
-function JUnit.run(self, projectName, testKind, testLevel, testNames)
+function JUnit.run(self, project_name, test_kind, test_level, test_names)
     return self.client.test.junit.arguments(
-        projectName,
-        testKind,
-        testLevel,
-        testNames
+        project_name,
+        test_kind,
+        test_level,
+        test_names
     ):thenCall(function(launch_args)
-        local config = JUnit.get_run_args(testNames[1], launch_args, true)
+        local config = JUnit.get_run_args(test_names[1], launch_args, true)
 
         return self:_run(config)
     end)

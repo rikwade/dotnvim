@@ -69,15 +69,15 @@ local Client = {
             -- @param testKind: TestKind
             -- @param testLevel: TestLevel
             -- @param testNames: string[]
-            arguments = function(projectName, testKind, testLevel, testNames)
+            arguments = function(project_name, test_kind, test_level, test_names)
                 local cmd_param = WorkspaceCommandParam({
                     command = 'vscode.java.test.junit.argument',
                     arguments = {
                         get_json({
-                            projectName = projectName,
-                            testKind = testKind,
-                            testLevel = testLevel,
-                            testNames = testNames,
+                            projectName = project_name,
+                            testKind = test_kind,
+                            testLevel = test_level,
+                            testNames = test_names,
                         }),
                     },
                 })

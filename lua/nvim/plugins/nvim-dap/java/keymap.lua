@@ -1,8 +1,11 @@
 local Lsp = require('nvim.plugins.lsp')
+local Notify = require('nvim.utils.notify')
 local Command = require('nvim.utils.nvim.command')
 local DapCommands = require('nvim.plugins.nvim-dap.java.commands')
 local LspEventType = require('nvim.plugins.lsp.event')
 local ConfEventType = require('nvim.utils.lsp.event-type')
+
+local notify = Notify({ title = 'Java Testing' })
 
 local M = {}
 
@@ -11,7 +14,17 @@ function M.setup_keymaps(_, _)
         {
             name = 'RunTestClass',
             action = function()
-                DapCommands.run_current_test_class()
+                DapCommands.run_current_test_class():catch(function(err)
+                    notify:error(err.message or err)
+                end)
+            end,
+        },
+        {
+            name = 'RunTestOnCursor',
+            action = function()
+                DapCommands.run_current_test_on_cursor():catch(function(err)
+                    notify:error(err.message or err)
+                end)
             end,
         },
         {
