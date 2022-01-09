@@ -5,7 +5,17 @@ require('neo-tree').setup({
         window = {
             mappings = {
                 ['o'] = 'open',
-                ['<c-c>'] = ':NeoTreeClose'
+            },
+        },
+        renderers = {
+            directory = {
+                {
+                    'icon',
+                    default = '',
+                    folder_closed = ' ',
+                    folder_open = ' ',
+                    padding = ' ',
+                },
             },
         },
     },
