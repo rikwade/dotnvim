@@ -16,6 +16,13 @@ require('neo-tree').setup({
                     folder_open = ' ',
                     padding = ' ',
                 },
+                { 'current_filter' },
+                { 'name' },
+                {
+                    'clipboard',
+                    highlight = 'NeoTreeDimText',
+                },
+                { 'diagnostics', errors_only = true },
             },
         },
     },
