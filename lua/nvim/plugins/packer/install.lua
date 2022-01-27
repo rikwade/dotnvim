@@ -182,13 +182,6 @@ return require('packer').startup(function()
         end,
     })
 
-    use({
-        'David-Kunz/treesitter-unit',
-        config = function()
-            require('nvim.plugins.treesitter-unit')
-        end,
-    })
-
     -- treesitter text objects
     use({ 'nvim-treesitter/nvim-treesitter-textobjects' })
 
