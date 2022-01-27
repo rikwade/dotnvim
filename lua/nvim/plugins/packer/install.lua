@@ -1,6 +1,3 @@
----@diagnostic disable: undefined-global, undefined-global
-local cmd = vim.cmd
-
 require('packer').init({
     max_jobs = 2,
 })
@@ -15,10 +12,6 @@ return require('packer').startup(function()
     -- lsp
     use({
         'williamboman/nvim-lsp-installer',
-        run = function()
-            require('nvim.plugins.nvim-lsp-installer')
-            cmd(':LspInstallInfo')
-        end,
         rocks = { 'promise-lua' },
         requires = {
             'neovim/nvim-lspconfig',

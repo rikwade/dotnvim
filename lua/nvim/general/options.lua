@@ -39,7 +39,7 @@ Option.g({
     -- on	     off	delete old backup, backup current file
     -- on	     on		delete old backup, backup current file
     backup = false,
-    writebackup = true,
+    writebackup = false,
     swapfile = false,
 
     -- write changes to swap file after "n" ms

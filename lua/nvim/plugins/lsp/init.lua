@@ -1,4 +1,5 @@
 local lsp_installer = require('nvim-lsp-installer')
+local lsp_installer_servers = require('nvim-lsp-installer.servers')
 local Config = require('nvim.utils.lsp.config')
 local LspEvent = require('nvim.plugins.lsp.event')
 local ConfEvent = require('nvim.utils.lsp.event-type')
@@ -21,29 +22,61 @@ function M.add_listener(event, listener)
     M.lsp_event:add_listener(event, listener)
 end
 
+--- Showing notification on server ready
+--
+-- @param { string } lang - name of the language
 function M.lsp_setup_message(lang)
     return function()
         notify:success('Language server:' .. lang .. ' is ready!')
     end
 end
 
+local servers = {
+    'bashls',
+    'cssls',
+    'dockerls',
+    'eslint',
+    'graphql',
+    'html',
+    'jsonls',
+    'jdtls',
+    'sumneko_lua',
+    'pyright',
+    'rust_analyzer',
+    'tsserver',
+    'volar',
+    'groovyls',
+}
+
 --- Setup language servers
 function M.setup()
     M.lsp_event:dispatch(LspEvent.START)
 
-    lsp_installer.on_server_ready(function(server)
-        local conf = Config()
-
-        -- showing the popup notification
-        conf:add_listener(
-            ConfEvent.SERVER_READY,
-            M.lsp_setup_message(server.name)
+    for _, server_name in pairs(servers) do
+        local server_available, server = lsp_installer_servers.get_server(
+            server_name
         )
 
-        M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server.name, conf)
+        if server_available then
+            server:on_ready(function()
+                local conf = Config()
 
-        server:setup(conf)
-    end)
+                -- showing the popup notification
+                conf:add_listener(
+                    ConfEvent.SERVER_READY,
+                    M.lsp_setup_message(server.name)
+                )
+
+                M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server.name, conf)
+
+                server:setup(conf)
+            end)
+
+            if not server:is_installed() then
+                server:install()
+            end
+        end
+    end
 
     M.lsp_event:dispatch(LspEvent.END)
 end
