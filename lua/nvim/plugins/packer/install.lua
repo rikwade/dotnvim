@@ -108,15 +108,12 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     -- File explorer and its icons
     use({
-        'nvim-neo-tree/neo-tree.nvim',
-        branch = 'v1.x',
+        'kyazdani42/nvim-tree.lua',
         requires = {
-            'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
-            'MunifTanjim/nui.nvim',
         },
         config = function()
-            require('nvim.plugins.nvim-neo-tree')
+            require('nvim.plugins.nvim-tree')
         end,
     })
 
