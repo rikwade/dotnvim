@@ -1,3 +1,4 @@
+local lsp_installer = require('nvim-lsp-installer')
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
 local servers = {
@@ -26,3 +27,13 @@ for _, server in ipairs(servers) do
         end
     end
 end
+
+lsp_installer.settings({
+    ui = {
+        icons = {
+            server_installed = '✓',
+            server_pending = '➜',
+            server_uninstalled = '✗',
+        },
+    },
+})

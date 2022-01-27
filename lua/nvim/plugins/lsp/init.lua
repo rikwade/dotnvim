@@ -34,6 +34,7 @@ function M.setup()
     lsp_installer.on_server_ready(function(server)
         local conf = Config()
 
+        -- showing the popup notification
         conf:add_listener(
             ConfEvent.SERVER_READY,
             M.lsp_setup_message(server.name)
