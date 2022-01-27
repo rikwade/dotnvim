@@ -158,7 +158,12 @@ return require('packer').startup(function()
     })
 
     -- auto pair brackets
-    use({ 'jiangmiao/auto-pairs' })
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup({})
+        end,
+    })
 
     -- handle pairs of text objects
     use({ 'tpope/vim-surround' })
