@@ -15,19 +15,19 @@ Shortcut:mode('n'):options():noremap():next():keymaps({
     --                           CURSOR MOVE                            --
     ----------------------------------------------------------------------
     -- move cursor to left window
-    { '<leader>h', '<c-w>h' },
+    { '<c-h>', '<c-w>h' },
 
     -- move cursor to right window
-    { '<leader>i', '<c-w>l' },
+    { '<m-i>', '<c-w>l' },
 
     -- move cursor to bottom window
-    { '<leader>n', '<c-w>j' },
+    { '<c-n>', '<c-w>j' },
 
     -- move cursor to top window
-    { '<leader>e', '<c-w>k' },
+    { '<c-e>', '<c-w>k' },
 
     -- move cursor to last window
-    { '<leader>w', '<c-w>p' },
+    { '<c-w>', '<c-w>p' },
 
     -- move to last cursor position in the jump list
     { [['']], '``' },
