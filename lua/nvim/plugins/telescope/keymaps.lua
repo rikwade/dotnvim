@@ -13,43 +13,43 @@ Shortcut:mode('n'):options():noremap():next():keymaps({
     --                          FILES & BUFFER                          --
     ----------------------------------------------------------------------
     -- find a file in current working directory
-    { '<leader>t', builtin('find_files()') },
+    { '<leader>tn', builtin('find_files()') },
 
     -- find line in current working directory
-    { '<leader>s', builtin('live_grep()') },
+    { '<leader>te', builtin('live_grep()') },
 
     -- resumes the previous search
-    { '<leader>r', builtin('resume()') },
+    { '<leader>ti', builtin('resume()') },
 
     -- find buffer
-    { '<leader>p', builtin('buffers()') },
+    { '<leader>to', builtin('buffers()') },
 
     -- find line in current buffer
-    { '<leader>f', builtin('current_buffer_fuzzy_find()') },
+    { '<leader>tt', builtin('current_buffer_fuzzy_find()') },
 
     -- find word under the cursor in current buffer
     { '<leader>*', builtin('grep_string()') },
 
     -- find help index
-    { '<leader>x', builtin('help_tags()') },
+    { '<leader>ts', builtin('help_tags()') },
 
     ----------------------------------------------------------------------
     --                               LSP                                --
     ----------------------------------------------------------------------
     -- find references of word under the cursor
-    { '<leader>o', builtin('lsp_references()') },
+    { '<leader>nm', builtin('lsp_references()') },
 
     -- find diagnostics in the file
-    { '<leader>d', builtin('lsp_document_diagnostics()') },
+    { '<leader>nd', builtin('lsp_document_diagnostics()') },
 
     -- show code actions
-    { '<leader>a', builtin('lsp_range_code_actions()') },
+    -- { '<leader>a', builtin('lsp_range_code_actions()') },
 
     -- browse code definition
-    { '<leader>c', builtin('lsp_definitions()') },
+    { '<leader>nt', builtin('lsp_definitions()') },
 
     -- browse code implementation
-    { '<leader>m', builtin('lsp_implementations()') },
+    { '<leader>ns', builtin('lsp_implementations()') },
 })
 
 Shortcut:mode('i'):options():noremap():next():keymaps({
@@ -71,3 +71,5 @@ Shortcut:mode('i'):options():noremap():next():keymaps({
   lsp_workspace_diagnostics = <function 35>,
   lsp_workspace_symbols = <function 36>,
   --]]
+
+

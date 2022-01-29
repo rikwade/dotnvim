@@ -41,7 +41,9 @@ function M.on_attach(_, buffer)
         -- inspect all scope properties
         {
             ',ts',
-            l('require"dap.ui.widgets".centered_float(require"dap.ui.widgets".scopes)'),
+            l(
+                'require"dap.ui.widgets".centered_float(require"dap.ui.widgets".scopes)'
+            ),
         },
 
         -- open repl window
