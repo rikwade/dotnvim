@@ -56,8 +56,8 @@ function M:show()
 
     Shortcut
         :mode('n')
-        :buffer(popup.bufnr)
         :options()
+        :buffer(popup.bufnr)
         :noremap()
         :next()
         :keymaps({ { '<cr>', 'zA' }, { 'o', 'zA' } })

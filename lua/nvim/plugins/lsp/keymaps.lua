@@ -9,7 +9,6 @@ local l = CmdString.get_lua_cmd_string
 local M = {}
 
 function M.on_attach(_, buffer)
-    Shortcut:mode('n'):buffer(buffer):options():noremap():next():keymaps({
 
         -- go to definition of the current node
         -- REPLACED WITH telescope keymap
@@ -19,6 +18,7 @@ function M.on_attach(_, buffer)
         -- REPLACED WITH telescope keymap
         -- { '<BS>s', l 'vim.lsp.buf.implementation()' },
 
+    Shortcut:mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- rename file name
         { '<BS>r', l('vim.lsp.buf.rename()') },
 

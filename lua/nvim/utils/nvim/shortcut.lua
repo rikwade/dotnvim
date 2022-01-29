@@ -1,5 +1,4 @@
 local v = vim
-local api = v.api
 
 ----------------------------------------------------------------------
 --                             Options                              --
@@ -42,6 +41,16 @@ function Options:expression(is_expression)
     return self
 end
 
+function Options:buffer(buffer)
+    self.__shortcut:__set_option('buffer', buffer)
+    return self
+end
+
+function Options:description(description)
+    self.__shortcut:__set_option('desc', description)
+    return self
+end
+
 function Options:next()
     return self.__shortcut
 end
@@ -50,11 +59,6 @@ end
 --                             Shortcut                             --
 ----------------------------------------------------------------------
 local Shortcut = { __options = {} }
-
-function Shortcut:buffer(bufnr)
-    self.__buffer = bufnr
-    return self
-end
 
 function Shortcut:mode(mode)
     self.__mode = mode
@@ -66,7 +70,6 @@ function Shortcut:options()
 end
 
 function Shortcut:keymap(keys, action, options)
-    action = self:__get_action(action)
     self:__set_keymap(keys, action, options)
     return self
 end
@@ -81,37 +84,16 @@ function Shortcut:keymaps(keymaps)
     return self
 end
 
-function Shortcut:__get_action(action)
-    if type(action) == 'string' then
-        return action
-    end
-
-    if type(action) == 'function' then
-        local key = Global:save(action)
-        return string.format('<cmd>lua Global:get(%d)()<cr>', key)
-    end
-
-    error('Unexpected type: ' .. type(action) .. ' passed')
-end
-
 function Shortcut:__set_option(key, value)
     self.__options[key] = value
 end
 
-function Shortcut:__set_keymap(keys, action, options)
-    options = options or self.__options
-
-    if self.__buffer then
-        api.nvim_buf_set_keymap(
-            self.__buffer,
-            self.__mode,
-            keys,
-            action,
-            options
-        )
-    else
-        api.nvim_set_keymap(self.__mode, keys, action, options)
+function Shortcut:__set_keymap(key, action, options)
+    if options then
+        options = v.tbl_extend('force', self.__options, options)
     end
+
+    v.keymap.set(self.__mode, key, action, options)
 end
 
 return Shortcut
