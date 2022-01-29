@@ -59,6 +59,15 @@ return require('packer').startup(function()
         },
     })
 
+    -- null ls
+    use({
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+            require('nvim.plugins.null-ls.formatters')
+        end,
+    })
+
+    -- lua development tool
     use({ 'bfredl/nvim-luadev' })
 
     -- markdown preview
@@ -67,16 +76,6 @@ return require('packer').startup(function()
         run = 'cd app && yarn install',
         config = function()
             require('nvim.plugins.markdown-preview')
-        end,
-    })
-
-    -- code formatters
-    use({
-        'mhartington/formatter.nvim',
-        run = { 'yarn global add prettier prettier-plugin-java' },
-        keys = ',f',
-        config = function()
-            require('nvim.plugins.formatter')
         end,
     })
 
