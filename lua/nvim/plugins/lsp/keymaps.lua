@@ -32,10 +32,10 @@ function M.on_attach(_, buffer)
         { '<leader>ne', vim.lsp.buf.type_definition },
 
         -- jump to next error
-        { ']d', vim.lsp.diagnostic.goto_next },
+        { ']d', vim.diagnostic.goto_next },
 
         -- jump to previous error
-        { '[d', vim.lsp.diagnostic.goto_prev },
+        { '[d', vim.diagnostic.goto_prev },
     })
 end
 
