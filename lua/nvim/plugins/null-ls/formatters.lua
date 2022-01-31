@@ -7,6 +7,7 @@ null_ls.setup({
     debug = true,
     sources = {
         formatting.prettier,
-        formatting.stylua
+        formatting.stylua,
+        formatting.autopep8
     }
 })
