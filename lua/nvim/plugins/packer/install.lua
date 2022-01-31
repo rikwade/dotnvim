@@ -167,7 +167,6 @@ return require('packer').startup(function()
     -- syntax highlighting
     use({
         'nvim-treesitter/nvim-treesitter',
-        branch = '0.5-compat',
         run = ':TSUpdate',
         config = function()
             require('nvim.plugins.treesitter')
