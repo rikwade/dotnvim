@@ -155,11 +155,12 @@ function TestResultParser()
 
         -- passed
         local faliure_tag = M._parse_tag_info(lines, TestResultType.TestFailed)
+        local error_tag = M._parse_tag_info(lines, TestResultType.TestError)
 
-        if not faliure_tag[1] then
-            result.status = TestStatus.PASS
-        else
+        if faliure_tag[1] or error_tag[1] then
             result.status = TestStatus.FAIL
+        else
+            result.status = TestStatus.PASS
         end
 
         if result.status == TestStatus.FAIL then
