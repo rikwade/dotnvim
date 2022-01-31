@@ -6,7 +6,6 @@ local TestKind = require('nvim.utils.lsp.java.test-kind')
 local TestLevel = require('nvim.utils.lsp.java.test-level')
 
 local JUnit = require('nvim.utils.dap.java.test.junit')
-local Notify = require('nvim.utils.notify')
 
 local v = vim
 local api = v.api
@@ -148,7 +147,9 @@ function JavaDap.run_test(self, buffer, test_filter)
     )
 end
 
-function JavaDap.run_current_test_class(self, buffer)
+function JavaDap.run_current_test_class(self)
+    local buffer = api.nvim_get_current_buf()
+
     return self:run_test(buffer, function(tests)
         for _, test in ipairs(tests) do
             if test.testLevel == TestLevel.Class then
