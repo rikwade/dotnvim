@@ -89,9 +89,8 @@ function Shortcut:__set_option(key, value)
 end
 
 function Shortcut:__set_keymap(key, action, options)
-    if options then
-        options = v.tbl_extend('force', self.__options, options)
-    end
+    options = options and v.tbl_extend('force', self.__options, options)
+        or self.__options
 
     v.keymap.set(self.__mode, key, action, options)
 end
