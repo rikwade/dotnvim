@@ -6,29 +6,35 @@ from typing import Optional
 
 
 class OS:
-    def execute(self, statement: str) -> Popen[str]:
+    def execute(self, statement: str, pipe_stdin: bool = False) -> Popen[str]:
         commands = self.__parse_shell_command(statement)
 
         last_process: Optional[Popen[str]] = None
+        pipe_stdin = 
 
         for command in commands:
             if command == commands[-1]:
-                last_process = self.__execute(command, False, last_process)
+                last_process = self.__execute(
+                    command, False, False, last_process)
             else:
-                last_process = self.__execute(command, True, last_process)
+                last_process = self.__execute(
+                    command, True, False, last_process)
 
         if last_process is None:
             raise Exception('last process is none')
 
         return last_process
 
-    def __execute(self, command: list[str], should_pipe: bool, last_process) -> Popen[str]:
+    def __execute(self, command: list[str], pipe_stdout: bool, pipe_stdin: bool,
+                  last_process) -> Popen[str]:
         params = {}
 
-        if should_pipe:
+        if pipe_stdout:
             params['stdout'] = PIPE
 
-        if last_process != None:
+        if pipe_stdin:
+            params['stdin'] = PIPE
+        elif last_process is not None:
             params['stdin'] = last_process.stdout
 
         return Popen(command, **params)

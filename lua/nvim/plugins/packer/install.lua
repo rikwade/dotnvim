@@ -41,8 +41,7 @@ return require('packer').startup(function()
             require('nvim.plugins.nvim-cmp')
         end,
         requires = {
-            'dcampos/cmp-snippy',
-            'dcampos/nvim-snippy',
+            -- CMP Sources
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp',
@@ -50,10 +49,14 @@ return require('packer').startup(function()
             'hrsh7th/cmp-emoji',
             'hrsh7th/cmp-calc',
             'f3fora/cmp-spell',
+            'saadparwaiz1/cmp_luasnip',
+
+            -- Other plugins
             {
-                's1n7ax/vim-snippets',
+                'L3MON4D3/LuaSnip',
                 config = function()
-                    require('nvim.plugins.nvim-snippy')
+                    require('nvim.plugins.luasnip')
+                    require('nvim.plugins.luasnip.snippets')
                 end,
             },
         },

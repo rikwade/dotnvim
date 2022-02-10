@@ -21,18 +21,16 @@ cmp.setup({
 
     sources = {
         {
-            name = 'nvim_lsp',
+            name = 'luasnip',
             priority = 100,
+        },
+        {
+            name = 'nvim_lsp',
+            priority = 90,
         },
         {
             name = 'nvim_lua',
-            priority = 100,
-        },
-        {
-            name = 'snippy',
             priority = 90,
-            max_item_count = 5,
-            keyword_length = 2,
         },
         {
             name = 'buffer',
@@ -62,7 +60,7 @@ cmp.setup({
 
     snippet = {
         expand = function(args)
-            require('snippy').expand_snippet(args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
