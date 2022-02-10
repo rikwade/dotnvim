@@ -1,5 +1,5 @@
 require('packer').init({
-    max_jobs = 2,
+    max_jobs = 20,
 })
 
 return require('packer').startup(function()
