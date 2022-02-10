@@ -4,6 +4,7 @@ local Promise = require('promise')
 local Client = require('nvim.utils.lsp.java.client')
 local TestKind = require('nvim.utils.lsp.java.test-kind')
 local TestLevel = require('nvim.utils.lsp.java.test-level')
+local Treesitter = require 'nvim.utils.treesitter.java'
 
 local JUnit = require('nvim.utils.dap.java.test.junit')
 
@@ -193,12 +194,14 @@ end
 function JavaDap.__is_test_in_range(test, cursor)
     local curr_line, curr_column = cursor[1], cursor[2]
     local start, finish = test.range['start'], test.range['end']
+    local start_line, finish_line = (start.line + 1), (finish.line + 1)
+    local start_column, finish_column = (start.character + 1), (finish.character)
 
-    if start.line < curr_line and finish.line > curr_line then
+    if start_line < curr_line and finish_line > curr_line then
         return true
-    elseif start.line == curr_line and start.character <= curr_column then
+    elseif start_line == curr_line and start_column <= curr_column then
         return true
-    elseif finish.line == curr_line and finish.character >= curr_column then
+    elseif finish_line == curr_line and finish_column >= curr_column then
         return true
     end
 
