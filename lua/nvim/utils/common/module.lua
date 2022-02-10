@@ -12,7 +12,7 @@ end
 
 local reload_package = function(package_name)
     unload_package(package_name)
-    R(package_name)
+    require(package_name)
 end
 
 return { unload_package = unload_package, reload_package = reload_package }

@@ -64,7 +64,7 @@ Shortcut
         },
     })
     :mode('n')
-    :keymap(
-        '<leader><leader>s',
-        '<cmd>source ~/.config/nvim/lua/nvim/plugins/luasnip/snippets/init.lua<cr>'
-    )
+    :keymap('<leader><leader>s', function()
+        local ModuleCommon = require('nvim.utils.common.module')
+        ModuleCommon.reload_package('nvim.plugins.luasnip.snippets')
+    end)

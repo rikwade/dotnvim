@@ -12,5 +12,9 @@ ls.snippets = {
             'fn',
             string.format('local $1 = function($2)\n%s$0\nend', tabstop)
         ),
+        ls.parser.parse_snippet(
+            'cfn',
+            string.format('function M:$1($2)\n%s$0\nend', tabstop)
+        ),
     },
 }
