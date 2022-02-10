@@ -1,4 +1,3 @@
-local lsp_installer = require('nvim-lsp-installer')
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
 local Config = require('nvim.utils.lsp.config')
 local LspEvent = require('nvim.plugins.lsp.event')

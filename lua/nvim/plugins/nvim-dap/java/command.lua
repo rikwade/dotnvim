@@ -9,7 +9,8 @@ local notify = Notify({ title = 'Java Testing' })
 
 local M = {}
 
-function M.setup_keymaps(_, _)
+function M.setup_commands(_, _)
+    Log.ins(Command)
     Command:is_buffer_cmd(true):add_all({
         {
             name = 'RunTestClass',
@@ -39,7 +40,7 @@ end
 function M.setup()
     Lsp.add_listener(LspEventType.SERVER_SETUP, function(ls, conf)
         if ls == 'jdtls' then
-            conf:add_listener(ConfEventType.SERVER_READY, M.setup_keymaps)
+            conf:add_listener(ConfEventType.ATTACH, M.setup_commands)
         end
     end)
 end

@@ -61,7 +61,7 @@ end
 -- @param is_buffer_cmd { boolean } whether the command should be limited to
 -- current buffer or not
 function Command:is_buffer_cmd(is_buffer_cmd)
-    self.is_buffer_cmd = is_buffer_cmd
+    self._is_buffer_cmd = is_buffer_cmd
     return self
 end
 
@@ -87,7 +87,7 @@ function Command:add(name, action)
         return options:format(' $', '')
     end
 
-    if self.is_buffer_cmd then
+    if self._is_buffer_cmd then
         Options.add('-buffer')
     end
 

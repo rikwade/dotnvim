@@ -27,7 +27,7 @@ return require('packer').startup(function()
             require('nvim.plugins.nvim-dap.ui').setup()
             require('nvim.plugins.nvim-dap.keymap').setup()
             require('nvim.plugins.nvim-dap.java').setup()
-            require('nvim.plugins.nvim-dap.java.keymap').setup()
+            require('nvim.plugins.nvim-dap.java.command').setup()
 
             -- setup LSes
             require('nvim.plugins.lsp').setup()
