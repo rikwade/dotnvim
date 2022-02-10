@@ -24,6 +24,8 @@ ls.config.setup({
             },
         },
     },
+    updateevents = 'TextChanged,TextChangedI',
+    delete_check_events = 'TextChanged',
 })
 
 Shortcut
