@@ -10,7 +10,6 @@ local notify = Notify({ title = 'Java Testing' })
 local M = {}
 
 function M.setup_commands(_, _)
-    Log.ins(Command)
     Command:is_buffer_cmd(true):add_all({
         {
             name = 'RunTestClass',
