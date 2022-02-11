@@ -68,7 +68,7 @@ end
 -- Adds a command
 -- @param name { string } name of the command
 -- @param action { string } action of the command
-function Command:add(name, action)
+function Command:add(name, action, abbreviation)
     local Options = {
         list = {},
     }
@@ -96,7 +96,11 @@ function Command:add(name, action)
         action = string.format('lua Global:get(%s)()', key)
     end
 
-    vim.cmd(string.format(':command %s %s %s', Options.get(), name, action))
+    v.cmd(string.format(':command %s %s %s', Options.get(), name, action))
+
+    if abbreviation then
+        v.cmd(string.format(':abbreviate %s %s', abbreviation, name))
+    end
 
     return self
 end
@@ -107,8 +111,9 @@ function Command:add_all(commands)
     for _, command in ipairs(commands) do
         local name = command.name
         local action = command.action
+        local abbreviation = command.abbreviation
 
-        self:add(name, action)
+        self:add(name, action, abbreviation)
     end
 
     return self
