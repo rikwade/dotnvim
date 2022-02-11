@@ -21,6 +21,10 @@ cmp.setup({
 
     sources = {
         {
+            name = 'nvim_lsp_signature_help',
+            priority = 100,
+        },
+        {
             name = 'luasnip',
             priority = 100,
         },
@@ -50,7 +54,7 @@ cmp.setup({
         {
             name = 'calc',
             priority = 50,
-        }
+        },
     },
 
     snippet = {
