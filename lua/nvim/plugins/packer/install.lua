@@ -340,6 +340,7 @@ return require('packer').startup(function()
             end,
         }
         --]]
+    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -348,6 +349,7 @@ return require('packer').startup(function()
             vim.cmd('colorscheme rose-pine')
         end,
     })
+    --]]
     --[[
         use {
             'catppuccin/nvim',
@@ -362,6 +364,20 @@ return require('packer').startup(function()
             end,
         }
         --]]
+    use({
+        'mhartington/oceanic-next',
+        config = function()
+            vim.cmd('set t_Co=256')
+
+            require('nvim.utils.nvim.variable').g({
+                oceanic_next_terminal_bold = true,
+                oceanic_next_terminal_italic = true,
+            })
+
+            vim.cmd('colorscheme OceanicNext')
+
+        end,
+    })
 
     ----------------------------------------------------------------------
     --                              OTHER                               --
