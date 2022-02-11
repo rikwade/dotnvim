@@ -339,6 +339,7 @@ return require('packer').startup(function()
             end,
         }
         --]]
+    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -347,6 +348,7 @@ return require('packer').startup(function()
             vim.cmd('colorscheme rose-pine')
         end,
     })
+    --]]
     --[[
         use {
             'catppuccin/nvim',
@@ -361,6 +363,13 @@ return require('packer').startup(function()
             end,
         }
         --]]
+    use({
+        'katawful/kat.nvim',
+        config = function()
+            vim.cmd('colorscheme kat.nvim')
+            vim.opt.background = 'dark'
+        end,
+    })
 
     ----------------------------------------------------------------------
     --                              OTHER                               --
