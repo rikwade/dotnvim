@@ -50,12 +50,7 @@ cmp.setup({
         {
             name = 'calc',
             priority = 50,
-        },
-        {
-            name = 'emoji',
-            max_item_count = 5,
-            priority = 10,
-        },
+        }
     },
 
     snippet = {
