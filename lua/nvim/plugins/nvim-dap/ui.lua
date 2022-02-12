@@ -1,17 +1,23 @@
 local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
+local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
+local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 
 local v = vim
 local fn = v.fn
 
+local dap_highlight_groups = HighlightGroups({
+    DapBreakpoint = 'ctermfg=198 gui=bold guifg=#ff007c',
+    DapBreakpointRejected = 'guifg=#FFB13B',
+    DapStopped = 'ctermfg=198 guifg=#89e051',
+    DapLogPoint = 'guifg=#599eff',
+    DapStoppedCursorLine = 'cterm=underline guibg=#1f2d23',
+})
+
 local M = {}
 
 function M.init()
-    v.cmd('highlight DapBreakpoint ctermfg=198 gui=bold guifg=#ff007c')
-    v.cmd('highlight DapBreakpointRejected guifg=#FFB13B')
-    v.cmd('highlight DapStopped ctermfg=198 guifg=#89e051')
-    v.cmd('highlight DapLogPoint guifg=#599eff')
-    v.cmd('highlight DapStoppedCursorLine cterm=underline guibg=#1f2d23')
+    Highlighter:new():add(dap_highlight_groups):register_highlights()
 
     fn.sign_define('DapBreakpoint', {
         text = '',
