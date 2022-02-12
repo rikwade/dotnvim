@@ -310,6 +310,12 @@ return require('packer').startup(function()
     -- sets the indentation automatically
     use({ 'zsugabubus/crazy8.nvim' })
 
+    -- beautiful vim.ui alternatives
+    use({
+        'stevearc/dressing.nvim',
+        requires = { 'nvim-telescope/telescope.nvim', 'MunifTanjim/nui.nvim' },
+    })
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
@@ -375,7 +381,6 @@ return require('packer').startup(function()
             })
 
             vim.cmd('colorscheme OceanicNext')
-
         end,
     })
 
