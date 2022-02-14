@@ -6,7 +6,7 @@ require('zen-mode').setup({
         width = 120,
         height = 1,
         options = {
-            signcolumn = 'yes',
+            signcolumn = 'yes:1',
             number = true,
             relativenumber = true,
             cursorline = true,
