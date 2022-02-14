@@ -2,9 +2,9 @@ local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
+local Colors = require('nvim.utils.theme.colors')
 
 local v = vim
-local fn = v.fn
 local cmd = v.cmd
 local lsp = v.lsp
 
@@ -28,33 +28,36 @@ M.border = {
     { '│', 'FloatBorder' },
 }
 
-M.signs = {
-    Error = ' ﱥ',
-    Warning = ' ',
-    Hint = ' ',
-    Information = ' ',
-}
-
 local diagnosticHighlightGroups = HighlightGroups({
-    DiagnosticLineNrError = 'guibg=#51202A guifg=#FF0000 gui=bold',
-    DiagnosticLineNrWarn = 'guibg=#51412A guifg=#FFA500 gui=bold',
-    DiagnosticLineNrInfo = 'guibg=#1E535D guifg=#00FFFF gui=bold',
-    DiagnosticLineNrHint = 'guibg=#1E205D guifg=#0000FF gui=bold',
+    DiagnosticLineNrError = string.format(
+        'guifg=%s guibg=%s gui=bold',
+        Colors.ERROR,
+        Colors.ERROR_BG
+    ),
+
+    DiagnosticLineNrWarn = string.format(
+        'guifg=%s guibg=%s gui=bold',
+        Colors.WARN,
+        Colors.WARN_BG
+    ),
+    DiagnosticLineNrInfo = string.format(
+        'guifg=%s guibg=%s gui=bold',
+        Colors.INFO,
+        Colors.INFO_BG
+    ),
+    DiagnosticLineNrHint = string.format(
+        'guifg=%s guibg=%s gui=bold',
+        Colors.HINT,
+        Colors.HINT_BG
+    ),
 })
 
 function M.add_ui()
-    -- some LS seems to clear the highlight groups
-    -- that's why the highlighting related code is defined on attach
-    for type, icon in pairs(M.signs) do
-        local hl = 'LspDiagnosticsSign' .. type
-        fn.sign_define(hl, {
-            text = icon,
-            texthl = hl,
-            numhl = hl,
-        })
-    end
-
-    cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
+    cmd(
+        string.format(
+            'autocmd ColorScheme * highlight NormalFloat guibg=#1f2335'
+        )
+    )
     cmd(
         [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
     )
