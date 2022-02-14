@@ -1,11 +1,12 @@
 local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
+local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
+local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 
 local v = vim
 local fn = v.fn
 local cmd = v.cmd
 local lsp = v.lsp
-
 
 local M = {}
 
@@ -33,6 +34,13 @@ M.signs = {
     Hint = ' ',
     Information = ' ',
 }
+
+local diagnosticHighlightGroups = HighlightGroups({
+    DiagnosticLineNrError = 'guibg=#51202A guifg=#FF0000 gui=bold',
+    DiagnosticLineNrWarn = 'guibg=#51412A guifg=#FFA500 gui=bold',
+    DiagnosticLineNrInfo = 'guibg=#1E535D guifg=#00FFFF gui=bold',
+    DiagnosticLineNrHint = 'guibg=#1E205D guifg=#0000FF gui=bold',
+})
 
 function M.add_ui()
     -- some LS seems to clear the highlight groups
@@ -62,15 +70,22 @@ function M.add_ui()
         }
     )
 
-    lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(
-        lsp.diagnostic.on_publish_diagnostics,
-        {
-            virtual_text = true,
-            signs = true,
-            underline = true,
-            update_in_insert = true,
-        }
-    )
+    vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = true,
+        severity_sort = true,
+    })
+
+    Highlighter:new():add(diagnosticHighlightGroups):register_highlights()
+
+    vim.cmd([[
+        sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+        sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+        sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+        sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+    ]])
 end
 
 function M.setup()
