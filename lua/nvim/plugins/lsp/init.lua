@@ -45,6 +45,7 @@ local servers = {
     'tsserver',
     'volar',
     'groovyls',
+    'clangd',
 }
 
 --- Setup language servers
