@@ -112,6 +112,7 @@ return require('packer').startup(function()
     -- File explorer and its icons
     use({
         'kyazdani42/nvim-tree.lua',
+        tag = '1.6.7',
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
