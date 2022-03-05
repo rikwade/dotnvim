@@ -7,4 +7,4 @@ Shortcut
     :options()
     :noremap()
     :next()
-    :keymap(',C', ':lua require(\'nvim-comment-frame\').add_comment()<CR>')
+    :keymap(',C', require('nvim-comment-frame').add_comment)
