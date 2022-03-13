@@ -1,24 +1,17 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local Variable = require('nvim.utils.nvim.variable')
-
 Variable.g({
-    nvim_tree_quit_on_open = 0,
     nvim_tree_indent_markers = 1,
     nvim_tree_git_hl = 1,
     nvim_tree_highlight_opened_files = 1,
     nvim_tree_root_folder_modifier = ':~',
     nvim_tree_add_trailing = 1,
     nvim_tree_group_empty = 1,
-    nvim_tree_disable_window_picker = 0,
     nvim_tree_icon_padding = ' ',
     nvim_tree_symlink_arrow = ' >> ',
     nvim_tree_respect_buf_cwd = 1,
     nvim_tree_create_in_closed_folder = 1,
     nvim_tree_refresh_wait = 500,
-    nvim_tree_window_picker_exclude = {
-        filetype = { 'notify', 'packer', 'qf' },
-        buftype = { 'terminal' },
-    },
     nvim_tree_show_icons = {
         git = 1,
         folders = 1,
@@ -96,4 +89,12 @@ require('nvim-tree').setup({
     filter = {
         dotfiles = true,
     },
+    window_picker = {
+        enable = true,
+        chars = "TNSERIAOPLCMFUWYQ123098",
+        exclude = {
+          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", },
+          buftype  = { "nofile", "terminal", "help", },
+        }
+      }
 })
