@@ -60,7 +60,7 @@ Shortcut
             '<c-l>',
             function()
                 if ls.choice_active() then
-                    ls.choice_active(1)
+                    ls.change_choice()
                 end
             end,
         },
