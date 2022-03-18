@@ -59,7 +59,7 @@ Option.g({
     showmode = false,
 
     -- stop showing the status in status bar
-    laststatus = 2,
+    laststatus = 3,
 
     -- @TODO now sure how this is working. need to find out
     showcmd = false,
