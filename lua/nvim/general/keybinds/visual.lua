@@ -1,6 +1,6 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 
-Shortcut:mode('x'):options():noremap():next():keymaps({
+Shortcut:mode('v'):options():noremap():next():keymaps({
 
     -- down arrow key
     { 'n', 'j' },

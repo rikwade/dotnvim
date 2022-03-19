@@ -23,8 +23,8 @@ require('gitsigns').setup({
         ['n <leader>gU'] = '<cmd>Gitsigns reset_buffer_index<CR>',
 
         -- Text objects
-        ['o ig'] = ':<C-U>Gitsigns select_hunk<CR>',
-        ['x ig'] = ':<C-U>Gitsigns select_hunk<CR>',
+        ['o lg'] = ':<C-U>Gitsigns select_hunk<CR>',
+        ['x lg'] = ':<C-U>Gitsigns select_hunk<CR>',
     },
     watch_gitdir = {
         interval = 1000,

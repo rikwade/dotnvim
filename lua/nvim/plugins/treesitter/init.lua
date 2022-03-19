@@ -31,8 +31,8 @@ require('nvim-treesitter.configs').setup({
             keymaps = {
                 -- You can use the capture groups defined in textobjects.scm
                 ['t'] = '@function.inner',
-                ['is'] = '@parameter.inner',
-                ['ia'] = '@class.inner',
+                ['ls'] = '@parameter.inner',
+                ['la'] = '@class.inner',
 
                 ['at'] = '@function.outer',
                 ['as'] = '@parameter.inner',
