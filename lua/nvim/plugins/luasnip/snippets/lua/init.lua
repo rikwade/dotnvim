@@ -1,7 +1,7 @@
 local ls = require('luasnip')
 local su = require('nvim.utils.lua.string')
-local ts_utils = require('nvim-treesitter.ts_utils')
-local ts_locals = require('nvim-treesitter.locals')
+local lua_ts_query = require('nvim.plugins.luasnip.snippets.lua.treesitter.query')
+local lua_ts_utils = require('nvim.plugins.luasnip.snippets.lua.treesitter.utils')
 local ts_query = vim.treesitter.query
 
 -- snippet creator
@@ -33,47 +33,10 @@ local tl = su.box_trim_lines
 
 local tabstop = su.get_space_str(vim.opt.tabstop:get())
 
--- parse_syntax_tree parse the syntax for the current changes
-local parse_syntax_tree = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local language_tree = vim.treesitter.get_parser(bufnr, 'lua')
-    language_tree:parse()
-end
-
--- get_current_func_node returns the function node at current cursor point
-local get_current_func_node = function()
-    local cursor_node = ts_utils.get_node_at_cursor()
-    local scope = ts_locals.get_scope_tree(cursor_node, 0)
-
-    local function_node
-
-    for _, node in ipairs(scope) do
-        if node:type() == 'function_definition' then
-            function_node = node
-            break
-        end
-    end
-
-    return function_node
-end
-
--- reg_luasnip_queries does something
-local reg_luasnip_queries = function()
-    vim.treesitter.set_query(
-        'lua',
-        'LuaSnip_FunctionParamNames',
-        [[
-            (function_definition
-                (parameters
-                    (identifier) @param))
-        ]]
-    )
-end
-
 local M = {}
 
 function M.setup()
-    reg_luasnip_queries()
+    lua_ts_query.reg_luasnip_queries()
 
     ls.snippets.lua = {
         -- require
@@ -111,10 +74,10 @@ function M.setup()
                         ]]),
                         {
                             rep(1),
-                            i(4, 'does something'),
+                            i(4, 'does mysterious stuff'),
                             d(5, function()
-                                parse_syntax_tree()
-                                local function_node = get_current_func_node()
+                                lua_ts_utils.refresh_syntax_tree()
+                                local function_node = lua_ts_utils.get_current_func_node()
 
                                 -- immediately return if function_node not found
                                 if not function_node then
@@ -151,7 +114,7 @@ function M.setup()
 
                                         table.insert(
                                             snip_nodes,
-                                            i(index, 'type')
+                                            i(index, 'any')
                                         )
 
                                         table.insert(
