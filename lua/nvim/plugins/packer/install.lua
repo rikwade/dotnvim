@@ -56,8 +56,8 @@ return require('packer').startup(function()
             {
                 'L3MON4D3/LuaSnip',
                 config = function()
-                    require('nvim.plugins.luasnip')
-                    require('nvim.plugins.luasnip.snippets')
+                    require('nvim.plugins.luasnip.snippet_manager').setup()
+                    require('nvim.plugins.luasnip.snippets').setup()
                 end,
             },
         },

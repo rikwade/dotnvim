@@ -5,8 +5,7 @@ local Utils = {}
 
 -- parse_syntax_tree parse the syntax for the current changes
 function Utils.refresh_syntax_tree()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local language_tree = vim.treesitter.get_parser(bufnr, 'lua')
+    local language_tree = vim.treesitter.get_parser(0, 'lua')
     language_tree:parse()
 end
 
@@ -18,7 +17,10 @@ function Utils.get_current_func_node()
     local function_node
 
     for _, node in ipairs(scope) do
-        if node:type() == 'function_definition' then
+        if
+            node:type() == 'function_definition'
+            or node:type() == 'function_declaration'
+        then
             function_node = node
             break
         end
