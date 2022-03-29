@@ -1,6 +1,14 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local builtin = require('telescope.builtin')
 
+local function with_vsplit(func)
+    return function()
+        func({
+            jump_type = 'vsplit',
+        })
+    end
+end
+
 Shortcut
     :mode('n')
     :options()
@@ -35,13 +43,22 @@ Shortcut
         --                               LSP                                --
         ----------------------------------------------------------------------
         -- browse code implementation
-        { '<leader>t', builtin.lsp_implementations },
+        { '<leader>t', with_vsplit(builtin.lsp_definitions) },
+        { '<leader>T', builtin.lsp_definitions },
 
         -- browse code definition
-        { '<leader>s', builtin.lsp_definitions },
+        {
+            '<leader>s',
+            with_vsplit(builtin.lsp_definitions),
+        },
+        {
+            '<leader>S',
+            builtin.lsp_definitions,
+        },
 
         -- find references of word under the cursor
-        { '<leader>x', builtin.lsp_references },
+        { '<leader>x', with_vsplit(builtin.lsp_definitions) },
+        { '<leader>X', builtin.lsp_definitions },
 
         -- find diagnostics in the file
         { '<leader>c', builtin.diagnostics },
