@@ -21,11 +21,10 @@ end
 
 -- M:add_snippet adds a new snippet
 function M:add_snippet(snippet)
-    if not ls.snippets[self.language] then
-        ls.snippets[self.language] = {}
-    end
+    local curr_snips = ls.get_snippets(self.language)
+    table.insert(curr_snips, snippet)
 
-    table.insert(ls.snippets[self.language], snippet)
+    ls.add_snippets(self.language, curr_snips)
 end
 
 -- M.setup initialize basic keymaps
