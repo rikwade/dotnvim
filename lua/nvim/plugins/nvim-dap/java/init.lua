@@ -41,7 +41,7 @@ function M.setup_dap_adapters()
 end
 
 function M.setup_server_conf(conf)
-    local plugins_path = '/lsp_servers/jdtls/additional-plugins/**/*.jar'
+    local plugins_path = '/lsp_server_additions/jdtls/*.jar'
     local plugins_str = fn.glob(fn.stdpath('data') .. plugins_path)
     local plugins_path_list = v.split(plugins_str, '\n')
 
