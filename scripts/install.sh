@@ -43,3 +43,27 @@ if [ ! -d $HOME/.fonts/CascadiaCode ]; then
     mkdir -p ~/.fonts > /dev/null
     mv "$TEMP_DIR/CascadiaCode" ~/.fonts/ > /dev/null
 fi
+
+
+printf "\n------------------------- Setting up Java --------------------------\n"
+TEMP_DIR="$(mktemp -d)"
+
+cd $TEMP_DIR
+
+git clone https://github.com/microsoft/java-debug.git &
+git clone https://github.com/microsoft/vscode-java-test.git &
+
+cd java-debug
+chmod u+x mvnw
+./mvnw clean install
+mkdir -p ~/.local/share/nvim/lsp_server_additions/jdtls
+cp com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar ~/.local/share/nvim/lsp_server_additions/jdtls
+cd ..
+
+cd vscode-java-test
+yarn
+yarn build-plugin
+cp server/*.jar ~/.local/share/nvim/lsp_server_additions/jdtls
+cd ../..
+
+rm -rf $TEMP_DIR
