@@ -43,8 +43,8 @@ Shortcut
         --                               LSP                                --
         ----------------------------------------------------------------------
         -- browse code implementation
-        { '<leader>t', with_vsplit(builtin.lsp_definitions) },
-        { '<leader>T', builtin.lsp_definitions },
+        { '<leader>t', with_vsplit(builtin.lsp_implementations) },
+        { '<leader>T', builtin.lsp_implementations },
 
         -- browse code definition
         {
@@ -57,8 +57,8 @@ Shortcut
         },
 
         -- find references of word under the cursor
-        { '<leader>x', with_vsplit(builtin.lsp_definitions) },
-        { '<leader>X', builtin.lsp_definitions },
+        { '<leader>x', with_vsplit(builtin.lsp_references) },
+        { '<leader>X', builtin.lsp_references },
 
         -- find diagnostics in the file
         { '<leader>c', builtin.diagnostics },
