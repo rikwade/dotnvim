@@ -1,6 +1,4 @@
 local class = require('pl.class')
-local List = require('pl.List')
-
 local Event = class()
 
 function Event:_init()
@@ -9,22 +7,22 @@ end
 
 function Event.add_listener(self, event, listener)
     if not self.listeners[event] then
-        self.listeners[event] = List()
+        self.listeners[event] = {}
     end
 
-    self.listeners[event]:append(listener)
+    table.insert(self.listeners[event], listener)
 end
 
 function Event.remove_listener(self, event, listener)
     if not self.listeners[event] then
         return
     end
-    self.listeners[event]:remove_value(listener)
+    table.remove(self.listeners[event], listener)
 end
 
 function Event.dispatch(self, event, ...)
     if self.listeners[event] then
-        for callback in self.listeners[event]:iter() do
+        for _, callback in ipairs(self.listeners[event]) do
             callback(...)
         end
     end
