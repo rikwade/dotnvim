@@ -1,7 +1,7 @@
-local Random = {}
+local M = {}
 
-function Random.get_random_int()
+function M.get_random_int()
     return math.random(os.time())
 end
 
-return Random
+return M

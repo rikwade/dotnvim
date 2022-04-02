@@ -1,6 +1,8 @@
 local Pattern = require('nvim.utils.common.pattern')
 
-local unload_package = function(package_name)
+local M = {}
+
+function M.unload_package(package_name)
     local esc_package_name = Pattern.escape_pattern(package_name)
 
     for module_name, _ in pairs(package.loaded) do
@@ -10,9 +12,9 @@ local unload_package = function(package_name)
     end
 end
 
-local reload_package = function(package_name)
+function M.reload_package(package_name)
     unload_package(package_name)
     require(package_name)
 end
 
-return { unload_package = unload_package, reload_package = reload_package }
+return M
