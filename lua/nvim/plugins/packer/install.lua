@@ -301,9 +301,7 @@ return require('packer').startup(function()
     use({
         'rcarriga/nvim-notify',
         config = function()
-            require('notify').setup({
-                timeout = 1000,
-            })
+            require('nvim.plugins.notify')
         end,
     })
 
