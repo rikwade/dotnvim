@@ -3,7 +3,7 @@ require('packer').init({
 })
 
 return require('packer').startup(function()
-    use_rocks({ 'lualogging', 'penlight', 'promise-lua' })
+    use_rocks({ 'penlight', 'promise-lua' })
 
     ----------------------------------------------------------------------
     --                               LSP                                --
