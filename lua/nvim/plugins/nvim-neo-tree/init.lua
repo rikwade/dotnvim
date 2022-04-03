@@ -29,5 +29,5 @@ require('neo-tree').setup({
 })
 
 Shortcut:options():noremap():next():mode('n'):keymaps({
-    { '\\', ':NeoTreeFloat<cr>' },
+    { '\\', ':NeoTreeFocusToggle<cr>' },
 })

@@ -111,14 +111,27 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     -- File explorer and its icons
     use({
-        'kyazdani42/nvim-tree.lua',
+        'nvim-neo-tree/neo-tree.nvim',
         requires = {
+            'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
+            'MunifTanjim/nui.nvim',
         },
-        config = function()
-            require('nvim.plugins.nvim-tree')
-        end,
+        config = function ()
+            require('nvim.plugins.nvim-neo-tree')
+        end
+
     })
+
+    -- use({
+    -- 'kyazdani42/nvim-tree.lua',
+    -- requires = {
+    -- 'kyazdani42/nvim-web-devicons',
+    -- },
+    -- config = function()
+    -- require('nvim.plugins.nvim-tree')
+    -- end,
+    -- })
 
     -- fuzzy search
     use({
