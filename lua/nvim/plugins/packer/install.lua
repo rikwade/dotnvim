@@ -174,6 +174,7 @@ return require('packer').startup(function()
         run = ':TSUpdate',
         config = function()
             require('nvim.plugins.treesitter')
+            require('nvim.plugins.treesitter.query')
         end,
     })
 

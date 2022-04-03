@@ -1,23 +1,23 @@
-local Query = {}
+local QueryManager = require('nvim.utils.treesitter.query-manager')
 
-Query.queries = {
-    LuaSnip_FunctionParamNames = [[
-        [
-            (function_definition
-                (parameters
-                    (identifier) @param))
-            (function_declaration
-                (parameters
-                    (identifier) @param))
-        ]
-    ]],
-}
+local qm = QueryManager:new('lua')
 
--- Query.setup registers lua treesitter custom queries
-function Query.setup()
-    for key, value in pairs(Query.queries) do
-        vim.treesitter.set_query('lua', key, value)
-    end
+local M = {}
+
+function M.setup()
+    qm:add_query(
+        'LuaSnip_FunctionParamNames',
+        [[
+            [
+                (function_definition
+                    (parameters
+                        (identifier) @param))
+                (function_declaration
+                    (parameters
+                        (identifier) @param))
+            ]
+        ]]
+    )
 end
 
-return Query
+return M
