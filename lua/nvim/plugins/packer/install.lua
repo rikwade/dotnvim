@@ -307,7 +307,7 @@ return require('packer').startup(function()
     })
 
     -- sets the indentation automatically
-    use({ 'tpope/vim-sleuth' })
+    use({ 'zsugabubus/crazy8.nvim' })
 
     -- beautiful vim.ui alternatives
     use({
