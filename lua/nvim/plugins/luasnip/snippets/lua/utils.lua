@@ -14,7 +14,6 @@ function M.get_current_func_doc_comment_snip()
     lua_ts_utils.refresh_syntax_tree()
     local function_node = lua_ts_utils.get_current_func_node()
 
-
     -- immediately return if function_node not found
     if not function_node then
         return sn(nil, t(''))

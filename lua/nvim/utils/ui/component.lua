@@ -1,12 +1,11 @@
+local class = require('pl.class')
 local Random = require('nvim.utils.common.random')
 
-local M = {}
+local M = class()
 
-function M:new()
+function M:_init()
     self.id = Random.get_random_int()
     self.is_component = true
-
-    return self
 end
 
 function M:set_parent(parent)

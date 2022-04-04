@@ -8,6 +8,6 @@ null_ls.setup({
     sources = {
         formatting.prettier,
         formatting.stylua,
-        formatting.autopep8
-    }
+        formatting.autopep8,
+    },
 })

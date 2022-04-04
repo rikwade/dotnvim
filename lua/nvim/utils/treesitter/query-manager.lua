@@ -1,12 +1,12 @@
+local class = require('pl.class')
 local ts = vim.treesitter
 
-local M = {}
+local M = class()
 
 -- M:new creates new query manager
 -- @param { string } language to manage queries
-function M:new(language)
+function M:_init(language)
     self.language = language
-    return self
 end
 
 -- M:add_query adds a new query to current language tree

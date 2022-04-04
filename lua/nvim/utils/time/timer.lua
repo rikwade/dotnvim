@@ -1,11 +1,11 @@
+local class = require('pl.class')
 local Table = require('nvim.utils.lua.list')
 local socket = require('socket')
 
-local M = {}
+local M = class()
 
-function M:new()
+function M:_init()
     self.checkpoints = {}
-    return self
 end
 
 function M:add_checkpoint(name)

@@ -1,9 +1,9 @@
 local Component = require('nvim.utils.ui.component')
 local React = require('nvim.utils.ui.react')
 
-local Root = Component:new()
-local Greet = Component:new()
-local Footer = Component:new()
+local Root = Component()
+local Greet = Component()
+local Footer = Component()
 
 function Greet:render()
     return 'Hello'

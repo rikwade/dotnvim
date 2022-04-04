@@ -1,6 +1,6 @@
 local QueryManager = require('nvim.utils.treesitter.query-manager')
 
-local qm = QueryManager:new('lua')
+local qm = QueryManager('lua')
 
 local M = {}
 

@@ -22,7 +22,7 @@ require('zen-mode').setup({
     },
 })
 
-Shortcut
+Shortcut()
     :mode('n')
     :options()
     :noremap()

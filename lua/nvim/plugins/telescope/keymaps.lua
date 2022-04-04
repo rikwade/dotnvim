@@ -9,7 +9,7 @@ local function with_vsplit(func)
     end
 end
 
-Shortcut
+Shortcut()
     :mode('n')
     :options()
     :noremap()

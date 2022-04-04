@@ -1,13 +1,13 @@
+local class = require('pl.class')
+
 local v = vim
 local api = v.api
 
-local M = {}
+local M = class()
 
-function M:new(options)
+function M:_init(options)
     self.buffer = options.buffer
     self.highlights = {}
-
-    return self
 end
 
 -- Render the passed list of content to the buffer

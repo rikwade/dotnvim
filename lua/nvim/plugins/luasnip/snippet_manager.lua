@@ -1,3 +1,4 @@
+local class = require('pl.class')
 local ls = require('luasnip')
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
@@ -10,13 +11,11 @@ local highlighter = Highlighter:new():add(HighlightGroups({
 
 highlighter:register_highlights()
 
-local M = {}
+local M = class()
 
 -- M:new creates a snippet manager instance
-function M:new(language)
+function M:_init(language)
     self.language = language
-
-    return self
 end
 
 -- M:add_snippet adds a new snippet
@@ -30,7 +29,7 @@ function M.setup()
         updateevents = 'TextChanged,TextChangedI',
     })
 
-    Shortcut
+    Shortcut()
         :mode({ 'i', 's' })
         :keymaps({
             {

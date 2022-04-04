@@ -1,7 +1,7 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local common = require('nvim.utils.common.module')
 
-Shortcut:mode('n'):options():noremap():next():keymaps({
+Shortcut():mode('n'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
     --                          vim arrow keys                          --
     ----------------------------------------------------------------------
@@ -16,7 +16,6 @@ Shortcut:mode('n'):options():noremap():next():keymaps({
     { 'k', 'n' },
 
     { 'j', 'i' },
-
 
     ----------------------------------------------------------------------
     --                              CONFIG                              --

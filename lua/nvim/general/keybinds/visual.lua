@@ -1,6 +1,6 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 
-Shortcut:mode('x'):options():noremap():next():keymaps({
+Shortcut():mode('x'):options():noremap():next():keymaps({
     { 'n', 'j' },
 
     { 'e', 'k' },

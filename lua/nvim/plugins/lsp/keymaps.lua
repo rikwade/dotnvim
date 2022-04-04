@@ -6,7 +6,7 @@ local ConfEvent = require('nvim.utils.lsp.event-type')
 local M = {}
 
 function M.on_attach(_, buffer)
-    Shortcut:mode('n'):options():buffer(buffer):noremap():next():keymaps({
+    Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- rename file name
         { '<leader>r', vim.lsp.buf.rename },
 

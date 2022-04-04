@@ -9,7 +9,7 @@ local l = CmdString.get_lua_cmd_string
 local M = {}
 
 function M.on_attach(_, buffer)
-    Shortcut:mode('n'):options():buffer(buffer):noremap():next():keymaps({
+    Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- close the debug sessio
         { ',tS', l('require"dap".close()') },
 
@@ -50,7 +50,7 @@ function M.on_attach(_, buffer)
         { ',to', l('require"dap".repl.open()') },
     })
 
-    Shortcut:mode('v'):options():buffer(buffer):next():keymaps({
+    Shortcut():mode('v'):options():buffer(buffer):next():keymaps({
         -- evaluate selected portion
         { ',th', l('require"dap.ui.variables".visual_hover()') },
     })

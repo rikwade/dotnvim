@@ -1,3 +1,4 @@
+local class = require('pl.class')
 local Popup = require('nui.popup')
 local event = require('nui.utils.autocmd').event
 local Shortcut = require('nvim.utils.nvim.shortcut')
@@ -34,16 +35,14 @@ local popup = Popup({
     },
 })
 
-local M = {}
+local M = class()
 
-function M:new(test_result_sub)
+function M:_init(test_result_sub)
     self.results = {}
 
     test_result_sub.add_listener(TestEventType.COMPLETE, function(...)
-        M:_on_test_complete(...)
+        self:_on_test_complete(...)
     end)
-
-    return self
 end
 
 function M:show()
@@ -54,7 +53,7 @@ function M:show()
         popup:unmount()
     end)
 
-    Shortcut
+    Shortcut()
         :mode('n')
         :options()
         :buffer(popup.bufnr)
@@ -62,7 +61,7 @@ function M:show()
         :next()
         :keymaps({ { '<cr>', 'zA' }, { 'o', 'zA' } })
 
-    local buffer_ui = Buffer:new({
+    local buffer_ui = Buffer({
         buffer = popup.bufnr,
     })
 
@@ -88,18 +87,18 @@ function M._get_buffer_lines(test_case_result)
     local status
     local lines = {}
 
-    local class = test_case_result.class
+    local cls = test_case_result.class
     local name = test_case_result.name
 
     if test_case_result.status == TestStatus.PASS then
         status = {
-            text = string.format(' %s  %s', class, name),
+            text = string.format(' %s  %s', cls, name),
             highlight_group = TestHighlightGroups.TestPassed.name,
             foldlevel = 1,
         }
     elseif test_case_result.status == TestStatus.FAIL then
         status = {
-            text = string.format(' %s  %s', class, name),
+            text = string.format(' %s  %s', cls, name),
             highlight_group = TestHighlightGroups.TestError.name,
             foldlevel = 1,
         }

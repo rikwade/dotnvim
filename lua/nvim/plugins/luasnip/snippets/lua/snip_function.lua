@@ -15,7 +15,7 @@ local d = ls.dynamic_node
 local tl = su.box_trim_lines
 local indentation = su.get_space_str(vim.opt.softtabstop:get())
 
-local sm = SnippetManager:new('lua')
+local sm = SnippetManager('lua')
 
 sm:add_snippet(s(
     'fn',

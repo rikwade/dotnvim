@@ -28,6 +28,6 @@ require('neo-tree').setup({
     },
 })
 
-Shortcut:options():noremap():next():mode('n'):keymaps({
+Shortcut():options():noremap():next():mode('n'):keymaps({
     { '\\', ':NeoTreeFocusToggle<cr>' },
 })

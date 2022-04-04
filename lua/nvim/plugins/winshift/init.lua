@@ -11,6 +11,6 @@ require('winshift').setup({
     },
 })
 
-Shortcut:mode('n'):options():noremap():next():keymaps({
+Shortcut():mode('n'):options():noremap():next():keymaps({
     { '<c-w>m', '<cmd>WinShift<cr>' },
 })

@@ -1,6 +1,6 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 
-Shortcut:mode('n'):options():noremap():silent():next():keymaps({
+Shortcut():mode('n'):options():noremap():silent():next():keymaps({
     -- start debugging
     { '<leader>dd', ':call vimspector#Launch()<cr>' },
 

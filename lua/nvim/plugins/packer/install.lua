@@ -117,10 +117,9 @@ return require('packer').startup(function()
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        config = function ()
+        config = function()
             require('nvim.plugins.nvim-neo-tree')
-        end
-
+        end,
     })
 
     -- use({

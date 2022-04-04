@@ -43,7 +43,7 @@ Variable.g({
     },
 })
 
-Shortcut:mode('n'):options():noremap():silent():next():keymaps({
+Shortcut():mode('n'):options():noremap():silent():next():keymaps({
     { ',n', ':NvimTreeToggle<cr>' },
     { ',,', ':NvimTreeFindFile<cr>' },
 })
@@ -91,10 +91,17 @@ require('nvim-tree').setup({
     },
     window_picker = {
         enable = true,
-        chars = "TNSERIAOPLCMFUWYQ123098",
+        chars = 'TNSERIAOPLCMFUWYQ123098',
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", },
-          buftype  = { "nofile", "terminal", "help", },
-        }
-      }
+            filetype = {
+                'notify',
+                'packer',
+                'qf',
+                'diff',
+                'fugitive',
+                'fugitiveblame',
+            },
+            buftype = { 'nofile', 'terminal', 'help' },
+        },
+    },
 })

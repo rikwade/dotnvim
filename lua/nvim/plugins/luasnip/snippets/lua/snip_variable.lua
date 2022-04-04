@@ -7,7 +7,7 @@ local i = ls.insert_node
 local c = ls.choice_node
 local f = ls.function_node
 
-local sm = SnippetManager:new('lua')
+local sm = SnippetManager('lua')
 
 -- creates a variable
 sm:add_snippet(s(

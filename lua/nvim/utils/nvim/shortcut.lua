@@ -1,13 +1,13 @@
+local class = require('pl.class')
 local v = vim
 
 ----------------------------------------------------------------------
 --                             Options                              --
 ----------------------------------------------------------------------
-local Options = {}
+local Options = class()
 
-function Options:new(shortcut)
+function Options:_init(shortcut)
     self.__shortcut = shortcut
-    return self
 end
 
 function Options:noremap(is_noremap)
@@ -58,7 +58,11 @@ end
 ----------------------------------------------------------------------
 --                             Shortcut                             --
 ----------------------------------------------------------------------
-local Shortcut = { __options = {} }
+local Shortcut = class()
+
+function Shortcut:_init()
+    self.__options = {}
+end
 
 function Shortcut:mode(mode)
     self.__mode = mode
@@ -66,7 +70,7 @@ function Shortcut:mode(mode)
 end
 
 function Shortcut:options()
-    return Options:new(self)
+    return Options(self)
 end
 
 function Shortcut:keymap(keys, action, options)

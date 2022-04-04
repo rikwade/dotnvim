@@ -1,6 +1,6 @@
 local QueryManager = require('nvim.utils.treesitter.query-manager')
 
-local qm = QueryManager:new('java')
+local qm = QueryManager('java')
 
 local M = {}
 

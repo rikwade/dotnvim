@@ -100,7 +100,7 @@ function M.setup()
                     i(2),
                     i(3),
                     t(tabstop),
-                    i(4)
+                    i(4),
                 }
             )
         ),

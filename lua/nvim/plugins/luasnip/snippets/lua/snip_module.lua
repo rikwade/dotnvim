@@ -9,7 +9,7 @@ local i = ls.insert_node
 
 local tl = su.box_trim_lines
 
-local sm = SnippetManager:new('lua')
+local sm = SnippetManager('lua')
 
 -- creates a new module
 sm:add_snippet(s(

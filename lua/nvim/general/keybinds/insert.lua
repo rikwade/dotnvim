@@ -2,7 +2,7 @@ local Shortcut = require('nvim.utils.nvim.shortcut')
 local CmdString = require('nvim.utils.nvim.command-string')
 local n = CmdString.get_normal_cmd_string
 
-Shortcut:mode('i'):options():noremap():next():keymaps({
+Shortcut():mode('i'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
     --                           CURSOR MOVE                            --
     ----------------------------------------------------------------------
