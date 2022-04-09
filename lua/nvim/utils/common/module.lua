@@ -13,7 +13,7 @@ function M.unload_package(package_name)
 end
 
 function M.reload_package(package_name)
-    unload_package(package_name)
+    M.unload_package(package_name)
     require(package_name)
 end
 
