@@ -13,7 +13,7 @@ function Notify.notify(self, message, type)
 end
 
 function Notify.success(self, message)
-    self:notify(message, 'SUCCESS')
+    self:notify(message, 'INFO')
 end
 
 function Notify.error(self, message)
