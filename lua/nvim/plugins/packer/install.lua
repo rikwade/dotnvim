@@ -231,13 +231,6 @@ return require('packer').startup(function()
         end,
     })
 
-    use({
-        'Pocco81/AutoSave.nvim',
-        config = function()
-            require('autosave').setup()
-        end,
-    })
-
     ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
