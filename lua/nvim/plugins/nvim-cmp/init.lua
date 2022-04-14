@@ -70,11 +70,22 @@ cmp.setup({
 
     preselect = false,
 
-    documentation = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
-        maxwidth = math.floor(WIDE_HEIGHT * (v.o.columns / 100)),
-        maxheight = math.floor(WIDE_HEIGHT * (v.o.lines / 100)),
+    window = {
+        documentation = {
+            border = {
+                '╭',
+                '─',
+                '╮',
+                '│',
+                '╯',
+                '─',
+                '╰',
+                '│',
+            },
+            winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
+            maxwidth = math.floor(WIDE_HEIGHT * (v.o.columns / 100)),
+            maxheight = math.floor(WIDE_HEIGHT * (v.o.lines / 100)),
+        },
     },
 
     -- Adds source of completion
