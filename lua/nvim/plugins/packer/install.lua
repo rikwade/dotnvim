@@ -23,6 +23,9 @@ return require('packer').startup(function()
             require('nvim.plugins.lsp.ui').setup()
             require('nvim.plugins.lsp.keymaps').setup()
 
+            -- lsp lang specific config
+            require('nvim.plugins.lsp.lua.workspace-config').setup()
+
             -- dap config
             require('nvim.plugins.nvim-dap.ui').setup()
             require('nvim.plugins.nvim-dap.keymap').setup()
