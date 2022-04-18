@@ -19,7 +19,7 @@ local add_options = function(option_type, id, options)
         -- global options has no id
         -- vim['o']['mouse'] = 4
         -- vim['wo'][10]['number'] = true
-        if id == 0 then
+       if id == 0 then
             v[option_type][key] = value
         else
             v[option_type][id][key] = value
