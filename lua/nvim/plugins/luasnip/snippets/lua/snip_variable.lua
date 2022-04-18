@@ -11,7 +11,7 @@ local sm = SnippetManager('lua')
 
 -- creates a variable
 sm:add_snippet(s(
-    'var',
+    'v',
     fmt('{} = {}', {
         c(1, { fmt('local {}', { i(1) }), i(1) }),
         i(2),
@@ -20,7 +20,7 @@ sm:add_snippet(s(
 
 -- imports a module
 sm:add_snippet(s(
-    'rq',
+    'i',
     fmt("local {} = require('{}')", {
         f(function(args)
             local import_parts = vim.split(args[1][1], '.', true)

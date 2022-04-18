@@ -18,7 +18,7 @@ local indentation = su.get_space_str(vim.opt.softtabstop:get())
 local sm = SnippetManager('lua')
 
 sm:add_snippet(s(
-    'fn',
+    'f',
     fmt('{}', {
         c(1, {
             fmt(
