@@ -328,6 +328,16 @@ return require('packer').startup(function()
         requires = { 'nvim-telescope/telescope.nvim', 'MunifTanjim/nui.nvim' },
     })
 
+    use({
+        'sunjon/Shade.nvim',
+        config = function()
+            require('shade').setup({
+                overlay_opacity = 50,
+                opacity_step = 1,
+            })
+        end,
+    })
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
