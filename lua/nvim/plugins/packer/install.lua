@@ -48,6 +48,7 @@ return require('packer').startup(function()
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-cmdline',
             'f3fora/cmp-spell',
             'saadparwaiz1/cmp_luasnip',
             -- 'hrsh7th/cmp-emoji',
