@@ -50,8 +50,8 @@ TEMP_DIR="$(mktemp -d)"
 
 cd $TEMP_DIR
 
-git clone https://github.com/microsoft/java-debug.git &
-git clone https://github.com/microsoft/vscode-java-test.git &
+git clone https://github.com/microsoft/java-debug.git
+git clone https://github.com/microsoft/vscode-java-test.git
 
 cd java-debug
 chmod u+x mvnw
