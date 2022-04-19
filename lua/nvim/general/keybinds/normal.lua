@@ -35,7 +35,7 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     { '<c-h>', '<c-w>h' },
 
     -- move cursor to right window
-    { '<m-i>', '<c-w>l' },
+    { '<c-i>', '<c-w>l' },
 
     -- move cursor to bottom window
     { '<c-n>', '<c-w>j' },
