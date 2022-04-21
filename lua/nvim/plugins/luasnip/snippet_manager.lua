@@ -33,7 +33,7 @@ function M.setup()
         :mode({ 'i', 's' })
         :keymaps({
             {
-                '<m-i>',
+                '<c-i>',
                 function()
                     if ls.expand_or_jumpable() then
                         ls.expand_or_jump()
