@@ -30,4 +30,11 @@ require('neo-tree').setup({
 
 Shortcut():options():noremap():next():mode('n'):keymaps({
     { '\\', ':NeoTreeFocusToggle<cr>' },
+    {
+        ',,',
+        function()
+            vim.cmd('NeoTreeReveal')
+            vim.cmd('NeoTreeFocus')
+        end,
+    },
 })
