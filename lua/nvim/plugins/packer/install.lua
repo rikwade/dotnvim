@@ -274,7 +274,7 @@ return require('packer').startup(function()
     use({
         'beauwilliams/focus.nvim',
         config = function()
-            require('focus').setup()
+            require('nvim.plugins.nvim-focus')
         end,
     })
 
