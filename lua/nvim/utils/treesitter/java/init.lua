@@ -1,5 +1,5 @@
 local ts = require('nvim.utils.treesitter')
-local q = require('vim.treesitter.query')
+local q = vim.treesitter.query
 
 local M = {}
 
