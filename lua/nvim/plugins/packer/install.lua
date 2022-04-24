@@ -402,6 +402,9 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     --                              OTHER                               --
     ----------------------------------------------------------------------
+    -- reduce the start up time
+    use({ 'lewis6991/impatient.nvim' })
+
     -- startup time tracker
     use({ 'dstein64/vim-startuptime' })
 end)
