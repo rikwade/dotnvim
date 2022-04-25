@@ -1,7 +1,7 @@
 local notify = require('notify')
 
 notify.setup({
-    timeout = 1000,
+    timeout = 2000,
 })
 
 vim.notify = notify
