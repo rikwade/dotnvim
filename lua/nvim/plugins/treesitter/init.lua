@@ -1,3 +1,5 @@
+local Option = require('nvim.utils.nvim.option')
+
 local api = vim.api
 
 require('nvim-treesitter.configs').setup({
@@ -65,10 +67,7 @@ require('nvim-treesitter.configs').setup({
     },
 })
 
-api.nvim_exec(
-    [[
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-  ]],
-    false
-)
+Option.g({
+    foldmethod = 'expr',
+    foldexpr = 'nvim_treesitter#foldexpr()',
+})
