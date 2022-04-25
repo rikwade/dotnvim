@@ -93,22 +93,18 @@ return require('packer').startup(function()
     use({
         'mfussenegger/nvim-dap',
         requires = {
-            'rcarriga/nvim-dap-ui',
+            {
+                'rcarriga/nvim-dap-ui',
+                config = function()
+                    require('nvim.plugins.nvim-dap-ui')
+                end,
+            },
             'theHamsta/nvim-dap-virtual-text',
         },
         config = function()
             require('dap').set_log_level('TRACE')
         end,
     })
-
-    use({
-        'rcarriga/nvim-dap-ui',
-        config = function()
-            require('nvim.plugins.nvim-dap-ui')
-        end,
-    })
-
-    use({ 'theHamsta/nvim-dap-virtual-text' })
 
     ----------------------------------------------------------------------
     --                               FILE                               --
@@ -126,22 +122,9 @@ return require('packer').startup(function()
         end,
     })
 
-    -- use({
-    -- 'kyazdani42/nvim-tree.lua',
-    -- requires = {
-    -- 'kyazdani42/nvim-web-devicons',
-    -- },
-    -- config = function()
-    -- require('nvim.plugins.nvim-tree')
-    -- end,
-    -- })
-
     -- fuzzy search
     use({
         'nvim-telescope/telescope.nvim',
-        config = function()
-            require('nvim.plugins.telescope')
-        end,
         requires = {
             'nvim-lua/plenary.nvim',
             {
@@ -149,6 +132,9 @@ return require('packer').startup(function()
                 run = 'make',
             },
         },
+        config = function()
+            require('nvim.plugins.telescope')
+        end,
     })
 
     ----------------------------------------------------------------------
@@ -203,7 +189,12 @@ return require('packer').startup(function()
     })
 
     -- treesitter text objects
-    use({ 'nvim-treesitter/nvim-treesitter-textobjects' })
+    use({
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        require = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+    })
 
     -- popup terminal
     use({
@@ -329,6 +320,9 @@ return require('packer').startup(function()
     use({
         'stevearc/dressing.nvim',
         requires = { 'nvim-telescope/telescope.nvim', 'MunifTanjim/nui.nvim' },
+        config = function()
+            require('dressing').setup({})
+        end,
     })
 
     ----------------------------------------------------------------------
@@ -353,14 +347,13 @@ return require('packer').startup(function()
         }
         --]]
 
-    --[[
-        use {
-            'rmehri01/onenord.nvim',
-            config = function()
-                CMD('colorscheme onenord')
-            end,
-        }
-        --]]
+    use({
+        'rmehri01/onenord.nvim',
+        config = function()
+            require('onenord').setup()
+        end,
+    })
+
     --[[
     use({
         'rose-pine/neovim',
@@ -385,6 +378,7 @@ return require('packer').startup(function()
             end,
         }
         --]]
+    --[[
     use({
         'mhartington/oceanic-next',
         config = function()
@@ -398,6 +392,7 @@ return require('packer').startup(function()
             vim.cmd('colorscheme OceanicNext')
         end,
     })
+    --]]
 
     ----------------------------------------------------------------------
     --                              OTHER                               --
