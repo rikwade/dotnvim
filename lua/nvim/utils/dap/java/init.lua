@@ -4,7 +4,6 @@ local Promise = require('promise')
 local Client = require('nvim.utils.lsp.java.client')
 local TestKind = require('nvim.utils.lsp.java.test-kind')
 local TestLevel = require('nvim.utils.lsp.java.test-level')
-local Treesitter = require('nvim.utils.treesitter.java')
 
 local JUnit = require('nvim.utils.dap.java.test.junit')
 
@@ -125,6 +124,10 @@ function JavaDap.run_test(self, buffer, test_filter)
 
     return self.client.test.find_test_types_and_methods(buffer):thenCall(
         function(tests)
+            if not tests then
+                error('Unable to find any tests')
+            end
+
             local test = test_filter(tests)
 
             if not test then
