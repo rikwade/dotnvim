@@ -62,9 +62,6 @@ Shortcut()
 
         -- find diagnostics in the file
         { '<leader>c', builtin.diagnostics },
-
-        -- show code actions
-        { '<leader>a', builtin.lsp_code_actions },
     })
     :mode('i')
     :options()

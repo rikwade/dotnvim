@@ -28,6 +28,9 @@ function M.on_attach(_, buffer)
         -- @todo find out what this is
         { '<leader>q', vim.lsp.buf.type_definition },
 
+        -- list code actions
+        { '<leader>a', vim.lsp.buf.code_action },
+
         -- jump to next error
         { ']d', vim.diagnostic.goto_next },
 
