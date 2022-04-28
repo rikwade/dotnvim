@@ -2,57 +2,55 @@ local Shortcut = require('nvim.utils.nvim.shortcut')
 local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
 local ConfEvent = require('nvim.utils.lsp.event-type')
-local CmdString = require('nvim.utils.nvim.command-string')
-
-local l = CmdString.get_lua_cmd_string
+local widgets = require('dap.ui.widgets')
 
 local M = {}
 
 function M.on_attach(_, buffer)
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- close the debug sessio
-        { ',tS', l('require"dap".close()') },
+        { ',tS', require('dap').terminate },
 
         -- start the debug session and continue to next breakpoint
-        { ',tc', l('require"dap".continue()') },
+        { ',tc', require('dap').continue },
 
         -- run last again
-        { ',tl', l('require"dap".run_last()') },
+        { ',tl', require('dap').run_last },
 
-        { ',tu', l('require"dap".step_out()') },
-        { ',td', l('require"dap".step_over()') },
-        { ',ti', l('require"dap".step_into()') },
+        { ',tu', require('dap').step_out },
+        { ',td', require('dap').step_over },
+        { ',ti', require('dap').step_into },
 
         -- create and remove a breakpoint
-        { ',tt', l('require"dap".toggle_breakpoint()') },
+        { ',tt', require('dap').toggle_breakpoint },
 
         -- go up in the call stack
-        { ',tk', l('require"dap".up()') },
+        { ',te', require('dap').up },
 
         -- go down in the call stack
-        { ',tj', l('require"dap".down()') },
+        { ',tn', require('dap').down },
 
         -- restart the execution
-        { ',tr', l('require"dap".restart()') },
+        { ',tr', require('dap').restart },
 
         -- inspect node on cursor
-        { ',th', l('require"dap.ui.variables".hover()') },
+        { ',th', widgets.hover },
 
         -- inspect all scope properties
         {
             ',ts',
-            l(
-                'require"dap.ui.widgets".centered_float(require"dap.ui.widgets".scopes)'
-            ),
+            function()
+                widgets.centered_float(widgets.scopes).open()
+            end,
         },
 
         -- open repl window
-        { ',to', l('require"dap".repl.open()') },
+        { ',to', require('dap').repl.open },
     })
 
     Shortcut():mode('v'):options():buffer(buffer):next():keymaps({
         -- evaluate selected portion
-        { ',th', l('require"dap.ui.variables".visual_hover()') },
+        { ',th', widgets.hover },
     })
 end
 
