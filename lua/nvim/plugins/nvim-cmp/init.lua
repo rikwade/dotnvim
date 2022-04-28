@@ -6,18 +6,18 @@ local v = vim
 local WIDE_HEIGHT = 20
 
 cmp.setup({
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ['<C-e>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-l>'] = cmp.mapping.close(),
+        ['<C-l>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         }),
-    },
+    }),
 
     sources = {
         {
@@ -88,8 +88,6 @@ cmp.setup({
         },
     },
 
-    -- Adds source of completion
-    -- this is a part of onsails/lspkind-nvim plugin
     formatting = {
         format = lspkind.cmp_format({
             with_text = true,
@@ -98,10 +96,25 @@ cmp.setup({
     },
 })
 
+local cmd_maps = cmp.mapping.preset.insert({
+    ['<C-e>'] = {
+        c = cmp.mapping.select_prev_item(),
+    },
+
+    ['<C-n>'] = {
+        c = cmp.mapping.select_next_item(),
+    },
+
+    ['<C-l>'] = {
+        c = cmp.mapping.abort(),
+    },
+})
+
 cmp.setup.cmdline('/', {
     sources = {
         { name = 'buffer' },
     },
+    mapping = cmd_maps,
 })
 
 cmp.setup.cmdline(':', {
@@ -110,4 +123,5 @@ cmp.setup.cmdline(':', {
     }, {
         { name = 'cmdline' },
     }),
+    mapping = cmd_maps,
 })
