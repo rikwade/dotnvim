@@ -22,6 +22,7 @@ return require('packer').startup(function()
             -- lsp config
             require('nvim.plugins.lsp.ui').setup()
             require('nvim.plugins.lsp.keymaps').setup()
+            require('nvim.plugins.lsp.cmp-capability').setup()
 
             -- lsp lang specific config
             require('nvim.plugins.lsp.lua.workspace-config').setup()
