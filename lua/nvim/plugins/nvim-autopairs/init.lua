@@ -59,9 +59,9 @@ npairs.add_rules({
     -- Add curly braces on arrow on javascript
     Rule(
         '%(.*%)%s*%=>$',
-        ' {  }',
+        ' {}',
         { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' }
-    ):use_regex(true):set_end_pair_length(2),
+    ):use_regex(true):set_end_pair_length(1),
 
     -- Auto add space on =
     Rule('=', '')
