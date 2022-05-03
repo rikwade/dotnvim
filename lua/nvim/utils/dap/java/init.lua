@@ -138,7 +138,7 @@ function JavaDap.run_test(self, buffer, test_filter)
             local test_handler = self.test_handlers[test_kind]
 
             if not test_handler then
-                error('Cannot find test handler for test kind ' + test_kind)
+                error('Cannot find test handler for test kind ' .. test_kind)
             end
 
             return test_handler:run(
