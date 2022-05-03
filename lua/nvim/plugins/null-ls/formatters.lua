@@ -9,5 +9,6 @@ null_ls.setup({
         formatting.prettier,
         formatting.stylua,
         formatting.autopep8,
+        formatting.taplo,
     },
 })
