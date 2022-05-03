@@ -1,7 +1,5 @@
 local Option = require('nvim.utils.nvim.option')
 
-local api = vim.api
-
 require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,

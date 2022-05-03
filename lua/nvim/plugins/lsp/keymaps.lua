@@ -11,7 +11,12 @@ function M.on_attach(_, buffer)
         { '<leader>r', vim.lsp.buf.rename },
 
         -- format the code
-        { '<leader>p', vim.lsp.buf.formatting },
+        {
+            '<leader>p',
+            function()
+                vim.lsp.buf.format({ async = true })
+            end,
+        },
 
         -- show more information about the current node
         { '<leader>v', vim.lsp.buf.hover },
