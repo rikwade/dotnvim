@@ -2,16 +2,19 @@ local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
+local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+
+local theme = ThemeManager.get_theme()
 
 local v = vim
 local fn = v.fn
 
 local dap_highlight_groups = HighlightGroups({
-    DapBreakpoint = 'ctermfg=198 gui=bold guifg=#ff007c',
-    DapBreakpointRejected = 'guifg=#FFB13B',
-    DapStopped = 'ctermfg=198 guifg=#89e051',
-    DapLogPoint = 'guifg=#599eff',
-    DapStoppedCursorLine = 'cterm=underline guibg=#1f2d23',
+    DapBreakpoint = { guifg = theme.bright.red },
+    DapBreakpointRejected = { guifg = theme.bright.yellow },
+    DapStopped = { guifg = theme.bright.cyan },
+    DapLogPoint = { guifg = theme.bright.blue },
+    DapStoppedCursorLine = { guifg = theme.normal.green },
 })
 
 local M = {}

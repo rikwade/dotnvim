@@ -1,20 +1,26 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
+local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+
+local theme = ThemeManager.get_theme()
 
 local neotree_highlights = HighlightGroups({
-    NeoTreeModified = 'guifg=#ff0550',
+    NeoTreeGitAdded = { guifg = theme.bright.green },
+    NeoTreeGitStaged = { guifg = theme.bright.green },
 
-    -- git colors
-    NeoTreeGitAdded = 'guifg=#05a312',
-    NeoTreeGitDeleted = 'guifg=#ff845e',
-    NeoTreeGitRenamed = 'guifg=#838518',
-    NeoTreeGitConflict = 'guifg=#7e73ff',
-    NeoTreeGitUntracked = 'guifg=#ff0550',
-    NeoTreeGitModified = 'guifg=#ffea63',
-    NeoTreeGitModified_35 = 'guifg=#c98216',
-    NeoTreeGitModified_60 = 'guifg=#966111',
-    NeoTreeGitModified_68 = 'guifg=#6e4404',
+    NeoTreeGitRenamed = { guifg = theme.bright.cyan },
+    NeoTreeGitConflict = { guifg = theme.bright.magenta },
+
+    NeoTreeGitDeleted = { guifg = theme.bright.red },
+    NeoTreeModified = { guifg = theme.bright.red },
+    NeoTreeGitUnstaged = { guifg = theme.bright.red },
+    NeoTreeGitUntracked = { guifg = theme.bright.red },
+
+    NeoTreeGitModified = { guifg = theme.bright.yellow },
+    NeoTreeGitModified_35 = { guifg = theme.bright.yellow },
+    NeoTreeGitModified_60 = { guifg = theme.normal.yellow },
+    NeoTreeGitModified_68 = { guifg = theme.normal.yellow },
 })
 
 Highlighter:new():add(neotree_highlights):register_highlights()

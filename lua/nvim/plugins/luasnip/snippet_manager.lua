@@ -3,10 +3,13 @@ local ls = require('luasnip')
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
+local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+
+local theme = ThemeManager.get_theme()
 
 local highlighter = Highlighter:new():add(HighlightGroups({
-    LuaSnipChoiseNode = 'guifg=#f0a535',
-    LuaSnipActiveNode = 'guifg=#49e635',
+    LuaSnipChoiseNode = { guifg = theme.bright.yellow },
+    LuaSnipActiveNode = { guifg = theme.bright.green },
 }))
 
 highlighter:register_highlights()

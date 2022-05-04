@@ -2,7 +2,9 @@ local Lsp = require('nvim.plugins.lsp')
 local Event = require('nvim.plugins.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
-local Colors = require('nvim.utils.theme.colors')
+local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+
+local theme = ThemeManager.get_theme()
 
 local v = vim
 local cmd = v.cmd
@@ -29,28 +31,42 @@ M.border = {
 }
 
 local diagnosticHighlightGroups = HighlightGroups({
-    DiagnosticLineNrError = string.format(
-        'guifg=%s guibg=%s gui=bold',
-        Colors.ERROR,
-        Colors.ERROR_BG
-    ),
-
-    DiagnosticLineNrWarn = string.format(
-        'guifg=%s guibg=%s gui=bold',
-        Colors.WARN,
-        Colors.WARN_BG
-    ),
-    DiagnosticLineNrInfo = string.format(
-        'guifg=%s guibg=%s gui=bold',
-        Colors.INFO,
-        Colors.INFO_BG
-    ),
-    DiagnosticLineNrHint = string.format(
-        'guifg=%s guibg=%s gui=bold',
-        Colors.HINT,
-        Colors.HINT_BG
-    ),
+    DiagnosticLineNrError = {
+        guifg = theme.bright.red,
+        guibg = theme.normal.red,
+    },
+    DiagnosticLineNrWarn = {
+        guifg = theme.bright.yellow,
+        guibg = theme.normal.yellow,
+    },
+    DiagnosticLineNrInfo = {
+        guifg = theme.bright.blue,
+        guibg = theme.normal.blue,
+    },
+    DiagnosticLineNrHint = {
+        guifg = theme.bright.cyan,
+        guibg = theme.normal.cyan,
+    },
 })
+
+function M.register_diagnostic_signs()
+    vim.fn.sign_define(
+        'DiagnosticSignError',
+        { text = ' ', texthl = 'DiagnosticSignError' }
+    )
+    vim.fn.sign_define(
+        'DiagnosticSignWarn',
+        { text = ' ', texthl = 'DiagnosticSignWarn' }
+    )
+    vim.fn.sign_define(
+        'DiagnosticSignInfo',
+        { text = ' ', texthl = 'DiagnosticSignInfo' }
+    )
+    vim.fn.sign_define(
+        'DiagnosticSignHint',
+        { text = '', texthl = 'DiagnosticSignHint' }
+    )
+end
 
 function M.add_ui()
     cmd(
@@ -94,6 +110,7 @@ end
 function M.setup()
     Lsp.add_listener(Event.END, function()
         M.add_ui()
+        M.register_diagnostic_signs()
     end)
 end
 
