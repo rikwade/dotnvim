@@ -330,9 +330,13 @@ return require('packer').startup(function()
     -- highlights the colors defined in the buffer with actual color
     use({
         'norcalli/nvim-colorizer.lua',
-        config = function()
-            require('colorizer').setup()
-        end,
+        opt = true,
+        cmd = {
+            'ColorizerAttachToBuffer',
+            'ColorizerDetachFromBuffer',
+            'ColorizerReloadAllBuffers',
+            'ColorizerToggle',
+        },
     })
 
     ----------------------------------------------------------------------
