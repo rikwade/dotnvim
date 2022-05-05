@@ -1,7 +1,7 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
-local Lsp = require('nvim.plugins.lsp')
-local Event = require('nvim.plugins.lsp.event')
-local ConfEvent = require('nvim.utils.lsp.event-type')
+local Lsp = require('nvim.utils.lsp')
+local Event = require('nvim.utils.lsp.event')
+local ConfEvent = require('nvim.utils.lsp.config.event')
 local widgets = require('dap.ui.widgets')
 
 local M = {}

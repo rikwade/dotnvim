@@ -1,5 +1,5 @@
-local Lsp = require('nvim.plugins.lsp')
-local LspEventType = require('nvim.plugins.lsp.event')
+local Lsp = require('nvim.utils.lsp')
+local LspEventType = require('nvim.utils.lsp.event')
 
 local M = {}
 

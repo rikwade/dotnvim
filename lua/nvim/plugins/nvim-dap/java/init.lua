@@ -1,7 +1,7 @@
 local dap = require('dap')
-local Lsp = require('nvim.plugins.lsp')
-local LspEventType = require('nvim.plugins.lsp.event')
-local ConfEventType = require('nvim.utils.lsp.event-type')
+local Lsp = require('nvim.utils.lsp')
+local LspEventType = require('nvim.utils.lsp.event')
+local ConfEventType = require('nvim.utils.lsp.config.event')
 local JavaDap = require('nvim.utils.dap.java')
 local Notify = require('nvim.utils.notify')
 

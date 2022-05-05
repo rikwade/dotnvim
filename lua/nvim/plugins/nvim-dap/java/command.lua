@@ -1,9 +1,9 @@
-local Lsp = require('nvim.plugins.lsp')
+local Lsp = require('nvim.utils.lsp')
 local Notify = require('nvim.utils.notify')
 local Command = require('nvim.utils.nvim.command')
 local DapCommands = require('nvim.plugins.nvim-dap.java.commands')
-local LspEventType = require('nvim.plugins.lsp.event')
-local ConfEventType = require('nvim.utils.lsp.event-type')
+local LspEventType = require('nvim.utils.lsp.event')
+local ConfEventType = require('nvim.utils.lsp.config.event')
 
 local notify = Notify({ title = 'Java Testing' })
 

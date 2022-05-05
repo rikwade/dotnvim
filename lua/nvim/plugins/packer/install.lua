@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 require('packer').init({
     max_jobs = 20,
 })
@@ -22,6 +23,7 @@ return require('packer').startup(function()
             -- lsp config
             require('nvim.plugins.lsp.ui').setup()
             require('nvim.plugins.lsp.keymaps').setup()
+            require('nvim.plugins.lsp.server-start-message').setup()
             require('nvim.plugins.lsp.cmp-capability').setup()
 
             -- lsp lang specific config
@@ -34,6 +36,7 @@ return require('packer').startup(function()
             require('nvim.plugins.nvim-dap.java.command').setup()
 
             -- setup LSes
+            require('nvim.plugins.nvim-lsp-install').setup()
             require('nvim.plugins.lsp').setup()
         end,
     })

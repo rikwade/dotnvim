@@ -3,7 +3,7 @@ local List = require('pl.List')
 local Map = require('pl.Map')
 local Assert = require('nvim.utils.validator.assert')
 local Event = require('nvim.utils.event')
-local EventType = require('nvim.utils.lsp.event-type')
+local EventType = require('nvim.utils.lsp.config.event')
 
 local Config = class(Map)
 

@@ -1,5 +1,5 @@
-local Lsp = require('nvim.plugins.lsp')
-local Event = require('nvim.plugins.lsp.event')
+local Lsp = require('nvim.utils.lsp')
+local Event = require('nvim.utils.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
