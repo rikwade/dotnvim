@@ -32,6 +32,7 @@ require('neo-tree').setup({
             mappings = {
                 ['o'] = 'open',
             },
+            position = 'current',
         },
         renderers = {
             directory = {
