@@ -1,8 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-cmp.setup({})
 
-local v = vim
 local WIDE_HEIGHT = 20
 
 cmp.setup({
@@ -39,21 +37,23 @@ cmp.setup({
         {
             name = 'buffer',
             priority = 80,
-            max_item_count = 5,
-            keyword_length = 4,
+            autocomplete = false
         },
         {
             name = 'path',
             priority = 80,
+            autocomplete = false
         },
         {
             name = 'spell',
             max_item_count = 5,
             priority = 50,
+            autocomplete = false
         },
         {
             name = 'calc',
             priority = 50,
+            autocomplete = false
         },
     },
 
@@ -83,8 +83,8 @@ cmp.setup({
                 '│',
             },
             winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
-            maxwidth = math.floor(WIDE_HEIGHT * (v.o.columns / 100)),
-            maxheight = math.floor(WIDE_HEIGHT * (v.o.lines / 100)),
+            maxwidth = math.floor(WIDE_HEIGHT * (vim.o.columns / 100)),
+            maxheight = math.floor(WIDE_HEIGHT * (vim.o.lines / 100)),
         },
     },
 
