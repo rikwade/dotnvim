@@ -342,6 +342,14 @@ return require('packer').startup(function()
         },
     })
 
+    -- file name top of the window
+    use({
+        'b0o/incline.nvim',
+        config = function()
+            require('nvim.plugins.incline')
+        end,
+    })
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
