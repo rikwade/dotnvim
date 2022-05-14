@@ -1,3 +1,7 @@
+local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+
+local theme = ThemeManager.get_theme()
+
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
@@ -7,15 +11,15 @@ local lualine = require('lualine')
 local colors = {
     bg = '#202328',
     fg = '#bbc2cf',
-    yellow = '#ECBE7B',
-    cyan = '#008080',
-    darkblue = '#081633',
-    green = '#98be65',
-    orange = '#FF8800',
-    violet = '#a9a1e1',
-    magenta = '#c678dd',
-    blue = '#51afef',
-    red = '#ec5f67',
+    yellow = theme.bright.yellow,
+    cyan = theme.bright.cyan,
+    darkblue = theme.bright.cyan,
+    green = theme.bright.green,
+    orange = theme.bright.yellow,
+    violet = theme.bright.magenta,
+    magenta = theme.bright.magenta,
+    blue = theme.bright.blue,
+    red = theme.bright.red,
 }
 
 local conditions = {
@@ -114,9 +118,9 @@ ins_left({
         }
         vim.api.nvim_command(
             'hi! LualineMode guifg='
-                .. mode_color[vim.fn.mode()]
-                .. ' guibg='
-                .. colors.bg
+            .. mode_color[vim.fn.mode()]
+            .. ' guibg='
+            .. colors.bg
         )
         return ''
     end,
@@ -140,6 +144,7 @@ ins_left({
             end
             return string.format('%.1f%s', size, sufixes[i])
         end
+
         local file = vim.fn.expand('%:p')
         if string.len(file) == 0 then
             return ''
