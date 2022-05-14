@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local npairs = require('nvim-autopairs')
 local cond = require('nvim-autopairs.conds')
 local Rule = require('nvim-autopairs.rule')
@@ -67,7 +68,12 @@ npairs.add_rules({
     Rule('=', '')
         :with_pair(cond.not_inside_quote())
         :with_pair(function(opts)
+            if vim.o.filetype == 'rust' then
+                return false
+            end
+
             local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
+
             if last_char:match('[%w%=%s]') then
                 return true
             end
