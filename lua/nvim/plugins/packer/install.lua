@@ -75,7 +75,7 @@ return require('packer').startup(function()
     use({
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
-            require('nvim.plugins.null-ls.formatters')
+            require('nvim.plugins.null-ls')
         end,
     })
 
