@@ -8,7 +8,7 @@ local incline_highlights = HighlightGroups({
     InclineNormal = { guifg = theme.bright.black, guibg = theme.bright.white },
 })
 
-Highlighter:add(incline_highlights):register_highlights()
+Highlighter:new():add(incline_highlights):register_highlights()
 
 require('incline').setup({
     window = {
