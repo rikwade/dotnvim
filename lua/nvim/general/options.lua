@@ -58,8 +58,11 @@ Option.g({
     -- stop showing the current mode
     showmode = false,
 
-    -- stop showing the status in status bar
+    -- show global status bar
     laststatus = 3,
+
+    -- show window bar
+    winbar = "%{%v:lua.require'nvim.utils.nvim.winbar'.eval()%}",
 
     -- @TODO now sure how this is working. need to find out
     showcmd = false,
