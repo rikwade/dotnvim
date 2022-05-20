@@ -19,11 +19,8 @@ Highlighter:new():add(highlights):register_highlights()
 M.eval = function()
     local file_name = vim.api.nvim_eval_statusline('%f', {}).str
 
-    if file_name == '[No Name]' then
-        return file_name
-    end
+    file_name = file_name:gsub('/', ' ➤ ')
 
-    file_name = file_name:gsub('/', ' ⮞ ')
     return '%#WinBarSeparator#'
         .. ''
         .. '%*'
