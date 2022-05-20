@@ -9,23 +9,30 @@ local M = {}
 local highlights = HighlightGroup({
     WinBarSeparator = { guifg = theme.bright.white },
     WinBarContent = { guifg = theme.bright.black, guibg = theme.bright.white },
+    WinBarContentModified = {
+        guifg = theme.bright.red,
+        guibg = theme.bright.white,
+    },
 })
 
 Highlighter:new():add(highlights):register_highlights()
 
--- vim.api.nvim_set_hl(0, 'WinBarSeparator', { fg = colors.grey })
--- vim.api.nvim_set_hl(0, 'WinBarContent', { fg = colors.green, bg = colors.grey })
-
 M.eval = function()
-    local file_name = vim.api.nvim_eval_statusline('%f', {}).str
+    local file_path = vim.api.nvim_eval_statusline('%f', {}).str
+    local modified = vim.api.nvim_eval_statusline('%m', {}).str == '[+]'
+            and '  ⟴  '
+        or ''
 
-    file_name = file_name:gsub('/', ' ➤ ')
+    file_path = file_path:gsub('/', ' ➤ ')
 
     return '%#WinBarSeparator#'
         .. ''
         .. '%*'
         .. '%#WinBarContent#'
-        .. file_name
+        .. file_path
+        .. '%*'
+        .. '%#WinBarContentModified#'
+        .. modified
         .. '%*'
         .. '%#WinBarSeparator#'
         .. ''
