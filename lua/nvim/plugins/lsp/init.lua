@@ -18,7 +18,9 @@ local servers = {
     'volar',
     'groovyls',
     'clangd',
+    'emmet_ls',
 }
+
 
 function M.setup()
     Lsp.setup(servers)
