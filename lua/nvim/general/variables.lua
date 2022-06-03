@@ -6,7 +6,7 @@ Variable.g({
     neovide_cursor_animation_length = 0.05,
 
     -- at what rate everthing rereshes
-    neovide_refresh_rate = 30,
+    neovide_refresh_rate = 60,
 
     -- cursor move animation
     neovide_cursor_vfx_mode = 'pixiedust',

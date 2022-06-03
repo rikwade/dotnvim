@@ -6,7 +6,6 @@ Option.g({
     ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
-
     -- replace tab with spaces
     expandtab = true,
 
@@ -71,7 +70,7 @@ Option.g({
     ruler = false,
 
     -- set the font for GUI clients like neovide
-    guifont = 'Cascadia Code, FiraCode, Nerd Font',
+    guifont = 'Recursive Monospace Casual, Cascadia Code, FiraCode, Nerd Font:h19',
 
     -- highlight the current cursor line.
     cursorline = true,
