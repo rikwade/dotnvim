@@ -40,14 +40,12 @@ end
 -- @param { string } option - name of the option
 -- @param { any } value - the value to be appended
 function Config.append_option(self, option, value)
-    local existing_value = self:get(option)
-
     -- if no value, assign a new List
-    if not existing_value then
+    if not self:get(option) then
         self:set(option, List())
     end
 
-    Assert:is_instance_of(List, existing_value, nil, 'List')
+    Assert:is_instance_of(List, self:get(option), nil, 'List')
 
     self:get(option):append(value)
 end
