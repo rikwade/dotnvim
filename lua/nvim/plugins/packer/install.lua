@@ -28,6 +28,7 @@ return require('packer').startup(function()
 
             -- lsp lang specific config
             require('nvim.plugins.lsp.lua.workspace-config').setup()
+            require('nvim.plugins.lsp.emmet').setup()
 
             -- dap config
             require('nvim.plugins.nvim-dap.ui').setup()
