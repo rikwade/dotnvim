@@ -110,18 +110,18 @@ local cmd_maps = cmp.mapping.preset.insert({
     },
 })
 
-cmp.setup.cmdline('/', {
-    sources = {
-        { name = 'buffer' },
-    },
-    mapping = cmd_maps,
-})
+-- cmp.setup.cmdline('/', {
+    -- sources = {
+        -- { name = 'buffer' },
+    -- },
+    -- mapping = cmd_maps,
+-- })
 
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-        { name = 'path' },
-    }, {
-        { name = 'cmdline' },
-    }),
-    mapping = cmd_maps,
-})
+-- cmp.setup.cmdline(':', {
+    -- sources = cmp.config.sources({
+        -- { name = 'path' },
+    -- }, {
+        -- { name = 'cmdline' },
+    -- }),
+    -- mapping = cmd_maps,
+-- })
