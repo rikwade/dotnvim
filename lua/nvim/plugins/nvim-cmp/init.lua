@@ -21,39 +21,43 @@ cmp.setup({
         {
             name = 'nvim_lsp_signature_help',
             priority = 100,
-        },
-        {
-            name = 'luasnip',
-            priority = 100,
+            group_index = 1,
         },
         {
             name = 'nvim_lsp',
-            priority = 90,
+            priority = 100,
+            group_index = 1,
         },
         {
             name = 'nvim_lua',
+            priority = 100,
+            group_index = 1,
+        },
+        {
+            name = 'luasnip',
             priority = 90,
+            group_index = 2,
         },
         {
             name = 'buffer',
             priority = 80,
-            autocomplete = false
+            autocomplete = false,
+            group_index = 3,
         },
         {
             name = 'path',
             priority = 80,
-            autocomplete = false
+            group_index = 3,
         },
         {
             name = 'spell',
-            max_item_count = 5,
             priority = 50,
-            autocomplete = false
+            group_index = 3,
         },
         {
             name = 'calc',
             priority = 50,
-            autocomplete = false
+            group_index = 3,
         },
     },
 
