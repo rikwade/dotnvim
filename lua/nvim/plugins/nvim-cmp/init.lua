@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local types = require('cmp.types')
 local lspkind = require('lspkind')
 
 local WIDE_HEIGHT = 20
@@ -11,10 +12,7 @@ cmp.setup({
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-l>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
 
     sources = {
@@ -70,6 +68,10 @@ cmp.setup({
     completion = {
         keyword_length = 1,
         completeopt = 'menu,menuone,preview,noinsert',
+    },
+
+    confirmation = {
+        default_behavior = types.cmp.ConfirmBehavior.Insert,
     },
 
     preselect = false,
