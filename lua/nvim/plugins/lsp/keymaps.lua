@@ -22,7 +22,7 @@ function M.on_attach(_, buffer)
         { '<leader>v', vim.lsp.buf.hover },
 
         -- show diagnostics for current line
-        { '<leader>d', vim.lsp.diagnostic.show_line_diagnostics },
+        { '<leader>d', vim.diagnostic.open_float },
 
         -- @todo find out what this is
         { '<leader>f', vim.lsp.buf.declaration },
