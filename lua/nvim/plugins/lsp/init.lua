@@ -2,6 +2,9 @@ local Lsp = require('nvim.utils.lsp')
 
 local M = {}
 
+
+vim.lsp.set_log_level("debug")
+
 local servers = {
     'bashls',
     'cssls',
