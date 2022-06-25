@@ -303,13 +303,13 @@ return require('packer').startup(function()
     })
 
     -- lib to pick window from currently opened windows
-    -- use({
-    -- 's1n7ax/nvim-window-picker',
-    -- tag = 'v1.*',
-    -- config = function()
-    -- require('nvim.plugins.window-picker')
-    -- end,
-    -- })
+    use({
+        's1n7ax/nvim-window-picker',
+        -- tag = 'v1.*',
+        config = function()
+            require('nvim.plugins.window-picker')
+        end,
+    })
 
     -- notification popup library
     use({
@@ -343,6 +343,8 @@ return require('packer').startup(function()
         },
     })
 
+    -- popup menu
+    use({ 'meznaric/conmenu' })
 
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
