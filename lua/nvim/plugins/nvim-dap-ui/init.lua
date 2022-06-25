@@ -3,42 +3,53 @@ local cmd = vim.cmd
 cmd('command Dap :lua require"dapui".toggle()')
 
 require('dapui').setup({
-    icons = { expanded = '▾', collapsed = '▸' },
     mappings = {
         -- Use a table to apply multiple mappings
         expand = { '<CR>', '<2-LeftMouse>' },
         open = 'o',
         remove = 'd',
-        edit = 'e',
+        edit = ';',
         repl = 'r',
+        toggle = 't',
     },
-    sidebar = {
-        open_on_start = false,
-        -- You can change the order of elements in the sidebar
-        elements = {
-            -- Provide as ID strings or tables with "id" and "size" keys
-            {
-                id = 'scopes',
-                size = 0.25, -- Can be float or integer > 1
+    -- Expand lines larger than the window
+    -- Requires >= 0.7
+    expand_lines = vim.fn.has('nvim-0.7'),
+    -- Layouts define sections of the screen to place windows.
+    -- The position can be "left", "right", "top" or "bottom".
+    -- The size specifies the height/width depending on position.
+    -- Elements are the elements shown in the layout (in order).
+    -- Layouts are opened in order so that earlier layouts take priority in window sizing.
+    layouts = {
+        {
+            elements = {
+                -- Elements can be strings or table with id and size keys.
+                'breakpoints',
+                'stacks',
+                'watches',
+                'repl',
             },
-            { id = 'breakpoints', size = 0.25 },
-            { id = 'stacks', size = 0.25 },
-            { id = 'watches', size = 00.25 },
+            size = 40,
+            position = 'left',
         },
-        size = 40,
-        position = 'left', -- Can be "left" or "right"
+        {
+            open_on_start = true,
+            elements = { 'console' },
+            size = 10,
+            position = 'bottom',
+        },
     },
-    tray = {
-        open_on_start = false,
-        elements = { 'repl' },
-        size = 10,
-        position = 'bottom', -- Can be "bottom" or "top"
-    },
+
     floating = {
-        open_on_start = false,
         max_height = nil, -- These can be integers or a float between 0 and 1.
         max_width = nil, -- Floats will be treated as percentage of your screen.
-        mappings = { close = { 'q', '<Esc>' } },
+        border = 'single', -- Border style. Can be "single", "double" or "rounded"
+        mappings = {
+            close = { 'q', '<Esc>', '<c-c>' },
+        },
     },
     windows = { indent = 1 },
+    render = {
+        max_type_length = nil, -- Can be integer or nil.
+    },
 })
