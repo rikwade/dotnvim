@@ -5,6 +5,8 @@ local lspkind = require('lspkind')
 local WIDE_HEIGHT = 20
 
 cmp.setup({
+    experimental = { ghost_text = true },
+
     mapping = cmp.mapping.preset.insert({
         ['<C-e>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -71,7 +73,7 @@ cmp.setup({
     },
 
     confirmation = {
-        default_behavior = types.cmp.ConfirmBehavior.Insert,
+        default_behavior = types.cmp.ConfirmBehavior.Replace,
     },
 
     preselect = false,
@@ -101,33 +103,3 @@ cmp.setup({
         }),
     },
 })
-
-local cmd_maps = cmp.mapping.preset.insert({
-    ['<C-e>'] = {
-        c = cmp.mapping.select_prev_item(),
-    },
-
-    ['<C-n>'] = {
-        c = cmp.mapping.select_next_item(),
-    },
-
-    ['<C-l>'] = {
-        c = cmp.mapping.abort(),
-    },
-})
-
--- cmp.setup.cmdline('/', {
-    -- sources = {
-        -- { name = 'buffer' },
-    -- },
-    -- mapping = cmd_maps,
--- })
-
--- cmp.setup.cmdline(':', {
-    -- sources = cmp.config.sources({
-        -- { name = 'path' },
-    -- }, {
-        -- { name = 'cmdline' },
-    -- }),
-    -- mapping = cmd_maps,
--- })
