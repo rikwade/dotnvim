@@ -2,9 +2,6 @@
 
 Neovim configuration that uses `lua` as much as possible
 
-| IMPORTANT: For Java, install `jdtls@1.12.0-202206011637` JDTLS version (`:LspInstall jdtls@1.12.0-202206011637`) |
-| --- |
-
 | WARNING: I'm a Colemak user. So lot of the keymaps are not sutable for QWERTY |
 | --- |
 
