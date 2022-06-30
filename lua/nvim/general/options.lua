@@ -90,7 +90,7 @@ Option.g({
     scrolloff = 15,
 
     -- height of the cmd to hidden
-    cmdheight = 1,
+    cmdheight = 0,
 
     ----------------------------------------------------------------------
     --                             EDITING                              --
