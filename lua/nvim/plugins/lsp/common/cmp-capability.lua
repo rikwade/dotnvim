@@ -9,6 +9,8 @@ function M.setup()
             vim.lsp.protocol.make_client_capabilities()
         )
 
+        capabilities.textDocument.completion.completionItem.snippetSupport = false
+
         conf:set_option('capabilities', capabilities)
     end)
 end

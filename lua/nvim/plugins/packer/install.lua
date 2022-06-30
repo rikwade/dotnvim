@@ -21,10 +21,10 @@ return require('packer').startup(function()
         },
         config = function()
             -- lsp config
-            require('nvim.plugins.lsp.ui').setup()
-            require('nvim.plugins.lsp.keymaps').setup()
-            require('nvim.plugins.lsp.server-start-message').setup()
-            require('nvim.plugins.lsp.cmp-capability').setup()
+            require('nvim.plugins.lsp.common.ui').setup()
+            require('nvim.plugins.lsp.common.keymaps').setup()
+            require('nvim.plugins.lsp.common.server-start-message').setup()
+            require('nvim.plugins.lsp.common.cmp-capability').setup()
 
             -- lsp lang specific config
             require('nvim.plugins.lsp.lua.workspace-config').setup()
