@@ -24,7 +24,11 @@ function M.setup(servers)
 
         M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server_name, conf)
 
-        lsp_config[server_name].setup(conf)
+        -- user can choose to prevent the setup process using
+        -- conf.set_prevent_setup(true)
+        if not conf.prevent_setup then
+            lsp_config[server_name].setup(conf)
+        end
 
         M.lsp_event:dispatch(LspEvent.SERVER_SETUP_END, server_name, conf)
     end

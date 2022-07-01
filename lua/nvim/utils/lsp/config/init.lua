@@ -9,6 +9,7 @@ local Config = class(Map)
 
 function Config:_init()
     self.event = Event()
+    self.prevent_setup = false
     self.on_attach = self:get_on_attach()
 end
 
@@ -16,12 +17,27 @@ end
 -- @param { function } callback - callback to be attached
 function Config.add_listener(self, event, listener)
     self.event:add_listener(event, listener)
+    return self
 end
 
 --- Remove on attach callback
 -- @param { function } callback - callback to be attached
 function Config.remove_listener(self, event, callback)
     self.event:remove_listener(event, callback)
+    return self
+end
+
+-- Config.prevent_setup prevents setup call to lspconfig
+-- Some tools handle the setting up process in their plugins such as rust_tools,
+-- where they expect not to call the setup() by the user. prevent_setup(true)
+-- will not call the setup
+--
+-- @param { boolean } shouldPreventSetup is whether should skip set up process
+-- or not
+--
+function Config.set_prevent_setup(should_prevent_setup)
+    self.prevent_setup = should_prevent_setup
+    return self
 end
 
 --- Set config option
@@ -31,6 +47,7 @@ end
 -- @param { any } value - the value to be appended
 function Config.set_option(self, option, value)
     self:set(option, value)
+    return self
 end
 
 --- Append item to config option
@@ -48,6 +65,7 @@ function Config.append_option(self, option, value)
     Assert:is_instance_of(List, self:get(option), nil, 'List')
 
     self:get(option):append(value)
+    return self
 end
 
 --- Returns a function that dispatches SERVER_READY for the first time and
