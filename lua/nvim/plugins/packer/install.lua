@@ -234,7 +234,7 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
-    -- inline serch guide
+    -- inline search guide
     use({ 'unblevable/quick-scope' })
 
     -- smooth scrolling
