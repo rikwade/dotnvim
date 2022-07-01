@@ -346,6 +346,17 @@ return require('packer').startup(function()
     -- popup menu
     use({ 'meznaric/conmenu' })
 
+    -- spell check diagnostic
+    use({
+        'lewis6991/spellsitter.nvim',
+        requires = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+        config = function()
+            require('spellsitter').setup()
+        end,
+    })
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
