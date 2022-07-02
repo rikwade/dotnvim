@@ -38,21 +38,24 @@ sm:add_snippet(s(
             fmt(
                 tl([[
                 local {} = {{}}
-                {}.__index = {}
 
-                function {}.new()
-                    {}return setmetatable({{}}, {})
+                function {}:new()
+                    {}self.__index = self
+                    {}local o = setmetatable({{}}, self)
+                    {}return o
                 end
+
+                {}
 
                 return {}
             ]]),
                 {
                     i(1, 'M'),
                     rep(1),
-                    rep(1),
-                    rep(1),
                     t(indentation),
-                    rep(1),
+                    t(indentation),
+                    t(indentation),
+                    i(2),
                     rep(1),
                 }
             ),
