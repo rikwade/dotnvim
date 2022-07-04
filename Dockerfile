@@ -37,9 +37,9 @@ RUN make install
 RUN ln -s /usr/local/bin/nvim /usr/sbin/nvim
 
 RUN git clone --recurse-submodules -j8 https://github.com/s1n7ax/dotnvim.git ~/.config/nvim
-RUN mkdir -p ~/.local/share/nvim/lsp_server_additions/jdtls
 
 WORKDIR /
+RUN mkdir -p ~/.local/share/nvim/lsp_server_additions/jdtls
 RUN git clone https://github.com/microsoft/java-debug.git
 RUN git clone https://github.com/microsoft/vscode-java-test.git
 
@@ -54,5 +54,22 @@ WORKDIR /vscode-java-test
 RUN yarn
 RUN yarn build-plugin
 RUN cp server/*.jar ~/.local/share/nvim/lsp_server_additions/jdtls
+
+# Issue: when max_jobs is set the instance will not exist so following will
+# remove the setting if exists and run PackerSync
+# https://github.com/wbthomason/packer.nvim/issues/751
+RUN sed -i "s/max_jobs *= *[0-9]\+,*//" ~/.config/nvim/lua/nvim/plugins/packer/install.lua
+
+RUN nvim \
+    --headless \
+    -c 'autocmd User PackerComplete quitall' \
+    -c 'silent PackerSync'
+
+RUN nvim \
+    --headless \
+    -c 'set cmdheight=50' \
+    -c 'silent TSInstallSync all' \
+    -c 'sleep 20' \
+    -c 'qall'
 
 WORKDIR /root
