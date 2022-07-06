@@ -21,7 +21,7 @@ Option.g({
     -- remove highlighting after search is done
     hlsearch = false,
 
-    -- auto code folding when openeing new file at level 1
+    -- auto code folding when opening new file at level 1
     foldlevelstart = 4,
     -- don't wrap the text when lines can't fit the window
     wrap = false,
