@@ -39,9 +39,10 @@ sm:add_snippet(s(
                 tl([[
                 local {} = {{}}
 
-                function {}:new()
+                function {}:new(o)
+                    {}o = o or {{}}
+                    {}setmetatable(o, self)
                     {}self.__index = self
-                    {}local o = setmetatable({{}}, self)
                     {}return o
                 end
 
@@ -52,6 +53,7 @@ sm:add_snippet(s(
                 {
                     i(1, 'M'),
                     rep(1),
+                    t(indentation),
                     t(indentation),
                     t(indentation),
                     t(indentation),
