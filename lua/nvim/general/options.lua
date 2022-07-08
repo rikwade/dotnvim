@@ -4,6 +4,13 @@ local v = vim
 
 Option.g({
     ----------------------------------------------------------------------
+    --                         CURSOR MOVEMENTS                         --
+    ----------------------------------------------------------------------
+    -- when moving the cursor, this will set the column to first not empty
+    -- character
+    startofline = true,
+
+    ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
     -- replace tab with spaces
@@ -94,6 +101,8 @@ Option.g({
 
     -- add spell diagnostics
     spell = true,
+
+    spelloptions = "camel",
 
     ----------------------------------------------------------------------
     --                             EDITING                              --
