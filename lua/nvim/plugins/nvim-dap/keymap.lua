@@ -8,7 +8,7 @@ local M = {}
 
 function M.on_attach(_, buffer)
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
-        -- close the debug sessio
+        -- close the debug session
         { ',tS', require('dap').terminate },
 
         -- start the debug session and continue to next breakpoint
