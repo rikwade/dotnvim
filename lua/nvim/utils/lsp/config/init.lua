@@ -87,8 +87,8 @@ function Config.get_on_attach(self)
 
     callback = server_ready_callback
 
-    local function on_attach()
-        callback()
+    local function on_attach(...)
+        callback(...)
     end
 
     return on_attach
