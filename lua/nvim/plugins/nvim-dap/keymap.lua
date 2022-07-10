@@ -48,6 +48,10 @@ function M.on_attach(ls, buffer)
                 end,
             },
         })
+    else
+        nmap:keymaps({
+            { ',tc', dap.continue },
+        })
     end
 
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
