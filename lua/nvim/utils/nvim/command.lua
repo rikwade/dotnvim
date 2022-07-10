@@ -1,6 +1,8 @@
+local class = require('pl.class')
+
 local v = vim
 
-local Command = {}
+local Command = class()
 
 -- Sets the number of arguments for the command
 -- This converts to -nargs flag in :command
