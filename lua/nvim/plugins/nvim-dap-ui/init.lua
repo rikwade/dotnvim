@@ -1,8 +1,27 @@
-local cmd = vim.cmd
+local dap, dapui = require('dap'), require('dapui')
+local Shortcut = require('nvim.utils.nvim.shortcut')
+local Command = require('nvim.utils.nvim.command')
 
-cmd('command Dap :lua require"dapui".toggle()')
+Command():add_all({
+    { name = 'Dap', action = dapui.toggle },
+})
 
-require('dapui').setup({
+Shortcut():mode('n'):options():noremap():silent():next():keymaps({
+    { '<leader><leader>t', dapui.toggle },
+})
+
+-- Auto launching the dap ui configuration on dap init
+dap.listeners.after.event_initialized['dapui_config'] = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated['dapui_config'] = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited['dapui_config'] = function()
+    dapui.close()
+end
+
+dapui.setup({
     mappings = {
         -- Use a table to apply multiple mappings
         expand = { '<CR>', '<2-LeftMouse>' },
@@ -14,6 +33,7 @@ require('dapui').setup({
     },
     -- Expand lines larger than the window
     -- Requires >= 0.7
+    ---@diagnostic disable-next-line: undefined-global
     expand_lines = vim.fn.has('nvim-0.7'),
     -- Layouts define sections of the screen to place windows.
     -- The position can be "left", "right", "top" or "bottom".
