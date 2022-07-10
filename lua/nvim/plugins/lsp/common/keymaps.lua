@@ -10,18 +10,36 @@ local lsp = v.lsp
 local diagnostic = v.diagnostic
 
 local function get_prev_diagnostic()
-    local row, col = table.unpack(diagnostic.get_prev_pos())
+    local pos = diagnostic.get_prev_pos()
+
+    if not pos then
+        return
+    end
+
+    local row, col = table.unpack(pos)
     return { row + 1, col }
 end
 
 local function get_next_diagnostic()
-    local row, col = table.unpack(diagnostic.get_next_pos())
+    local pos = diagnostic.get_next_pos()
+
+    if not pos then
+        return
+    end
+
+    local row, col = table.unpack(pos)
     return { row + 1, col }
 end
 
-local function move_to_cursor(get_cursor_func)
+local function move_to_cursor(get_cursor_callback)
     return function()
-        api.nvim_win_set_cursor(0, get_cursor_func())
+        local cursor = get_cursor_callback()
+
+        if not cursor then
+            return
+        end
+
+        api.nvim_win_set_cursor(0, get_cursor_callback())
     end
 end
 
