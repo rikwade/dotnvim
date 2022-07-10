@@ -379,14 +379,15 @@ return require('packer').startup(function()
         }
         --]]
 
+    --[[
     use({
         'rmehri01/onenord.nvim',
         config = function()
             require('onenord').setup()
         end,
     })
+    --]]
 
-    --[[
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -395,7 +396,7 @@ return require('packer').startup(function()
             vim.cmd('colorscheme rose-pine')
         end,
     })
-    --]]
+
     --[[
         use {
             'catppuccin/nvim',
