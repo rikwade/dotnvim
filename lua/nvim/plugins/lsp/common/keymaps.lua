@@ -3,44 +3,66 @@ local Lsp = require('nvim.utils.lsp')
 local Event = require('nvim.utils.lsp.event')
 local ConfEvent = require('nvim.utils.lsp.config.event')
 
+---@diagnostic disable-next-line: undefined-global
+local v = vim
+local api = v.api
+local lsp = v.lsp
+local diagnostic = v.diagnostic
+
+local function get_prev_diagnostic()
+    local row, col = table.unpack(diagnostic.get_prev_pos())
+    return { row + 1, col }
+end
+
+local function get_next_diagnostic()
+    local row, col = table.unpack(diagnostic.get_next_pos())
+    return { row + 1, col }
+end
+
+local function move_to_cursor(get_cursor_func)
+    return function()
+        api.nvim_win_set_cursor(0, get_cursor_func())
+    end
+end
+
 local M = {}
 
 function M.on_attach(_, buffer)
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- rename file name
-        { '<leader>r', vim.lsp.buf.rename },
+        { '<leader>r', lsp.buf.rename },
 
         -- format the code
         {
             '<leader>p',
             function()
-                vim.lsp.buf.format({ async = true })
+                lsp.buf.format({ async = true })
             end,
         },
 
         -- show more information about the current node
-        { '<leader>v', vim.lsp.buf.hover },
+        { '<leader>v', lsp.buf.hover },
 
         -- show diagnostics for current line
-        { '<leader>d', vim.diagnostic.open_float },
+        { '<leader>d', diagnostic.open_float },
 
         -- @todo find out what this is
-        { '<leader>f', vim.lsp.buf.declaration },
+        { '<leader>f', lsp.buf.declaration },
 
         -- @todo find out what this is
-        { '<leader>w', vim.lsp.buf.signature_help },
+        { '<leader>w', lsp.buf.signature_help },
 
         -- @todo find out what this is
-        { '<leader>q', vim.lsp.buf.type_definition },
+        { '<leader>q', lsp.buf.type_definition },
 
         -- list code actions
-        { '<leader>a', vim.lsp.buf.code_action },
+        { '<leader>a', lsp.buf.code_action },
 
         -- jump to next error
-        { ']d', vim.diagnostic.goto_next },
+        { ']d', move_to_cursor(get_next_diagnostic) },
 
         -- jump to previous error
-        { '[d', vim.diagnostic.goto_prev },
+        { '[d', move_to_cursor(get_prev_diagnostic) },
     })
 end
 
