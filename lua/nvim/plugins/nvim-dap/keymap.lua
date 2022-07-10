@@ -26,28 +26,28 @@ function M.on_attach(ls, buffer)
 
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- close the debug session
-        { ',tS', require('dap').terminate },
+        { ',tS', dap.terminate },
 
         -- start the debug session and continue to next breakpoint
 
         -- run last again
-        { ',tl', require('dap').run_last },
+        { ',tl', dap.run_last },
 
-        { ',tu', require('dap').step_out },
-        { ',td', require('dap').step_over },
-        { ',ti', require('dap').step_into },
+        { ',tu', dap.step_out },
+        { ',td', dap.step_over },
+        { ',ti', dap.step_into },
 
         -- create and remove a breakpoint
-        { ',tt', require('dap').toggle_breakpoint },
+        { ',tt', dap.toggle_breakpoint },
 
         -- go up in the call stack
-        { ',te', require('dap').up },
+        { ',te', dap.up },
 
         -- go down in the call stack
-        { ',tn', require('dap').down },
+        { ',tn', dap.down },
 
         -- restart the execution
-        { ',tr', require('dap').restart },
+        { ',tr', dap.restart },
 
         -- inspect node on cursor
         { ',th', widgets.hover },
@@ -61,7 +61,7 @@ function M.on_attach(ls, buffer)
         },
 
         -- open repl window
-        { ',to', require('dap').repl.open },
+        { ',to', dap.repl.open },
     })
 
     Shortcut():mode('v'):options():buffer(buffer):next():keymaps({

@@ -7,6 +7,7 @@ local TestLevel = require('nvim.utils.lsp.java.test-level')
 
 local JUnit = require('nvim.utils.dap.java.test.junit')
 
+---@diagnostic disable-next-line: undefined-global
 local v = vim
 local api = v.api
 
@@ -166,12 +167,11 @@ end
 
 function JavaDap.run_current_test_on_cursor(self)
     local buffer = api.nvim_get_current_buf()
-    local cursor = vim.api.nvim_win_get_cursor(0)
+    local cursor = api.nvim_win_get_cursor(0)
 
     local function filter(tests)
         for _, test in ipairs(tests) do
-            if
-                test.testLevel ~= TestLevel.Method
+            if test.testLevel ~= TestLevel.Method
                 and self.__is_test_in_range(test, cursor)
             then
                 if test.children then
