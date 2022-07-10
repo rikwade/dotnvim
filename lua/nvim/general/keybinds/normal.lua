@@ -111,12 +111,12 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     -- go to insert mode
     { ';', 'i' },
 
-    -- find next occurrenc of the line search
+    -- find next occurrence of the line search
     { 'j', ';' },
 
     ----------------------------------------------------------------------
     --                              OTHER                               --
     ----------------------------------------------------------------------
     -- to go enable spell checker
-    { '<F6>', ':setlocal spell! spelllang=en_us<cr>' },
+    { '<F6>', '<cmd>setlocal spell! spelllang=en_us<cr>' },
 })
