@@ -45,9 +45,15 @@ function M.setup_server_conf(conf)
     local plugins_str = fn.glob(fn.stdpath('data') .. plugins_path)
     local plugins_path_list = v.split(plugins_str, '\n')
 
-    conf:set_option('init_options', {
-        bundles = plugins_path_list,
-    })
+    local init_options = conf:get_option('init_options')
+
+    if not init_options then
+        init_options = {}
+    end
+
+    init_options.bundles = plugins_path_list
+
+    conf:set_option('init_options', init_options)
 
     return conf
 end

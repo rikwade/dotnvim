@@ -50,6 +50,12 @@ function Config.set_option(self, option, value)
     return self
 end
 
+-- Returns the option value
+-- @param { string } option - name of the option to return
+function Config.get_option(self, option)
+    return self:get(option)
+end
+
 --- Append item to config option
 -- This assumes the value of the option is a List
 -- IF the value is falsy, then new List will be assigned before appending
