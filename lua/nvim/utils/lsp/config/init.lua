@@ -35,7 +35,7 @@ end
 -- @param { boolean } shouldPreventSetup is whether should skip set up process
 -- or not
 --
-function Config.set_prevent_setup(should_prevent_setup)
+function Config.set_prevent_setup(self, should_prevent_setup)
     self.prevent_setup = should_prevent_setup
     return self
 end
