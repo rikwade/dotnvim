@@ -47,14 +47,8 @@ Shortcut()
         { '<leader>T', builtin.lsp_implementations },
 
         -- browse code definition
-        {
-            '<leader>s',
-            with_vsplit(builtin.lsp_definitions),
-        },
-        {
-            '<leader>S',
-            builtin.lsp_definitions,
-        },
+        { '<leader>s', with_vsplit(builtin.lsp_definitions) },
+        { '<leader>S', builtin.lsp_definitions },
 
         -- find references of word under the cursor
         { '<leader>x', with_vsplit(builtin.lsp_references) },
