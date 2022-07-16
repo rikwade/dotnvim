@@ -6,9 +6,12 @@ local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
 
 local theme = ThemeManager.get_theme()
 
+---@diagnostic disable-next-line: undefined-global
 local v = vim
-local cmd = v.cmd
 local lsp = v.lsp
+local fn = v.fn
+local diagnostic = v.diagnostic
+local cmd = v.cmd
 
 local M = {}
 
@@ -50,34 +53,25 @@ local diagnosticHighlightGroups = HighlightGroups({
 })
 
 function M.register_diagnostic_signs()
-    vim.fn.sign_define(
+    fn.sign_define(
         'DiagnosticSignError',
         { text = ' ', texthl = 'DiagnosticSignError' }
     )
-    vim.fn.sign_define(
+    fn.sign_define(
         'DiagnosticSignWarn',
         { text = ' ', texthl = 'DiagnosticSignWarn' }
     )
-    vim.fn.sign_define(
+    fn.sign_define(
         'DiagnosticSignInfo',
         { text = ' ', texthl = 'DiagnosticSignInfo' }
     )
-    vim.fn.sign_define(
+    fn.sign_define(
         'DiagnosticSignHint',
         { text = '', texthl = 'DiagnosticSignHint' }
     )
 end
 
 function M.add_ui()
-    cmd(
-        string.format(
-            'autocmd ColorScheme * highlight NormalFloat guibg=#1f2335'
-        )
-    )
-    cmd(
-        [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
-    )
-
     lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, {
         border = M.border,
     })
@@ -89,7 +83,7 @@ function M.add_ui()
         }
     )
 
-    vim.diagnostic.config({
+    diagnostic.config({
         virtual_text = true,
         signs = true,
         underline = true,
@@ -99,7 +93,7 @@ function M.add_ui()
 
     Highlighter:new():add(diagnosticHighlightGroups):register_highlights()
 
-    vim.cmd([[
+    cmd([[
         sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
         sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
         sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
