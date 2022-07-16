@@ -1,7 +1,6 @@
 local class = require('pl.class')
 local Map = require('pl.Map')
 local List = require('pl.List')
-local Assert = require('nvim.utils.validator.assert')
 
 local Enum = class(Map)
 

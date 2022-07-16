@@ -1,7 +1,6 @@
 local class = require('pl.class')
 local List = require('pl.List')
 local Map = require('pl.Map')
-local Assert = require('nvim.utils.validator.assert')
 local Event = require('nvim.utils.event')
 local EventType = require('nvim.utils.lsp.config.event')
 
@@ -67,8 +66,6 @@ function Config.append_option(self, option, value)
     if not self:get(option) then
         self:set(option, List())
     end
-
-    Assert:is_instance_of(List, self:get(option), nil, 'List')
 
     self:get(option):append(value)
     return self
