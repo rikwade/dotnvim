@@ -1,4 +1,6 @@
-require('telescope').setup({
+local telescope = require('telescope')
+
+telescope.setup({
     defaults = {
         path_display = { 'truncate' },
         file_ignore_patterns = {
@@ -17,4 +19,5 @@ require('telescope').setup({
         },
     },
 })
-require('telescope').load_extension('fzf')
+
+telescope.load_extension('fzf')
