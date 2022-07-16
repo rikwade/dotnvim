@@ -1,11 +1,19 @@
+local alias_to_key_map = {
+    text = 'guifg',
+    fg = 'guifg',
+    bg = 'guibg',
+}
+
 local function map_join(map)
     local list = {}
 
+
     for k, v in pairs(map) do
-        table.insert(list, k .. '=' .. v)
+        local key = alias_to_key_map[k] or k
+        table.insert(list, key .. '=' .. v)
     end
 
-    return table.concat(list, ' ');
+    return table.concat(list, ' ')
 end
 
 local function HighlightGroups(highlights)
