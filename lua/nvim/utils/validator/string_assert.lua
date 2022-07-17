@@ -10,7 +10,15 @@ function M:new(value)
 end
 
 function M:length(len)
-    assert(self.value:len() == len)
+    assert(
+        self.value:len() == len,
+        string.format(
+            'expected the lenght to be %s but actual length is %s',
+            len,
+            self.value:len()
+        )
+    )
+
     return self
 end
 

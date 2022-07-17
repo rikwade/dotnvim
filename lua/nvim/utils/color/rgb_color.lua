@@ -1,5 +1,4 @@
 local Assert = require('nvim.utils.validator.assert')
-local HexColor = require('nvim.utils.color.hex_color')
 
 local M = {}
 
@@ -20,10 +19,11 @@ function M:new(red, green, blue)
 end
 
 function M:to_hex()
-    local red = string.format('%x', self.red)
-    local green = string.format('%x', self.green)
-    local blue = string.format('%x', self.blue)
+    local red = string.format('%02x', self.red)
+    local green = string.format('%02x', self.green)
+    local blue = string.format('%02x', self.blue)
 
+    local HexColor = require('nvim.utils.color.hex_color')
     return HexColor:new(red .. green .. blue)
 end
 

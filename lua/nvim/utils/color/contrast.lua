@@ -41,6 +41,12 @@ function M:set_contrast(amount)
     self.color.red = red
     self.color.green = green
     self.color.blue = blue
+
+    return self
+end
+
+function M:get_hex()
+    return self.color:to_hex()
 end
 
 return M

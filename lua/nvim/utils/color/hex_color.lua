@@ -1,5 +1,4 @@
 local Assert = require('nvim.utils.validator.assert')
-local RGBColor = require('nvim.utils.color.rgb_color')
 
 local M = {}
 
@@ -18,10 +17,12 @@ function M:new(hex_value)
 end
 
 function M:to_rgb()
-    local red = tonumber(self.value:sub(1, 2), 16)
-    local green = tonumber(self.value:sub(3, 4), 16)
-    local blue = tonumber(self.value:sub(5, 6), 16)
+    Log.ins(self)
+    local red = tonumber(self.hex:sub(1, 2), 16)
+    local green = tonumber(self.hex:sub(3, 4), 16)
+    local blue = tonumber(self.hex:sub(5, 6), 16)
 
+    local RGBColor = require('nvim.utils.color.rgb_color')
     return RGBColor:new(red, green, blue)
 end
 
