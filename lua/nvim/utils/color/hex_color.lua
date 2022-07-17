@@ -17,13 +17,16 @@ function M:new(hex_value)
 end
 
 function M:to_rgb()
-    Log.ins(self)
     local red = tonumber(self.hex:sub(1, 2), 16)
     local green = tonumber(self.hex:sub(3, 4), 16)
     local blue = tonumber(self.hex:sub(5, 6), 16)
 
     local RGBColor = require('nvim.utils.color.rgb_color')
     return RGBColor:new(red, green, blue)
+end
+
+function M:to_string()
+    return string.format('#%s', self.hex)
 end
 
 return M

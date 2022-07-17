@@ -30,7 +30,7 @@ function M:less_than_or_equal(num)
     return self
 end
 
-function M:positive(num)
+function M:positive()
     assert(self.value > 0)
     return self
 end

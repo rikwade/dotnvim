@@ -3,6 +3,9 @@ local Event = require('nvim.utils.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+local Contrast = require('nvim.utils.color.contrast')
+local HexColor = require('nvim.utils.color.hex_color')
+local ColorBuilder = require('nvim.utils.color.color_builder')
 
 local theme = ThemeManager.get_theme()
 
@@ -12,6 +15,7 @@ local lsp = v.lsp
 local fn = v.fn
 local diagnostic = v.diagnostic
 local cmd = v.cmd
+local api = v.api
 
 local M = {}
 
@@ -71,7 +75,33 @@ function M.register_diagnostic_signs()
     )
 end
 
+local color_group = api.nvim_create_augroup('FloatHighlight', { clear = true })
+
 function M.add_ui()
+    api.nvim_create_autocmd('ColorScheme', {
+        pattern = { '*' },
+        group = color_group,
+        callback = function()
+            local float_bg = Contrast
+                :new(
+                    ColorBuilder
+                        :new()
+                        :from_highlight('normal', 'background')
+                        :to_hex()
+                )
+                :set_contrast(20)
+                :get_hex()
+                :to_string()
+
+            Highlighter
+                :new()
+                :add(HighlightGroups({
+                    NormalFloat = { bg = float_bg },
+                }))
+                :register_highlights()
+        end,
+    })
+
     lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, {
         border = M.border,
     })
