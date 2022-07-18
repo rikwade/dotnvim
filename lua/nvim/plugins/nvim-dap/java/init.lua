@@ -5,6 +5,7 @@ local ConfEventType = require('nvim.utils.lsp.config.event')
 local JavaDap = require('nvim.utils.dap.java')
 local Notify = require('nvim.utils.notify')
 
+---@diagnostic disable-next-line: undefined-global
 local v = vim
 local fn = v.fn
 local java_dap = JavaDap()
@@ -45,13 +46,9 @@ function M.setup_server_conf(conf)
     local plugins_str = fn.glob(fn.stdpath('data') .. plugins_path)
     local plugins_path_list = v.split(plugins_str, '\n')
 
-    local init_options = conf:get_option('init_options')
+    local init_options = conf:get_option_or_default('init_options', {})
 
-    if not init_options then
-        init_options = {}
-    end
-
-    init_options.bundles = plugins_path_list
+    v.tbl_deep_extend('force', init_options.bundles or {}, plugins_path_list)
 
     conf:set_option('init_options', init_options)
 

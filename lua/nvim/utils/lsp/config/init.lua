@@ -49,6 +49,16 @@ function Config.set_option(self, option, value)
     return self
 end
 
+function Config.get_option_or_default(self, option, default_value)
+    local value = self:get_option(option)
+
+    if not value then
+        return default_value
+    end
+
+    return value
+end
+
 -- Returns the option value
 -- @param { string } option - name of the option to return
 function Config.get_option(self, option)
