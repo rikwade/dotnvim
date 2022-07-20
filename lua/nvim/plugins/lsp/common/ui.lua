@@ -3,7 +3,7 @@ local Event = require('nvim.utils.lsp.event')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
-local Contrast = require('nvim.utils.color.contrast')
+local Brightness = require('nvim.utils.color.brightness')
 local ColorBuilder = require('nvim.utils.color.color_builder')
 
 local theme = ThemeManager.get_theme()
@@ -81,7 +81,7 @@ function M.add_ui()
         pattern = { '*' },
         group = color_group,
         callback = function()
-            local float_bg = Contrast
+            local float_bg = Brightness
                 :new(
                     ColorBuilder
                         :new()
