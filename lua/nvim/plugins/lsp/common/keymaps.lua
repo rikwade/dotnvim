@@ -5,43 +5,8 @@ local ConfEvent = require('nvim.utils.lsp.config.event')
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
-local api = v.api
 local lsp = v.lsp
 local diagnostic = v.diagnostic
-
-local function get_prev_diagnostic()
-    local pos = diagnostic.get_prev_pos()
-
-    if not pos then
-        return
-    end
-
-    local row, col = table.unpack(pos)
-    return { row + 1, col }
-end
-
-local function get_next_diagnostic()
-    local pos = diagnostic.get_next_pos()
-
-    if not pos then
-        return
-    end
-
-    local row, col = table.unpack(pos)
-    return { row + 1, col }
-end
-
-local function move_to_cursor(get_cursor_callback)
-    return function()
-        local cursor = get_cursor_callback()
-
-        if not cursor then
-            return
-        end
-
-        api.nvim_win_set_cursor(0, get_cursor_callback())
-    end
-end
 
 local M = {}
 
@@ -77,10 +42,10 @@ function M.on_attach(_, buffer)
         { '<leader>a', lsp.buf.code_action },
 
         -- jump to next error
-        { ']d', move_to_cursor(get_next_diagnostic) },
+        { ']d', diagnostic.goto_next },
 
         -- jump to previous error
-        { '[d', move_to_cursor(get_prev_diagnostic) },
+        { '[d', diagnostic.goto_prev },
     })
 end
 
