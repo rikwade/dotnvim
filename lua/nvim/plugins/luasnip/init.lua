@@ -1,9 +1,9 @@
-local class = require('pl.class')
 local ls = require('luasnip')
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+local FiletypeEvent = require('nvim.utils.nvim.filetype-event')
 
 local theme = ThemeManager.get_theme()
 
@@ -14,20 +14,24 @@ local highlighter = Highlighter:new():add(HighlightGroups({
 
 highlighter:register_highlights()
 
-local M = class()
+local languages = {
+    'lua',
+}
 
--- M:new creates a snippet manager instance
-function M:_init(language)
-    self.language = language
-end
+local M = {}
 
--- M:add_snippet adds a new snippet
-function M:add_snippet(snippet)
-    ls.add_snippets(self.language, { snippet })
+function M.register_snippets()
+    for _, language in pairs(languages) do
+        FiletypeEvent.on_filetype_open(language, function()
+            require(string.format('nvim.plugins.luasnip.snippets.%s', language)).setup()
+        end)
+    end
 end
 
 -- M.setup initialize basic keymaps
 function M.setup()
+    M.register_snippets()
+
     ls.config.setup({
         updateevents = 'TextChanged,TextChangedI',
     })

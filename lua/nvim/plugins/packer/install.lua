@@ -61,13 +61,14 @@ return require('packer').startup(function()
             'f3fora/cmp-spell',
             'saadparwaiz1/cmp_luasnip',
             -- 'hrsh7th/cmp-emoji',
+            's1n7ax/nvim-ts-utils',
+            's1n7ax/nvim-snips',
 
             -- Other plugins
             {
                 'L3MON4D3/LuaSnip',
                 config = function()
-                    require('nvim.plugins.luasnip.snippet_manager').setup()
-                    require('nvim.plugins.luasnip.snippets').setup()
+                    require('nvim.plugins.luasnip').setup()
                 end,
             },
         },
