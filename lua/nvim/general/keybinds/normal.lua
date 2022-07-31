@@ -1,5 +1,6 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local common = require('nvim.utils.common.module')
+local window = require('nvim.utils.nvim.window')
 
 Shortcut():mode('n'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
@@ -75,7 +76,6 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
     { '<c-l>', '<c-i>' },
 
-
     ----------------------------------------------------------------------
     --                      BUFFER & WINDOW SWITCH                      --
     ----------------------------------------------------------------------
@@ -89,6 +89,17 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
 
     -- open the file under the cursor in the same window
     { 'gF', 'gf' },
+
+    ----------------------------------------------------------------------
+    --                           SPLIT WINDOW                           --
+    ----------------------------------------------------------------------
+    { '<tab>h', window.split_left },
+
+    { '<tab>n', window.split_bottom },
+
+    { '<tab>e', window.split_top },
+
+    { '<tab>i', window.split_right },
 
     ----------------------------------------------------------------------
     --                          CUT COPY PASTE                          --
