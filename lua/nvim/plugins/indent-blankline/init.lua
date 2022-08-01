@@ -5,12 +5,12 @@ local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local Theme = ThemeManager.get_theme()
 
 local group = HighlightGroup({
-    IndentBlanklineIndent1 = { fg = Theme.normal.black },
-    IndentBlanklineIndent2 = { fg = Theme.normal.red },
-    IndentBlanklineIndent3 = { fg = Theme.normal.green },
-    IndentBlanklineIndent4 = { fg = Theme.normal.yellow },
-    IndentBlanklineIndent5 = { fg = Theme.normal.blue },
-    IndentBlanklineIndent6 = { fg = Theme.normal.magenta },
+    IndentBlanklineIndent1 = { fg = Theme.normal.red },
+    IndentBlanklineIndent2 = { fg = Theme.normal.green },
+    IndentBlanklineIndent3 = { fg = Theme.normal.yellow },
+    IndentBlanklineIndent4 = { fg = Theme.normal.blue },
+    IndentBlanklineIndent5 = { fg = Theme.normal.magenta },
+    IndentBlanklineIndent6 = { fg = Theme.normal.cyan },
 })
 
 Highlighter:new():add(group):register_highlights()
