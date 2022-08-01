@@ -39,7 +39,7 @@ end
 function M.setup()
     Lsp.add_listener(LspEventType.SERVER_SETUP, function(ls, conf)
         if ls == 'jdtls' then
-            conf:add_listener(ConfEventType.ATTACH, M.setup_commands)
+            conf:add_listener(ConfEventType.SERVER_READY, M.setup_commands)
         end
     end)
 end
