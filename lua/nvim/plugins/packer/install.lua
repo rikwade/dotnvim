@@ -18,6 +18,7 @@ return require('packer').startup(function()
             'neovim/nvim-lspconfig',
             'onsails/lspkind-nvim',
             'MunifTanjim/nui.nvim',
+            'glepnir/lspsaga.nvim',
         },
         config = function()
             -- lsp config
@@ -25,6 +26,8 @@ return require('packer').startup(function()
             require('nvim.plugins.lsp.common.keymaps').setup()
             require('nvim.plugins.lsp.common.server-start-message').setup()
             require('nvim.plugins.lsp.common.cmp-capability').setup()
+
+            require('nvim.plugins.lspsaga').setup()
 
             -- lsp lang specific config
             require('nvim.plugins.lsp.lua.workspace-config').setup()
@@ -61,17 +64,19 @@ return require('packer').startup(function()
             'f3fora/cmp-spell',
             'saadparwaiz1/cmp_luasnip',
             -- 'hrsh7th/cmp-emoji',
-            's1n7ax/nvim-ts-utils',
-            's1n7ax/nvim-snips',
-
-            -- Other plugins
-            {
-                'L3MON4D3/LuaSnip',
-                config = function()
-                    require('nvim.plugins.luasnip').setup()
-                end,
-            },
+            'L3MON4D3/LuaSnip',
         },
+    })
+
+    use({
+        's1n7ax/nvim-snips',
+        requires = {
+            's1n7ax/nvim-ts-utils',
+            'L3MON4D3/LuaSnip',
+        },
+        config = function()
+            require('nvim.plugins.luasnip').setup()
+        end,
     })
 
     -- null ls
