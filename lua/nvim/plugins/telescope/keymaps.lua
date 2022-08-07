@@ -1,6 +1,5 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local builtin = require('telescope.builtin')
-local finder = require("lspsaga.finder")
 
 local function with_vsplit(func)
     return function()
@@ -44,9 +43,18 @@ Shortcut()
         --                               LSP                                --
         ----------------------------------------------------------------------
         -- browse code implementation
-        { '<leader>s', builtin.lsp_implementations },
+        { '<leader>t', with_vsplit(builtin.lsp_implementations) },
+        { '<leader>T', builtin.lsp_implementations },
 
-        -- -- find diagnostics in the file
+        -- browse code definition
+        { '<leader>s', with_vsplit(builtin.lsp_definitions) },
+        { '<leader>S', builtin.lsp_definitions },
+
+        -- find references of word under the cursor
+        { '<leader>x', with_vsplit(builtin.lsp_references) },
+        { '<leader>X', builtin.lsp_references },
+
+        -- find diagnostics in the file
         { '<leader>c', builtin.diagnostics },
     })
     :mode('i')
