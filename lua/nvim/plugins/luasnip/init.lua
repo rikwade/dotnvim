@@ -3,7 +3,6 @@ local Shortcut = require('nvim.utils.nvim.shortcut')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
-local FiletypeEvent = require('nvim.utils.nvim.filetype-event')
 
 local theme = ThemeManager.get_theme()
 
@@ -16,25 +15,25 @@ highlighter:register_highlights()
 
 local languages = {
     'lua',
+    'javascript',
+    'javascriptreact',
 }
 
 local M = {}
 
 function M.register_snippets()
     for _, language in pairs(languages) do
-        FiletypeEvent.on_filetype_open(language, function()
-            require(string.format('nvim.plugins.luasnip.snippets.%s', language)).setup()
-        end)
+        require(string.format('nvim.plugins.luasnip.snippets.%s', language)).setup()
     end
 end
 
 -- M.setup initialize basic keymaps
 function M.setup()
-    M.register_snippets()
-
     ls.config.setup({
         updateevents = 'TextChanged,TextChangedI',
     })
+
+    M.register_snippets()
 
     Shortcut()
         :mode({ 'i', 's' })
@@ -76,10 +75,10 @@ function M.setup()
         :mode('n')
         :keymap('<leader><leader>s', function()
             require('nvim.utils.common.module').unload_package(
-                'nvim.plugins.luasnip.snippets'
+                'nvim.plugins.luasnip'
             )
 
-            require('nvim.plugins.luasnip.snippets').setup()
+            require('nvim.plugins.luasnip').setup()
         end)
 end
 

@@ -1,20 +1,27 @@
 local ls = require('luasnip')
 local lua = require('snips.lua')
 local s = ls.s
+local i = ls.insert_node
 
 local M = {}
 
 function M.setup()
-    ls.cleanup()
-
     ls.add_snippets('lua', {
-        s('i', lua.import),
-        s('f', lua.func),
-        s('fa', lua.anonymous_func),
-        s('fd', lua.func_with_doc),
-        s('v', lua.variable),
-        s('o', lua.stdout),
-        s('mod', lua.module),
+        s('f', lua.func(), {
+            stored = {
+                name = i(1, 'name'),
+            },
+        }),
+        s('fd', lua.func_with_doc(), {
+            stored = {
+                name = i(1, 'name'),
+            },
+        }),
+        s('fa', lua.anonymous_func()),
+        s('i', lua.import()),
+        s('v', lua.variable()),
+        s('o', lua.stdout()),
+        s('mod', lua.module()),
     })
 end
 
