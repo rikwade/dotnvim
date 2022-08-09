@@ -74,9 +74,13 @@ function M.setup()
         })
         :mode('n')
         :keymap('<leader><leader>s', function()
-            require('nvim.utils.common.module').unload_package(
-                'nvim.plugins.luasnip'
-            )
+            local module = require('nvim.utils.common.module')
+
+            module.unload_package('ts-utils')
+            module.unload_package('snips')
+            module.unload_package('nvim.plugins.luasnip')
+
+            ls.cleanup()
 
             require('nvim.plugins.luasnip').setup()
         end)
