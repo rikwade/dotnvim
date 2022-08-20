@@ -7,21 +7,21 @@ local M = {}
 
 function M.setup()
     ls.add_snippets('lua', {
-        s('f', lua.func(), {
+        s('f', lua.function_choice(), {
             stored = {
                 name = i(1, 'name'),
             },
         }),
-        s('fd', lua.func_with_doc(), {
+        s('fd', lua.func_with_doc_choice(), {
             stored = {
                 name = i(1, 'name'),
             },
         }),
         s('fa', lua.anonymous_func()),
         s('i', lua.import()),
-        s('v', lua.variable()),
+        s('v', lua.variable_choice()),
         s('o', lua.stdout()),
-        s('mod', lua.module()),
+        s('mod', lua.module_choice()),
     })
 end
 

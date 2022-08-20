@@ -9,18 +9,20 @@ local M = {}
 function M.setup()
     local snippets = function()
         return {
-            s('f', js.func(), {
+            s('f', js.function_context(), {
                 stored = {
                     name = i(1, 'name'),
+                    param = i(1),
+                    body = i(1),
                 },
             }),
-            s('o', js.stdout(), {
+            s('o', js.stdout_choice(), {
                 stored = {
                     value = i(1, 'value'),
                 },
             }),
             s('con', js.constructor()),
-            s('cl', js.class()),
+            s('c', js.class()),
         }
     end
 
