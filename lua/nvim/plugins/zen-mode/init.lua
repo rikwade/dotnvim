@@ -24,8 +24,4 @@ require('zen-mode').setup({
 
 Shortcut()
     :mode('n')
-    :options()
-    :noremap()
-    :silent()
-    :next()
     :keymap('.a', ':ZenMode<CR>')
