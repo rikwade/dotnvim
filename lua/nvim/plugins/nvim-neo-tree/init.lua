@@ -2,6 +2,7 @@ local Shortcut = require('nvim.utils.nvim.shortcut')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+local Variable = require('nvim.utils.nvim.variable')
 
 local theme = ThemeManager.get_theme()
 
@@ -25,8 +26,15 @@ local neotree_highlights = HighlightGroups({
 
 Highlighter:new():add(neotree_highlights):register_highlights()
 
-require('neo-tree').setup({
+Variable.g({ { neo_tree_remove_legacy_commands = true } })
 
+require('neo-tree').setup({
+    window = {
+        mappings = {
+            ['[c'] = 'prev_git_modified',
+            [']c'] = 'next_git_modified',
+        },
+    },
     filesystem = {
         window = {
             mappings = {
@@ -81,7 +89,7 @@ require('neo-tree').setup({
     },
 })
 
-Shortcut():options():noremap():next():mode('n'):keymaps({
+Shortcut():mode('n'):keymaps({
     { '\\', '<cmd>NeoTreeFocusToggle<cr>' },
     { ',,', '<cmd>NeoTreeRevealToggle<cr>' },
 })

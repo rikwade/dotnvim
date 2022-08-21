@@ -124,7 +124,7 @@ return require('packer').startup(function()
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        commit = '613fc4f',
+        branch = 'v2.x',
         config = function()
             require('nvim.plugins.nvim-neo-tree')
         end,
