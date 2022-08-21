@@ -16,57 +16,57 @@ function M.on_attach(ls, buffer)
     ----------------------------------------------------------------------
     if ls.name == 'jdtls' then
         nmap:keymaps({
-            { ',tc', JavaDapActions.continue },
+            { ',r', JavaDapActions.continue },
         })
     else
         nmap:keymaps({
-            { ',tc', dap.continue },
+            { ',r', dap.continue },
         })
     end
 
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- close the debug session
-        { ',tS', dap.terminate },
+        { ',R', dap.terminate },
 
         -- start the debug session and continue to next breakpoint
 
         -- run last again
-        { ',tl', dap.run_last },
+        { ',a', dap.run_last },
 
-        { ',tu', dap.step_out },
-        { ',td', dap.step_over },
-        { ',ti', dap.step_into },
+        { ',h', dap.step_out },
+        { ',n', dap.step_over },
+        { ',i', dap.step_into },
 
         -- create and remove a breakpoint
-        { ',tt', dap.toggle_breakpoint },
+        { ',t', dap.toggle_breakpoint },
 
         -- go up in the call stack
-        { ',te', dap.up },
+        { ',f', dap.up },
 
         -- go down in the call stack
-        { ',tn', dap.down },
+        { ',p', dap.down },
 
         -- restart the execution
-        { ',tr', dap.restart },
+        { ',s', dap.restart },
 
         -- inspect node on cursor
-        { ',th', widgets.hover },
+        { ',q', widgets.hover },
 
         -- inspect all scope properties
         {
-            ',ts',
+            ',c',
             function()
                 widgets.centered_float(widgets.scopes).open()
             end,
         },
 
         -- open repl window
-        { ',to', dap.repl.open },
+        { ',w', dap.repl.open },
     })
 
     Shortcut():mode('v'):options():buffer(buffer):next():keymaps({
         -- evaluate selected portion
-        { ',th', widgets.hover },
+        { ',q', widgets.hover },
     })
 end
 
