@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- set the winbar
-
 vim.api.nvim_create_autocmd('BufWinEnter', {
     pattern = '*',
     callback = function()
