@@ -18,10 +18,6 @@ local highlights = HighlightGroup({
 Highlighter:new():add(highlights):register_highlights()
 
 M.eval = function()
-    if vim.bo.filetype == '' then
-        return
-    end
-
     local file_path = vim.api.nvim_eval_statusline('%f', {}).str
     local modified = vim.api.nvim_eval_statusline('%m', {}).str == '[+]'
             and '  ⟴  '

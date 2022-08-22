@@ -27,9 +27,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('BufWinEnter', {
     pattern = '*',
     callback = function()
-        local content = Winbar.eval()
-        if content then
-            vim.wo.winbar = content
+        if vim.bo.filetype == '' then
+            return
         end
+
+        vim.wo.winbar = "%{%v:lua.require'nvim.utils.nvim.winbar'.eval()%}"
     end,
 })
