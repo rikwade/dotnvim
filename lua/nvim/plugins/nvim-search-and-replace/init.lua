@@ -12,14 +12,14 @@ require('nvim-search-and-replace').setup({
     update_changes = false,
 
     -- keymap for search and replace
-    replace_keymap = '.gr',
+    replace_keymap = ',gr',
 
     -- keymap for search and replace ( this does not care about ignored files )
-    replace_all_keymap = '.gR',
+    replace_all_keymap = ',gR',
 
     -- keymap for search and replace
-    replace_and_save_keymap = '.gu',
+    replace_and_save_keymap = ',gu',
 
     -- keymap for search and replace ( this does not care about ignored files )
-    replace_all_and_save_keymap = '.gU',
+    replace_all_and_save_keymap = ',gU',
 })
