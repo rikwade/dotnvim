@@ -259,7 +259,7 @@ return require('packer').startup(function()
     -- full screen mode
     use({
         'folke/zen-mode.nvim',
-        keys = '.a',
+        keys = ',a',
         config = function()
             require('nvim.plugins.zen-mode')
         end,

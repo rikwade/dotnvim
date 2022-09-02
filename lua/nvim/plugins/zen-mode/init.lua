@@ -13,4 +13,4 @@ require('zen-mode').setup({
     end,
 })
 
-Shortcut():mode('n'):keymap('.a', ':ZenMode<CR>')
+Shortcut():mode('n'):keymap(',a', ':ZenMode<CR>')
