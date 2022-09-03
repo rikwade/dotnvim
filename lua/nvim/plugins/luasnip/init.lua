@@ -17,6 +17,7 @@ local languages = {
     'lua',
     'javascript',
     'javascriptreact',
+    'yaml',
 }
 
 local M = {}
