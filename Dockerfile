@@ -16,7 +16,7 @@ RUN pacman -S --needed --noconfirm \
     yarn \
     rustup
     
-RUN rustup install nightly
+RUN rustup install --profile=minimal nightly
 RUN rustup default nightly
 
 RUN yarn global add prettier
