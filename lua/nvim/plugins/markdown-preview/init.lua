@@ -1,8 +1,8 @@
 local Variable = require('nvim.utils.nvim.variable')
 
 Variable.g({
-    mkdp_auto_start = true,
-    mkdp_auto_close = true,
+    mkdp_auto_start = false,
+    mkdp_auto_close = false,
     mkdp_refresh_slow = false,
     mkdp_command_for_global = false,
     mkdp_open_to_the_world = false,
