@@ -99,7 +99,7 @@ Option.g({
     -- add spell diagnostics
     spell = true,
 
-    spelloptions = "camel",
+    spelloptions = 'camel',
 
     ----------------------------------------------------------------------
     --                             EDITING                              --
