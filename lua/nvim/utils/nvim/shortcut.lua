@@ -96,6 +96,13 @@ function Shortcut:__set_keymap(key, action, options)
     options = options and v.tbl_extend('force', self.__options, options)
         or self.__options
 
+    local desc = options.desc or options.description
+    local global_desc = self.__options.desc
+
+    if desc or global_desc then
+        options.desc = (global_desc or '') .. '::' .. (desc or '')
+    end
+
     v.keymap.set(self.__mode, key, action, options)
 end
 
