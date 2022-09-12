@@ -238,6 +238,15 @@ return require('packer').startup(function()
         end,
     })
 
+    -- spreads out the parameters
+    use({
+        'aarondiel/spread.nvim',
+        after = 'nvim-treesitter',
+        config = function()
+            require('nvim.plugins.spread')
+        end,
+    })
+
     ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
