@@ -21,7 +21,11 @@ function M.setup()
         s('i', lua.import()),
         s('v', lua.variable_choice()),
         s('o', lua.stdout()),
-        s('mod', lua.module_choice()),
+        s('mod', lua.module_choice(), {
+            stored = {
+                name = i(1, 'M'),
+            },
+        }),
     })
 end
 
