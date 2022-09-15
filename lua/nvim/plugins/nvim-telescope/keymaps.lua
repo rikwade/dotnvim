@@ -23,9 +23,7 @@ Shortcut()
         --  { '<leader>n', builtin.find_files },
         {
             '<leader>n',
-            function()
-                telescope.extensions.frecency.frecency({ workspace = 'CWD' })
-            end,
+            telescope.extensions.recent_files.pick,
         },
 
         -- find line in current working directory

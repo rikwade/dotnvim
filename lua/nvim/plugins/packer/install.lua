@@ -135,14 +135,10 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
+            'smartpde/telescope-recent-files',
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 run = 'make',
-            },
-
-            {
-                'nvim-telescope/telescope-frecency.nvim',
-                requires = { 'kkharji/sqlite.lua' },
             },
         },
         config = function()
