@@ -323,6 +323,7 @@ return require('packer').startup(function()
         's1n7ax/nvim-window-picker',
         -- tag = 'v1.*',
         config = function()
+            ---@diagnostic disable-next-line: different-requires
             require('nvim.plugins.window-picker')
         end,
     })
@@ -362,17 +363,7 @@ return require('packer').startup(function()
     -- popup menu
     use({ 'meznaric/conmenu' })
 
-    -- spell check diagnostic
-    use({
-        'lewis6991/spellsitter.nvim',
-        requires = {
-            'nvim-treesitter/nvim-treesitter',
-        },
-        config = function()
-            require('spellsitter').setup()
-        end,
-    })
-
+    -- shows a colorized horizontal line based on the scope
     use({
         'lukas-reineke/indent-blankline.nvim',
         config = function()
