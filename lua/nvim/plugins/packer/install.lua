@@ -384,23 +384,23 @@ return require('packer').startup(function()
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
     --[[
-        use { 'ghifarit53/tokyonight-vim' }
-        use { 'yong1le/darkplus.nvim' }
-        use { 'rafamadriz/neon' }
-        use { 'rose-pine/neovim', as = 'rose-pine' }
-        use { 'glepnir/zephyr-nvim' }
-        use { 'navarasu/onedark.nvim' }
-        use {
-            'marko-cerovac/material.nvim',
-            config = function()
-                Variable.g(
-                    {
-                        material_style = 'palenight',
-                    })
-                CMD('colorscheme material')
-            end,
-        }
-        --]]
+    use { 'ghifarit53/tokyonight-vim' }
+    use { 'yong1le/darkplus.nvim' }
+    use { 'rafamadriz/neon' }
+    use { 'rose-pine/neovim', as = 'rose-pine' }
+    use { 'glepnir/zephyr-nvim' }
+    use { 'navarasu/onedark.nvim' }
+    use {
+        'marko-cerovac/material.nvim',
+        config = function()
+            Variable.g(
+                {
+                    material_style = 'palenight',
+                })
+            CMD('colorscheme material')
+        end,
+    }
+    --]]
 
     --[[
     use({
