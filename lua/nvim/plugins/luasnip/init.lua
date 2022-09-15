@@ -74,7 +74,7 @@ function M.setup()
             },
         })
         :mode('n')
-        :keymap('<leader><leader>s', function()
+        :keymap('<leader><leader>tq', function()
             local module = require('nvim.utils.common.module')
 
             module.unload_package('ts-utils')
