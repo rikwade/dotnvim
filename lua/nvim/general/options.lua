@@ -29,7 +29,7 @@ Option.g({
     hlsearch = false,
 
     -- auto code folding when opening new file at level 1
-    foldlevelstart = 4,
+    foldlevelstart = 1,
     -- don't wrap the text when lines can't fit the window
     wrap = false,
 
