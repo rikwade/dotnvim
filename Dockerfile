@@ -14,11 +14,8 @@ RUN pacman -S --needed --noconfirm \
     python-pip \
     npm \
     yarn \
-    rustup
+    rust
     
-RUN rustup install --profile=minimal nightly
-RUN rustup default nightly
-
 RUN yarn global add prettier
 RUN pip install --upgrade autopep8
 RUN cargo install stylua
