@@ -91,17 +91,6 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     { 'gF', 'gf' },
 
     ----------------------------------------------------------------------
-    --                           SPLIT WINDOW                           --
-    ----------------------------------------------------------------------
-    { '<tab>h', window.split_left },
-
-    { '<tab>n', window.split_bottom },
-
-    { '<tab>e', window.split_top },
-
-    { '<tab>i', window.split_right },
-
-    ----------------------------------------------------------------------
     --                          CUT COPY PASTE                          --
     ----------------------------------------------------------------------
     -- copy until the end of the line
