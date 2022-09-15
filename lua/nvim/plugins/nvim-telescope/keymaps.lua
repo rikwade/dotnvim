@@ -1,5 +1,6 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
 local builtin = require('telescope.builtin')
+local telescope = require('telescope')
 
 local function with_vsplit(func)
     return function()
@@ -19,7 +20,13 @@ Shortcut()
         --                          FILES & BUFFER                          --
         ----------------------------------------------------------------------
         -- find a file in current working directory
-        { '<leader>n', builtin.find_files },
+        --  { '<leader>n', builtin.find_files },
+        {
+            '<leader>n',
+            function()
+                telescope.extensions.frecency.frecency({ workspace = 'CWD' })
+            end,
+        },
 
         -- find line in current working directory
         { '<leader>e', builtin.live_grep },

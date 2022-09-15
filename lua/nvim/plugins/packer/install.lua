@@ -139,9 +139,14 @@ return require('packer').startup(function()
                 'nvim-telescope/telescope-fzf-native.nvim',
                 run = 'make',
             },
+
+            {
+                'nvim-telescope/telescope-frecency.nvim',
+                requires = { 'kkharji/sqlite.lua' },
+            },
         },
         config = function()
-            require('nvim.plugins.telescope')
+            require('nvim.plugins.nvim-telescope')
         end,
     })
 
