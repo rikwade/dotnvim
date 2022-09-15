@@ -363,6 +363,14 @@ return require('packer').startup(function()
     -- popup menu
     use({ 'meznaric/conmenu' })
 
+    -- peak the line in the buffer when using jump line type
+    use({
+        'nacro90/numb.nvim',
+        config = function()
+            require('numb').setup()
+        end,
+    })
+
     -- shows a colorized horizontal line based on the scope
     use({
         'lukas-reineke/indent-blankline.nvim',
