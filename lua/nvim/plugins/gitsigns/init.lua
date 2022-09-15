@@ -1,9 +1,9 @@
 require('gitsigns').setup({
-    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    signcolumn = true,
+    numhl = false,
+    linehl = false,
+    word_diff = false,
+    current_line_blame = true,
     current_line_blame_opts = {
         delay = 3000,
     },
@@ -57,6 +57,6 @@ require('gitsigns').setup({
         map('n', '<leader>td', gs.toggle_deleted)
 
         -- Text object
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+        map({ 'o', 'x' }, 'kh', ':<C-U>Gitsigns select_hunk<CR>')
     end,
 })
