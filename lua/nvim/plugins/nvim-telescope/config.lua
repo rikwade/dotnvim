@@ -18,6 +18,11 @@ telescope.setup({
             },
         },
     },
+    extensions = {
+        recent_files = {
+            only_cwd = true,
+        },
+    },
 })
 
 telescope.load_extension('fzf')
