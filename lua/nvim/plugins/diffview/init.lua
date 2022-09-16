@@ -14,10 +14,14 @@ Shortcut()
         {
             '<leader>hD',
             '<cmd>DiffviewFileHistory<cr>',
-            { desc = 'Show diff in the current buffer' },
+            { desc = 'Show diff in the current branch' },
         },
     })
     :mode('v')
     :add_all({
-        { '<leader>hd', ':DiffviewFileHistory<cr>' },
+        {
+            '<leader>hd',
+            ':DiffviewFileHistory<cr>',
+            { desc = 'Show diff for the current selection' },
+        },
     })
