@@ -5,7 +5,7 @@ require('gitsigns').setup({
     word_diff = false,
     current_line_blame = true,
     current_line_blame_opts = {
-        delay = 3000,
+        delay = 1000,
     },
     yadm = {
         enable = false,
@@ -42,19 +42,19 @@ require('gitsigns').setup({
         end, { expr = true })
 
         -- Actions
-        map('n', '<leader>hp', gs.preview_hunk)
+        --  map('n', '<leader>hp', gs.preview_hunk)
         map('n', '<leader>hb', function()
             gs.blame_line({ full = false })
         end)
         map('n', '<leader>hB', function()
             gs.blame_line({ full = true })
         end)
-        map('n', '<leader>tb', gs.toggle_current_line_blame)
-        map('n', '<leader>hd', gs.diffthis)
-        map('n', '<leader>hD', function()
-            gs.diffthis('~')
-        end)
-        map('n', '<leader>td', gs.toggle_deleted)
+        --  map('n', '<leader>tb', gs.toggle_current_line_blame)
+        --  map('n', '<leader>hd', gs.diffthis)
+        --  map('n', '<leader>hD', function()
+            --  gs.diffthis('~')
+        --  end)
+        --  map('n', '<leader>td', gs.toggle_deleted)
 
         -- Text object
         map({ 'o', 'x' }, 'kh', ':<C-U>Gitsigns select_hunk<CR>')

@@ -380,6 +380,14 @@ return require('packer').startup(function()
         end,
     })
 
+    use({
+        'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function ()
+            require('nvim.plugins.diffview')
+        end
+    })
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------

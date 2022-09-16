@@ -73,8 +73,23 @@ function Shortcut:options()
     return Options(self)
 end
 
+function Shortcut:add(keys, action, options)
+    self:__set_keymap(keys, action, options)
+    return self
+end
+
 function Shortcut:keymap(keys, action, options)
     self:__set_keymap(keys, action, options)
+    return self
+end
+
+function Shortcut:add_all(keymaps)
+    assert(v.tbl_islist(keymaps), 'Keymap list should be a list')
+
+    for _, record in ipairs(keymaps) do
+        self:keymap(record[1], record[2], record[3])
+    end
+
     return self
 end
 
