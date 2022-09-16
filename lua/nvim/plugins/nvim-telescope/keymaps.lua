@@ -20,11 +20,7 @@ Shortcut()
         --                          FILES & BUFFER                          --
         ----------------------------------------------------------------------
         -- find a file in current working directory
-        --  { '<leader>n', builtin.find_files },
-        {
-            '<leader>n',
-            telescope.extensions.recent_files.pick,
-        },
+        { '<leader>n', builtin.find_files },
 
         -- find line in current working directory
         { '<leader>e', builtin.live_grep },
