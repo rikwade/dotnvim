@@ -284,10 +284,24 @@ return require('packer').startup(function()
         end,
     })
 
+    --  use({
+    --  'beauwilliams/focus.nvim',
+    --  config = function()
+    --  require('nvim.plugins.nvim-focus')
+    --  end,
+    --  })
+
     use({
-        'beauwilliams/focus.nvim',
+        'anuvyklack/windows.nvim',
+        requires = {
+            'anuvyklack/middleclass',
+            'anuvyklack/animation.nvim',
+        },
         config = function()
-            require('nvim.plugins.nvim-focus')
+            vim.o.winwidth = 50
+            vim.o.winminwidth = 2
+            vim.o.equalalways = false
+            require('windows').setup()
         end,
     })
 
@@ -382,9 +396,9 @@ return require('packer').startup(function()
     use({
         'sindrets/diffview.nvim',
         requires = 'nvim-lua/plenary.nvim',
-        config = function ()
+        config = function()
             require('nvim.plugins.diffview')
-        end
+        end,
     })
 
     ----------------------------------------------------------------------
