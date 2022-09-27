@@ -2,8 +2,7 @@ local Lsp = require('nvim.utils.lsp')
 
 local M = {}
 
-
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level('debug')
 
 local servers = {
     'bashls',
@@ -23,7 +22,6 @@ local servers = {
     'clangd',
     'emmet_ls',
 }
-
 
 function M.setup()
     Lsp.setup(servers)

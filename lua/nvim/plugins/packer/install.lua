@@ -12,9 +12,10 @@ return require('packer').startup(function()
 
     -- lsp
     use({
-        'williamboman/nvim-lsp-installer',
+        'williamboman/mason-lspconfig.nvim',
         rocks = { 'promise-lua' },
         requires = {
+            'williamboman/mason.nvim',
             'neovim/nvim-lspconfig',
             'onsails/lspkind-nvim',
             'MunifTanjim/nui.nvim',
@@ -38,7 +39,7 @@ return require('packer').startup(function()
             require('nvim.plugins.nvim-dap.java.command').setup()
 
             -- setup LSes
-            require('nvim.plugins.nvim-lsp-install').setup()
+            require('nvim.plugins.mason-lspconfig').setup()
             require('nvim.plugins.lsp').setup()
         end,
     })
