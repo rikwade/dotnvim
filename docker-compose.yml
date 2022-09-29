@@ -1,0 +1,5 @@
+version: "3.9"
+services:
+  neovim:
+    build: .
+    image: s1n7ax/neovim:1.1
