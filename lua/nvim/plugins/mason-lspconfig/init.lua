@@ -6,8 +6,8 @@ local M = {}
 function M.setup()
     mason.setup()
     mason_lspconfig.setup({
-        ensure_installed = { 'jdtls@1.12.0-202206011637' },
-        automatic_installation = { exclude = { 'jdtls' } },
+        automatic_installation = true,
+
         ui = {
             icons = {
                 server_installed = '✓',
