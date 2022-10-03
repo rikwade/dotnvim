@@ -1,6 +1,8 @@
 local Option = require('nvim.utils.nvim.option')
 
 require('nvim-treesitter.configs').setup({
+    auto_install = true,
+
     highlight = {
         enable = true,
     },
