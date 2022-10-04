@@ -56,6 +56,7 @@ return require('packer').startup(function()
     -- completion menu
     use({
         'hrsh7th/nvim-cmp',
+        afetr = 'mason-lspconfig.nvim',
         config = function()
             require('nvim.plugins.nvim-cmp')
         end,
@@ -87,6 +88,7 @@ return require('packer').startup(function()
     -- null ls
     use({
         'jose-elias-alvarez/null-ls.nvim',
+        after = 'mason-lspconfig.nvim',
         config = function()
             require('nvim.plugins.null-ls')
         end,
