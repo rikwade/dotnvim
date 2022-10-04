@@ -1,8 +1,5 @@
 local dap = require('dap')
 local Shortcut = require('nvim.utils.nvim.shortcut')
-local Lsp = require('nvim.utils.lsp')
-local Event = require('nvim.utils.lsp.event')
-local ConfEvent = require('nvim.utils.lsp.config.event')
 local widgets = require('dap.ui.widgets')
 local JavaDapActions = require('nvim.plugins.nvim-dap.java.dap-actions')
 
@@ -71,9 +68,15 @@ function M.on_attach(ls, buffer)
 end
 
 function M.setup()
-    Lsp.add_listener(Event.SERVER_SETUP, function(_, conf)
-        conf:add_listener(ConfEvent.ATTACH, M.on_attach)
-    end)
+    vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(arg)
+            local buffer = arg.buf
+            local server_name =
+                vim.lsp.get_client_by_id(arg.data.client_id).name
+
+            M.on_attach(server_name, buffer)
+        end,
+    })
 end
 
 return M
