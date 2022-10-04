@@ -1,6 +1,3 @@
-local Lsp = require('nvim.utils.lsp')
-local LspEvent = require('nvim.utils.lsp.event')
-local ConfEvent = require('nvim.utils.lsp.config.event')
 local Notify = require('nvim.utils.notify')
 
 local notify = Notify({

@@ -24,14 +24,14 @@ function M.setup_rust_tools()
             on_attach = function(_, buffer)
                 vim.keymap.set(
                     'n',
-                    '<C-space>',
+                    '<leader>v',
                     ':RustHoverAction<cr>',
                     { buffer = buffer }
                 )
                 -- Code action groups
                 vim.keymap.set(
                     'n',
-                    '<Leader>a',
+                    '<leader>a',
                     rt.code_action_group.code_action_group,
                     { buffer = buffer }
                 )
