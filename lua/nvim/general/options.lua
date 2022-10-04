@@ -10,7 +10,7 @@ Option.g({
     -- character
     startofline = true,
 
-    mousescroll = "ver:1,hor:1",
+    mousescroll = 'ver:1,hor:1',
 
     ----------------------------------------------------------------------
     --                              EDITOR                              --
@@ -31,6 +31,7 @@ Option.g({
     hlsearch = false,
 
     -- auto code folding when opening new file at level 1
+    foldlevel = 100,
     foldlevelstart = -1,
     -- don't wrap the text when lines can't fit the window
     wrap = false,
