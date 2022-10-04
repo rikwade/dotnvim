@@ -413,6 +413,12 @@ return require('packer').startup(function()
         end,
     })
 
+    use({
+        'folke/which-key.nvim',
+        config = function()
+            require('nvim.plugins.which-key')
+        end,
+    })
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------

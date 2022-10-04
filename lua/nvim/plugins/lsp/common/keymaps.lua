@@ -1,48 +1,34 @@
-local Shortcut = require('nvim.utils.nvim.shortcut')
+local wk = require('which-key')
 
----@diagnostic disable-next-line: undefined-global
-local v = vim
-local lsp = v.lsp
-local diagnostic = v.diagnostic
+local lsp = vim.lsp
+local diagnostic = vim.diagnostic
 
 local M = {}
 
 function M.on_attach(buffer)
-    Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
-        -- rename file name
-        { '<leader>r', lsp.buf.rename },
-
-        -- format the code
-        {
-            '<leader>p',
-            function()
-                lsp.buf.format({ async = true })
-            end,
+    wk.register({
+        ['<leader>'] = {
+            t = {
+                name = 'LSP',
+                t = { diagnostic.open_float, 'Show line diagnostic' },
+                r = { lsp.buf.rename, 'Rename' },
+                e = {
+                    function()
+                        lsp.buf.format({ async = true })
+                    end,
+                    'Code Format',
+                },
+                a = { lsp.buf.code_action, 'Open code actions' },
+                i = { lsp.buf.hover, 'Hover action' },
+                o = { lsp.buf.type_definition, 'Type definition' },
+                m = { lsp.buf.declaration, 'Declaration' },
+                h = { lsp.buf.signature_help, 'Signature help' },
+            },
         },
-
-        -- show more information about the current node
-        { '<leader>v', lsp.buf.hover },
-
-        -- show diagnostics for current line
-        { '<leader>d', diagnostic.open_float },
-
-        -- @todo find out what this is
-        { '<leader>f', lsp.buf.declaration },
-
-        -- @todo find out what this is
-        { '<leader>w', lsp.buf.signature_help },
-
-        -- @todo find out what this is
-        { '<leader>q', lsp.buf.type_definition },
-
-        -- list code actions
-        { '<leader>a', lsp.buf.code_action },
-
-        -- jump to next error
-        { ']d', diagnostic.goto_next },
-
-        -- jump to previous error
-        { '[d', diagnostic.goto_prev },
+        [']d'] = { diagnostic.goto_next, 'Go to next diagnostic' },
+        ['[d'] = { diagnostic.goto_prev, 'Go to prev diagnostic' },
+    }, {
+        buffer = buffer,
     })
 end
 

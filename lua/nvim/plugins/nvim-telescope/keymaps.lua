@@ -1,8 +1,7 @@
-local Shortcut = require('nvim.utils.nvim.shortcut')
 local builtin = require('telescope.builtin')
-local telescope = require('telescope')
+local wk = require('which-key')
 
-local function with_vsplit(func)
+local function vsp(func)
     return function()
         func({
             jump_type = 'vsplit',
@@ -10,59 +9,51 @@ local function with_vsplit(func)
     end
 end
 
-Shortcut()
-    :mode('n')
-    :options()
-    :noremap()
-    :next()
-    :keymaps({
-        ----------------------------------------------------------------------
-        --                          FILES & BUFFER                          --
-        ----------------------------------------------------------------------
-        -- find a file in current working directory
-        { '<leader>n', builtin.find_files },
+wk.register({
+    n = {
+        name = 'Finder',
+        n = { builtin.grep_string, 'Find word under cursor' },
+        e = { builtin.find_files, 'Find files' },
+        t = { builtin.live_grep, 'Find text' },
+        i = { builtin.buffers, 'Find buffers' },
+        s = { builtin.current_buffer_fuzzy_find, 'Find line' },
+        o = { builtin.resume, 'Find last search' },
+    },
+}, { prefix = '<leader>' })
 
-        -- find line in current working directory
-        { '<leader>e', builtin.live_grep },
+wk.register({
+    ['<c-r>'] = { builtin.registers, 'Show registers' },
+}, {
+    mode = 'i',
+})
 
-        -- find buffer
-        { '<leader>i', builtin.buffers },
-
-        -- find line in current buffer
-        { '<leader>o', builtin.current_buffer_fuzzy_find },
-
-        -- find word under the cursor in current buffer
-        { '<leader>*', builtin.grep_string },
-
-        -- find help index
-        { '<leader>m', builtin.help_tags },
-
-        -- resumes the previous search
-        { '<leader>k', builtin.resume },
-
-        ----------------------------------------------------------------------
-        --                               LSP                                --
-        ----------------------------------------------------------------------
-        -- browse code implementation
-        { '<leader>t', with_vsplit(builtin.lsp_implementations) },
-        { '<leader>T', builtin.lsp_implementations },
-
-        -- browse code definition
-        { '<leader>s', with_vsplit(builtin.lsp_definitions) },
-        { '<leader>S', builtin.lsp_definitions },
-
-        -- find references of word under the cursor
-        { '<leader>x', with_vsplit(builtin.lsp_references) },
-        { '<leader>X', builtin.lsp_references },
-
-        -- find diagnostics in the file
-        { '<leader>c', builtin.diagnostics },
+local reg_lsp_keymaps = function(buffer)
+    wk.register({
+        ['<leader>'] = {
+            t = {
+                name = 'LSP',
+                s = {
+                    vsp(builtin.lsp_implementations),
+                    'Go to implementation (split)',
+                },
+                S = { builtin.lsp_implementations, 'Go to implementation' },
+                n = {
+                    vsp(builtin.lsp_definitions),
+                    'Go to definition (split)',
+                },
+                N = { builtin.lsp_definitions, 'Go to definition' },
+                c = { builtin.diagnostics, 'Show all diagnostics' },
+            },
+        },
+    }, {
+        buffer = buffer,
     })
-    :mode('i')
-    :options()
-    :noremap()
-    :next()
-    :keymaps({
-        -- find register by containing value
-        { '<c-r>', builtin.registers },
-    })
+end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(arg)
+        local buffer = arg.buf
+        reg_lsp_keymaps(buffer)
+    end,
+    group = vim.api.nvim_create_augroup('Telescope lsp keymaps', {}),
+})
