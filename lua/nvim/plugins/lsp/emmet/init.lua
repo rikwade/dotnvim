@@ -6,7 +6,10 @@ local M = {}
 function M.setup()
     Lsp.add_listener(LspEventType.SERVER_SETUP, function(ls, conf)
         if ls == 'emmet_ls' then
-            conf:append_option('filetypes', 'rust')
+            conf:set_option(
+                'filetypes',
+                { 'html', 'javascriptreact', 'typescriptreact' }
+            )
         end
     end)
 end

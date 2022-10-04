@@ -12,16 +12,17 @@ local M = {}
 --- Showing notification on server ready
 --
 -- @param { string } lang - name of the language
-function M.lsp_setup_message(lang)
-    return function()
-        notify:success('Language server:' .. lang .. ' is ready!')
-    end
+local function show_message(lang)
+    notify:success('Language server: ' .. lang .. ' is ready!')
 end
 
 function M.setup()
-    Lsp.add_listener(LspEvent.SERVER_SETUP, function(ls, conf)
-        conf:add_listener(ConfEvent.SERVER_READY, M.lsp_setup_message(ls))
-    end)
+    vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(arg)
+            show_message(vim.lsp.get_client_by_id(arg.data.client_id).name)
+        end,
+        group = vim.api.nvim_create_augroup('Lsp Notify', {}),
+    })
 end
 
 return M

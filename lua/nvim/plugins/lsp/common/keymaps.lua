@@ -1,7 +1,4 @@
 local Shortcut = require('nvim.utils.nvim.shortcut')
-local Lsp = require('nvim.utils.lsp')
-local Event = require('nvim.utils.lsp.event')
-local ConfEvent = require('nvim.utils.lsp.config.event')
 
 ---@diagnostic disable-next-line: undefined-global
 local v = vim
@@ -10,7 +7,7 @@ local diagnostic = v.diagnostic
 
 local M = {}
 
-function M.on_attach(_, buffer)
+function M.on_attach(buffer)
     Shortcut():mode('n'):options():buffer(buffer):noremap():next():keymaps({
         -- rename file name
         { '<leader>r', lsp.buf.rename },
@@ -50,10 +47,14 @@ function M.on_attach(_, buffer)
 end
 
 function M.setup()
-    Lsp.add_listener(Event.SERVER_SETUP, function(_, conf)
-        conf:add_listener(ConfEvent.ATTACH, M.on_attach)
-        return conf
-    end)
+    vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+            local buffer = args.buf
+            M.on_attach(buffer)
+        end,
+
+        group = vim.api.nvim_create_augroup('LSP Keymaps', {}),
+    })
 end
 
 return M

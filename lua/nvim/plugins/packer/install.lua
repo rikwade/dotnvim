@@ -19,6 +19,14 @@ return require('packer').startup(function()
             'neovim/nvim-lspconfig',
             'onsails/lspkind-nvim',
             'MunifTanjim/nui.nvim',
+            {
+                'simrat39/rust-tools.nvim',
+                requires = {
+                    'neovim/nvim-lspconfig',
+                    'nvim-lua/plenary.nvim',
+                    'mfussenegger/nvim-dap',
+                },
+            },
         },
         config = function()
             -- lsp config
@@ -31,6 +39,7 @@ return require('packer').startup(function()
             require('nvim.plugins.lsp.lua.workspace-config').setup()
             require('nvim.plugins.lsp.emmet').setup()
             require('nvim.plugins.lsp.java').setup()
+            require('nvim.plugins.lsp.rust.rust_tools').setup()
 
             -- dap config
             require('nvim.plugins.nvim-dap.ui').setup()
