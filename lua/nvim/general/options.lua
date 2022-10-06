@@ -30,9 +30,12 @@ Option.g({
     -- remove highlighting after search is done
     hlsearch = false,
 
-    -- auto code folding when opening new file at level 1
-    foldlevel = 100,
-    foldlevelstart = -1,
+    -- code folding
+    foldenable = true,
+    foldcolumn = '1',
+    foldlevel = 99,
+    foldlevelstart = 99,
+
     -- don't wrap the text when lines can't fit the window
     wrap = false,
 
