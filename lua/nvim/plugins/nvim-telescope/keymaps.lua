@@ -10,16 +10,14 @@ local function vsp(func)
 end
 
 wk.register({
-    n = {
-        name = 'Finder',
-        n = { builtin.grep_string, 'Find word under cursor' },
-        e = { builtin.find_files, 'Find files' },
-        t = { builtin.live_grep, 'Find text' },
-        i = { builtin.buffers, 'Find buffers' },
-        s = { builtin.current_buffer_fuzzy_find, 'Find line' },
-        o = { builtin.resume, 'Find last search' },
-    },
-}, { prefix = '<leader>' })
+    name = 'Finder',
+    n = { builtin.grep_string, 'Find word under cursor' },
+    e = { builtin.find_files, 'Find files' },
+    t = { builtin.live_grep, 'Find text' },
+    i = { builtin.buffers, 'Find buffers' },
+    s = { builtin.current_buffer_fuzzy_find, 'Find line' },
+    o = { builtin.resume, 'Find last search' },
+}, { prefix = '<leader>n' })
 
 wk.register({
     ['<c-r>'] = { builtin.registers, 'Show registers' },
@@ -29,8 +27,6 @@ wk.register({
 
 local reg_lsp_keymaps = function(buffer)
     wk.register({
-        ['<leader>'] = {
-            t = {
                 name = 'LSP',
                 s = {
                     vsp(builtin.lsp_implementations),
@@ -43,10 +39,9 @@ local reg_lsp_keymaps = function(buffer)
                 },
                 N = { builtin.lsp_definitions, 'Go to definition' },
                 c = { builtin.diagnostics, 'Show all diagnostics' },
-            },
-        },
     }, {
         buffer = buffer,
+        prefix = '<leader>t'
     })
 end
 
