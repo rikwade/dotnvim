@@ -416,7 +416,7 @@ return require('packer').startup(function()
     use({
         'folke/which-key.nvim',
         config = function()
-            require('nvim.plugins.which-key')
+            require('nvim.plugins.which-key-nvim')
         end,
     })
 
