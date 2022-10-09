@@ -455,12 +455,14 @@ return require('packer').startup(function()
     }
     --]]
 
+    --[[
     use({
         'rmehri01/onenord.nvim',
         config = function()
             require('onenord').setup()
         end,
     })
+    --]]
 
     --[[
     use({
@@ -473,20 +475,15 @@ return require('packer').startup(function()
     })
     --]]
 
-    --[[
-    use {
+    use({
         'catppuccin/nvim',
         as = 'catppuccin',
         config = function()
+            vim.g.catppuccin_flavour = 'mocha'
+            require('catppuccin').setup()
             vim.cmd('colorscheme catppuccin')
-            require('lualine').setup {
-                options = {
-                    theme = 'catppuccin',
-                },
-            }
         end,
-    }
-    --]]
+    })
 
     --[[
     use({
