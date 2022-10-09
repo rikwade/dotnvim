@@ -3,6 +3,7 @@ local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
 local Variable = require('nvim.utils.nvim.variable')
+local wk = require('which-key')
 
 local theme = ThemeManager.get_theme()
 
@@ -89,7 +90,6 @@ require('neo-tree').setup({
     },
 })
 
-Shortcut():mode('n'):keymaps({
-    { '\\', '<cmd>NeoTreeFocusToggle<cr>' },
-    { ',,', '<cmd>NeoTreeRevealToggle<cr>' },
+wk.register({
+    [',,'] = { '<cmd>NeoTreeRevealToggle<cr>', 'Toggle open current file in file tree' }
 })
