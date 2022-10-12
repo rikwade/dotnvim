@@ -11,21 +11,22 @@ null_ls.setup({
         formatting.stylua,
         formatting.autopep8,
         formatting.taplo,
+        formatting.shfmt,
 
         -- diagnostics
         -- diagnostics.cspell.with({
-            -- filetypes = {
-                -- 'lua',
-                -- 'rust',
-                -- 'javascript',
-                -- 'typescript',
-                -- 'reactjavascript',
-                -- 'reacttypescript',
-                -- 'python',
-            -- },
-            -- method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-            -- fallback_severity = vim.diagnostic.severity.HINT,
-            -- severity = vim.diagnostic.severity.HINT,
+        -- filetypes = {
+        -- 'lua',
+        -- 'rust',
+        -- 'javascript',
+        -- 'typescript',
+        -- 'reactjavascript',
+        -- 'reacttypescript',
+        -- 'python',
+        -- },
+        -- method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        -- fallback_severity = vim.diagnostic.severity.HINT,
+        -- severity = vim.diagnostic.severity.HINT,
         -- }),
     },
 })
