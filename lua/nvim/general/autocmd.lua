@@ -41,15 +41,15 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 })
 
 -- format on save
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*',
-    callback = function()
-        local buffer = vim.api.nvim_get_current_buf()
+--  vim.api.nvim_create_autocmd('BufWritePost', {
+    --  pattern = '*',
+    --  callback = function()
+        --  local buffer = vim.api.nvim_get_current_buf()
 
-        for _, client in ipairs(vim.lsp.get_active_clients()) do
-            if client.attached_buffers[buffer] then
-                vim.lsp.buf.format()
-            end
-        end
-    end,
-})
+        --  for _, client in ipairs(vim.lsp.get_active_clients()) do
+            --  if client.attached_buffers[buffer] then
+                --  vim.lsp.buf.format()
+            --  end
+        --  end
+    --  end,
+--  })
