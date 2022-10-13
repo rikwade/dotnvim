@@ -352,7 +352,7 @@ return require('packer').startup(function()
     -- lib to pick window from currently opened windows
     use({
         's1n7ax/nvim-window-picker',
-        -- tag = 'v1.*',
+        tag = 'v1.*',
         config = function()
             ---@diagnostic disable-next-line: different-requires
             require('nvim.plugins.window-picker')
