@@ -14,9 +14,17 @@ local function show_message(lang)
 end
 
 function M.setup()
+    local notified = {}
+
     vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(arg)
-            show_message(vim.lsp.get_client_by_id(arg.data.client_id).name)
+            local name = vim.lsp.get_client_by_id(arg.data.client_id).name
+
+            if not notified[name] then
+                show_message(name)
+            end
+
+            notified[name] = true
         end,
         group = vim.api.nvim_create_augroup('Lsp Notify', {}),
     })
