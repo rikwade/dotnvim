@@ -26,6 +26,7 @@ RUN yarn global add prettier
 RUN pip install --upgrade autopep8
 RUN cargo install stylua
 RUN cargo install taplo-cli
+RUN cargo install silicon
 
 
 #--------------------------------------------------------------------#

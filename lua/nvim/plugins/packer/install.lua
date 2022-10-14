@@ -32,7 +32,7 @@ return require('packer').startup(function()
             -- lsp config
             require('nvim.plugins.lsp.common.ui').setup()
             require('nvim.plugins.lsp.common.keymaps').setup()
-            require('nvim.plugins.lsp.common.server-start-message').setup()
+            require('nvim.plugins.lsp.common.server-start-notification').setup()
             require('nvim.plugins.lsp.common.cmp-capability').setup()
 
             -- lsp lang specific config
@@ -269,7 +269,7 @@ return require('packer').startup(function()
     use({
         'karb94/neoscroll.nvim',
         config = function()
-            require('neoscroll').setup()
+            require('nvim.plugins.neoscroll')
         end,
     })
 
@@ -352,7 +352,7 @@ return require('packer').startup(function()
     -- lib to pick window from currently opened windows
     use({
         's1n7ax/nvim-window-picker',
-        -- tag = 'v1.*',
+        tag = 'v1.*',
         config = function()
             ---@diagnostic disable-next-line: different-requires
             require('nvim.plugins.window-picker')
