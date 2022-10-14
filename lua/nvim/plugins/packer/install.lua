@@ -32,7 +32,7 @@ return require('packer').startup(function()
             -- lsp config
             require('nvim.plugins.lsp.common.ui').setup()
             require('nvim.plugins.lsp.common.keymaps').setup()
-            require('nvim.plugins.lsp.common.server-start-message').setup()
+            require('nvim.plugins.lsp.common.server-start-notification').setup()
             require('nvim.plugins.lsp.common.cmp-capability').setup()
 
             -- lsp lang specific config
