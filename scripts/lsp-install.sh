@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+set -euxo pipefail
+
 #--------------------------------------------------------------------#
 #                             How to use                             #
 #--------------------------------------------------------------------#
@@ -70,7 +72,10 @@ sub_install_java_debug() {
 
 	cd "$download_dir/java-debug-$version"
 	chmod u+x ./mvnw
-	mvn clean install -Dmaven.artifact.threads=10 > /dev/null
+	./mvnw clean install -Dmaven.artifact.threads=10 > /dev/null
+
+	echo "removing existing files"
+	rm -rf "$JAVA_LSP_ADDITION_DIR/com.microsoft.java.debug.plugin"*.jar || true
 
 	echo "moving java-debug build files"
 	/bin/cp -f com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar "$JAVA_LSP_ADDITION_DIR"
@@ -88,6 +93,13 @@ sub_install_java_test() {
 
 	yarn > /dev/null
 	yarn build-plugin > /dev/null
+
+	echo "removing existing files"
+	rm -rf "$JAVA_LSP_ADDITION_DIR/com.microsoft.java.test"*.jar || true
+	rm -rf "$JAVA_LSP_ADDITION_DIR/org.apiguardian"*.jar || true
+	rm -rf "$JAVA_LSP_ADDITION_DIR/org.eclipse.jdt.junit"*.jar || true
+	rm -rf "$JAVA_LSP_ADDITION_DIR/org.junit"*.jar || true
+	rm -rf "$JAVA_LSP_ADDITION_DIR/org.opentest"*.jar || true
 
 	echo "moving java-test build files"
 	/bin/cp -f server/*.jar "$JAVA_LSP_ADDITION_DIR"
