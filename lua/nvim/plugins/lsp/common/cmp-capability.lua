@@ -5,7 +5,7 @@ local M = {}
 
 function M.setup()
     Lsp.add_listener(LspEventType.SERVER_SETUP, function(_, conf)
-        local capabilities = require('cmp_nvim_lsp').update_capabilities(
+        local capabilities = require('cmp_nvim_lsp').default_capabilities(
             vim.lsp.protocol.make_client_capabilities()
         )
 
