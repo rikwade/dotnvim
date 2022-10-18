@@ -7,30 +7,30 @@ local M = {}
 
 function M.on_attach(buffer)
     wk.register({
-                name = 'LSP',
-                t = { diagnostic.open_float, 'Show line diagnostic' },
-                r = { lsp.buf.rename, 'Rename' },
-                e = {
-                    function()
-                        lsp.buf.format({ async = true })
-                    end,
-                    'Code Format',
-                },
-                a = { lsp.buf.code_action, 'Open code actions' },
-                i = { lsp.buf.hover, 'Hover action' },
-                o = { lsp.buf.type_definition, 'Type definition' },
-                m = { lsp.buf.declaration, 'Declaration' },
-                h = { lsp.buf.signature_help, 'Signature help' },
+        name = 'LSP',
+        t = { diagnostic.open_float, 'Show line diagnostic' },
+        r = { lsp.buf.rename, 'Rename' },
+        e = {
+            function()
+                lsp.buf.format({ async = true })
+            end,
+            'Code Format',
+        },
+        a = { lsp.buf.code_action, 'Open code actions' },
+        i = { lsp.buf.hover, 'Hover action' },
+        o = { lsp.buf.type_definition, 'Type definition' },
+        m = { lsp.buf.declaration, 'Declaration' },
+        h = { lsp.buf.signature_help, 'Signature help' },
     }, {
         buffer = buffer,
-        prefix = '<leader>t'
+        prefix = '<leader>t',
     })
 
     wk.register({
         [']d'] = { diagnostic.goto_next, 'Go to next diagnostic' },
         ['[d'] = { diagnostic.goto_prev, 'Go to prev diagnostic' },
     }, {
-        buffer =  buffer
+        buffer = buffer,
     })
 end
 
