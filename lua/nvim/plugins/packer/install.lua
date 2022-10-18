@@ -259,6 +259,12 @@ return require('packer').startup(function()
         end,
     })
 
+    use({
+        'monaqa/dial.nvim',
+        config = function()
+            require('nvim.plugins.dial')
+        end,
+    })
 
     use({
         'abecodes/tabout.nvim',
