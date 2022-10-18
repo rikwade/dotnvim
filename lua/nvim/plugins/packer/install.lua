@@ -526,4 +526,13 @@ return require('packer').startup(function()
 
     -- startup time tracker
     use({ 'dstein64/vim-startuptime' })
+
+    -- typing test
+    use({
+        'nagy135/typebreak.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('nvim.plugins.typebreak')
+        end,
+    })
 end)
