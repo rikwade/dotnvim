@@ -22,7 +22,7 @@ RUN pacman -S --needed --noconfirm \
     zsh
 
 
-RUN yarn global add prettier
+RUN yarn global add prettierd
 RUN pip install --upgrade autopep8
 RUN cargo install stylua
 RUN cargo install taplo-cli
