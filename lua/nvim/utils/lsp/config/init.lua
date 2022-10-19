@@ -50,7 +50,13 @@ function Config.set_option(self, option, value)
 end
 
 function Config.get_option_or_default(self, option, default_value)
-    return self:get_option(option) or default_value
+    local option_value = self:get_option(option)
+
+    if not option_value then
+        self:set_option(option, default_value)
+    end
+
+    return self:get_option(option)
 end
 
 -- Returns the option value

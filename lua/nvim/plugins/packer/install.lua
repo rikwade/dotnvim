@@ -40,6 +40,7 @@ return require('packer').startup(function()
             require('nvim.plugins.lsp.emmet').setup()
             require('nvim.plugins.lsp.java').setup()
             require('nvim.plugins.lsp.rust.rust_tools').setup()
+            require('nvim.plugins.lsp.tsserver').setup()
 
             -- dap config
             require('nvim.plugins.nvim-dap.ui').setup()
