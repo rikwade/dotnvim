@@ -65,7 +65,7 @@ npairs.add_rules({
     ):use_regex(true):set_end_pair_length(1),
 
     -- Auto add space on =
-    Rule('=', '')
+    Rule('=', '', { '-sh' })
         :with_pair(cond.not_inside_quote())
         :with_pair(function(opts)
             if vim.o.filetype == 'rust' then
