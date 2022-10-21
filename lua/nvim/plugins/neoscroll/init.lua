@@ -6,4 +6,5 @@ require('neoscroll').setup({
         'zz',
         'zb',
     },
+    time_scale = 0.5,
 })

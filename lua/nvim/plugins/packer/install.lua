@@ -285,7 +285,8 @@ return require('packer').startup(function()
 
     -- smooth scrolling
     use({
-        'karb94/neoscroll.nvim',
+        'tobdob/neoscroll.nvim',
+        branch = 'time-scale',
         config = function()
             require('nvim.plugins.neoscroll')
         end,
