@@ -59,8 +59,6 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     { 'k', 'nzz' },
     { 'K', 'Nzz' },
 
-    -- jump to next matching char in the same line
-    { '<leader>;', ';' },
 
     ----------------------------------------------------------------------
     --                        BUFFER READ WRITE                         --
