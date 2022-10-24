@@ -4,25 +4,6 @@ local window = require('nvim.utils.nvim.window')
 
 Shortcut():mode('n'):options():noremap():next():keymaps({
     ----------------------------------------------------------------------
-    --                          vim arrow keys                          --
-    ----------------------------------------------------------------------
-    { 'n', 'j' },
-
-    { 'e', 'k' },
-
-    { 'i', 'l' },
-
-    { 'l', 'e' },
-
-    { 'k', 'n' },
-
-    { 'j', 'i' },
-
-    { 'm', 'h' },
-
-    { 'h', 'm' },
-
-    ----------------------------------------------------------------------
     --                              CONFIG                              --
     ----------------------------------------------------------------------
     -- reload nvim configuration file
@@ -37,7 +18,7 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     --                           CURSOR MOVE                            --
     ----------------------------------------------------------------------
     -- move cursor to left window
-    { '<c-h>', '<c-w>h' },
+    { '<c-m>', '<c-w>h' },
 
     -- move cursor to right window
     { '<c-i>', '<c-w>l' },
