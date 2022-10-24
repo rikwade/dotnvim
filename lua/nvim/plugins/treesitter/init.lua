@@ -3,6 +3,8 @@ local Option = require('nvim.utils.nvim.option')
 require('nvim-treesitter.configs').setup({
     auto_install = true,
 
+    ensure_installed = { 'regex', 'java', 'rust' },
+
     highlight = {
         enable = true,
     },

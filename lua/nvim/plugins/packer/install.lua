@@ -452,6 +452,22 @@ return require('packer').startup(function()
         end,
     })
 
+    use({
+        'folke/noice.nvim',
+        event = 'VimEnter',
+        config = function()
+            require('noice').setup()
+        end,
+        requires = {
+            'MunifTanjim/nui.nvim',
+            'rcarriga/nvim-notify',
+        },
+    })
+
+    ----------------------------------------------------------------------
+    --                            END EDITOR                            --
+    ----------------------------------------------------------------------
+
     ----------------------------------------------------------------------
     --                           COLOR THEMES                           --
     ----------------------------------------------------------------------
