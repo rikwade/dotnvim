@@ -2,7 +2,7 @@
 
 Neovim configuration that uses `lua` as much as possible
 
-| WARNING: I'm a Colemak user. So lot of the keymaps are not sutable for QWERTY |
+| WARNING: I'm a Colemak-DH user. So lot of the keymaps are not sutable for QWERTY |
 | --- |
 
 | WARNING: I make frequent changes to the config so create a fork first if you are using this |
