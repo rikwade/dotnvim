@@ -32,7 +32,7 @@ Shortcut():mode(''):options():noremap():next():keymaps({
     { 'j', ';' },
     { 'J', ':' },
 
-    { ';', 'i' },
-    { ':', 'I' },
+    { ';', 'm' },
+    { ':', 'M' },
 
 })
