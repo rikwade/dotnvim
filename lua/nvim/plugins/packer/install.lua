@@ -173,13 +173,6 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     --                             EDITING                              --
     ----------------------------------------------------------------------
-    use({
-        's1n7ax/nvim-lazy-inner-block',
-        config = function()
-            require('nvim-lazy-inner-block').setup()
-        end,
-    })
-
     -- auto pair brackets
     use({
         'windwp/nvim-autopairs',
