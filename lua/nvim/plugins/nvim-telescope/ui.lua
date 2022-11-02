@@ -6,24 +6,24 @@ local set = vim.api.nvim_set_hl
 
 local normal_hl = get('Normal')
 
-local blue1 = '#333352'
-local blue2 = '#232338'
-local blue3 = '#12121c'
+local purple1 = '#333352'
+local purple2 = '#232338'
+local purple3 = '#12121c'
 local red1 = '#ba3648'
-local green1 = '#2b8f03'
-local orange1 = '#c28234'
+local green1 = '#37ad39'
+local blue1 = '#0985de'
 
 ----------------------------------------------------------------------
 --                              Prompt                              --
 ----------------------------------------------------------------------
 set(0, 'TelescopePromptBorder', {
-    fg = blue3,
-    bg = blue3,
+    fg = purple3,
+    bg = purple3,
 })
 
 set(0, 'TelescopePromptNormal', {
     fg = normal_hl.foreground,
-    bg = blue3,
+    bg = purple3,
 })
 
 set(0, 'TelescopePromptTitle', {
@@ -33,34 +33,34 @@ set(0, 'TelescopePromptTitle', {
 
 set(0, 'TelescopePromptCounter', {
     fg = red1,
-    bg = blue3,
+    bg = purple3,
 })
 
 set(0, 'TelescopePromptPrefix', {
     fg = red1,
-    bg = blue3,
+    bg = purple3,
 })
 
 ----------------------------------------------------------------------
 --                              Result                              --
 ----------------------------------------------------------------------
 set(0, 'TelescopeResultsBorder', {
-    fg = blue2,
-    bg = blue2,
+    fg = purple2,
+    bg = purple2,
 })
 
 set(0, 'TelescopeResultsNormal', {
     fg = normal_hl.foreground,
-    bg = blue2,
+    bg = purple2,
 })
 
 set(0, 'TelescopeResultsTitle', {
     fg = normal_hl.foreground,
-    bg = orange1,
+    bg = blue1,
 })
 
 set(0, 'TelescopeSelectionCaret', {
-    fg = orange1,
+    fg = blue1,
     bg = get('TelescopeSelection').background,
 })
 
@@ -69,13 +69,13 @@ set(0, 'TelescopeSelectionCaret', {
 ----------------------------------------------------------------------
 
 set(0, 'TelescopePreviewBorder', {
-    fg = blue1,
-    bg = blue1,
+    fg = purple1,
+    bg = purple1,
 })
 
 set(0, 'TelescopePreviewNormal', {
     fg = normal_hl.foreground,
-    bg = blue1,
+    bg = purple1,
 })
 
 set(0, 'TelescopePreviewTitle', {
