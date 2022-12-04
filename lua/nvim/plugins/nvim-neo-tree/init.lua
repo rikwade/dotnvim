@@ -1,4 +1,3 @@
-local Shortcut = require('nvim.utils.nvim.shortcut')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
