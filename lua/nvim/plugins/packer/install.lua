@@ -15,16 +15,16 @@ return require('packer').startup(function()
         'williamboman/mason-lspconfig.nvim',
         rocks = { 'promise-lua' },
         requires = {
-            { 'neovim/nvim-lspconfig', tag = 'v0.1.3' },
             'williamboman/mason.nvim',
+            'neovim/nvim-lspconfig',
             'onsails/lspkind-nvim',
             'MunifTanjim/nui.nvim',
             {
                 'simrat39/rust-tools.nvim',
                 requires = {
-                    { 'neovim/nvim-lspconfig', tag = 'v0.1.3' },
-                    { 'mfussenegger/nvim-dap', tag = '0.3.0' },
+                    'neovim/nvim-lspconfig',
                     'nvim-lua/plenary.nvim',
+                    'mfussenegger/nvim-dap',
                 },
             },
         },
@@ -57,7 +57,6 @@ return require('packer').startup(function()
     -- completion menu
     use({
         'hrsh7th/nvim-cmp',
-        tag = 'v0.0.1',
         afetr = 'mason-lspconfig.nvim',
         config = function()
             require('nvim.plugins.nvim-cmp')
@@ -80,7 +79,6 @@ return require('packer').startup(function()
             -- Other plugins
             {
                 'L3MON4D3/LuaSnip',
-                tag = 'v1.1.0',
                 config = function()
                     require('nvim.plugins.luasnip').setup()
                 end,
@@ -103,7 +101,6 @@ return require('packer').startup(function()
     -- markdown preview
     use({
         'iamcco/markdown-preview.nvim',
-        tag = 'v0.0.10',
         run = 'cd app && yarn install',
         config = function()
             require('nvim.plugins.markdown-preview')
@@ -115,11 +112,9 @@ return require('packer').startup(function()
     ----------------------------------------------------------------------
     use({
         'mfussenegger/nvim-dap',
-        tag = '0.3.0',
         requires = {
             {
                 'rcarriga/nvim-dap-ui',
-                tag = 'v2.6.0',
                 config = function()
                     require('nvim.plugins.nvim-dap-ui')
                 end,
@@ -142,7 +137,7 @@ return require('packer').startup(function()
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        tag = '2.46',
+        branch = 'v2.x',
         config = function()
             require('nvim.plugins.nvim-neo-tree')
         end,
@@ -151,7 +146,6 @@ return require('packer').startup(function()
     -- fuzzy search
     use({
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.0',
         requires = {
             'nvim-lua/plenary.nvim',
             {
@@ -170,7 +164,6 @@ return require('packer').startup(function()
     -- git file changes
     use({
         'lewis6991/gitsigns.nvim',
-        tag = 'v0.5',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('nvim.plugins.gitsigns')
@@ -191,7 +184,6 @@ return require('packer').startup(function()
     -- handle pairs of text objects
     use({
         'kylechui/nvim-surround',
-        tag = 'v1.0.0',
         config = function()
             require('nvim-surround').setup({})
         end,
@@ -263,7 +255,6 @@ return require('packer').startup(function()
 
     use({
         'monaqa/dial.nvim',
-        tag = 'v0.4.0',
         config = function()
             require('nvim.plugins.dial')
         end,
@@ -283,7 +274,7 @@ return require('packer').startup(function()
     --                              EDITOR                              --
     ----------------------------------------------------------------------
     -- inline search guide
-    use({ 'unblevable/quick-scope', tag = 'v2.5.16' })
+    use({ 'unblevable/quick-scope' })
 
     -- smooth scrolling
     use({
@@ -297,7 +288,6 @@ return require('packer').startup(function()
     -- motion
     use({
         'phaazon/hop.nvim',
-        tag = 'v2.0.3',
         as = 'hop',
         config = function()
             require('nvim.plugins.hop')
@@ -381,7 +371,6 @@ return require('packer').startup(function()
     -- notification popup library
     use({
         'rcarriga/nvim-notify',
-        tag = 'v3.9.1',
         config = function()
             require('nvim.plugins.notify')
         end,
@@ -425,7 +414,6 @@ return require('packer').startup(function()
     -- shows a colorized horizontal line based on the scope
     use({
         'lukas-reineke/indent-blankline.nvim',
-        tag = 'v2.20.2',
         config = function()
             require('nvim.plugins.indent-blankline')
         end,
@@ -448,7 +436,6 @@ return require('packer').startup(function()
 
     use({
         'kevinhwang91/nvim-ufo',
-        tag = 'v1.2.0',
         requires = 'kevinhwang91/promise-async',
         config = function()
             require('nvim.plugins.ufo')
@@ -457,7 +444,6 @@ return require('packer').startup(function()
 
     use({
         'folke/noice.nvim',
-        tag = 'v1.4.1',
         event = 'VimEnter',
         config = function()
             require('noice').setup()
@@ -547,7 +533,7 @@ return require('packer').startup(function()
     use({ 'lewis6991/impatient.nvim' })
 
     -- startup time tracker
-    use({ 'dstein64/vim-startuptime', tag = 'v4.3.0' })
+    use({ 'dstein64/vim-startuptime' })
 
     -- typing test
     use({
