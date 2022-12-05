@@ -107,6 +107,16 @@ return require('packer').startup(function()
         end,
     })
 
+    -- better diagnostic view
+    use({
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        cmd = 'TroubleToggle',
+        config = function()
+            require('trouble').setup({})
+        end,
+    })
+
     ----------------------------------------------------------------------
     --                            DEBUGGING                             --
     ----------------------------------------------------------------------
