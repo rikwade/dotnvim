@@ -40,6 +40,13 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
     end,
 })
 
+-- open terminals in insert mode
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'TermOpen' }, {
+    pattern = 'term://*',
+    command = 'startinsert',
+})
+
 -- format on save
 --  vim.api.nvim_create_autocmd('BufWritePost', {
     --  pattern = '*',
