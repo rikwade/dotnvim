@@ -49,7 +49,7 @@ Shortcut():mode('n'):options():noremap():next():keymaps({
     --                        BUFFER READ WRITE                         --
     ----------------------------------------------------------------------
     -- save the current buffer
-    { ',w', '<cmd>w<cr>' },
+    { ',w', '<cmd>silent w<cr>' },
 
     -- close the window
     { ',q', '<cmd>q<cr>' },
