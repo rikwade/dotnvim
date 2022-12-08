@@ -313,21 +313,10 @@ return require('packer').startup(function()
         end,
     })
 
-    --  use({
-    --  'beauwilliams/focus.nvim',
-    --  config = function()
-    --  require('nvim.plugins.nvim-focus')
-    --  end,
-    --  })
-
     use({
-        'anuvyklack/windows.nvim',
-        requires = {
-            'anuvyklack/middleclass',
-            'anuvyklack/animation.nvim',
-        },
+        'beauwilliams/focus.nvim',
         config = function()
-            require('nvim.plugins.windows')
+            require('nvim.plugins.nvim-focus')
         end,
     })
 
