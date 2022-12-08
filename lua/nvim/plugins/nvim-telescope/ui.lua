@@ -55,7 +55,7 @@ vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', {
 
 vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', {
     fg = blue1,
-    bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
+    --  bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
 })
 
 ----------------------------------------------------------------------
