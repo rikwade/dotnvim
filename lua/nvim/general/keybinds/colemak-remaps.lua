@@ -1,5 +1,7 @@
 local wk = require('which-key')
 
+-- Initially following maps are remapped
+-- L -> E -> K -> N -> J -> M -> H -> I -> L
 wk.register({
     m = { 'h', 'Left' },
     M = { 'H', 'Top line of window' },
