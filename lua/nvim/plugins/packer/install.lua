@@ -431,7 +431,6 @@ return require('packer').startup(function()
         end,
     })
 
-    -- replace all native UI with modern looking UI
     use({
         'folke/noice.nvim',
         event = 'VimEnter',
@@ -444,19 +443,6 @@ return require('packer').startup(function()
         },
     })
 
-    -- Custom winbar with context support
-    use({
-        'utilyre/barbecue.nvim',
-        requires = {
-            'neovim/nvim-lspconfig',
-            'smiteshp/nvim-navic',
-            'kyazdani42/nvim-web-devicons',
-        },
-        after = 'nvim-web-devicons',
-        config = function()
-            require('barbecue').setup()
-        end,
-    })
     ----------------------------------------------------------------------
     --                            END EDITOR                            --
     ----------------------------------------------------------------------
