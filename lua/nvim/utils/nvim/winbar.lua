@@ -20,7 +20,7 @@ Highlighter:new():add(highlights):register_highlights()
 M.eval = function()
     local file_path = vim.api.nvim_eval_statusline('%f', {}).str
     local modified = vim.api.nvim_eval_statusline('%m', {}).str == '[+]'
-            and '  ⟴  '
+            and '  '
         or ''
 
     file_path = file_path:gsub('/', ' ➤ ')
