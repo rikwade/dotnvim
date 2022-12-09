@@ -24,7 +24,7 @@ wk.register({
     i = { 'l', 'Right' },
     I = { 'L', 'Last line of window' },
 
-    j = { 'm', '' },
+    j = { 'm', 'Create mark' },
     J = { 'M', 'Middle line of window' },
 }, {
     mode = { 'n', 'x', 'o' },
