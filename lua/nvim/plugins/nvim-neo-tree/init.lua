@@ -39,7 +39,7 @@ require('neo-tree').setup({
         window = {
             mappings = {
                 ['o'] = 'open',
-                ['e'] = ''
+                ['e'] = 'none'
             },
             position = 'current',
         },
