@@ -39,6 +39,7 @@ require('neo-tree').setup({
         window = {
             mappings = {
                 ['o'] = 'open',
+                ['e'] = ''
             },
             position = 'current',
         },
@@ -90,5 +91,8 @@ require('neo-tree').setup({
 })
 
 wk.register({
-    [',,'] = { '<cmd>NeoTreeRevealToggle<cr>', 'Toggle open current file in file tree' }
+    [',,'] = {
+        '<cmd>NeoTreeRevealToggle<cr>',
+        'Toggle open current file in file tree',
+    },
 })
