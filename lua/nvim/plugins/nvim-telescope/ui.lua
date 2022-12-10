@@ -6,6 +6,7 @@ local purple3 = '#12121c'
 local red1 = '#ba3648'
 local green1 = '#37ad39'
 local blue1 = '#0985de'
+local blue3 = '#313244'
 
 ----------------------------------------------------------------------
 --                              Prompt                              --
@@ -55,7 +56,7 @@ vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', {
 
 vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', {
     fg = blue1,
-    --  bg = vim.api.nvim_get_hl_by_name('TelescopeSelection', true).background,
+    bg = blue3,
 })
 
 ----------------------------------------------------------------------
