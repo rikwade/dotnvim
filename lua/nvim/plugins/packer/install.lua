@@ -255,12 +255,12 @@ return require('packer').startup(function()
         end,
     })
 
-    -- spreads out the parameters
+    -- spreads/join a block
     use({
-        'aarondiel/spread.nvim',
-        after = 'nvim-treesitter',
+        'Wansmer/treesj',
+        requires = { 'nvim-treesitter' },
         config = function()
-            require('nvim.plugins.spread')
+            require('nvim.plugins.treesj')
         end,
     })
 
