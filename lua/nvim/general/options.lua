@@ -15,6 +15,9 @@ Option.g({
     ----------------------------------------------------------------------
     --                              EDITOR                              --
     ----------------------------------------------------------------------
+    -- less animations more work
+    lazydraw = true,
+
     -- replace tab with spaces
     expandtab = true,
 
