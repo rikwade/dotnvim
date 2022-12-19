@@ -68,7 +68,7 @@ cmp.setup({
     },
 
     completion = {
-        keyword_length = 1,
+        autocomplete = false,
         completeopt = 'menu,menuone,preview,noinsert',
     },
 
