@@ -9,7 +9,7 @@ function M.setup()
             conf:set_option('settings', {
                 Lua = {
                     diagnostics = {
-                        globals = { 'vim' },
+                        globals = { 'vim', 'describe', 'it' },
                     },
                 },
             })
