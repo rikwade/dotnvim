@@ -63,7 +63,7 @@ wk.register({
 --                           SPLIT WINDOW                           --
 ----------------------------------------------------------------------
 wk.register({
-    ['<tab>h'] = { window.split_left, 'Split left' },
+    ['<tab>m'] = { window.split_left, 'Split left' },
     ['<tab>n'] = { window.split_bottom, 'Split bottom' },
     ['<tab>e'] = { window.split_top, 'Split top' },
     ['<tab>i'] = { window.split_right, 'Split right' },
