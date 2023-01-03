@@ -19,7 +19,7 @@ Option.g({
     lazydraw = true,
 
     -- replace tab with spaces
-    expandtab = true,
+    expandtab = false,
 
     -- tabstop
     tabstop = 4,
