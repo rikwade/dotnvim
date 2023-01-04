@@ -7,7 +7,7 @@ end
 return {
 	'beauwilliams/focus.nvim',
 	name = 'focus',
-	event = 'VeryLazy',
+	event = 'BufReadPost',
 	config = function()
 		require('focus').setup()
 		require('which-key').register({

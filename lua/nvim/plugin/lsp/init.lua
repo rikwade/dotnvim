@@ -46,7 +46,6 @@ return {
 		require('mason').setup()
 		require('mason-lspconfig').setup({
 			automatic_installation = true,
-
 			ui = {
 				icons = {
 					server_installed = '✓',

@@ -1,6 +1,6 @@
 return {
 	'lukas-reineke/indent-blankline.nvim',
-	event = 'BufEnter',
+	event = 'BufReadPost',
 	config = function()
 		local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
 		local HighlightGroup = require(

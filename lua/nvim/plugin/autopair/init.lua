@@ -1,6 +1,6 @@
 return {
 	'windwp/nvim-autopairs',
-	event = 'BufEnter',
+	event = 'BufAdd',
 	config = function()
 		local npairs = require('nvim-autopairs')
 		local cond = require('nvim-autopairs.conds')

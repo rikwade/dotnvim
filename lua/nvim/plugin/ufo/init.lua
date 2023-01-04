@@ -1,7 +1,7 @@
 return {
 	'kevinhwang91/nvim-ufo',
 	dependencies = 'kevinhwang91/promise-async',
-	keys = { 'zR', 'zM' },
+	event = { 'BufReadPost' },
 	config = function()
 		local wk = require('which-key')
 
