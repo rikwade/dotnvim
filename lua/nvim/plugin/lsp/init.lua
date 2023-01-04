@@ -1,7 +1,7 @@
 return {
 	'williamboman/mason-lspconfig.nvim',
 	-- rocks = { 'promise-lua' },
-	event = "BufReadPre",
+	event = 'BufReadPre',
 	dependencies = {
 		'mason',
 		'cmp',
@@ -23,17 +23,17 @@ return {
 	},
 	config = function()
 		-- lsp config
-		require('nvim.plugins.lsp.common.ui').setup()
-		require('nvim.plugins.lsp.common.keymaps').setup()
-		require('nvim.plugins.lsp.common.server-start-notification').setup()
+		require('nvim.plugin.lsp.common.ui').setup()
+		require('nvim.plugin.lsp.common.keymaps').setup()
+		require('nvim.plugin.lsp.common.server-start-notification').setup()
 
 		-- lsp lang specific config
-		require('nvim.plugins.lsp.lua.workspace-config').setup()
-		require('nvim.plugins.lsp.lua.vim-global-diagnostic').setup()
-		require('nvim.plugins.lsp.emmet').setup()
-		require('nvim.plugins.lsp.java').setup()
-		require('nvim.plugins.lsp.rust.rust_tools').setup()
-		require('nvim.plugins.lsp.tsserver').setup()
+		require('nvim.plugin.lsp.lua.workspace-config').setup()
+		require('nvim.plugin.lsp.lua.vim-global-diagnostic').setup()
+		require('nvim.plugin.lsp.emmet').setup()
+		require('nvim.plugin.lsp.java').setup()
+		require('nvim.plugin.lsp.rust.rust_tools').setup()
+		require('nvim.plugin.lsp.tsserver').setup()
 
 		-- dap config
 		-- require('nvim.plugins.nvim-dap.ui').setup()
@@ -42,7 +42,41 @@ return {
 		-- require('nvim.plugins.nvim-dap.java.command').setup()
 
 		-- setup LSes
-		require('nvim.plugins.mason-lspconfig').setup()
-		require('nvim.plugins.lsp').setup()
+
+		require('mason').setup()
+		require('mason-lspconfig').setup({
+			automatic_installation = true,
+
+			ui = {
+				icons = {
+					server_installed = '✓',
+					server_pending = '➜',
+					server_uninstalled = '✗',
+				},
+			},
+		})
+
+		local Lsp = require('nvim.utils.lsp')
+
+		local servers = {
+			'bashls',
+			'cssls',
+			'dockerls',
+			'eslint',
+			'graphql',
+			'html',
+			'jsonls',
+			'jdtls',
+			'sumneko_lua',
+			'pyright',
+			'rust_analyzer',
+			'tsserver',
+			'volar',
+			'groovyls',
+			'clangd',
+			'emmet_ls',
+		}
+
+		Lsp.setup(servers)
 	end,
 }

@@ -3,6 +3,7 @@ return {
 	name = 'hop',
 	keys = { '8f', '8w' },
 	config = function()
+		---@diagnostic disable-next-line: different-requires
 		require('hop').setup({ keys = 'tnseriaocmfuplwyq' })
 		local wk = require('which-key')
 
