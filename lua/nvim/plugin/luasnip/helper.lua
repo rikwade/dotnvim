@@ -76,7 +76,7 @@ function M.refresh_snippets()
 
 	module.unload_package('ts-utils')
 	module.unload_package('snips')
-	module.unload_package('nvim.plugins.luasnip')
+	module.unload_package('nvim.plugin.luasnip')
 
 	ls.cleanup()
 
