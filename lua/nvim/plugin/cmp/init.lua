@@ -14,7 +14,6 @@ return {
 		'saadparwaiz1/cmp_luasnip',
 		-- 'hrsh7th/cmp-emoji',
 		's1n7ax/nvim-ts-utils',
-		's1n7ax/nvim-snips',
 
 		-- Other plugins
 		'luasnip',
