@@ -26,7 +26,7 @@ wk.register({
 	['<c-e>'] = { '<c-w>k', 'Jump top window' },
 	['<c-w><c-w>'] = { '<c-w>p', 'Jump to last window' },
 
-	["''"] = { '``', 'Jump to last jump point' },
+	["''"] = { '``zz', 'Jump to last jump point' },
 
 	['0'] = { '^', 'Jump to line start (non-blank)' },
 
