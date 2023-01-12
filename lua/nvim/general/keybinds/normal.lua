@@ -1,6 +1,7 @@
 local common = require('nvim.utils.common.module')
 local window = require('nvim.utils.nvim.window')
 local wk = require('which-key')
+local browser = require('nvim.utils.nvim.browser')
 
 ----------------------------------------------------------------------
 --                              CONFIG                              --
@@ -79,4 +80,5 @@ wk.register({
 wk.register({
 	-- to go enable spell checker
 	['<F6>'] = { '<cmd>setlocal spell! spelllang=en_us<cr>', 'Toggle spell' },
+	['<leader>on'] = { browser.search_in_google, 'Google search' },
 })
