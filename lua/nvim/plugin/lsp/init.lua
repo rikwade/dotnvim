@@ -26,6 +26,7 @@ return {
 		require('nvim.plugin.lsp.common.ui').setup()
 		require('nvim.plugin.lsp.common.keymaps').setup()
 		require('nvim.plugin.lsp.common.server-start-notification').setup()
+		require('nvim.plugin.lsp.common.disable-semantic-tokens').setup()
 
 		-- lsp lang specific config
 		require('nvim.plugin.lsp.lua.workspace-config').setup()
