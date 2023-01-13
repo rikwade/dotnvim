@@ -1,11 +1,12 @@
 return {
 	'jose-elias-alvarez/null-ls.nvim',
 	name = 'null-ls',
+	dependencies = { 'mason-null-ls' },
 	config = function()
 		local null_ls = require('null-ls')
 
 		local formatting = null_ls.builtins.formatting
-		-- local diagnostics = null_ls.builtins.diagnostics
+		local diagnostics = null_ls.builtins.diagnostics
 
 		null_ls.setup({
 			debug = true,
@@ -16,6 +17,8 @@ return {
 				formatting.autopep8,
 				formatting.taplo,
 				formatting.shfmt,
+
+				diagnostics.luacheck,
 
 				-- diagnostics
 				-- diagnostics.cspell.with({
