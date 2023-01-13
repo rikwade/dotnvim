@@ -8,28 +8,26 @@ local M = {}
 --
 -- @return { (file: string, line: number) }
 --]]
-function M.get_file_and_line_under_the_cursor()
-    local isfname = vim.o.isfname
-    vim.opt.isfname:append(':')
+function M.get_file_info_under_cursor()
+	local isfname = vim.o.isfname
+	vim.opt.isfname:append(':')
 
-    -- get the file path including line number
-    local text_object = vim.fn.expand('<cfile>')
-    if text_object == '' then
-        return
-    end
+	-- get the file path including line number
+	local text_object = vim.fn.expand('<cfile>')
 
-    local file = text_object
-    local line = nil
+	if text_object == '' then
+		return
+	end
 
-    -- extract the line number if exists
-    if text_object:match(':%d+$') then
-        file = text_object:gsub(':%d+$', '')
-        line = tonumber(text_object:match('%d+$'))
-    end
+	local file_info = vim.split(text_object, ':')
 
-    vim.o.isfname = isfname
+	vim.o.isfname = isfname
 
-    return { file, line }
+	return {
+		file = file_info[1],
+		row = tonumber(file_info[2] or 1),
+		col = tonumber(file_info[3] or 0),
+	}
 end
 
 --[[
@@ -38,41 +36,46 @@ end
 -- IF the file not found, function will stop
 --]]
 function M.open_file_under_cursor()
-    local text_object = M.get_file_and_line_under_the_cursor()
+	local file_info = M.get_file_info_under_cursor()
 
-    if not text_object then
-        return
-    end
+	if not file_info then
+		return
+	end
 
-    local file = vim.fn.fnamemodify(text_object[1], ':p')
-    local line = text_object[2]
+	local file = vim.fn.fnamemodify(file_info.file, ':p')
+	local row = file_info.row
+	local col = file_info.col
 
-    -- stop if the file does not exist
-    if vim.fn.filereadable(file) == 0 then
-        return
-    end
+	-- stop if the file does not exist
+	if vim.fn.filereadable(file) == 0 then
+		return
+	end
 
-    local selectable = wpicker.filter_windows()
+	local selectable = wpicker.filter_windows()
+	if #selectable < 2 then
+		vim.api.nvim_set_current_win(selectable[1])
+		vim.cmd(string.format('vsp %s', file))
 
-    if #selectable < 2 then
-        vim.cmd('vsp ' .. file)
-    else
-        local window = wpicker.pick_window({
-            include_current_win = true,
-        })
+		local window = vim.api.nvim_get_current_win()
+		vim.api.nvim_win_set_cursor(window, { row or 1, col or 0 })
+	else
+		local window = wpicker.pick_window({
+			include_current_win = true,
+		})
 
-        if window then
-            vim.api.nvim_set_current_win(window)
-            vim.cmd('edit ' .. file)
-        else
-            return
-        end
-    end
+		if window then
+			vim.api.nvim_set_current_win(window)
+			vim.cmd('edit ' .. file)
+			vim.api.nvim_win_set_cursor(window, { row or 1, col or 0 })
+		else
+			return
+		end
+	end
 
-    if line then
-        vim.cmd(tostring(line))
-        vim.api.nvim_input('zz')
-    end
+	if row then
+		vim.cmd(tostring(row))
+		vim.api.nvim_input('zz')
+	end
 end
 
 return M
