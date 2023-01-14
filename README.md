@@ -1,18 +1,24 @@
 # dotnvim
 
-Neovim configuration that uses `lua` as much as possible
+100% lua neovim configuration
 
-| WARNING: I'm a Colemak-DH user. So lot of the keymaps are not sutable for QWERTY |
+## Why Lua not Vimscript?
+
+* Read more about why [neovim chose lua](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)
+
+| WARNING: I'm a Colemak-DH user. So lot of the keymaps are not sutable for
+QWERTY |
 | --- |
 
-| WARNING: I make frequent changes to the config so create a fork first if you are using this |
+| WARNING: I make frequent changes to the config so create a fork first if you
+are using this |
 | --- |
 
 https://user-images.githubusercontent.com/18459807/140087936-36783efc-bfd9-4456-9693-559c668a6523.mp4
 
 ## Features
 
-* Using packer instead of as package manager
+* Lazy load all plugins (except `startup-time`)
 * Tree Sitter syntax highlighting
 * Pre-configured for various programming languages and documents
   * Java
@@ -24,9 +30,9 @@ https://user-images.githubusercontent.com/18459807/140087936-36783efc-bfd9-4456-
   * JSON
   * Markdown
 
-## Why Lua not Vimscript?
+## WIP
 
-* Read more about why [neovim chose lua](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)
+* Debug features
 
 ## How to Install? (Ubuntu 20.04)
 
@@ -46,15 +52,4 @@ chmod a+x install.sh
 ./install.sh
 ```
 
-* Open `nvim` and run
-```vim
-:PackerInstall
-:PackerCompile
-```
-
-## Java debug configurations
-
-For java debug features you need few additional plugin.
-
-* Download [com.microsoft.java.debug.plugin-0.33.0.jar](https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/0.33.0/com.microsoft.java.debug.plugin-0.33.0.jar) 
-* Place it inside `~/.local/share/nvim/lsp_servers/jdtls/additional-plugins/` directory
+* Open `nvim`
