@@ -4,7 +4,7 @@ local wpicker = require('window-picker')
 local M = {}
 
 --[[
--- Reteruns the file path and line number (if exists) under the cursor
+-- Returns the file path and line number (if exists) under the cursor
 --
 -- @return { (file: string, line: number) }
 --]]
@@ -56,8 +56,7 @@ function M.open_file_under_cursor()
 		vim.api.nvim_set_current_win(selectable[1])
 		vim.cmd(string.format('vsp %s', file))
 
-		local window = vim.api.nvim_get_current_win()
-		vim.api.nvim_win_set_cursor(window, { row or 1, col or 0 })
+		vim.api.nvim_win_set_cursor(0, { row or 1, col or 0 })
 	else
 		local window = wpicker.pick_window({
 			include_current_win = true,
