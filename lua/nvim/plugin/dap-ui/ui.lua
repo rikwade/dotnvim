@@ -1,61 +1,42 @@
-local Lsp = require('nvim.utils.lsp')
-local Event = require('nvim.utils.lsp.event')
-local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
-local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
+local highlights = require('nvim.utils.nvim.hl')
 
 local theme = ThemeManager.get_theme()
 
-local v = vim
-local fn = v.fn
-
-local dap_highlight_groups = HighlightGroups({
-    DapBreakpoint = { guifg = theme.bright.red },
-    DapBreakpointRejected = { guifg = theme.bright.yellow },
-    DapStopped = { guifg = theme.bright.cyan },
-    DapLogPoint = { guifg = theme.bright.blue },
-    DapStoppedCursorLine = { guifg = theme.normal.green },
+local reg_hl = highlights({
+	DapBreakpoint = { fg = theme.bright.red },
+	DapBreakpointRejected = { fg = theme.bright.yellow },
+	DapStopped = { fg = theme.bright.cyan },
+	DapLogPoint = { fg = theme.bright.blue },
+	DapStoppedCursorLine = { fg = theme.normal.green },
 })
 
-local M = {}
+reg_hl()
 
-function M.init()
-    Highlighter:new():add(dap_highlight_groups):register_highlights()
+vim.fn.sign_define('DapBreakpoint', {
+	text = '',
+	texthl = 'DapBreakpoint',
+	linehl = 'CursorLine',
+	numhl = 'DapBreakpoint',
+})
 
-    fn.sign_define('DapBreakpoint', {
-        text = '',
-        texthl = 'DapBreakpoint',
-        linehl = 'CursorLine',
-        numhl = 'DapBreakpoint',
-    })
+vim.fn.sign_define('DapBreakpointRejected', {
+	text = '',
+	texthl = 'DapBreakpointRejected',
+	linehl = '',
+	numhl = 'DapBreakpointRejected',
+})
 
-    fn.sign_define('DapBreakpointRejected', {
-        text = '',
-        texthl = 'DapBreakpointRejected',
-        linehl = '',
-        numhl = 'DapBreakpointRejected',
-    })
+vim.fn.sign_define('DapStopped', {
+	text = '',
+	texthl = 'DapStopped',
+	linehl = 'DapStoppedCursorLine',
+	numhl = 'DapStopped',
+})
 
-    fn.sign_define('DapStopped', {
-        text = '',
-        texthl = 'DapStopped',
-        linehl = 'DapStoppedCursorLine',
-        numhl = 'DapStopped',
-    })
-
-    fn.sign_define('DapLogPoint', {
-        text = '﬌',
-        texthl = 'DapLogPoint',
-        linehl = '',
-        numhl = 'DapLogPoint',
-    })
-end
-
-function M.setup()
-    Lsp.add_listener(Event.END, function()
-        M.init()
-    end)
-end
-
-return M
-
+vim.fn.sign_define('DapLogPoint', {
+	text = '﬌',
+	texthl = 'DapLogPoint',
+	linehl = '',
+	numhl = 'DapLogPoint',
+})
