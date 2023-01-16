@@ -14,6 +14,7 @@ return {
 
 			-- linters
 			'luacheck',
+			'markdownlint',
 		},
 	},
 }

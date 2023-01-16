@@ -18,7 +18,9 @@ return {
 				formatting.taplo,
 				formatting.shfmt,
 
+				-- diagnostics
 				diagnostics.luacheck,
+				diagnostics.markdownlint,
 
 				-- diagnostics
 				-- diagnostics.cspell.with({
