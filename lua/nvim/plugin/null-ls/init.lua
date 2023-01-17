@@ -17,10 +17,12 @@ return {
 				formatting.autopep8,
 				formatting.taplo,
 				formatting.shfmt,
+				formatting.deno_fmt,
 
 				-- diagnostics
 				diagnostics.luacheck,
 				diagnostics.markdownlint,
+
 
 				-- diagnostics
 				-- diagnostics.cspell.with({
