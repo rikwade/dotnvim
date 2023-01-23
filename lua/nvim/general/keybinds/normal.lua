@@ -51,17 +51,49 @@ wk.register({
 })
 
 ----------------------------------------------------------------------
+--                        TEXT MANIPULATIONS                        --
+----------------------------------------------------------------------
+wk.register({
+	['[<space>'] = {
+		function()
+			local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+
+			vim.api.nvim_buf_set_lines(
+				0,
+				curr_line - 1,
+				curr_line - 1,
+				true,
+				{ '' }
+			)
+		end,
+		'Add line above',
+	},
+	[']<space>'] = {
+		function()
+			local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+			vim.api.nvim_buf_set_lines(0, curr_line, curr_line, true, { '' })
+		end,
+		'Add line below',
+	},
+})
+
+----------------------------------------------------------------------
 --                      BUFFER & WINDOW SWITCH                      --
 ----------------------------------------------------------------------
 wk.register({
 	gf = {
-		function()
-			require('nvim.utils.nvim.file').open_file_under_cursor()
-		end,
+		require('nvim.utils.nvim.file').open_file_under_cursor,
 		'Open file on cursor',
 	},
 
 	gF = { 'gf', 'Open file on cursor (same window)' },
+
+	gx = {
+		function()
+			browser.open(vim.fn.expand('<cfile>'))
+		end,
+		'Open url',
+	},
 })
 
 ----------------------------------------------------------------------
