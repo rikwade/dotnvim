@@ -90,9 +90,9 @@ wk.register({
 
 	gx = {
 		function()
-			browser.open(vim.fn.expand('<cfile>'))
+			browser.open_or_search(vim.fn.expand('<cfile>'))
 		end,
-		'Open url',
+		'Open or search on browser',
 	},
 })
 
@@ -112,5 +112,5 @@ wk.register({
 wk.register({
 	-- to go enable spell checker
 	['<F6>'] = { '<cmd>setlocal spell! spelllang=en_us<cr>', 'Toggle spell' },
-	['<leader>on'] = { browser.search_in_google, 'Google search' },
+	['<leader>on'] = { browser.google_search, 'Google search' },
 })
