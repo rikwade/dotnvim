@@ -13,7 +13,7 @@ return {
 			sources = {
 				-- formatters
 				formatting.prettierd,
-				formatting.stylua,
+				--  formatting.stylua,
 				formatting.autopep8,
 				formatting.taplo,
 				formatting.shfmt,
