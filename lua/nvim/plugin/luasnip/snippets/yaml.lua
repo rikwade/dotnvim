@@ -5,12 +5,12 @@ local s = ls.s
 local M = {}
 
 function M.setup()
-    ls.add_snippets('yaml', {
-        s('pod', kubernetes.pod()),
-        s('rs', kubernetes.replicaset()),
-        s('dep', kubernetes.deployment()),
-        s('ser', kubernetes.service()),
-    })
+	ls.add_snippets('yaml', {
+		s('pod', kubernetes.primitives.pod()),
+		s('rs', kubernetes.primitives.replicaset()),
+		s('dep', kubernetes.primitives.deployment()),
+		s('ser', kubernetes.primitives.service()),
+	})
 end
 
 return M
