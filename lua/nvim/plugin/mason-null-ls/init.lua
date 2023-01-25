@@ -15,6 +15,7 @@ return {
 			-- linters
 			'luacheck',
 			'markdownlint',
+			'editorconfig-checker'
 		},
 	},
 }

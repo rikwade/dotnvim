@@ -22,6 +22,9 @@ return {
 				-- diagnostics
 				diagnostics.luacheck,
 				diagnostics.markdownlint,
+				diagnostics.editorconfig_checker.with({
+					command = 'editorconfig-checker'
+				})
 
 
 				-- diagnostics
