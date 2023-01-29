@@ -29,6 +29,8 @@ function M.setup()
 		s('i', lua.primitives.import()),
 		s('o', lua.primitives.stdout()),
 		s('oo', lua.primitives.pretty_print()),
+		s('td', lua.primitives.test_desc()),
+		s('ti', lua.primitives.test_it()),
 	})
 end
 
