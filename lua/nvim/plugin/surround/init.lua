@@ -1,5 +1,5 @@
 return {
 	"kylechui/nvim-surround",
-	tag = "*",
+	version = "*",
 	config = true
 }
