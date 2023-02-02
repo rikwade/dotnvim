@@ -3,5 +3,5 @@ return {
 	name = 'treesitter-playground',
 	dependencies = { 'treesitter' },
 	cmd = 'TSPlaygroundToggle',
-	config = true,
+	config = false,
 }
