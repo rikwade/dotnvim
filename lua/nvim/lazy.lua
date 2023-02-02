@@ -25,19 +25,6 @@ require('lazy').setup('nvim.plugin', {
 			enabled = true,
 			-- disable_events = {},
 		},
-		rtp = {
-			disabled_plugins = {
-				'gzip',
-				'matchit',
-				'matchparen',
-				'netrwPlugin',
-				'tarPlugin',
-				'tohtml',
-				'tutor',
-				'zipPlugin',
-				'nvim-treesitter-textobjects',
-			},
-		},
 	},
 	ui = {
 		--  custom_keys = {
@@ -49,5 +36,3 @@ require('lazy').setup('nvim.plugin', {
 	},
 	debug = false,
 })
-
---  vim.keymap.set('n', '<leader>l', '<cmd>:Lazy<cr>')
