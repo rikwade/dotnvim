@@ -53,6 +53,6 @@ return {
 
 		-- load other configurations
 		require('nvim.plugin.telescope.keymaps')
-		require('nvim.plugin.telescope.ui')
+		--  require('nvim.plugin.telescope.ui')
 	end,
 }

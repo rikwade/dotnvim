@@ -2,6 +2,7 @@ return {
 	'catppuccin/nvim',
 	name = 'catppuccin',
 	event = 'VimEnter',
+	enabled = false,
 	config = function()
 		vim.g.catppuccin_flavour = 'mocha'
 		require('catppuccin').setup({
@@ -15,6 +16,6 @@ return {
 			},
 		})
 
-		vim.cmd('colorscheme catppuccin')
+		--  vim.cmd('colorscheme catppuccin')
 	end,
 }
