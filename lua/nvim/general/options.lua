@@ -86,7 +86,8 @@ Option.g({
 	guifont = 'Recursive Monospace Casual, Cascadia Code, FiraCode, Nerd Font:h19',
 
 	-- highlight the current cursor line.
-	cursorline = true,
+	--  cursorline = true,
+	--  cursorcolumn = true,
 
 	-- wrap line
 	-- breakindent = false,
@@ -162,8 +163,6 @@ Option.w({
 	-- usually it adds new column when signs, moving buffer to right side.
 	-- adding a column create weird effect that's little bit hard for the eye
 	signcolumn = 'yes:1',
-
-	cursorcolumn = true,
 })
 
 Option.b({
