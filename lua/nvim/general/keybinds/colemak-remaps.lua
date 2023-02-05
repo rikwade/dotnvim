@@ -10,13 +10,13 @@ wk.register({
 	h = { 'i', 'Insert' },
 	H = { 'I', 'Insert at line start' },
 
-	n = { cursor_jump.jump_forward, 'Down' },
+	n = { cursor_jump.move_down, 'Down' },
 	N = { 'J', 'Join below line' },
 
 	k = { 'n', 'Find next' },
 	K = { 'N', 'Find previous' },
 
-	e = { cursor_jump.jump_backward, 'Up' },
+	e = { cursor_jump.move_up, 'Up' },
 	E = { 'K', 'Keyword lookup' },
 
 	l = { 'e', 'Next end of word' },
