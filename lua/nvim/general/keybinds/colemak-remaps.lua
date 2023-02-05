@@ -1,5 +1,4 @@
 local wk = require('which-key')
-local cursor_jump = require('nvim.utils.nvim.cursor-jump')
 
 -- Initially following maps are remapped
 -- L -> E -> K -> N -> J -> M -> H -> I -> L
@@ -10,13 +9,13 @@ wk.register({
 	h = { 'i', 'Insert' },
 	H = { 'I', 'Insert at line start' },
 
-	n = { cursor_jump.move_down, 'Down' },
+	n = { [[(v:count > 1 ? "m'" . v:count : '') . 'j']], 'Down', expr = true },
 	N = { 'J', 'Join below line' },
 
 	k = { 'n', 'Find next' },
 	K = { 'N', 'Find previous' },
 
-	e = { cursor_jump.move_up, 'Up' },
+	e = { [[(v:count > 1 ? "m'" . v:count : '') . 'k']], 'Up', expr = true },
 	E = { 'K', 'Keyword lookup' },
 
 	l = { 'e', 'Next end of word' },
