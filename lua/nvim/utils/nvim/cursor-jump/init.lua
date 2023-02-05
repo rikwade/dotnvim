@@ -1,7 +1,7 @@
 local M = {}
 
-function M.move(up)
-	local move_char = up and 'k' or 'j'
+function M.move(reverse)
+	local move_char = reverse and 'k' or 'j'
 	local count = vim.v.count
 
 	if count == 0 then
