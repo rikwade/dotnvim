@@ -15,7 +15,10 @@ return {
 			-- linters
 			'luacheck',
 			'markdownlint',
-			'editorconfig-checker'
+			'editorconfig-checker',
+
+			-- debuggers
+			'debugpy'
 		},
 	},
 }

@@ -9,6 +9,6 @@ return {
 	config = function()
 		require('nvim.plugin.dap.setup')
 		require('nvim.plugin.dap.keymap')
-		--  require('nvim.plugin.dap.configs')
+		require('nvim.plugin.dap.configs.python')
 	end,
 }
