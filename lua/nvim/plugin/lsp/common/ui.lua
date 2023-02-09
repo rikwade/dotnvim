@@ -36,24 +36,25 @@ M.border = {
     { '│', 'FloatBorder' },
 }
 
-local diagnosticHighlightGroups = HighlightGroups({
-    DiagnosticLineNrError = {
-        guifg = theme.bright.red,
-        guibg = theme.normal.red,
-    },
-    DiagnosticLineNrWarn = {
-        guifg = theme.bright.yellow,
-        guibg = theme.normal.yellow,
-    },
-    DiagnosticLineNrInfo = {
-        guifg = theme.bright.blue,
-        guibg = theme.normal.blue,
-    },
-    DiagnosticLineNrHint = {
-        guifg = theme.bright.cyan,
-        guibg = theme.normal.cyan,
-    },
-})
+-- number line highlights were removed because it look messy
+--  local diagnosticHighlightGroups = HighlightGroups({
+    --  DiagnosticLineNrError = {
+        --  guifg = theme.bright.red,
+        --  guibg = theme.normal.red,
+    --  },
+    --  DiagnosticLineNrWarn = {
+        --  guifg = theme.bright.yellow,
+        --  guibg = theme.normal.yellow,
+    --  },
+    --  DiagnosticLineNrInfo = {
+        --  guifg = theme.bright.blue,
+        --  guibg = theme.normal.blue,
+    --  },
+    --  DiagnosticLineNrHint = {
+        --  guifg = theme.bright.cyan,
+        --  guibg = theme.normal.cyan,
+    --  },
+--  })
 
 function M.register_diagnostic_signs()
     fn.sign_define(
@@ -120,7 +121,7 @@ function M.add_ui()
         severity_sort = true,
     })
 
-    Highlighter:new():add(diagnosticHighlightGroups):register_highlights()
+    --  Highlighter:new():add(diagnosticHighlightGroups):register_highlights()
 
     cmd([[
         sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
