@@ -1,11 +1,11 @@
 return {
 	'folke/noice.nvim',
 	event = 'VeryLazy',
+	version = '1.8.2',
 	dependencies = {
 		'MunifTanjim/nui.nvim',
 		'rcarriga/nvim-notify',
 	},
-	version = '1.5.2',
 	config = {
 		lsp = {
 			hover = {
