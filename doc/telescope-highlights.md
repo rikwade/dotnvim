@@ -1,4 +1,6 @@
-```
+# Telescope highlights
+
+```lua
 TelescopeSelection
 TelescopeSelectionCaret
 TelescopeMultiSelection
@@ -34,7 +36,8 @@ TelescopeMatching
 -- Used for the prompt prefix
 TelescopePromptPrefix
 
--- Used for highlighting the matched line inside Previewer. Works only for (vim_buffer_ previewer)
+-- Used for highlighting the matched line inside Previewer. Works only for
+-- (vim_buffer_ previewer)
 TelescopePreviewLine
 TelescopePreviewMatch
 
