@@ -8,10 +8,7 @@ return {
 		require('nvim-comment-frame').setup({ disable_default_keymap = true })
 
 		wk.register({
-			[',C'] = {
-				require('nvim-comment-frame').add_comment,
-				'Add comment frame',
-			},
+			['<leader>oc'] = { require('nvim-comment-frame').add_comment, 'Add comment frame' },
 		})
 	end,
 }
