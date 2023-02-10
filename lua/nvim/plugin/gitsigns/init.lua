@@ -2,6 +2,7 @@ local M = {
 	'lewis6991/gitsigns.nvim',
 	name = 'gitsigns',
 	event = 'BufReadPost',
+	version = '0.6',
 	cond = function()
 		return #vim.fs.find('.git') > 0
 	end,
