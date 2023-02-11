@@ -111,9 +111,8 @@ wk.register({
 
 wk.register({
 	name = 'Clipboard & Registers',
-	['<leader>'] = {
-		p = '"+p'
-	}
+	[',p'] = { '"+p', 'Paste from clipboard', mode = { 'n', 'x' } },
+	[',P'] = { '"+P', 'Paste before from clipboard', mode = { 'n', 'x' } }
 })
 
 ----------------------------------------------------------------------
