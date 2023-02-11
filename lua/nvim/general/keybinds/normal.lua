@@ -100,10 +100,14 @@ wk.register({
 --                           SPLIT WINDOW                           --
 ----------------------------------------------------------------------
 wk.register({
-	['<tab>m'] = { window.split_left, 'Split left' },
-	['<tab>n'] = { window.split_bottom, 'Split bottom' },
-	['<tab>e'] = { window.split_top, 'Split top' },
-	['<tab>i'] = { window.split_right, 'Split right' },
+	name = 'Split window',
+	m = { window.split_left, 'Split left' },
+	n = { window.split_bottom, 'Split bottom' },
+	e = { window.split_top, 'Split top' },
+	i = { window.split_right, 'Split right' },
+}, {
+	prefix = '<tab>'
+})
 })
 
 ----------------------------------------------------------------------
