@@ -57,10 +57,13 @@ Option.g({
 	writebackup = false,
 	swapfile = false,
 
+	-- persistent undo
+	undofile = true,
+
 	-- write changes to swap file after "n" ms
 	-- for some reason when the updatetime is high, autocompletion in coc nvim
 	-- takes a long time
-	updatetime = 30,
+	updatetime = 500,
 
 	-- controls how short messages are displayed in status bar section
 	shortmess = v.o.shortmess .. 'c',
@@ -142,7 +145,7 @@ Option.g({
 	-- assign unnamedplus register to clipboard
 	-- anything in the clipboard can be pasted directly
 	-- any yanked text will be copied to clipboard
-	clipboard = 'unnamedplus',
+	--  clipboard = 'unnamedplus',
 })
 
 Option.w({
