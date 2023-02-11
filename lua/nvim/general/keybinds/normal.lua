@@ -108,6 +108,12 @@ wk.register({
 }, {
 	prefix = '<tab>'
 })
+
+wk.register({
+	name = 'Clipboard & Registers',
+	['<leader>'] = {
+		p = '"+p'
+	}
 })
 
 ----------------------------------------------------------------------
