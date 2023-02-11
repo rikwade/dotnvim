@@ -4,7 +4,7 @@ return {
 	version = '1.8.2',
 	dependencies = {
 		'MunifTanjim/nui.nvim',
-		'rcarriga/nvim-notify',
+		'notify',
 	},
 	config = {
 		lsp = {

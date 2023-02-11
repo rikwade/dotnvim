@@ -11,7 +11,7 @@ return {
 		'neovim/nvim-lspconfig',
 		'onsails/lspkind-nvim',
 		'MunifTanjim/nui.nvim',
-		'rcarriga/nvim-notify',
+		'notify',
 		'pyericz/promise-lua',
 		{
 			'simrat39/rust-tools.nvim',
