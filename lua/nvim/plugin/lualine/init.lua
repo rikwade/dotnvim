@@ -3,6 +3,7 @@ return {
 	event = 'VeryLazy',
 	dependencies = {
 		'kyazdani42/nvim-web-devicons',
+		'folke/tokyonight.nvim',
 	},
 	config = function()
 		-- Bubbles config for lualine
@@ -12,7 +13,7 @@ return {
 		-- stylua: ignore
 		require('lualine').setup {
 			options = {
-				theme = 'auto',
+				theme = 'tokyonight',
 				component_separators = '|',
 				section_separators = { left = '', right = '' },
 			},
