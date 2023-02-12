@@ -139,6 +139,10 @@ Option.g({
 	background = 'dark',
 	termguicolors = true,
 
+	-- set indent guide
+	list = true,
+	listchars = "tab:⎸ ,trail:-,nbsp:+",
+
 	----------------------------------------------------------------------
 	--                              OTHER                               --
 	----------------------------------------------------------------------
