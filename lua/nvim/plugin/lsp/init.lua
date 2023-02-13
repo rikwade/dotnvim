@@ -1,8 +1,7 @@
 return {
 	'williamboman/mason-lspconfig.nvim',
 	version = '0.1.4',
-	-- rocks = { 'promise-lua' },
-	event = 'BufReadPre',
+	event = 'VimEnter',
 	dependencies = {
 		'mason',
 		'cmp',
