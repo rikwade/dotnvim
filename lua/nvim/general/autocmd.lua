@@ -10,6 +10,8 @@ local highlight_groups = HighlightGroups({
 
 highlighter:new():add(highlight_groups):register_highlights()
 
+local cmd_group = vim.api.nvim_create_augroup('general_autocmd', { clear = true })
+
 -- highlight text on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
@@ -20,6 +22,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 			on_visual = true,
 		})
 	end,
+	group = cmd_group
 })
 
 -- set the winbar
@@ -36,14 +39,16 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 			return
 		end
 
-		vim.opt.winbar = "%{%v:lua.require'nvim.utils.nvim.winbar'.eval()%}"
+		vim.wo.winbar = "%{%v:lua.require'nvim.utils.nvim.winbar'.eval()%}"
 	end,
+	group = cmd_group
 })
 
 -- open terminals in insert mode
 vim.api.nvim_create_autocmd({ 'BufWinEnter', 'TermOpen' }, {
 	pattern = 'term://*',
 	command = 'startinsert',
+	group = cmd_group
 })
 
 -- show cursor column and line on window enter
@@ -51,7 +56,8 @@ vim.api.nvim_create_autocmd('WinEnter', {
 	callback = function()
 		vim.wo.cursorcolumn = true
 		vim.wo.cursorline = true
-	end
+	end,
+	group = cmd_group
 })
 
 -- remove cursor column and line on window leave
@@ -59,7 +65,8 @@ vim.api.nvim_create_autocmd('WinLeave', {
 	callback = function()
 		vim.wo.cursorcolumn = false
 		vim.wo.cursorline = false
-	end
+	end,
+	group = cmd_group
 })
 
 -- format on save
