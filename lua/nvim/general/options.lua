@@ -1,8 +1,10 @@
-local Option = require('nvim.utils.nvim.option')
+local function add_options(option_table)
+	for key, value in pairs(option_table) do
+		vim.o[key] = value
+	end
+end
 
-local v = vim
-
-Option.g({
+add_options({
 	----------------------------------------------------------------------
 	--                         CURSOR MOVEMENTS                         --
 	----------------------------------------------------------------------
@@ -66,7 +68,7 @@ Option.g({
 	updatetime = 500,
 
 	-- controls how short messages are displayed in status bar section
-	shortmess = v.o.shortmess .. 'c',
+	shortmess = vim.o.shortmess .. 'c',
 
 	-- open completion menu even for single item
 	-- do not auto insert items from completion menu
@@ -136,23 +138,13 @@ Option.g({
 	----------------------------------------------------------------------
 	--                                UI                                --
 	----------------------------------------------------------------------
-	background = 'dark',
+	--  background = 'dark', -- this fails when reloading the config
 	termguicolors = true,
 
 	-- set indent guide
 	list = true,
 	listchars = "tab:⎸ ,trail:-,nbsp:+",
 
-	----------------------------------------------------------------------
-	--                              OTHER                               --
-	----------------------------------------------------------------------
-	-- assign unnamedplus register to clipboard
-	-- anything in the clipboard can be pasted directly
-	-- any yanked text will be copied to clipboard
-	--  clipboard = 'unnamedplus',
-})
-
-Option.w({
 	----------------------------------------------------------------------
 	--                              EDITOR                              --
 	----------------------------------------------------------------------
@@ -170,11 +162,12 @@ Option.w({
 	-- usually it adds new column when signs, moving buffer to right side.
 	-- adding a column create weird effect that's little bit hard for the eye
 	signcolumn = 'yes:1',
-})
 
-Option.b({
-
-	-- set the tab size to length of 4 spaces
-	-- shiftwidth set the indentation length
-	shiftwidth = 4,
+	----------------------------------------------------------------------
+	--                              OTHER                               --
+	----------------------------------------------------------------------
+	-- assign unnamedplus register to clipboard
+	-- anything in the clipboard can be pasted directly
+	-- any yanked text will be copied to clipboard
+	--  clipboard = 'unnamedplus',
 })

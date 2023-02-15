@@ -9,7 +9,7 @@ local browser = require('nvim.utils.nvim.browser')
 wk.register({
 	r = {
 		function()
-			common.reload_package('nvim')
+			common.reload_package('nvim.')
 		end,
 		'Reload config',
 	},
@@ -26,18 +26,14 @@ wk.register({
 	['<c-n>'] = { '<c-w>j', 'Jump bottom window' },
 	['<c-e>'] = { '<c-w>k', 'Jump top window' },
 	['<c-w><c-w>'] = { '<c-w>p', 'Jump to last window' },
-
 	["''"] = { '``zz', 'Jump to last jump point' },
-
 	['0'] = { '^', 'Jump to line start (non-blank)' },
-
 	-- centering the cursor after action
 	['{'] = { '{zz', 'Previous empty line' },
 	['}'] = { '}zz', 'Next empty line' },
 	['<c-d>'] = { '<c-d>zz', 'Scroll down' },
 	['<c-u>'] = { '<c-u>zz', 'Scroll up' },
 	['G'] = { 'Gzz', 'Last line' },
-
 	['<c-l>'] = { '<c-i>', 'Jump prev jump point' },
 }, {})
 
@@ -85,9 +81,7 @@ wk.register({
 		require('nvim.utils.nvim.file').open_file_under_cursor,
 		'Open file on cursor',
 	},
-
 	gF = { 'gf', 'Open file on cursor (same window)' },
-
 	gx = {
 		function()
 			browser.open_or_search(vim.fn.expand('<cfile>'))

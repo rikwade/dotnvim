@@ -7,7 +7,7 @@ function M.starts_with(str, starts_with_str)
 end
 
 function M.contains(str, contains_str)
-	return cast.toboolean(str:find(contains_str))
+	return cast.toboolean(str:find(contains_str, 1, true))
 end
 
 function M.split(str, separator)
