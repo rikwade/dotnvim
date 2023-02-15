@@ -4,5 +4,5 @@ return {
 	enabled = false,
 	config = function()
 		vim.cmd('colorscheme onenord')
-	end
+	end,
 }

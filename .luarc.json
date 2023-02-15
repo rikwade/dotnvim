@@ -6,15 +6,5 @@
 	"Lua.diagnostics.globals": [
 		"vim"
 	],
-	"Lua.workspace": {
-		"checkThirdParty": false
-	},
-	"Lua.telemetry": {
-		"enable": false
-	},
-	"Lua.runtime.version": "LuaJIT",
-	"Lua.workspace.checkThirdParty": false,
-	"Lua.workspace.library": [
-		"${3rd}/OpenResty/library"
-	]
+	"Lua.runtime.version": "LuaJIT"
 }

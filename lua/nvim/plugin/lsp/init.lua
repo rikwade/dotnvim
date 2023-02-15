@@ -29,8 +29,7 @@ return {
 		require('nvim.plugin.lsp.common.disable-semantic-tokens').setup()
 
 		-- lsp lang specific config
-		require('nvim.plugin.lsp.lua.workspace-config').setup()
-		require('nvim.plugin.lsp.lua.vim-global-diagnostic').setup()
+		require('nvim.plugin.lsp.lua').setup()
 		require('nvim.plugin.lsp.emmet').setup()
 		require('nvim.plugin.lsp.java').setup()
 		require('nvim.plugin.lsp.rust.rust_tools').setup()
