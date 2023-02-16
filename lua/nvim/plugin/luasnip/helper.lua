@@ -68,7 +68,7 @@ end
 
 function M.change_choice()
 	if ls.choice_active() then
-		ls.change_choice()
+		ls.change_choice(1)
 	end
 end
 
