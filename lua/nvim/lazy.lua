@@ -16,7 +16,7 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup('nvim.plugin', {
 	defaults = { lazy = true },
 	--  install = { colorscheme = { 'tokyonight', 'habamax' } },
-	checker = { enabled = true },
+	checker = { enabled = true, notify = false },
 	diff = {
 		cmd = 'terminal_git',
 	},
