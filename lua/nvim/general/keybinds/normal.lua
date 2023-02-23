@@ -21,11 +21,6 @@ wk.register({
 --                           CURSOR MOVE                            --
 ----------------------------------------------------------------------
 wk.register({
-	['<c-m>'] = { '<c-w>h', 'Jump left window' },
-	['<c-i>'] = { '<c-w>l', 'Jump right window' },
-	['<c-n>'] = { '<c-w>j', 'Jump bottom window' },
-	['<c-e>'] = { '<c-w>k', 'Jump top window' },
-	['<c-w><c-w>'] = { '<c-w>p', 'Jump to last window' },
 	["''"] = { '``zz', 'Jump to last jump point' },
 	['0'] = { '^', 'Jump to line start (non-blank)' },
 	-- centering the cursor after action
@@ -77,6 +72,12 @@ wk.register({
 --                      BUFFER & WINDOW SWITCH                      --
 ----------------------------------------------------------------------
 wk.register({
+	['<c-w><c-w>'] = { '<c-w>p', 'Jump to last window' },
+	['<c-m>'] = { '<c-w>h', 'Jump left window' },
+	['<c-i>'] = { '<c-w>l', 'Jump right window' },
+	['<c-n>'] = { '<c-w>j', 'Jump bottom window' },
+	['<c-e>'] = { '<c-w>k', 'Jump top window' },
+
 	gf = {
 		require('nvim.utils.nvim.file').open_file_under_cursor,
 		'Open file on cursor',
