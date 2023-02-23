@@ -21,6 +21,7 @@ return {
 
 	config = function()
 		local cmp = require('cmp')
+		local compare = require('cmp.config.compare')
 		local types = require('cmp.types')
 		local lspkind = require('lspkind')
 
@@ -38,6 +39,15 @@ return {
 				['<C-l>'] = cmp.mapping.abort(),
 				['<CR>'] = cmp.mapping.confirm({ select = true }),
 			}),
+
+			sorting = {
+				comparators = {
+					compare.recently_used,
+					compare.kind,
+					compare.exact,
+					compare.locality,
+				},
+			},
 
 			sources = {
 				{
@@ -91,7 +101,7 @@ return {
 
 			completion = {
 				autocomplete = false,
-				completeopt = 'menu,menuone,preview,noinsert',
+				--  completeopt = 'menu,menuone,preview,noinsert',
 			},
 
 			confirmation = {
@@ -101,29 +111,41 @@ return {
 			preselect = false,
 
 			window = {
+				completion = {
+					scrollbar = '║',
+					border = {
+						'┌',
+						'─',
+						'┐',
+						'│',
+						'┘',
+						'─',
+						'└',
+						'│',
+					},
+				},
 				documentation = {
 					border = {
-						'╭',
+						'┌',
 						'─',
-						'╮',
+						'┐',
 						'│',
-						'╯',
+						'┘',
 						'─',
-						'╰',
+						'└',
 						'│',
 					},
 					winhighlight = 'NormalFloat:NormalFloat,FloatBorder:NormalFloat',
-					maxwidth = math.floor(WIDE_HEIGHT * (vim.o.columns / 100)),
-					maxheight = math.floor(WIDE_HEIGHT * (vim.o.lines / 100)),
+					max_width = math.floor(WIDE_HEIGHT * (vim.o.columns / 100)),
+					max_height = math.floor(WIDE_HEIGHT * (vim.o.lines / 100)),
 				},
 			},
 
 			formatting = {
 				format = lspkind.cmp_format({
-					with_text = true,
-					maxwidth = 50,
+					mode = 'symbol',
 				}),
 			},
 		})
-	end
+	end,
 }
