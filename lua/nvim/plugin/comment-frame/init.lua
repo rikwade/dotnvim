@@ -1,6 +1,6 @@
 return {
 	's1n7ax/nvim-comment-frame',
-	keys = ',C',
+	keys = '<leader>oc',
 	dependencies = { 'treesitter' },
 	config = function()
 		local wk = require('which-key')
