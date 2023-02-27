@@ -48,14 +48,9 @@ wk.register({
 	['[<space>'] = {
 		function()
 			local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-
-			vim.api.nvim_buf_set_lines(
-				0,
-				curr_line - 1,
-				curr_line - 1,
-				true,
-				{ '' }
-			)
+			local prev_line = curr_line - 1
+			vim.api.nvim_buf_set_lines(0, prev_line, prev_line, true, { '' })
+			vim.api.nvim_input('<up>')
 		end,
 		'Add line above',
 	},
@@ -63,6 +58,7 @@ wk.register({
 		function()
 			local curr_line = vim.api.nvim_win_get_cursor(0)[1]
 			vim.api.nvim_buf_set_lines(0, curr_line, curr_line, true, { '' })
+			vim.api.nvim_input('<down>')
 		end,
 		'Add line below',
 	},
@@ -101,13 +97,13 @@ wk.register({
 	e = { window.split_top, 'Split top' },
 	i = { window.split_right, 'Split right' },
 }, {
-	prefix = '<tab>'
+	prefix = '<tab>',
 })
 
 wk.register({
 	name = 'Clipboard & Registers',
 	[',p'] = { '"+p', 'Paste from clipboard', mode = { 'n', 'x' } },
-	[',P'] = { '"+P', 'Paste before from clipboard', mode = { 'n', 'x' } }
+	[',P'] = { '"+P', 'Paste before from clipboard', mode = { 'n', 'x' } },
 })
 
 ----------------------------------------------------------------------
