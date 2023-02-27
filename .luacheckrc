@@ -4,6 +4,7 @@ ignore = {
 
 globals = {
   "vim.o",
+  "vim.g",
 }
 read_globals = {
   "vim",
