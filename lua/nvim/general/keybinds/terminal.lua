@@ -1,6 +1,7 @@
-local Shortcut = require('nvim.utils.nvim.shortcut')
+local wk = require('which-key')
 
-Shortcut():mode('t'):options():noremap():next():keymaps({
-    -- to go to normal mode
-    { 'nn', [[<c-\><c-n>]], {} },
+wk.register({
+    nn = { [[<c-\><c-n>]], 'Go to normal mode' },
+}, {
+	mode = 't'
 })

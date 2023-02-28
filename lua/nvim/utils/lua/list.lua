@@ -1,5 +1,3 @@
-local v = vim
-
 local M = {}
 
 function M.count(list)
@@ -15,11 +13,11 @@ end
 function M.concat(...)
     local args = { ... }
 
-    if v.tbl_count(args) == 0 then
+    if vim.tbl_count(args) == 0 then
         error('No values passed')
     end
 
-    if v.tbl_count(args) < 2 then
+    if vim.tbl_count(args) < 2 then
         error('Passed only one parameter')
     end
 
@@ -35,12 +33,9 @@ function M.concat(...)
     return first
 end
 
---[[
--- Returns true if there are any matching values
---
--- @param list { Array } list to find the value
--- @param filter_function { Function } match function
---]]
+--- Returns true if there are any matching values
+--- @param list any[] list to find the value
+--- @param filter_function function match function
 function M.any(list, match_function)
     for _, i in ipairs(list) do
         if match_function(i) then
@@ -57,6 +52,43 @@ function M.find(tbl, finder)
             return value
         end
     end
+end
+
+--- Returns true if callback returns true for any of the elements
+--- @param list any[] list to run the condition function against
+--- @param match_function function function that returns a boolean
+function M.some(list, match_function)
+	for _, element in ipairs(list) do
+		if match_function(element) then
+			return true
+		end
+	end
+
+	return false
+end
+
+--- Returns true if callback returns true for all of the elements
+--- @param list any[] list to run the condition function against
+--- @param match_function function function that returns a boolean
+function M.every(list, match_function)
+	for _, element in ipairs(list) do
+		if not match_function(element) then
+			return false
+		end
+	end
+
+	return true
+end
+
+--- Returns true if the given list contains expected_value
+function M.contains(list, expected_value)
+	for _, element in ipairs(list) do
+		if element == expected_value then
+			return true
+		end
+	end
+
+	return false
 end
 
 return M

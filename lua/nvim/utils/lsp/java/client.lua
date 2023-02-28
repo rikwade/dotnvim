@@ -5,7 +5,7 @@ local v = vim
 local fn = v.fn
 
 local self = {
-    client = LspClient({
+    client = LspClient:new({
         buffer = 0,
     }),
 }

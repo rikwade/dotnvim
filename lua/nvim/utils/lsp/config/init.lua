@@ -1,15 +1,19 @@
-local class = require('pl.class')
-local List = require('pl.List')
-local Map = require('pl.Map')
 local Event = require('nvim.utils.event')
 local EventType = require('nvim.utils.lsp.config.event')
 
-local Config = class(Map)
+local Config = {}
 
-function Config:_init()
-    self.event = Event()
+function Config:new(o)
+    o = o or {}
+    setmetatable(o, self)
+
+    self.__index = self
+
+    self.event = Event:new()
     self.prevent_setup = false
     self.on_attach = self:get_on_attach()
+
+    return o
 end
 
 --- Append on attach callback to config

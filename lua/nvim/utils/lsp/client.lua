@@ -1,14 +1,21 @@
 local Promise = require('promise')
-local class = require('pl.class')
 
 local lsp = vim.lsp
 
-local Client = class()
+local Client = {}
 
-function Client:_init(arg)
-    self.buffer = arg.buffer
-    self.client = arg.client
+function Client:new(args)
+	local o = {
+    buffer = args.buffer,
+    client = args.client
+	}
+
+    setmetatable(o, self)
+    self.__index = self
+
+    return o
 end
+
 
 --- Run workspace command
 -- @param { WorkspaceCommandParam } command parameters

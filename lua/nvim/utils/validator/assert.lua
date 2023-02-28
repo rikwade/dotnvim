@@ -1,4 +1,4 @@
-local List = require('pl.List')
+local ulist = require('nvim.utils.lua.list')
 local StringAssert = require('nvim.utils.validator.string_assert')
 local NumberAssert = require('nvim.utils.validator.number_assert')
 
@@ -111,18 +111,16 @@ function Assert.is_primitive(value, message)
         message or ('expected value to a primitive but passed ' .. type(value))
     )
 
-    local allowed_types = List({ 'number', 'string', 'boolean' })
-    assert(allowed_types:contains(type(value)), message)
+    local allowed_types = { 'number', 'string', 'boolean' }
+    assert(ulist.contains(allowed_types, type(value)), message)
 end
 
 function Assert.is_instance_of_any(classes, value, message, class_name)
-    local matching_classes = List(classes):filter(function(cls)
-        return getmetatable(value) == cls
-    end)
+	local some = ulist.some(classes, function (class)
+		return getmetatable(value) == class
+	end)
 
-    local has_any = matching_classes:len() > 0
-
-    message = class_name
+    message = some
         and Assert.get_message(
             ('expected value to be an instance of ' .. class_name)
                 or 'expected value to be an instance of the passed class'

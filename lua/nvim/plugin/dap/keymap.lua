@@ -1,7 +1,6 @@
 local dap = require('dap')
 local wk = require('which-key')
 local widgets = require('dap.ui.widgets')
-local JavaDapActions = require('nvim.plugins.nvim-dap.java.dap-actions')
 
 local M = {}
 

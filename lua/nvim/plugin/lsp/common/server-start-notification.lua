@@ -1,6 +1,6 @@
 local Notify = require('nvim.utils.notify')
 
-local notify = Notify({
+local notify = Notify:new({
     title = 'Language Server',
 })
 

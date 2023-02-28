@@ -4,7 +4,7 @@ local LspEvent = require('nvim.utils.lsp.event')
 local Event = require('nvim.utils.event')
 
 local M = {
-    lsp_event = Event(),
+    lsp_event = Event:new(),
 }
 
 --- Add event listener
@@ -20,7 +20,7 @@ function M.setup(servers)
     M.lsp_event:dispatch(LspEvent.START)
 
     for _, server_name in pairs(servers) do
-        local conf = Config()
+        local conf = Config:new()
 
         M.lsp_event:dispatch(LspEvent.SERVER_SETUP, server_name, conf)
 

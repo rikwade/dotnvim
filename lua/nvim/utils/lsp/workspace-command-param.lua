@@ -1,5 +1,11 @@
-local class = require('pl.class')
-local WorkspaceCommandParam = class()
+local WorkspaceCommandParam = {}
+
+function WorkspaceCommandParam:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    return o
+end
 
 function WorkspaceCommandParam:_init(arg)
     if type(arg) == 'string' then
