@@ -33,6 +33,7 @@ return {
 
 				mappings = {
 					i = {
+						['<C-t>'] = action.close,
 						['<C-h>'] = action.which_key,
 						['<C-n>'] = action.move_selection_next,
 						['<C-e>'] = action.move_selection_previous,

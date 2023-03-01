@@ -8,7 +8,7 @@ return {
 
 		npairs.setup({
 			fast_wrap = {
-				map = '<c-t>',
+				map = '<c-e>',
 				chars = { '{', '[', '(', '"', "'" },
 				pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
 				end_key = '$',
