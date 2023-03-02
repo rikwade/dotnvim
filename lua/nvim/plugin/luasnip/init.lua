@@ -1,7 +1,7 @@
 return {
 	'L3MON4D3/LuaSnip',
 	name = 'luasnip',
-	event = 'BufReadPre',
+	event = 'VeryLazy',
 	dependencies = { 'treesitter', 'snips' },
 	config = function()
 		local helper = require('nvim.plugin.luasnip.helper')

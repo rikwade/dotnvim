@@ -35,14 +35,7 @@ return {
 		require('nvim.plugin.lsp.rust.rust_tools').setup()
 		require('nvim.plugin.lsp.tsserver').setup()
 
-		-- dap config
-		-- require('nvim.plugins.nvim-dap.ui').setup()
-		-- require('nvim.plugins.nvim-dap.keymap').setup()
-		-- require('nvim.plugins.nvim-dap.java').setup()
-		-- require('nvim.plugins.nvim-dap.java.command').setup()
-
 		-- setup LSes
-
 		require('mason').setup()
 		require('mason-lspconfig').setup({
 			automatic_installation = true,

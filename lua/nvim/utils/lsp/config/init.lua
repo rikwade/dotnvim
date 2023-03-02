@@ -1,114 +1,70 @@
-local Event = require('nvim.utils.event')
-local EventType = require('nvim.utils.lsp.config.event')
+local Configurer = {}
 
-local Config = {}
+function Configurer:new()
+	local o = {
+		config = {},
+		prevent_setup = false,
+	}
 
-function Config:new(o)
-    o = o or {}
-    setmetatable(o, self)
+	setmetatable(o, self)
+	self.__index = self
 
-    self.__index = self
-
-    self.event = Event:new()
-    self.prevent_setup = false
-    self.on_attach = self:get_on_attach()
-
-    return o
+	return o
 end
 
---- Append on attach callback to config
--- @param { function } callback - callback to be attached
-function Config.add_listener(self, event, listener)
-    self.event:add_listener(event, listener)
-    return self
+function Configurer:get_config()
+	return self.config
 end
 
---- Remove on attach callback
--- @param { function } callback - callback to be attached
-function Config.remove_listener(self, event, callback)
-    self.event:remove_listener(event, callback)
-    return self
+--- Returns an option in LSP config
+--- @param option string name of the option
+function Configurer:get_option(option)
+	return self.config[option]
 end
 
--- Config.prevent_setup prevents setup call to lspconfig
--- Some tools handle the setting up process in their plugins such as rust_tools,
--- where they expect not to call the setup() by the user. prevent_setup(true)
--- will not call the setup
---
--- @param { boolean } shouldPreventSetup is whether should skip set up process
--- or not
---
-function Config.set_prevent_setup(self, should_prevent_setup)
-    self.prevent_setup = should_prevent_setup
-    return self
+--- Sets an option in LSP config
+--- @param option string name of the option
+--- @param value any the value to be appended
+function Configurer:set_option(option, value)
+	self.config[option] = value
+	return self
 end
 
---- Set config option
--- IF there is an existing value, this will throw an error
---
--- @param { string } option - name of the option
--- @param { any } value - the value to be appended
-function Config.set_option(self, option, value)
-    self:set(option, value)
-    return self
+--- Prevents setup call to lspconfig
+--- Some tools handle the setting up process in their plugins such as rust_tools,
+--- where they expect not to call the setup() by the user. prevent_setup(true)
+--- will not call the setup
+--- @param should_prevent_setup boolean skip setup or not
+function Configurer:set_prevent_setup(should_prevent_setup)
+	self.prevent_setup = should_prevent_setup
+	return self
 end
 
-function Config.get_option_or_default(self, option, default_value)
-    local option_value = self:get_option(option)
+--- Returns the option value if exists
+--- IF the option values does not exist, default_values will be set and returned
+--- @param option string name of the option
+--- @param default_value any value of the option to set if not exist
+function Configurer:get_option_or_default(option, default_value)
+	local option_value = self.config[option]
 
-    if not option_value then
-        self:set_option(option, default_value)
-    end
+	if not option_value then
+		self.config[option] = default_value
+	end
 
-    return self:get_option(option)
+	return self.config[option]
 end
 
--- Returns the option value
--- @param { string } option - name of the option to return
-function Config.get_option(self, option)
-    return self:get(option)
+--- Appends an option to list
+--- @param option string name of the option
+--- @param value any the value to be appended to the list in option
+function Configurer:append_option(option, value)
+	if not self.config[option] then
+		self.config[option] = {}
+	end
+
+	table.insert(self.config[option], value)
+
+	return self
 end
 
---- Append item to config option
--- This assumes the value of the option is a List
--- IF the value is falsy, then new List will be assigned before appending
---
--- @param { string } option - name of the option
--- @param { any } value - the value to be appended
-function Config.append_option(self, option, value)
-    -- if no value, assign a new List
-    if not self:get(option) then
-        self:set(option, List())
-    end
-
-    self:get(option):append(value)
-    return self
-end
-
---- Returns a function that dispatches SERVER_READY for the first time and
--- ATTACH event on consequent events
-function Config.get_on_attach(self)
-    local this = self
-
-    local callback = nil
-
-    local function attach_callback(...)
-        this.event:dispatch(EventType.ATTACH, ...)
-    end
-
-    local function server_ready_callback(...)
-        this.event:dispatch(EventType.SERVER_READY, ...)
-        this.event:dispatch(EventType.ATTACH, ...)
-        callback = attach_callback
-    end
-
-    callback = server_ready_callback
-
-    local function on_attach(...)
-        callback(...)
-    end
-
-    return on_attach
-end
-
-return Config
+return Configurer
