@@ -18,9 +18,8 @@ end
 
 function M.set_highlights()
 	local Highlighter = require('nvim.utils.nvim.highlighting.highlighter')
-	local HighlightGroups = require(
-		'nvim.utils.nvim.highlighting.highlight-groups'
-	)
+	local HighlightGroups =
+		require('nvim.utils.nvim.highlighting.highlight-groups')
 	local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
 
 	local theme = ThemeManager.get_theme()
@@ -37,10 +36,9 @@ function M.register_keymaps()
 	local wk = require('which-key')
 
 	wk.register({
-		['<c-i>'] = { M.expand_or_jump, '(Snippet) Expand or jump' },
-		['<c-h>'] = { M.jump_next, '(Snippet) Jump next placeholder' },
-		['<c-n>'] = { M.jump_prev, '(Snippet) Jump prev placeholder' },
-		['<c-l>'] = { M.change_choice, '(Snippet) Change choice' },
+		['<c-i>'] = { M.expand_or_jump('<c-i>'), '(Snippet) Expand or jump' },
+		['<c-n>'] = { M.jump_prev('<c-n>'), '(Snippet) Jump prev placeholder' },
+		['<c-l>'] = { M.change_choice('<c-l>'), '(Snippet) Change choice' },
 	}, { mode = { 'i', 's' } })
 
 	wk.register({
@@ -48,27 +46,43 @@ function M.register_keymaps()
 	})
 end
 
-function M.expand_or_jump()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
+function M.expand_or_jump(fallback_key)
+	return function()
+		if ls.expand_or_jumpable() then
+			ls.expand_or_jump()
+		else
+			vim.api.nvim_input(fallback_key)
+		end
 	end
 end
 
-function M.jump_next()
-	if ls.jumpable(1) then
-		ls.jump(1)
+function M.jump_next(fallback_key)
+	return function()
+		if ls.jumpable(1) then
+			ls.jump(1)
+		else
+			vim.api.nvim_input(fallback_key)
+		end
 	end
 end
 
-function M.jump_prev()
-	if ls.jumpable(-1) then
-		ls.jump(-1)
+function M.jump_prev(fallback_key)
+	return function()
+		if ls.jumpable(-1) then
+			ls.jump(-1)
+		else
+			vim.api.nvim_input(fallback_key)
+		end
 	end
 end
 
-function M.change_choice()
-	if ls.choice_active() then
-		ls.change_choice(1)
+function M.change_choice(fallback_key)
+	return function()
+		if ls.choice_active() then
+			ls.change_choice(1)
+		else
+			vim.api.nvim_input(fallback_key)
+		end
 	end
 end
 
