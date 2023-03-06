@@ -2,7 +2,6 @@ local wk = require('which-key')
 
 wk.register({
 	['<c-a>'] = { '<esc>I', '(Insert) Jump to line start' },
-	['<c-o>'] = { '<esc>A', '(Insert) Jump to line end' },
 	['<c-y>'] = {
 		function()
 			local buffer = vim.api.nvim_get_current_buf()
@@ -19,6 +18,8 @@ wk.register({
 		end,
 		'Duplicate current line',
 	},
+	['<c-o>'] = { '<esc>o','Insert new line below' },
+	['<c-h>'] = { '<esc>O', 'Insert new line above' },
 }, {
 	mode = 'i',
 })
