@@ -1,7 +1,7 @@
 return {
 	's1n7ax/nvim-terminal',
 	keys = {
-		'<c-\\>',
+		'<m-\\>',
 	},
 	config = function()
 		local wk = require('which-key')
@@ -12,15 +12,15 @@ return {
 		})
 
 		wk.register({
-			['<c-\\>'] = {
+			['<m-\\>'] = {
 				function()
-					---@diagnostic disable-next-line: undefined-global
+					---@diagnostic disable-next-line: 113
 					NTGlobal['terminal']:toggle()
 				end,
 				'Toggle terminal',
 			},
 		}, {
-			mode = { 'n', 't' },
+			mode = { 'n', 'i', 't' },
 		})
 	end,
 }
