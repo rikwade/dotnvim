@@ -6,6 +6,7 @@ local languages = {
 	'javascriptreact',
 	'yaml',
 	'java',
+	'rust',
 }
 
 local M = {}
