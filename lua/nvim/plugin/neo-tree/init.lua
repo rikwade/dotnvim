@@ -1,6 +1,7 @@
 return {
 	'nvim-neo-tree/neo-tree.nvim',
 	dependencies = {
+		'window-picker',
 		'nvim-lua/plenary.nvim',
 		'kyazdani42/nvim-web-devicons',
 		'MunifTanjim/nui.nvim',
