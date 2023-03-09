@@ -1,5 +1,5 @@
----@diagnostic disable: undefined-global
 local wpicker = require('window-picker')
+local WFilter = require('window-picker.filters.default-window-filter')
 
 local M = {}
 
@@ -51,7 +51,10 @@ function M.open_file_under_cursor()
 		return
 	end
 
-	local selectable = wpicker.filter_windows()
+	local win_filter = WFilter:new()
+	local selectable =
+		win_filter:filter_windows(vim.api.nvim_tabpage_list_wins(0))
+
 	if #selectable < 2 then
 		vim.api.nvim_set_current_win(selectable[1])
 		vim.cmd(string.format('vsp %s', file))
