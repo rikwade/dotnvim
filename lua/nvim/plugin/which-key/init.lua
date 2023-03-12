@@ -3,10 +3,9 @@ return {
 	name = 'which-key',
 	version = '1.1.0',
 	config = function()
-		vim.o.timeout = true
-		vim.o.timeoutlen = 2000
+		vim.o.timeoutlen = 0
 		require('which-key').setup({
-			triggers_blacklist = { i = { 'n' } },
+			triggers_blacklist = { i = { 'n' }, n = { 'v' } },
 		})
 	end,
 }
