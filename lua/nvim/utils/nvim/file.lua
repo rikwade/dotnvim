@@ -52,6 +52,7 @@ function M.open_file_under_cursor()
 	end
 
 	local win_filter = WFilter:new()
+	win_filter:set_config({ include_current_win = true })
 	local selectable =
 		win_filter:filter_windows(vim.api.nvim_tabpage_list_wins(0))
 
