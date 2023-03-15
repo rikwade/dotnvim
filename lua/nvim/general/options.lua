@@ -62,10 +62,8 @@ add_options({
 	-- persistent undo
 	undofile = true,
 
-	-- write changes to swap file after "n" ms
-	-- for some reason when the updatetime is high, autocompletion in coc nvim
-	-- takes a long time
-	updatetime = 500,
+	-- CursorHold will be fired after this amount of time
+	updatetime = 2000,
 
 	-- controls how short messages are displayed in status bar section
 	shortmess = vim.o.shortmess .. 'c',
@@ -143,7 +141,7 @@ add_options({
 
 	-- set indent guide
 	list = true,
-	listchars = "tab:⎸ ,trail:-,nbsp:+",
+	listchars = 'tab:⎸ ,trail:-,nbsp:+',
 
 	----------------------------------------------------------------------
 	--                              EDITOR                              --

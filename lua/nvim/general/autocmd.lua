@@ -1,3 +1,4 @@
+local list_util = require('nvim.utils.lua.list')
 local ThemeManager = require('nvim.utils.nvim.theme.theme-manager')
 local HighlightGroups = require('nvim.utils.nvim.highlighting.highlight-groups')
 local highlighter = require('nvim.utils.nvim.highlighting.highlighter')
@@ -10,7 +11,8 @@ local highlight_groups = HighlightGroups({
 
 highlighter:new():add(highlight_groups):register_highlights()
 
-local cmd_group = vim.api.nvim_create_augroup('general_autocmd', { clear = true })
+local cmd_group =
+	vim.api.nvim_create_augroup('general_autocmd', { clear = true })
 
 -- highlight text on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -22,7 +24,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 			on_visual = true,
 		})
 	end,
-	group = cmd_group
+	group = cmd_group,
 })
 
 -- set the winbar
@@ -41,14 +43,14 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 
 		vim.wo.winbar = "%{%v:lua.require'nvim.utils.nvim.winbar'.eval()%}"
 	end,
-	group = cmd_group
+	group = cmd_group,
 })
 
 -- open terminals in insert mode
 vim.api.nvim_create_autocmd({ 'BufWinEnter', 'TermOpen' }, {
 	pattern = 'term://*',
 	command = 'startinsert',
-	group = cmd_group
+	group = cmd_group,
 })
 
 -- show cursor column and line on window enter
@@ -57,7 +59,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
 		vim.wo.cursorcolumn = true
 		vim.wo.cursorline = true
 	end,
-	group = cmd_group
+	group = cmd_group,
 })
 
 -- remove cursor column and line on window leave
@@ -66,19 +68,83 @@ vim.api.nvim_create_autocmd('WinLeave', {
 		vim.wo.cursorcolumn = false
 		vim.wo.cursorline = false
 	end,
-	group = cmd_group
+	group = cmd_group,
+})
+
+-- save after some time
+vim.api.nvim_create_autocmd({ 'CursorHold', 'WinClosed' }, {
+	pattern = '*',
+	callback = function(ev)
+		local buffer = vim.api.nvim_get_current_buf()
+
+		---WinClosed is not from the current window
+		if ev.event == 'WinClosed' and ev.buf ~= buffer then
+			return
+		end
+
+		if
+			vim.bo.modifiable
+			and list_util.any({
+				'lua',
+				'java',
+				'markdown',
+				'rust',
+				'javascript',
+				'typescript',
+				'reactjavascript',
+				'reacttypescript',
+			}, function(ft)
+				return ft == vim.bo.filetype
+			end)
+		then
+			vim.cmd.update({ mods = {
+				silent = true,
+			} })
+		end
+	end,
+})
+
+-- Save on window close
+vim.api.nvim_create_autocmd('WinClosed', {
+	pattern = '*',
+	callback = function(ev)
+		local buffer = vim.api.nvim_get_current_buf()
+
+		---WinClosed is not from the current window
+		if ev.event == 'WinClosed' and ev.buf ~= buffer then
+			return
+		end
+
+		if
+			vim.bo.modifiable
+			and list_util.any({
+				'lua',
+				'java',
+				'markdown',
+				'rust',
+				'javascript',
+				'typescript',
+				'reactjavascript',
+				'reacttypescript',
+			}, function(ft)
+				return ft == vim.bo.filetype
+			end)
+		then
+			vim.cmd.write({ mods = { silent = true } })
+		end
+	end,
 })
 
 -- format on save
---  vim.api.nvim_create_autocmd('BufWritePost', {
---  pattern = '*',
---  callback = function()
---  local buffer = vim.api.nvim_get_current_buf()
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = '*',
+	callback = function()
+		local buffer = vim.api.nvim_get_current_buf()
 
---  for _, client in ipairs(vim.lsp.get_active_clients()) do
---  if client.attached_buffers[buffer] then
---  vim.lsp.buf.format()
---  end
---  end
---  end,
---  })
+		for _, client in ipairs(vim.lsp.get_active_clients()) do
+			if client.attached_buffers[buffer] then
+				vim.lsp.buf.format()
+			end
+		end
+	end,
+})
