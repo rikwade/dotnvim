@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd({ 'CursorHold', 'WinClosed' }, {
 
 		if
 			vim.bo.modifiable
-			and list_util.any({
+			and list_util.some({
 				'lua',
 				'java',
 				'markdown',
@@ -117,7 +117,7 @@ vim.api.nvim_create_autocmd('WinClosed', {
 
 		if
 			vim.bo.modifiable
-			and list_util.any({
+			and list_util.some({
 				'lua',
 				'java',
 				'markdown',

@@ -33,17 +33,16 @@ function M.concat(...)
     return first
 end
 
---- Returns true if there are any matching values
---- @param list any[] list to find the value
---- @param filter_function function match function
-function M.any(list, match_function)
-    for _, i in ipairs(list) do
-        if match_function(i) then
-            return true
+function M.filter(tbl, filter)
+    local filtered = {}
+
+    for _, value in ipairs(tbl) do
+        if filter(value) then
+            table.insert(filtered, value)
         end
     end
 
-    return false
+    return filtered
 end
 
 function M.find(tbl, finder)
