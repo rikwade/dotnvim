@@ -5,16 +5,16 @@ function M.run_file(executable)
 		stderr_buffered = true,
 		stdout_buffered = true,
 		on_stdout = function(_, data)
-			vim.notify(M.table_to_string(data))
+			vim.notify(M.table_to_string(data), vim.log.levels.INFO)
 		end,
 		on_error = function(_, data)
-			vim.notify(M.table_to_string(data))
-		end
+			vim.notify(M.table_to_string(data), vim.log.levels.ERROR)
+		end,
 	})
 end
 
 function M.table_to_string(tbl)
-	if (tbl[#tbl] == '') then
+	if tbl[#tbl] == '' then
 		table.remove(tbl, #tbl)
 	end
 

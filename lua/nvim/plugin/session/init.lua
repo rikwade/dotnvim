@@ -1,10 +1,13 @@
+local path = '/home/s1n7ax/Workspace/nvim/nvim-session'
+
 return {
-	's1n7ax/session',
+	's1n7ax/nvim-session',
 	name = 'session',
 	keys = '<leader>oe',
 	event = 'VeryLazy',
 	dependencies = { 'settings' },
-	dir = '/home/s1n7ax/Workspace/nvim/nvim-session',
+	dev = vim.fn.isdirectory(path),
+	dir = path,
 	config = function()
 		local wk = require('which-key')
 

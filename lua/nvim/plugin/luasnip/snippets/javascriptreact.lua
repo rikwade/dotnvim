@@ -1,10 +1,11 @@
-local ls = require('luasnip')
-local jsr = require('snips.javascriptreact')
-local s = ls.s
-
 local M = {}
 
 function M.setup()
+	local ls = require('luasnip')
+	local jsr = require('snips.javascriptreact')
+
+	local s = ls.s
+
 	local snippets = function()
 		return {
 			s('c', jsr.primitives.component()),

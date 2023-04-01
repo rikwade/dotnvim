@@ -1,12 +1,12 @@
-local ls = require('luasnip')
-local lua = require('snips.lua')
-local common = require('snips.common')
-local s = ls.s
-local i = ls.insert_node
-
 local M = {}
 
 function M.setup()
+	local ls = require('luasnip')
+	local lua = require('snips.lua')
+	local common = require('snips.common')
+	local s = ls.s
+	local i = ls.insert_node
+
 	ls.add_snippets('lua', {
 		s('f', lua.choices.func(), {
 			stored = {

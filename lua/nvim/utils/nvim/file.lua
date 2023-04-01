@@ -1,6 +1,3 @@
-local wpicker = require('window-picker')
-local WFilter = require('window-picker.filters.default-window-filter')
-
 local M = {}
 
 --[[
@@ -36,6 +33,22 @@ end
 -- IF the file not found, function will stop
 --]]
 function M.open_file_under_cursor()
+	local wpok, wpicker = pcall(require, 'window-picker')
+
+	if not wpok then
+		vim.notify('window-picker is not available', vim.log.levels.ERROR)
+	end
+
+	local wfok, WFilter =
+		pcall(require, 'window-picker.filters.default-window-filter')
+
+	if not wfok then
+		vim.notify(
+			'window-picker filters are not available',
+			vim.log.levels.ERROR
+		)
+	end
+
 	local file_info = M.get_file_info_under_cursor()
 
 	if not file_info then

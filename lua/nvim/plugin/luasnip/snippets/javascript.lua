@@ -1,12 +1,12 @@
-local ls = require('luasnip')
-local js = require('snips.javascript')
-
-local s = ls.s
-local i = ls.insert_node
-
 local M = {}
 
 function M.setup()
+	local ls = require('luasnip')
+	local js = require('snips.javascript')
+
+	local s = ls.s
+	local i = ls.insert_node
+
 	local snippets = function()
 		return {
 			s('f', js.dynamic.func(), {

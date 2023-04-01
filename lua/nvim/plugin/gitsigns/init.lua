@@ -44,7 +44,7 @@ function M.setup_keymaps(buffer)
 	})
 
 	wk.register({
-		kh = { ':<C-U>Gitsigns select_hunk<CR>', 'Select hunk' },
+		hh = { ':<C-U>Gitsigns select_hunk<CR>', 'Select hunk' },
 		ah = { ':<C-U>Gitsigns select_hunk<CR>', 'Select hunk' },
 	}, { mode = { 'o', 'x' }, buffer = buffer })
 end
