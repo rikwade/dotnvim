@@ -50,9 +50,10 @@ return {
 				window = {
 					mappings = {
 						['o'] = 'open',
-						['e'] = 'none'
+						['e'] = 'none',
+						['<space>'] = 'none'
 					},
-					position = 'current',
+					position = 'float',
 				},
 				renderers = {
 					directory = {
